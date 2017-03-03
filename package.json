@@ -47,13 +47,13 @@
   },
   "dependencies": {
     "@trendmicro/react-anchor": "^0.5.2",
+    "@trendmicro/react-paginations": "^0.5.5",
     "classnames": "^2.2.5",
     "rc-table": "^5.2.14",
     "react-addons-shallow-compare": "^0.14.0 || ^15.0.0"
   },
   "devDependencies": {
     "@trendmicro/react-buttons": "~1.0.0",
-    "@trendmicro/react-paginations": "~0.5.3",
     "babel-cli": "~6.23.0",
     "babel-core": "~6.23.1",
     "babel-eslint": "~7.1.1",
