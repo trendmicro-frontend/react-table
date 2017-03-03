@@ -2,7 +2,6 @@ import 'trendmicro-ui/dist/css/trendmicro-ui.css';
 import '@trendmicro/react-buttons/dist/react-buttons.css';
 import '@trendmicro/react-paginations/dist/react-paginations.css';
 import { Button } from '@trendmicro/react-buttons';
-import { TablePagination } from '@trendmicro/react-paginations';
 import orderBy from 'lodash.orderby';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
@@ -21,6 +20,9 @@ class App extends Component {
         }
     };
     actions = {
+        fetchRecords: ({ page, pageLength }) => {
+            console.log(`page=${page}, pageLength=${pageLength}`);
+        },
         toggleSortOrder: (key, event) => {
             let sortColumnKey = key;
             let sortOrder = (this.state.sortOrder === 'desc') ? 'asc' : 'desc';
@@ -176,18 +178,16 @@ class App extends Component {
                                                 <Button btnStyle="flat">
                                                     Export
                                                 </Button>
-                                                <div style={{ position: 'absolute', right: 0, top: 0 }}>
-                                                    <TablePagination
-                                                        page={page}
-                                                        pageLength={pageLength}
-                                                        totalRecords={totalRecords}
-                                                        onPageChange={({ page, pageLength }) => {
-                                                            //actions.fetchRecords({ page, pageLength });
-                                                        }}
-                                                        prevPageRenderer={() => <i className="fa fa-angle-left" />}
-                                                        nextPageRenderer={() => <i className="fa fa-angle-right" />}
-                                                    />
-                                                </div>
+                                                <Table.Pagination
+                                                    page={page}
+                                                    pageLength={pageLength}
+                                                    totalRecords={totalRecords}
+                                                    onPageChange={({ page, pageLength }) => {
+                                                        this.actions.fetchRecords({ page, pageLength });
+                                                    }}
+                                                    prevPageRenderer={() => <i className="fa fa-angle-left" />}
+                                                    nextPageRenderer={() => <i className="fa fa-angle-right" />}
+                                                />
                                             </Table.Toolbar>
                                         )}
                                     />
