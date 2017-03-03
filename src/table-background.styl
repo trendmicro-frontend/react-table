@@ -1,0 +1,36 @@
+// Exact selectors below required to override `.table-striped` and prevent
+// inheritance to nested tables.
+.table {
+    table {
+        > thead,
+        > tbody,
+        > tfoot {
+            > tr {
+                > th.active,
+                > td.active {
+                    background-color: #fcf8da;
+                }
+            }
+            > tr.active {
+                > th,
+                > td {
+                    background-color: #fcf8da;
+                }
+            }
+        }
+    }
+}
+.table-hover {
+    table {
+        > tbody {
+            tr > th.active:hover,
+            tr > td.active:hover,
+            tr:hover > .active,
+            tr.active:hover > th {
+                background-color: #faf4c2;
+            }
+        }
+    }
+}
+
+// TODO: success / info / warning / danger

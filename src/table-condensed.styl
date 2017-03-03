@@ -1,0 +1,17 @@
+@import "variables";
+
+// Condensed table w/ half padding
+.table-condensed {
+    table {
+        > thead,
+        > tbody,
+        > tfoot {
+            > tr {
+                > th,
+                > td {
+                    padding: $table-condensed-cell-padding;
+                }
+            }
+        }
+    }
+}

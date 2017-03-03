@@ -1,0 +1,38 @@
+@import "variables";
+
+.table {
+    &.table-bordered {
+        :global {
+            .rc-table-placeholder {
+                border: 1px solid #ddd;
+                border-top: none;
+            }
+        }
+    }
+}
+
+// Add borders all around the table and between all the columns.
+.table-bordered {
+    table {
+        > thead,
+        > tbody,
+        > tfoot {
+            > tr {
+                > th,
+                > td {
+                    border: 1px solid $table-border-color;
+                }
+            }
+        }
+        > thead {
+            > tr {
+                > th,
+                > td {
+                    background-color: #EEEEEE;
+                    border-bottom-width: 2px;
+                    border-bottom-color: $table-header-border-bottom-color;
+                }
+            }
+        }
+    }
+}

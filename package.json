@@ -46,12 +46,14 @@
     "react": "^0.14.0 || ^15.0.0"
   },
   "dependencies": {
+    "@trendmicro/react-anchor": "^0.5.2",
     "classnames": "^2.2.5",
     "rc-table": "^5.2.14",
     "react-addons-shallow-compare": "^0.14.0 || ^15.0.0"
   },
   "devDependencies": {
     "@trendmicro/react-buttons": "~1.0.0",
+    "@trendmicro/react-paginations": "~0.5.3",
     "babel-cli": "~6.23.0",
     "babel-core": "~6.23.1",
     "babel-eslint": "~7.1.1",
@@ -75,6 +77,7 @@
     "find-imports": "~0.5.1",
     "html-webpack-plugin": "~2.28.0",
     "http-server": "~0.9.0",
+    "lodash.orderby": "~4.6.0",
     "nib": "~1.1.2",
     "react": "^0.14.0 || ^15.0.0",
     "react-dom": "^0.14.0 || ^15.0.0",

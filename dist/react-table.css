@@ -1,13 +1,4 @@
 /*! react-table v0.1.0 | (c) 2017 Trend Micro Inc. | MIT | https://github.com/trendmicro-frontend/react-table */
-.table---table---2aBqd .rc-table-placeholder {
-  text-align: center;
-  padding: 26px 12px;
-  color: #999;
-}
-.table---table---2aBqd.table---table-bordered---1cbV4 .rc-table-placeholder {
-  border: 1px solid #ddd;
-  border-top: none;
-}
 .table---table---2aBqd table {
   background-color: transparent;
   border-collapse: collapse;
@@ -20,9 +11,6 @@
 }
 .table---table---2aBqd table th {
   text-align: left;
-}
-.table---table-container---2kn91 {
-  position: relative;
 }
 .table---table---2aBqd table {
   width: 100%;
@@ -68,87 +56,26 @@
 .table---table---2aBqd table > tbody + tbody {
   border-top: 2px solid #ddd;
 }
-.table---table---2aBqd table .table---table---2aBqd {
+.table---table---2aBqd table .table---table---2aBqd table {
   background-color: #fff;
 }
-.table---table-condensed---3F-Gm table > thead > tr > th,
-.table---table-condensed---3F-Gm table > tbody > tr > th,
-.table---table-condensed---3F-Gm table > tfoot > tr > th,
-.table---table-condensed---3F-Gm table > thead > tr > td,
-.table---table-condensed---3F-Gm table > tbody > tr > td,
-.table---table-condensed---3F-Gm table > tfoot > tr > td {
-  padding: 5px;
+.table---table---2aBqd table .table---clickable-column---1zeo4 {
+  margin: -8px -12px;
+  padding: 8px 12px;
+  color: inherit;
+  display: block;
+  padding: 8px 12px;
 }
-.table---table-bordered---1cbV4 table > thead > tr > th,
-.table---table-bordered---1cbV4 table > tbody > tr > th,
-.table---table-bordered---1cbV4 table > tfoot > tr > th,
-.table---table-bordered---1cbV4 table > thead > tr > td,
-.table---table-bordered---1cbV4 table > tbody > tr > td,
-.table---table-bordered---1cbV4 table > tfoot > tr > td {
-  border: 1px solid #ddd;
-}
-.table---table-bordered---1cbV4 table > thead > tr > th,
-.table---table-bordered---1cbV4 table > thead > tr > td {
-  background-color: #eee;
-  border-bottom-width: 2px;
-  border-bottom-color: #ccc;
-}
-.table---table-minimalism---1Tk6v table {
-  border: 0;
-}
-.table---table-minimalism---1Tk6v table > thead > tr > th,
-.table---table-minimalism---1Tk6v table > tbody > tr > th,
-.table---table-minimalism---1Tk6v table > tfoot > tr > th,
-.table---table-minimalism---1Tk6v table > thead > tr > td,
-.table---table-minimalism---1Tk6v table > tbody > tr > td,
-.table---table-minimalism---1Tk6v table > tfoot > tr > td {
-  border-bottom: 1px solid #ddd;
-}
-.table---table-minimalism---1Tk6v table > thead > tr > th,
-.table---table-minimalism---1Tk6v table > thead > tr > td {
-  border-bottom-width: 2px;
-  border-bottom-color: #ccc;
-}
-.table---table-striped---3p6EV table > tbody > tr:nth-of-type(odd) {
-  background-color: #f9f9f9;
-}
-.table---table-hover---3yCb6 table > tbody > tr:hover {
-  background-color: #e6f4fc;
-}
-.table---table-hover---3yCb6 table > tbody > tr > td.table---td-link---2eKF1:hover {
-  cursor: pointer;
-}
-.table---table-hover---3yCb6 table > tbody > tr > td.table---td-link---2eKF1:hover a {
-  text-decoration: underline;
-  color: #db3d44;
-}
-.table---table-sortable---KlbyF table > thead > tr > th:hover {
+.table---table---2aBqd table .table---clickable-column---1zeo4:hover {
   background-color: #e6e6e6;
   cursor: pointer;
 }
-.table---table-sortable---KlbyF table .table---sortabled---1D09Q {
-  color: #222;
-}
-.table---table-sortable---KlbyF table .table---sortabled---1D09Q .table---icon_sortDescending---1Wfsx {
-  vertical-align: top;
-  margin-top: 1px;
+.table---table-minimalism---1Tk6v table .table---clickable-column---1zeo4:hover {
+  background-color: inherit;
 }
 .table---table-with-pagination---1MXL2 .table---table-scrollable---1SrAD {
   max-height: 149px;
   overflow-y: auto;
-}
-.table---table-no-data---2nuKv table tbody > tr td {
-  text-align: center;
-  padding: 26px 12px;
-  color: #999;
-}
-.table---table-comfortable---1oadL table > thead > tr > th,
-.table---table-comfortable---1oadL table > tbody > tr > th,
-.table---table-comfortable---1oadL table > tfoot > tr > th,
-.table---table-comfortable---1oadL table > thead > tr > td,
-.table---table-comfortable---1oadL table > tbody > tr > td,
-.table---table-comfortable---1oadL table > tfoot > tr > td {
-  padding: 12px 12px;
 }
 .table---table---2aBqd table col[class*="col-"] {
   position: static;
@@ -183,20 +110,113 @@
 .table---table-hover---3yCb6 table > tbody tr.table---active---2-a32:hover > th {
   background-color: #faf4c2;
 }
-.table---table-responsive---3yVaO table {
+.table---table---2aBqd.table---table-bordered---1cbV4 .rc-table-placeholder {
+  border: 1px solid #ddd;
+  border-top: none;
+}
+.table---table-bordered---1cbV4 table > thead > tr > th,
+.table---table-bordered---1cbV4 table > tbody > tr > th,
+.table---table-bordered---1cbV4 table > tfoot > tr > th,
+.table---table-bordered---1cbV4 table > thead > tr > td,
+.table---table-bordered---1cbV4 table > tbody > tr > td,
+.table---table-bordered---1cbV4 table > tfoot > tr > td {
+  border: 1px solid #ddd;
+}
+.table---table-bordered---1cbV4 table > thead > tr > th,
+.table---table-bordered---1cbV4 table > thead > tr > td {
+  background-color: #eee;
+  border-bottom-width: 2px;
+  border-bottom-color: #ccc;
+}
+.table---table-comfortable---1oadL table > thead > tr > th,
+.table---table-comfortable---1oadL table > tbody > tr > th,
+.table---table-comfortable---1oadL table > tfoot > tr > th,
+.table---table-comfortable---1oadL table > thead > tr > td,
+.table---table-comfortable---1oadL table > tbody > tr > td,
+.table---table-comfortable---1oadL table > tfoot > tr > td {
+  padding: 12px 12px;
+}
+.table---table-condensed---3F-Gm table > thead > tr > th,
+.table---table-condensed---3F-Gm table > tbody > tr > th,
+.table---table-condensed---3F-Gm table > tfoot > tr > th,
+.table---table-condensed---3F-Gm table > thead > tr > td,
+.table---table-condensed---3F-Gm table > tbody > tr > td,
+.table---table-condensed---3F-Gm table > tfoot > tr > td {
+  padding: 5px;
+}
+.table---table-container---2kn91 {
+  position: relative;
+}
+.table---table-hover---3yCb6 table > tbody > tr:hover {
+  background-color: #e6f4fc;
+}
+.table---table-hover---3yCb6 table > tbody > tr > td.table---td-link---2eKF1:hover {
+  cursor: pointer;
+}
+.table---table-hover---3yCb6 table > tbody > tr > td.table---td-link---2eKF1:hover a {
+  text-decoration: underline;
+  color: #db3d44;
+}
+.table---table-minimalism---1Tk6v table {
+  border: 0;
+}
+.table---table-minimalism---1Tk6v table > thead > tr > th,
+.table---table-minimalism---1Tk6v table > tbody > tr > th,
+.table---table-minimalism---1Tk6v table > tfoot > tr > th,
+.table---table-minimalism---1Tk6v table > thead > tr > td,
+.table---table-minimalism---1Tk6v table > tbody > tr > td,
+.table---table-minimalism---1Tk6v table > tfoot > tr > td {
+  border-bottom: 1px solid #ddd;
+}
+.table---table-minimalism---1Tk6v table > thead > tr > th,
+.table---table-minimalism---1Tk6v table > thead > tr > td {
+  border-bottom-width: 2px;
+  border-bottom-color: #ccc;
+}
+.table---table---2aBqd .rc-table-placeholder {
+  text-align: center;
+  padding: 26px 12px;
+  color: #999;
+}
+.table---table-no-data---2nuKv table > tbody > tr td {
+  text-align: center;
+  padding: 26px 12px;
+  color: #999;
+}
+.table---table-responsive---3yVaO {
   overflow-x: auto;
   min-height: 0.01%;
 }
-.table---table---2aBqd + .table---loader-overlay---IQP-L {
-  top: 39px;
+.table---table-sortable---KlbyF table .table---column-sort---2tMOB {
+  color: #222;
 }
-.table---table-comfortable---1oadL + .table---loader-overlay---IQP-L {
-  top: 47px;
+.table---table-sortable---KlbyF table .table---column-sort---2tMOB:hover,
+.table---table-sortable---KlbyF table .table---column-sort---2tMOB:focus {
+  color: #222;
+  text-decoration: none;
+}
+.table---table-sortable---KlbyF table .table---column-sort-asc---2q1Wg,
+.table---table-sortable---KlbyF table .table---column-sort-desc---3hZbo {
+  vertical-align: top;
+  margin-top: 1px;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+}
+.table---table-sortable---KlbyF table .table---column-sort-asc---2q1Wg {
+  background-image: url(7942d80077eec2eb49ed4379fc389d70.svg);
+}
+.table---table-sortable---KlbyF table .table---column-sort-desc---3hZbo {
+  background-image: url(a61e4252663ca88ab29e9ae288b91ef1.svg);
+}
+.table---table-striped---3p6EV table > tbody > tr:nth-of-type(odd) {
+  background-color: #f9f9f9;
 }
 .table---table-toolbar---36lWf {
   position: relative;
   background-color: #f8f8f8;
-  border-bottom: 1px solid #ddd;
+  border: 1px solid #ddd;
+  border-bottom: 0;
   padding: 8px 16px;
   zoom: 1;
 }
@@ -207,6 +227,134 @@
 }
 .table---table-toolbar---36lWf:after {
   clear: both;
+}
+.table---loader-overlay---IQP-L {
+  background-color: rgba(255,255,255,0.8);
+  cursor: wait;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.table---loader-overlay---IQP-L .table---loader---3Kv7h,
+.table---loader-overlay---IQP-L .table---loader-small---37wpB,
+.table---loader-overlay---IQP-L .table---loader-large---2W2Dw {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+.table---loader-overlay---IQP-L .table---loader-large---2W2Dw {
+  margin-top: -28px;
+  margin-left: -28px;
+}
+.table---loader-overlay---IQP-L .table---loader-small---37wpB {
+  margin-top: -8px;
+  margin-left: -8px;
+}
+.table---loader-overlay---IQP-L .table---loader---3Kv7h {
+  margin-top: -16px;
+  margin-left: -16px;
+}
+.table---table---2aBqd + .table---loader-overlay---IQP-L {
+  top: 39px;
+}
+.table---table-comfortable---1oadL + .table---loader-overlay---IQP-L {
+  top: 47px;
+}
+.table---loader---3Kv7h {
+  display: inline-block;
+  margin: 0 auto;
+  position: relative;
+  text-indent: -9999em;
+  vertical-align: top;
+  border: 2px solid rgba(0,0,0,0.2);
+  border-left-color: rgba(0,0,0,0.8);
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation: table---spinner---2cR6i 1s infinite linear;
+  -moz-animation: table---spinner---2cR6i 1s infinite linear;
+  -o-animation: table---spinner---2cR6i 1s infinite linear;
+  -ms-animation: table---spinner---2cR6i 1s infinite linear;
+  animation: table---spinner---2cR6i 1s infinite linear;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+}
+.table---loader-large---2W2Dw {
+  width: 56px;
+  height: 56px;
+}
+.table---loader-small---37wpB {
+  width: 16px;
+  height: 16px;
+}
+@-moz-keyframes table---spinner---2cR6i {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes table---spinner---2cR6i {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-o-keyframes table---spinner---2cR6i {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes table---spinner---2cR6i {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }
 
 /*# sourceMappingURL=react-table.css.map*/

@@ -1,0 +1,29 @@
+// sortable effect 
+.table-sortable {
+    table {
+        .column-sort {
+            color: #222;
+
+            &:hover,
+            &:focus {
+                color: #222;
+                text-decoration: none;
+            }
+        }
+
+        .column-sort-asc,
+        .column-sort-desc {
+            vertical-align: top;
+            margin-top: 1px;
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+        }
+        .column-sort-asc {
+            background-image: url("./icon-thSortAscending.svg");
+        }
+        .column-sort-desc {
+            background-image: url("./icon-thSortDescending.svg");
+        }
+    }
+}
