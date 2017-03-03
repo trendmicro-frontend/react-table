@@ -628,7 +628,7 @@ if(false) {
 /***/ "../node_modules/@trendmicro/react-paginations/lib/index.js":
 /***/ (function(module, exports, __webpack_require__) {
 
-/*! react-paginations v0.5.3 | (c) 2017 Trend Micro Inc. | MIT | https://github.com/trendmicro-frontend/react-paginations */
+/*! react-paginations v0.5.5 | (c) 2017 Trend Micro Inc. | MIT | https://github.com/trendmicro-frontend/react-paginations */
 module.exports =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -740,6 +740,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -817,7 +819,9 @@ var TablePagination = (_temp2 = _class = function (_Component) {
                 prevPageRenderer = _props.prevPageRenderer,
                 nextPageRenderer = _props.nextPageRenderer,
                 pageRecordsRenderer = _props.pageRecordsRenderer,
-                pageLengthRenderer = _props.pageLengthRenderer;
+                pageLengthRenderer = _props.pageLengthRenderer,
+                className = _props.className,
+                props = _objectWithoutProperties(_props, ['type', 'totalRecords', 'pageLengthMenu', 'prevPageRenderer', 'nextPageRenderer', 'pageRecordsRenderer', 'pageLengthRenderer', 'className']);
 
             var pageLength = this.props.pageLength || pageLengthMenu[0] || 10;
             var totalPages = totalRecords > 0 ? Math.ceil(totalRecords / pageLength) : 1;
@@ -827,9 +831,15 @@ var TablePagination = (_temp2 = _class = function (_Component) {
             var prevPageDisabled = page <= 1;
             var nextPageDisabled = page >= totalPages;
 
+            delete props.pageLength;
+            delete props.page;
+            delete props.onPageChange;
+
             return _react2.default.createElement(
                 'div',
-                { className: _index2.default.tablePagination },
+                _extends({}, props, {
+                    className: (0, _classnames2.default)(className, _index2.default.tablePagination)
+                }),
                 _react2.default.createElement(
                     'div',
                     { className: _index2.default.tablePaginationBlock },
@@ -1756,7 +1766,7 @@ exports = module.exports = __webpack_require__("../node_modules/css-loader/lib/c
 
 
 // module
-exports.push([module.i, "/*! react-paginations v0.5.3 | (c) 2017 Trend Micro Inc. | MIT | https://github.com/trendmicro-frontend/react-paginations */\n.paginations---pagination---2Rb5b {\n  display: inline-block;\n  padding-left: 0;\n  border-radius: 3px;\n  margin: 0;\n}\n.paginations---pagination---2Rb5b > li {\n  display: inline;\n}\n.paginations---pagination---2Rb5b > li > a,\n.paginations---pagination---2Rb5b > li > span {\n  position: relative;\n  float: left;\n  padding: 5px 0;\n  text-decoration: none;\n  color: #222;\n  background-color: #fff;\n  border: 1px solid #ccc;\n  margin-left: -1px;\n  width: 32px;\n  text-align: center;\n}\n.paginations---pagination---2Rb5b > li:first-child > a,\n.paginations---pagination---2Rb5b > li:first-child > span {\n  margin-left: 0;\n  border-top-left-radius: 3px;\n  border-bottom-left-radius: 3px;\n}\n.paginations---pagination---2Rb5b > li:last-child > a,\n.paginations---pagination---2Rb5b > li:last-child > span {\n  border-top-right-radius: 3px;\n  border-bottom-right-radius: 3px;\n}\n.paginations---pagination---2Rb5b > li > a.paginations---fa---2RjFS,\n.paginations---pagination---2Rb5b > li > span.paginations---fa---2RjFS {\n  color: #666;\n}\n.paginations---pagination---2Rb5b > li > a,\n.paginations---pagination---2Rb5b > li > span {\n  cursor: pointer;\n}\n.paginations---pagination---2Rb5b > li > a:hover,\n.paginations---pagination---2Rb5b > li > span:hover,\n.paginations---pagination---2Rb5b > li > a:focus,\n.paginations---pagination---2Rb5b > li > span:focus {\n  z-index: 2;\n  color: #222;\n  background-color: #f4f4f4;\n  border-color: #bbb;\n}\n.paginations---pagination---2Rb5b > li > a:active,\n.paginations---pagination---2Rb5b > .paginations---active---2-a32 > a,\n.paginations---pagination---2Rb5b > .paginations---active---2-a32 > span,\n.paginations---pagination---2Rb5b > li > a:active:hover,\n.paginations---pagination---2Rb5b > .paginations---active---2-a32 > a:hover,\n.paginations---pagination---2Rb5b > .paginations---active---2-a32 > span:hover,\n.paginations---pagination---2Rb5b > li > a:active:focus,\n.paginations---pagination---2Rb5b > .paginations---active---2-a32 > a:focus,\n.paginations---pagination---2Rb5b > .paginations---active---2-a32 > span:focus {\n  z-index: 3;\n  color: #222;\n  background-color: #eee;\n  border-color: #bbb;\n  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.1) inset;\n  box-shadow: 0 1px 2px rgba(0,0,0,0.1) inset;\n  background-image: none;\n}\n.paginations---pagination---2Rb5b > .paginations---active---2-a32 > a,\n.paginations---pagination---2Rb5b > .paginations---active---2-a32 > span {\n  cursor: default;\n}\n.paginations---pagination---2Rb5b > .paginations---disabled---eCY9b > span,\n.paginations---pagination---2Rb5b > .paginations---disabled---eCY9b > span:hover,\n.paginations---pagination---2Rb5b > .paginations---disabled---eCY9b > span:focus,\n.paginations---pagination---2Rb5b > .paginations---disabled---eCY9b > a,\n.paginations---pagination---2Rb5b > .paginations---disabled---eCY9b > a:hover,\n.paginations---pagination---2Rb5b > .paginations---disabled---eCY9b > a:focus {\n  color: #222;\n  background-color: #fff;\n  border-color: #ccc;\n  cursor: not-allowed;\n  opacity: 0.4;\n  -ms-filter: \"progid:DXImageTransform.Microsoft.Alpha(Opacity=40)\";\n  filter: alpha(opacity=40);\n}\n.paginations---table-pagination---41TU-.paginations---pull-right---2juGH {\n  float: right;\n}\n.paginations---table-pagination---41TU- .paginations---table-pagination-block---Cx6IH {\n  margin-left: 8px;\n  margin-right: 8px;\n}\n.paginations---table-pagination---41TU- .paginations---table-pagination-block---Cx6IH > div {\n  margin-top: 8px;\n  margin-bottom: 8px;\n  margin-left: 8px;\n  margin-right: 8px;\n  float: left;\n}\n.paginations---table-pagination---41TU- .paginations---table-pagination-block---Cx6IH .paginations---pagination---2Rb5b {\n  vertical-align: top;\n}\n.paginations---table-pagination---41TU- .paginations---table-pagination-block---Cx6IH .paginations---pagination-records---YOUAz {\n  color: #666;\n  margin-top: 14px;\n  margin-bottom: 14px;\n}\n.paginations---table-pagination---41TU- .paginations---table-pagination-block---Cx6IH .paginations---pagination-records---YOUAz + .paginations---dropdown---1yvIZ {\n  border-left: 1px solid #ddd;\n}\n.paginations---table-pagination---41TU- .paginations---table-pagination-block---Cx6IH .paginations---dropdown---1yvIZ {\n  padding-left: 16px;\n  margin-top: 14px;\n  margin-bottom: 14px;\n}\n.paginations---table-pagination---41TU- .paginations---table-pagination-block---Cx6IH .paginations---dropdown---1yvIZ .paginations---btn---2jZHN {\n  background-color: transparent;\n  border: 0;\n  border-color: transparent;\n  -webkit-box-shadow: none;\n  box-shadow: none;\n  color: #666;\n  line-height: 18px;\n  padding-left: 0;\n  padding-right: 0;\n  text-align: left;\n  text-decoration: none;\n  outline: none;\n}\n.paginations---table-pagination---41TU- .paginations---table-pagination-block---Cx6IH .paginations---dropdown---1yvIZ .paginations---btn---2jZHN .paginations---caret---3CkEt {\n  display: inline-block;\n  width: 0;\n  height: 0;\n  vertical-align: middle;\n  border-top: 4px dashed #666;\n  border-right: 4px solid transparent;\n  border-left: 4px solid transparent;\n  margin-left: 8px;\n}\n.paginations---table-pagination---41TU- .paginations---table-pagination-block---Cx6IH .paginations---dropdown---1yvIZ .paginations---btn---2jZHN:hover {\n  color: #0096cc;\n}\n.paginations---table-pagination---41TU- .paginations---table-pagination-block---Cx6IH .paginations---dropdown---1yvIZ .paginations---btn---2jZHN:hover .paginations---caret---3CkEt {\n  border-top-color: #0096cc;\n}\n.paginations---table-pagination---41TU- .paginations---table-pagination-block---Cx6IH .paginations---dropdown---1yvIZ .paginations---dropdown-menu---1fkH0 {\n  top: 27px;\n  left: 16px;\n}\n.paginations---table-pagination---41TU- .paginations---table-pagination-block---Cx6IH .paginations---pagination-input---2C8oD {\n  color: #666;\n}\n.paginations---table-pagination---41TU- .paginations---table-pagination-block---Cx6IH .paginations---pagination-input---2C8oD input {\n  vertical-align: baseline;\n  margin: 0;\n  min-width: 24px;\n  padding: 5px 4px;\n  text-align: center;\n  border: 1px solid #ccc;\n  border-radius: 3px;\n}\n.paginations---dropdown---1yvIZ {\n  position: relative;\n}\n.paginations---dropdown-menu---1fkH0 {\n  position: absolute;\n  top: 100%;\n  left: 0;\n  z-index: 1000;\n  display: none;\n  float: left;\n  min-width: 0;\n  padding: 8px 0;\n  margin: 0;\n  font-size: 13px;\n  text-align: left;\n  list-style: none;\n  background-color: #fff;\n  -webkit-background-clip: padding;\n  -moz-background-clip: padding;\n  background-clip: padding-box;\n  border: 1px solid #bbb;\n  border-radius: 0;\n  -webkit-box-shadow: 0 2px 6px rgba(0,0,0,0.2);\n  box-shadow: 0 2px 6px rgba(0,0,0,0.2);\n}\n.paginations---open---1ju75 > .paginations---dropdown-menu---1fkH0 {\n  display: block;\n}\n.paginations---dropdown-menu---1fkH0 > li > a {\n  display: block;\n  padding: 4px 32px 4px 40px;\n  clear: both;\n  font-weight: normal;\n  line-height: 20px;\n  color: #222;\n  text-decoration: none;\n  white-space: nowrap;\n}\n.paginations---dropdown-menu---1fkH0 > li > a:hover,\n.paginations---dropdown-menu---1fkH0 > li > a:focus {\n  color: #222;\n  text-decoration: none;\n  background-color: #eee;\n}\n.paginations---dropdown-menu---1fkH0 > li.paginations---selected---1EK3y a:before {\n  display: inline-block;\n  width: 16px;\n  height: 20px;\n  margin: 0 8px 0 -24px;\n  vertical-align: top;\n  content: \"\";\n  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxNnB4IiB2aWV3Qm94PSIwIDAgMTYgMTYiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDE2IDE2OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPg0KPCFbQ0RBVEFbDQoJLnN0MHtmaWxsLXJ1bGU6ZXZlbm9kZDtjbGlwLXJ1bGU6ZXZlbm9kZDtmaWxsOiMwMDk2Q0M7fQ0KXV0+DQo8L3N0eWxlPg0KPGcgaWQ9Imljb25TZWxlY3RDaGVjayI+DQoJPGc+DQoJCTxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik0xMi43LDQuMWMtMC40LTAuNC0xLTAuNC0xLjQsMGwtNS4yLDYuMUw0LjcsNy4zQzQuMyw3LDMuNyw3LDMuMyw3LjNzLTAuNCwxLDAsMS40TDUsMTIuMg0KCQkJYzAsMC4xLDAuMSwwLjIsMC4yLDAuM2wwLjEsMC4yYzAuNCwwLjQsMSwwLjQsMS40LDBjMCwwLDAtMC4xLDAuMS0wLjFsNi03LjFDMTMuMSw1LjEsMTMuMSw0LjUsMTIuNyw0LjF6Ii8+DQoJPC9nPg0KPC9nPg0KPC9zdmc+DQo=);\n  background-repeat: no-repeat;\n  background-position: 0 2px;\n}\n\n/*# sourceMappingURL=react-paginations.css.map*/", ""]);
+exports.push([module.i, "/*! react-paginations v0.5.5 | (c) 2017 Trend Micro Inc. | MIT | https://github.com/trendmicro-frontend/react-paginations */\n.paginations---pagination---2Rb5b {\n  display: inline-block;\n  padding-left: 0;\n  border-radius: 3px;\n  margin: 0;\n}\n.paginations---pagination---2Rb5b > li {\n  display: inline;\n}\n.paginations---pagination---2Rb5b > li > a,\n.paginations---pagination---2Rb5b > li > span {\n  position: relative;\n  float: left;\n  padding: 5px 0;\n  text-decoration: none;\n  color: #222;\n  background-color: #fff;\n  border: 1px solid #ccc;\n  margin-left: -1px;\n  width: 32px;\n  text-align: center;\n}\n.paginations---pagination---2Rb5b > li:first-child > a,\n.paginations---pagination---2Rb5b > li:first-child > span {\n  margin-left: 0;\n  border-top-left-radius: 3px;\n  border-bottom-left-radius: 3px;\n}\n.paginations---pagination---2Rb5b > li:last-child > a,\n.paginations---pagination---2Rb5b > li:last-child > span {\n  border-top-right-radius: 3px;\n  border-bottom-right-radius: 3px;\n}\n.paginations---pagination---2Rb5b > li > a.paginations---fa---2RjFS,\n.paginations---pagination---2Rb5b > li > span.paginations---fa---2RjFS {\n  color: #666;\n}\n.paginations---pagination---2Rb5b > li > a,\n.paginations---pagination---2Rb5b > li > span {\n  cursor: pointer;\n}\n.paginations---pagination---2Rb5b > li > a:hover,\n.paginations---pagination---2Rb5b > li > span:hover,\n.paginations---pagination---2Rb5b > li > a:focus,\n.paginations---pagination---2Rb5b > li > span:focus {\n  z-index: 2;\n  color: #222;\n  background-color: #f4f4f4;\n  border-color: #bbb;\n}\n.paginations---pagination---2Rb5b > li > a:active,\n.paginations---pagination---2Rb5b > .paginations---active---2-a32 > a,\n.paginations---pagination---2Rb5b > .paginations---active---2-a32 > span,\n.paginations---pagination---2Rb5b > li > a:active:hover,\n.paginations---pagination---2Rb5b > .paginations---active---2-a32 > a:hover,\n.paginations---pagination---2Rb5b > .paginations---active---2-a32 > span:hover,\n.paginations---pagination---2Rb5b > li > a:active:focus,\n.paginations---pagination---2Rb5b > .paginations---active---2-a32 > a:focus,\n.paginations---pagination---2Rb5b > .paginations---active---2-a32 > span:focus {\n  z-index: 3;\n  color: #222;\n  background-color: #eee;\n  border-color: #bbb;\n  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.1) inset;\n  box-shadow: 0 1px 2px rgba(0,0,0,0.1) inset;\n  background-image: none;\n}\n.paginations---pagination---2Rb5b > .paginations---active---2-a32 > a,\n.paginations---pagination---2Rb5b > .paginations---active---2-a32 > span {\n  cursor: default;\n}\n.paginations---pagination---2Rb5b > .paginations---disabled---eCY9b > span,\n.paginations---pagination---2Rb5b > .paginations---disabled---eCY9b > span:hover,\n.paginations---pagination---2Rb5b > .paginations---disabled---eCY9b > span:focus,\n.paginations---pagination---2Rb5b > .paginations---disabled---eCY9b > a,\n.paginations---pagination---2Rb5b > .paginations---disabled---eCY9b > a:hover,\n.paginations---pagination---2Rb5b > .paginations---disabled---eCY9b > a:focus {\n  color: #222;\n  background-color: #fff;\n  border-color: #ccc;\n  cursor: not-allowed;\n  opacity: 0.4;\n  -ms-filter: \"progid:DXImageTransform.Microsoft.Alpha(Opacity=40)\";\n  filter: alpha(opacity=40);\n}\n.paginations---table-pagination---41TU-.paginations---pull-right---2juGH {\n  float: right;\n}\n.paginations---table-pagination---41TU- .paginations---table-pagination-block---Cx6IH {\n  margin-left: 8px;\n  margin-right: 8px;\n}\n.paginations---table-pagination---41TU- .paginations---table-pagination-block---Cx6IH > div {\n  margin-top: 8px;\n  margin-bottom: 8px;\n  margin-left: 8px;\n  margin-right: 8px;\n  float: left;\n}\n.paginations---table-pagination---41TU- .paginations---table-pagination-block---Cx6IH .paginations---pagination---2Rb5b {\n  vertical-align: top;\n}\n.paginations---table-pagination---41TU- .paginations---table-pagination-block---Cx6IH .paginations---pagination-records---YOUAz {\n  color: #666;\n  margin-top: 14px;\n  margin-bottom: 14px;\n}\n.paginations---table-pagination---41TU- .paginations---table-pagination-block---Cx6IH .paginations---pagination-records---YOUAz + .paginations---dropdown---1yvIZ {\n  border-left: 1px solid #ddd;\n}\n.paginations---table-pagination---41TU- .paginations---table-pagination-block---Cx6IH .paginations---dropdown---1yvIZ {\n  padding-left: 16px;\n  margin-top: 14px;\n  margin-bottom: 14px;\n}\n.paginations---table-pagination---41TU- .paginations---table-pagination-block---Cx6IH .paginations---dropdown---1yvIZ .paginations---btn---2jZHN {\n  background-color: transparent;\n  border: 0;\n  border-color: transparent;\n  -webkit-box-shadow: none;\n  box-shadow: none;\n  color: #666;\n  cursor: pointer;\n  line-height: 18px;\n  padding-left: 0;\n  padding-right: 0;\n  text-align: left;\n  text-decoration: none;\n  outline: none;\n}\n.paginations---table-pagination---41TU- .paginations---table-pagination-block---Cx6IH .paginations---dropdown---1yvIZ .paginations---btn---2jZHN .paginations---caret---3CkEt {\n  display: inline-block;\n  width: 0;\n  height: 0;\n  vertical-align: middle;\n  border-top: 4px dashed #666;\n  border-right: 4px solid transparent;\n  border-left: 4px solid transparent;\n  margin-left: 8px;\n}\n.paginations---table-pagination---41TU- .paginations---table-pagination-block---Cx6IH .paginations---dropdown---1yvIZ .paginations---btn---2jZHN:hover {\n  color: #0096cc;\n}\n.paginations---table-pagination---41TU- .paginations---table-pagination-block---Cx6IH .paginations---dropdown---1yvIZ .paginations---btn---2jZHN:hover .paginations---caret---3CkEt {\n  border-top-color: #0096cc;\n}\n.paginations---table-pagination---41TU- .paginations---table-pagination-block---Cx6IH .paginations---dropdown---1yvIZ .paginations---dropdown-menu---1fkH0 {\n  top: 27px;\n  left: 16px;\n}\n.paginations---table-pagination---41TU- .paginations---table-pagination-block---Cx6IH .paginations---pagination-input---2C8oD {\n  color: #666;\n}\n.paginations---table-pagination---41TU- .paginations---table-pagination-block---Cx6IH .paginations---pagination-input---2C8oD input {\n  vertical-align: baseline;\n  margin: 0;\n  min-width: 24px;\n  padding: 5px 4px;\n  text-align: center;\n  border: 1px solid #ccc;\n  border-radius: 3px;\n}\n.paginations---dropdown---1yvIZ {\n  position: relative;\n}\n.paginations---dropdown-menu---1fkH0 {\n  position: absolute;\n  top: 100%;\n  left: 0;\n  z-index: 1000;\n  display: none;\n  float: left;\n  min-width: 0;\n  padding: 8px 0;\n  margin: 0;\n  font-size: 13px;\n  text-align: left;\n  list-style: none;\n  background-color: #fff;\n  -webkit-background-clip: padding;\n  -moz-background-clip: padding;\n  background-clip: padding-box;\n  border: 1px solid #bbb;\n  border-radius: 0;\n  -webkit-box-shadow: 0 2px 6px rgba(0,0,0,0.2);\n  box-shadow: 0 2px 6px rgba(0,0,0,0.2);\n}\n.paginations---open---1ju75 > .paginations---dropdown-menu---1fkH0 {\n  display: block;\n}\n.paginations---dropdown-menu---1fkH0 > li > a {\n  display: block;\n  padding: 4px 32px 4px 40px;\n  clear: both;\n  font-weight: normal;\n  line-height: 20px;\n  color: #222;\n  text-decoration: none;\n  white-space: nowrap;\n}\n.paginations---dropdown-menu---1fkH0 > li > a:hover,\n.paginations---dropdown-menu---1fkH0 > li > a:focus {\n  color: #222;\n  text-decoration: none;\n  background-color: #eee;\n}\n.paginations---dropdown-menu---1fkH0 > li.paginations---selected---1EK3y a:before {\n  display: inline-block;\n  width: 16px;\n  height: 20px;\n  margin: 0 8px 0 -24px;\n  vertical-align: top;\n  content: \"\";\n  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxNnB4IiB2aWV3Qm94PSIwIDAgMTYgMTYiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDE2IDE2OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPg0KPCFbQ0RBVEFbDQoJLnN0MHtmaWxsLXJ1bGU6ZXZlbm9kZDtjbGlwLXJ1bGU6ZXZlbm9kZDtmaWxsOiMwMDk2Q0M7fQ0KXV0+DQo8L3N0eWxlPg0KPGcgaWQ9Imljb25TZWxlY3RDaGVjayI+DQoJPGc+DQoJCTxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik0xMi43LDQuMWMtMC40LTAuNC0xLTAuNC0xLjQsMGwtNS4yLDYuMUw0LjcsNy4zQzQuMyw3LDMuNyw3LDMuMyw3LjNzLTAuNCwxLDAsMS40TDUsMTIuMg0KCQkJYzAsMC4xLDAuMSwwLjIsMC4yLDAuM2wwLjEsMC4yYzAuNCwwLjQsMSwwLjQsMS40LDBjMCwwLDAtMC4xLDAuMS0wLjFsNi03LjFDMTMuMSw1LjEsMTMuMSw0LjUsMTIuNyw0LjF6Ii8+DQoJPC9nPg0KPC9nPg0KPC9zdmc+DQo=);\n  background-repeat: no-repeat;\n  background-position: 0 2px;\n}\n\n/*# sourceMappingURL=react-paginations.css.map*/", ""]);
 
 // exports
 
@@ -30802,6 +30812,43 @@ exports.default = _default;
 
 /***/ }),
 
+/***/ "../src/TablePagination.jsx":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _reactPaginations = __webpack_require__("../node_modules/@trendmicro/react-paginations/lib/index.js");
+
+var _react = __webpack_require__("../node_modules/react/react.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+exports.default = function (_ref) {
+    var style = _ref.style,
+        props = _objectWithoutProperties(_ref, ['style']);
+
+    return _react2.default.createElement(_reactPaginations.TablePagination, _extends({}, props, {
+        style: _extends({
+            position: 'absolute',
+            right: 0,
+            top: 0
+        }, style)
+    }));
+};
+
+/***/ }),
+
 /***/ "../src/TableToolbar.jsx":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -30878,6 +30925,10 @@ var _TableToolbar = __webpack_require__("../src/TableToolbar.jsx");
 
 var _TableToolbar2 = _interopRequireDefault(_TableToolbar);
 
+var _TablePagination = __webpack_require__("../src/TablePagination.jsx");
+
+var _TablePagination2 = _interopRequireDefault(_TablePagination);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.ColumnGroup = _rcTable.ColumnGroup;
@@ -30885,6 +30936,7 @@ exports.Column = _rcTable.Column;
 
 
 _Table2.default.Toolbar = _TableToolbar2.default;
+_Table2.default.Pagination = _TablePagination2.default;
 _Table2.default.ColumnGroup = _rcTable.ColumnGroup;
 _Table2.default.Column = _rcTable.Column;
 
@@ -31166,8 +31218,6 @@ __webpack_require__("../node_modules/@trendmicro/react-paginations/dist/react-pa
 
 var _reactButtons = __webpack_require__("../node_modules/@trendmicro/react-buttons/lib/index.js");
 
-var _reactPaginations = __webpack_require__("../node_modules/@trendmicro/react-paginations/lib/index.js");
-
 var _lodash = __webpack_require__("../node_modules/lodash.orderby/index.js");
 
 var _lodash2 = _interopRequireDefault(_lodash);
@@ -31226,6 +31276,12 @@ var App = function (_Component) {
                 pageLength: 10
             }
         }, _this.actions = {
+            fetchRecords: function fetchRecords(_ref2) {
+                var page = _ref2.page,
+                    pageLength = _ref2.pageLength;
+
+                console.log('page=' + page + ', pageLength=' + pageLength);
+            },
             toggleSortOrder: function toggleSortOrder(key, event) {
                 var sortColumnKey = key;
                 var sortOrder = _this.state.sortOrder === 'desc' ? 'asc' : 'desc';
@@ -31472,27 +31528,23 @@ var App = function (_Component) {
                                                     { btnStyle: 'flat' },
                                                     'Export'
                                                 ),
-                                                _react2.default.createElement(
-                                                    'div',
-                                                    { style: { position: 'absolute', right: 0, top: 0 } },
-                                                    _react2.default.createElement(_reactPaginations.TablePagination, {
-                                                        page: page,
-                                                        pageLength: pageLength,
-                                                        totalRecords: totalRecords,
-                                                        onPageChange: function onPageChange(_ref2) {
-                                                            //actions.fetchRecords({ page, pageLength });
+                                                _react2.default.createElement(_src2.default.Pagination, {
+                                                    page: page,
+                                                    pageLength: pageLength,
+                                                    totalRecords: totalRecords,
+                                                    onPageChange: function onPageChange(_ref3) {
+                                                        var page = _ref3.page,
+                                                            pageLength = _ref3.pageLength;
 
-                                                            var page = _ref2.page,
-                                                                pageLength = _ref2.pageLength;
-                                                        },
-                                                        prevPageRenderer: function prevPageRenderer() {
-                                                            return _react2.default.createElement('i', { className: 'fa fa-angle-left' });
-                                                        },
-                                                        nextPageRenderer: function nextPageRenderer() {
-                                                            return _react2.default.createElement('i', { className: 'fa fa-angle-right' });
-                                                        }
-                                                    })
-                                                )
+                                                        _this2.actions.fetchRecords({ page: page, pageLength: pageLength });
+                                                    },
+                                                    prevPageRenderer: function prevPageRenderer() {
+                                                        return _react2.default.createElement('i', { className: 'fa fa-angle-left' });
+                                                    },
+                                                    nextPageRenderer: function nextPageRenderer() {
+                                                        return _react2.default.createElement('i', { className: 'fa fa-angle-right' });
+                                                    }
+                                                })
                                             );
                                         }
                                     })
@@ -31540,4 +31592,4 @@ if(false) {
 /***/ })
 
 /******/ });
-//# sourceMappingURL=bundle.js.map?51c96a62c40db7e18ec9
+//# sourceMappingURL=bundle.js.map?6e8db750e0caa89f4d77
