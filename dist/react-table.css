@@ -1,4 +1,7 @@
-/*! react-table v0.1.0 | (c) 2017 Trend Micro Inc. | MIT | https://github.com/trendmicro-frontend/react-table */
+/*! react-table v0.2.0 | (c) 2017 Trend Micro Inc. | MIT | https://github.com/trendmicro-frontend/react-table */
+.table---table-wrapper---1t2D3 {
+  border: 1px solid #ddd;
+}
 .table---table---2aBqd table {
   background-color: transparent;
   border-collapse: collapse;
@@ -16,7 +19,6 @@
   width: 100%;
   max-width: 100%;
   table-layout: fixed;
-  border: 1px solid #ddd;
 }
 .table---table---2aBqd table > thead > tr > th,
 .table---table---2aBqd table > tbody > tr > th,
@@ -60,11 +62,8 @@
   background-color: #fff;
 }
 .table---table---2aBqd table .table---clickable-column---1zeo4 {
-  margin: -8px -12px;
-  padding: 8px 12px;
   color: inherit;
   display: block;
-  padding: 8px 12px;
 }
 .table---table---2aBqd table .table---clickable-column---1zeo4:hover {
   background-color: #e6e6e6;
@@ -73,9 +72,8 @@
 .table---table-minimalism---1Tk6v table .table---clickable-column---1zeo4:hover {
   background-color: inherit;
 }
-.table---table-with-pagination---1MXL2 .table---table-scrollable---1SrAD {
-  max-height: 149px;
-  overflow-y: auto;
+.table---table-scrollable---1SrAD {
+  overflow: auto;
 }
 .table---table---2aBqd table col[class*="col-"] {
   position: static;
@@ -121,6 +119,7 @@
 .table---table-bordered---1cbV4 table > tbody > tr > td,
 .table---table-bordered---1cbV4 table > tfoot > tr > td {
   border: 1px solid #ddd;
+  border-width: 1px 0 1px 1px;
 }
 .table---table-bordered---1cbV4 table > thead > tr > th,
 .table---table-bordered---1cbV4 table > thead > tr > td {
@@ -147,6 +146,43 @@
 .table---table-container---2kn91 {
   position: relative;
 }
+.table---scroll-header---3AQxk .rc-table-placeholder,
+.table---scroll-footer---22OGx .rc-table-placeholder {
+  display: none;
+}
+.table---scroll-header---3AQxk {
+  overflow: hidden;
+  border-bottom: 2px solid #ccc;
+}
+.table---scroll-header---3AQxk .table---table---2aBqd table {
+  table-layout: fixed;
+  width: 100%;
+}
+.table---scroll-header---3AQxk .table---table---2aBqd table thead th {
+  border-top: 0;
+  border-bottom: 0;
+}
+.table---scroll-header---3AQxk .table---table---2aBqd table thead th.table---th-scroll-bar---3nO0i {
+  border-left: 0;
+  padding: 0;
+}
+.table---scroll-header---3AQxk + .table---scroll-body---3l6aY {
+  overflow: auto;
+}
+.table---scroll-header---3AQxk + .table---scroll-body---3l6aY thead {
+  border-top: 0;
+  border-bottom: 0;
+}
+.table---scroll-header---3AQxk + .table---scroll-body---3l6aY thead th {
+  border-top: 0;
+  border-bottom: 0;
+}
+.table---scroll-header---3AQxk + .table---scroll-body---3l6aY tbody > tr:first-child > td {
+  border-top: 0;
+}
+.table---scroll-header---3AQxk + .table---scroll-body---3l6aY .table---loader-overlay---IQP-L {
+  top: 0;
+}
 .table---table-hover---3yCb6 table > tbody > tr:hover {
   background-color: #e6f4fc;
 }
@@ -157,7 +193,7 @@
   text-decoration: underline;
   color: #db3d44;
 }
-.table---table-minimalism---1Tk6v table {
+.table---table-minimalism---1Tk6v.table---table-wrapper---1t2D3 {
   border: 0;
 }
 .table---table-minimalism---1Tk6v table > thead > tr > th,
@@ -187,6 +223,9 @@
   overflow-x: auto;
   min-height: 0.01%;
 }
+.table---table-sortable---KlbyF table th {
+  white-space: nowrap;
+}
 .table---table-sortable---KlbyF table .table---column-sort---2tMOB {
   color: #222;
 }
@@ -194,6 +233,17 @@
 .table---table-sortable---KlbyF table .table---column-sort---2tMOB:focus {
   color: #222;
   text-decoration: none;
+}
+.table---table-sortable---KlbyF table .table---column-sort---2tMOB > .table---overflow-ellipsis---3jIxg {
+  vertical-align: middle;
+  display: inline-block;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  max-width: calc(100% - 16px);
+}
+.table---table-sortable---KlbyF table .table---column-sort---2tMOB > i {
+  vertical-align: middle;
 }
 .table---table-sortable---KlbyF table .table---column-sort-asc---2q1Wg,
 .table---table-sortable---KlbyF table .table---column-sort-desc---3hZbo {
@@ -215,8 +265,7 @@
 .table---table-toolbar---36lWf {
   position: relative;
   background-color: #f8f8f8;
-  border: 1px solid #ddd;
-  border-bottom: 0;
+  border-bottom: 1px solid #ddd;
   padding: 8px 16px;
   zoom: 1;
 }

@@ -2,7 +2,11 @@
   "name": "@trendmicro/react-table",
   "description": "Trend Micro Components: React Table",
   "authors": [
-    "Cheton Wu <cheton_wu@trend.com.tw>"
+    {
+      "name": "Cheton Wu",
+      "email": "cheton_wu@trend.com.tw",
+      "homepage": "https://github.com/cheton"
+    }
   ],
   "homepage": "https://github.com/trendmicro-frontend/react-table",
   "snapshots": [],
