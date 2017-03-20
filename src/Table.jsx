@@ -132,7 +132,7 @@ export default class extends Component {
                             onClick(key, event);
                         }}
                     >
-                        {title}
+                        <span className={styles.overflowEllipsis}>{title}</span>
                         {columnSortStyle &&
                         <i className={columnSortStyle} />
                         }

@@ -4,6 +4,7 @@
         th {
             white-space: nowrap;
         }
+
         .column-sort {
             color: #222;
 
@@ -11,6 +12,18 @@
             &:focus {
                 color: #222;
                 text-decoration: none;
+            }
+
+            > .overflow-ellipsis {
+                vertical-align: middle;
+                display: inline-block;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: calc(100% - 16px); // 16px is icon width
+            }
+
+            > i {
+                vertical-align: middle;
             }
         }
 
