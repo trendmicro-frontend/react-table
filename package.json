@@ -25,12 +25,12 @@
     "type": "git",
     "url": "git+https://github.com/trendmicro-frontend/react-table.git"
   },
-  "author": "Cheton Wu <cheton_wu@trend.com.tw>",
+  "author": "Tina C Lin <tina_c_lin@trend.com.tw>",
   "contributors": [
     {
-      "name": "Cheton Wu",
-      "email": "cheton_wu@trend.com.tw",
-      "url": "https://github.com/cheton"
+      "name": "Tina C Lin",
+      "email": "tina_c_lin@trend.com.tw",
+      "url": "https://github.com/tinaClin"
     }
   ],
   "license": "MIT",
