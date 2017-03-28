@@ -38,8 +38,9 @@ export default class extends Component {
             const tableContainer = this.scrollBodyContainer;
             const headerContainer = this.scrollHeaderContainer;
             if (!loading && headerContainer) {
+                //Using the <col> tag manage table styling for all rows, please refer https://developer.mozilla.org/en-US/docs/Web/HTML/Element/col
                 const tableHeader = tableContainer.getElementsByTagName('th');
-                let scrollHeader = headerContainer.getElementsByTagName('th');
+                let scrollHeader = headerContainer.getElementsByTagName('col');
                 for (let i = 0; i < tableHeader.length; i++) {
                     const th = tableHeader[i];
                     let scrollTh = scrollHeader[i];
@@ -48,10 +49,11 @@ export default class extends Component {
                         scrollTh.style.width = `${width}px`;
                     }
                 }
-                let lastTh = headerContainer.getElementsByClassName(styles.thScrollBar)[0];
+                let lastTh = scrollHeader[scrollHeader.length - 1];
                 if (tableContainer.scrollHeight > tableContainer.clientHeight) {
                     // Scrollbar is shown
-                    lastTh.style.width = `${tableContainer.offsetWidth - tableContainer.clientWidth}px`;
+                    const scrollbarWidth = tableContainer.offsetWidth - tableContainer.clientWidth;
+                    lastTh.style.width = `${parseInt(lastTh.style.width, 10) + scrollbarWidth}px`;
                 } else {
                     lastTh.style.width = '0';
                 }
@@ -150,13 +152,6 @@ export default class extends Component {
             title
         } = this.props;
         if (columns.length > 0) {
-            let cloneColumns = this.renderColumns(columns);
-            cloneColumns = cloneColumns.slice(0);
-            cloneColumns.push({
-                key: 'thScrollBar',
-                title: '',
-                className: styles.thScrollBar
-            });
             return (
                 <div
                     className={styles.scrollHeader}
@@ -166,7 +161,7 @@ export default class extends Component {
                 >
                     <Table
                         title={title}
-                        columns={cloneColumns}
+                        columns={this.renderColumns(columns)}
                         className={classNames(
                             className,
                             styles.table,
