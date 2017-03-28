@@ -1,6 +1,15 @@
-// sortable effect 
+// sortable effect
 .table-sortable {
     table {
+        > thead > tr > th {
+            white-space: nowrap;
+            padding: 0;
+
+            > *:first-child {
+                padding: 8px 12px;
+            }
+        }
+
         .column-sort {
             color: #222;
 
@@ -8,6 +17,18 @@
             &:focus {
                 color: #222;
                 text-decoration: none;
+            }
+
+            > .overflow-ellipsis {
+                vertical-align: middle;
+                display: inline-block;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: calc(100% - 16px); // 16px is icon width
+            }
+
+            > i {
+                vertical-align: middle;
             }
         }
 

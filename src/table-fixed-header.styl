@@ -1,0 +1,50 @@
+@import "variables";
+
+.scroll-header,
+.scroll-footer {
+    :global {
+        .rc-table-placeholder {
+            display: none;
+        }
+    }
+}
+
+.scroll-header {
+    overflow: hidden;
+    border-bottom: 2px solid $table-header-border-bottom-color
+
+    .table {
+        table {
+            table-layout: fixed;
+            width: 100%;
+
+            thead {
+                th {
+                    border-top: 0;
+                    border-bottom: 0;
+                }
+            }
+        }
+    }
+
+    + .scroll-body {
+        overflow: auto;
+        thead {
+            border-top: 0;
+            border-bottom: 0;
+
+            th {
+                border-top: 0;
+                border-bottom: 0;
+            }
+        }
+
+        tbody > tr:first-child > td {
+            border-top: 0;
+        }
+
+        .loader-overlay {
+            top: 0;
+        }
+    }
+}

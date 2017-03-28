@@ -1,5 +1,9 @@
 @import "variables";
 
+.table-wrapper {
+    border: 1px solid $table-border-color;
+}
+
 .table {
     table {
         background-color: transparent;
@@ -22,7 +26,6 @@
         width: 100%;
         max-width: 100%;
         table-layout: fixed;
-        border: 1px solid $table-border-color;
 
         > thead,
         > tbody,
@@ -79,11 +82,8 @@
 .table {
     table {
         .clickable-column {
-            margin: -8px -12px;
-            padding: 8px 12px;
             color: inherit;
             display: block;
-            padding: 8px 12px;
 
             &:hover {
                 background-color: #e6e6e6;
@@ -96,16 +96,15 @@
     table {
         .clickable-column {
             &:hover {
-                background-color: inherit; 
+                background-color: inherit;
             }
         }
     }
 }
 
 // Scrollable
-.table-with-pagination .table-scrollable { 
-    max-height: 149px;
-    overflow-y: auto;
+.table-scrollable {
+    overflow: auto;
 }
 
 // Table cell sizing
