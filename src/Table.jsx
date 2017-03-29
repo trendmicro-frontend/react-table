@@ -53,7 +53,7 @@ export default class extends Component {
                 if (tableContainer.scrollHeight > tableContainer.clientHeight) {
                     // Scrollbar is shown
                     const scrollbarWidth = tableContainer.offsetWidth - tableContainer.clientWidth;
-                    lastTh.style.width = `${parseInt(lastTh.style.width, 10) + scrollbarWidth}px`;
+                    lastTh.style.width = `${scrollbarWidth}px`;
                 } else {
                     lastTh.style.width = '0';
                 }
@@ -152,6 +152,13 @@ export default class extends Component {
             title
         } = this.props;
         if (columns.length > 0) {
+            let cloneColumns = this.renderColumns(columns);
+            cloneColumns = cloneColumns.slice(0);
+            cloneColumns.push({
+                key: 'thScrollBar',
+                title: '',
+                className: styles.thScrollBar
+            });
             return (
                 <div
                     className={styles.scrollHeader}
@@ -161,7 +168,7 @@ export default class extends Component {
                 >
                     <Table
                         title={title}
-                        columns={this.renderColumns(columns)}
+                        columns={cloneColumns}
                         className={classNames(
                             className,
                             styles.table,
