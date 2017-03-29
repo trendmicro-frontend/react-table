@@ -1,4 +1,4 @@
-/*! react-table v0.2.1 | (c) 2017 Trend Micro Inc. | MIT | https://github.com/trendmicro-frontend/react-table */
+/*! react-table v0.2.2 | (c) 2017 Trend Micro Inc. | MIT | https://github.com/trendmicro-frontend/react-table */
 .table---table-wrapper---1t2D3 {
   border: 1px solid #ddd;
 }
@@ -161,6 +161,10 @@
 .table---scroll-header---3AQxk .table---table---2aBqd table thead th {
   border-top: 0;
   border-bottom: 0;
+}
+.table---scroll-header---3AQxk .table---table---2aBqd table thead th.table---th-scroll-bar---3nO0i {
+  border-left: 0;
+  padding: 0;
 }
 .table---scroll-header---3AQxk + .table---scroll-body---3l6aY {
   overflow: auto;
