@@ -10,8 +10,13 @@
 }
 
 .scroll-header {
-    overflow: hidden;
     border-bottom: 2px solid $table-header-border-bottom-color
+
+    :global {
+        .rc-table-content {
+            overflow: hidden;
+        }
+    }
 
     .table {
         table {

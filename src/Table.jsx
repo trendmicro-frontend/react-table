@@ -31,7 +31,10 @@ export default class extends Component {
     actions = {
         fixScrollHeadPosition: () => {
             const left = Math.max(this.scrollBodyContainer.scrollLeft, document.documentElement.scrollLeft);
-            this.scrollHeaderContainer.scrollLeft = left;
+            let scrollHeader = this.scrollHeaderContainer.getElementsByClassName('rc-table-content')[0];
+            if (scrollHeader) {
+                scrollHeader.scrollLeft = left;
+            }
         },
         setScrollHeadWidth: () => {
             const { loading } = this.props;
