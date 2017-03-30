@@ -9,6 +9,18 @@
     }
 }
 
+.scroll-footer {
+    :global {
+        .rc-table-body {
+            display: none;
+        }
+        .rc-table-footer :local(.table-toolbar) {
+            border-top: 1px solid #ddd;
+            border-bottom: none;
+        }
+    }
+}
+
 .scroll-header {
     border-bottom: 2px solid $table-header-border-bottom-color
 
