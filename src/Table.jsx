@@ -29,6 +29,16 @@ export default class extends Component {
     state = this.getDefaultState();
 
     actions = {
+        cloneObject: (obj) => {
+            if (obj === null || typeof obj !== 'object') {
+                return obj;
+            }
+            let temp = obj.constructor(); // give temp the original obj's constructor
+            Object.keys(obj).forEach((key) => {
+                temp[key] = this.actions.cloneObject(obj[key]);
+            });
+            return temp;
+        },
         fixScrollHeadPosition: () => {
             const left = Math.max(this.scrollBodyContainer.scrollLeft, document.documentElement.scrollLeft);
             let scrollHeader = this.scrollHeaderContainer.getElementsByClassName('rc-table-content')[0];
@@ -48,17 +58,18 @@ export default class extends Component {
                     const th = tableHeader[i];
                     let scrollTh = scrollHeader[i];
                     if (scrollTh) {
-                        let width = th.getBoundingClientRect().width.toFixed(2);
+                        let width = th.getBoundingClientRect().width;
                         scrollTh.style.width = `${width}px`;
+                        scrollTh.style['min-width'] = 'auto';
                     }
                 }
                 let lastTh = scrollHeader[scrollHeader.length - 1];
                 if (tableContainer.scrollHeight > tableContainer.clientHeight) {
                     // Scrollbar is shown
-                    const scrollbarWidth = tableContainer.offsetWidth - tableContainer.clientWidth;
+                    const scrollbarWidth = tableContainer.getBoundingClientRect().width - tableContainer.clientWidth;
                     lastTh.style.width = `${scrollbarWidth}px`;
                 } else {
-                    lastTh.style.width = '0';
+                    lastTh.style.width = 'auto';
                 }
             }
         },
@@ -68,7 +79,7 @@ export default class extends Component {
             let tableHeight = 0;
             let headerHeight = 0;
             if (fixedHeader && header) {
-                headerHeight = parseInt(header.getBoundingClientRect().height.toFixed(0), 10);
+                headerHeight = header.getBoundingClientRect().height;
             }
             if (height) {
                 tableHeight = (height - headerHeight);
@@ -155,8 +166,10 @@ export default class extends Component {
             title
         } = this.props;
         if (columns.length > 0) {
-            let cloneColumns = this.renderColumns(columns);
+            let cloneColumns = this.renderColumns(this.actions.cloneObject(columns));
             cloneColumns = cloneColumns.slice(0);
+            // Span "th-scroll-bar" cell to apply hover style
+            cloneColumns[cloneColumns.length - 1].colSpan = 2;
             cloneColumns.push({
                 key: 'thScrollBar',
                 title: '',
