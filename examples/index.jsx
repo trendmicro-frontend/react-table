@@ -2,6 +2,7 @@ import 'trendmicro-ui/dist/css/trendmicro-ui.css';
 import '@trendmicro/react-buttons/dist/react-buttons.css';
 import '@trendmicro/react-paginations/dist/react-paginations.css';
 import { Button } from '@trendmicro/react-buttons';
+import _ from 'lodash';
 import orderBy from 'lodash.orderby';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
@@ -17,7 +18,15 @@ class App extends Component {
         pagination: {
             page: 1,
             pageLength: 10
-        }
+        },
+        selectionData: [
+            { id: 1, checkbox: true, eventType: 'Virus/Malware', affectedDevices: 20, detections: 634 },
+            { id: 2, checkbox: false, eventType: 'Spyware/Grayware', affectedDevices: 20, detections: 634 },
+            { id: 3, checkbox: false, eventType: 'URL Filtering', affectedDevices: 15, detections: 598 },
+            { id: 4, checkbox: false, eventType: 'Web Reputation', affectedDevices: 15, detections: 598 },
+            { id: 5, checkbox: false, eventType: 'Network Virus', affectedDevices: 15, detections: 497 },
+            { id: 6, checkbox: false, eventType: 'Application Control', affectedDevices: 0, detections: 0 }
+        ]
     };
     actions = {
         fetchRecords: ({ page, pageLength }) => {
@@ -30,6 +39,38 @@ class App extends Component {
                 sortOrder = 'desc';
             }
             this.setState({ sortColumnKey, sortOrder });
+        },
+        handleClickRow: (record, index, event) => {
+            const checked = record.checkbox;
+            let selectionData = this.state.selectionData;
+            let item = _.find(selectionData, { 'id': record.id });
+            if (item) {
+                _.set(item, 'checkbox', !checked);
+            }
+            this.setState(selectionData);
+
+            // Change elements status
+            const selectedItems = _.filter(selectionData, { 'checkbox': true });
+            const selectedLength = selectedItems.length;
+            const dataLength = selectionData.length;
+            if (selectedLength === dataLength) {
+                this.headerCheckbox.checked = true;
+            } else {
+                this.headerCheckbox.checked = false;
+            }
+            if (selectedLength > 0 && selectedLength < dataLength) {
+                this.headerCheckbox.classList.add('checkbox-partial');
+            } else {
+                this.headerCheckbox.classList.remove('checkbox-partial');
+            }
+        },
+        handleRowClassName: (record, index, indent) => {
+            const checked = record.checkbox;
+            if (checked) {
+                return styles.active;
+            } else {
+                return null;
+            }
         }
     };
 
@@ -82,6 +123,12 @@ class App extends Component {
             }
         }
     ];
+    selectionColumns = [
+        { title: this.renderHeaderCheckbox(), dataIndex: 'checkbox', render: this.renderCheckbox, width: 38 },
+        { title: 'Event Type', dataIndex: 'eventType' },
+        { title: 'Affected Devices', dataIndex: 'affectedDevices' },
+        { title: 'Detections', dataIndex: 'detections' }
+    ];
     data = [
         { id: 1, eventType: 'Virus/Malware', affectedDevices: 20, detections: 634 },
         { id: 2, eventType: 'Spyware/Grayware', affectedDevices: 20, detections: 634 },
@@ -123,6 +170,37 @@ class App extends Component {
                     sortOrder: column.key === this.state.sortColumnKey ? this.state.sortOrder : ''
                 };
             })
+        );
+    }
+
+    renderHeaderCheckbox(row) {
+        let className = 'input-checkbox';
+        const selectedItems = _.filter(this.state.selectionData, { 'checkbox': true });
+        const selectedLength = selectedItems.length;
+        const dataLength = this.state.selectionData.length;
+        if (selectedLength > 0 && selectedLength < dataLength) {
+            className += ' checkbox-partial';
+        }
+        return (
+            <div className="checkbox">
+                <input
+                    type="checkbox"
+                    className={className}
+                    ref={e => {
+                        this.headerCheckbox = e;
+                    }}
+                />
+                <label />
+            </div>
+        );
+    }
+
+    renderCheckbox(value, row, index) {
+        return (
+            <div className="checkbox">
+                <input type="checkbox" id={row.id} className="input-checkbox" checked={row.checkbox} />
+                <label />
+            </div>
         );
     }
 
@@ -336,6 +414,26 @@ class App extends Component {
                                                 />
                                             </Table.Toolbar>
                                         )}
+                                    />
+                                </div>
+                            </Section>
+                        </div>
+                        <div className="col-md-12">
+                            <Section className="row-md-7">
+                                <h3>Row selection</h3>
+                                <p>Change the color of a table row when it is selected.</p>
+                                <ul>
+                                    <li>Row selection should take effect when the user clicks anywhere in a row, except for table cells that contain hyperlinks. Note the following checkboxes are greyed out for demo purposes.</li>
+                                </ul>
+                                <div className={styles.sectionGroup}>
+                                    <h5>Row Selection</h5>
+                                    <Table
+                                        hoverable={true}
+                                        rowKey={record => record.id}
+                                        columns={this.selectionColumns}
+                                        data={this.state.selectionData}
+                                        rowClassName={this.actions.handleRowClassName}
+                                        onRowClick={this.actions.handleClickRow}
                                     />
                                 </div>
                             </Section>
