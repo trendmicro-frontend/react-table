@@ -228,7 +228,7 @@ class App extends Component {
                             </Section>
                         </div>
                         <div className="col-md-12">
-                            <Section className="row-md-20">
+                            <Section className="row-md-11">
                                 <h3>Fixed Header</h3>
                                 <p>A fixed header remains visible as the table body is scrolled. This is useful for larger amounts of data.</p>
                                 <div className={styles.sectionGroup}>
@@ -264,8 +264,12 @@ class App extends Component {
                                         data={sortableBigData}
                                     />
                                 </div>
+                            </Section>
+                        </div>
+                        <div className="col-md-12">
+                            <Section className="row-md-9">
+                                <h3>Pagination</h3>
                                 <div className={styles.sectionGroup}>
-                                    <h5>Pagination</h5>
                                     <Table
                                         hoverable
                                         rowKey={record => record.id}
