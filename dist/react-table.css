@@ -121,11 +121,22 @@
   border: 1px solid #ddd;
   border-width: 1px 0 1px 1px;
 }
+.table---table-bordered---1cbV4 table > thead > tr > th:first-child,
+.table---table-bordered---1cbV4 table > tbody > tr > th:first-child,
+.table---table-bordered---1cbV4 table > tfoot > tr > th:first-child,
+.table---table-bordered---1cbV4 table > thead > tr > td:first-child,
+.table---table-bordered---1cbV4 table > tbody > tr > td:first-child,
+.table---table-bordered---1cbV4 table > tfoot > tr > td:first-child {
+  border-left-width: 0;
+}
 .table---table-bordered---1cbV4 table > thead > tr > th,
 .table---table-bordered---1cbV4 table > thead > tr > td {
   background-color: #eee;
   border-bottom-width: 2px;
   border-bottom-color: #ccc;
+}
+.table---table-bordered---1cbV4 table > tbody > tr:last-child > td {
+  border-bottom-width: 0;
 }
 .table---table-comfortable---1oadL table > thead > tr > th,
 .table---table-comfortable---1oadL table > tbody > tr > th,
@@ -150,9 +161,18 @@
 .table---scroll-footer---22OGx .rc-table-placeholder {
   display: none;
 }
+.table---scroll-footer---22OGx .rc-table-body {
+  display: none;
+}
+.table---scroll-footer---22OGx .rc-table-footer .table---table-toolbar---36lWf {
+  border-top: 1px solid #ddd;
+  border-bottom: none;
+}
 .table---scroll-header---3AQxk {
-  overflow: hidden;
   border-bottom: 2px solid #ccc;
+}
+.table---scroll-header---3AQxk .rc-table-content {
+  overflow: hidden;
 }
 .table---scroll-header---3AQxk .table---table---2aBqd table {
   table-layout: fixed;
