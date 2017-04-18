@@ -5,25 +5,32 @@
     &.table-wrapper {
         border: 0;
     }
-    table {
-        > thead,
-        > tbody,
-        > tfoot {
-            > tr {
-                > th,
-                > td {
+    .table {
+        > .thead,
+        > .tbody,
+        > .tfoot {
+            > .tr {
+                > .th,
+                > .td {
                     border-bottom: 1px solid $table-border-color;
                 }
             }
         }
-        > thead {
-            > tr {
-                > th,
-                > td {
+        > .thead {
+            > .tr {
+                > .th,
+                > .td {
                     border-bottom-width: 2px;
                     border-bottom-color: $table-header-border-bottom-color;
                 }
             }
         }
+
+        .clickable-column {
+            &:hover {
+                background-color: inherit;
+            }
+        }
     }
 }
+

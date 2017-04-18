@@ -1,10 +1,13 @@
 // Placed here since it has to come after the potential zebra striping
 .table-hover {
-    table {
-        > tbody > tr:hover {
-            background-color: $table-bg-hover;
+    .table {
+        > .tbody {
+            > .tr:hover,
+            > .tr.tr-hover {
+                background-color: $table-bg-hover;
+            }
         }
-        > tbody > tr > td.td-link {
+        > .tbody > .tr > .td.td-link {
             &:hover {
                 cursor: pointer;
                 a {

@@ -50,7 +50,6 @@
     "@trendmicro/react-paginations": "^0.5.7",
     "trendmicro-ui": "^0.4.0",
     "classnames": "^2.2.5",
-    "rc-table": "^5.2.15",
     "react-addons-shallow-compare": "^0.14.0 || ^15.0.0"
   },
   "devDependencies": {
