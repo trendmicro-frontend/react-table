@@ -1,264 +1,185 @@
-/*! react-table v0.2.2 | (c) 2017 Trend Micro Inc. | MIT | https://github.com/trendmicro-frontend/react-table */
+/*! react-table v0.3.0 | (c) 2017 Trend Micro Inc. | MIT | https://github.com/trendmicro-frontend/react-table */
 .table---table-wrapper---1t2D3 {
   border: 1px solid #ddd;
+  position: relative;
 }
-.table---table---2aBqd table {
-  background-color: transparent;
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-.table---table---2aBqd table caption {
-  padding-top: 8px 12px;
-  padding-bottom: 8px 12px;
-  text-align: left;
-}
-.table---table---2aBqd table th {
-  text-align: left;
-}
-.table---table---2aBqd table {
+.table---table---2aBqd {
   width: 100%;
   max-width: 100%;
   table-layout: fixed;
+  background-color: #fff;
+  overflow: auto;
 }
-.table---table---2aBqd table > thead > tr > th,
-.table---table---2aBqd table > tbody > tr > th,
-.table---table---2aBqd table > tfoot > tr > th,
-.table---table---2aBqd table > thead > tr > td,
-.table---table---2aBqd table > tbody > tr > td,
-.table---table---2aBqd table > tfoot > tr > td {
+.table---table---2aBqd > .table---thead---1v6TQ > .table---tr---3XEXR > .table---th---2-0kV,
+.table---table---2aBqd > .table---tbody---3q9RK > .table---tr---3XEXR > .table---th---2-0kV,
+.table---table---2aBqd > .table---tfoot---23ZpN > .table---tr---3XEXR > .table---th---2-0kV,
+.table---table---2aBqd > .table---thead---1v6TQ > .table---tr---3XEXR > .table---td---EVNU5,
+.table---table---2aBqd > .table---tbody---3q9RK > .table---tr---3XEXR > .table---td---EVNU5,
+.table---table---2aBqd > .table---tfoot---23ZpN > .table---tr---3XEXR > .table---td---EVNU5 {
   padding: 8px 12px;
-  vertical-align: top;
+  vertical-align: middle;
+  display: inline-block;
   overflow: hidden;
-  -o-text-overflow: ellipsis;
-  text-overflow: ellipsis;
 }
-.table---table---2aBqd table > thead > tr > th a,
-.table---table---2aBqd table > tbody > tr > th a,
-.table---table---2aBqd table > tfoot > tr > th a,
-.table---table---2aBqd table > thead > tr > td a,
-.table---table---2aBqd table > tbody > tr > td a,
-.table---table---2aBqd table > tfoot > tr > td a {
+.table---table---2aBqd > .table---thead---1v6TQ > .table---tr---3XEXR > .table---th---2-0kV > .table---td-content---3XCoJ,
+.table---table---2aBqd > .table---tbody---3q9RK > .table---tr---3XEXR > .table---th---2-0kV > .table---td-content---3XCoJ,
+.table---table---2aBqd > .table---tfoot---23ZpN > .table---tr---3XEXR > .table---th---2-0kV > .table---td-content---3XCoJ,
+.table---table---2aBqd > .table---thead---1v6TQ > .table---tr---3XEXR > .table---td---EVNU5 > .table---td-content---3XCoJ,
+.table---table---2aBqd > .table---tbody---3q9RK > .table---tr---3XEXR > .table---td---EVNU5 > .table---td-content---3XCoJ,
+.table---table---2aBqd > .table---tfoot---23ZpN > .table---tr---3XEXR > .table---td---EVNU5 > .table---td-content---3XCoJ {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.table---table---2aBqd > .table---thead---1v6TQ > .table---tr---3XEXR > .table---th---2-0kV a,
+.table---table---2aBqd > .table---tbody---3q9RK > .table---tr---3XEXR > .table---th---2-0kV a,
+.table---table---2aBqd > .table---tfoot---23ZpN > .table---tr---3XEXR > .table---th---2-0kV a,
+.table---table---2aBqd > .table---thead---1v6TQ > .table---tr---3XEXR > .table---td---EVNU5 a,
+.table---table---2aBqd > .table---tbody---3q9RK > .table---tr---3XEXR > .table---td---EVNU5 a,
+.table---table---2aBqd > .table---tfoot---23ZpN > .table---tr---3XEXR > .table---td---EVNU5 a {
   text-decoration: none;
 }
-.table---table---2aBqd table > thead > tr > th {
+.table---table---2aBqd > .table---thead---1v6TQ > .table---tr---3XEXR > .table---th---2-0kV {
   color: #777;
   font-weight: bold;
 }
-.table---table---2aBqd table > thead > tr > th.table---gutter---1S147 {
-  width: 38px;
-}
-.table---table---2aBqd table > caption + thead > tr:first-child > th,
-.table---table---2aBqd table > colgroup + thead > tr:first-child > th,
-.table---table---2aBqd table > thead:first-child > tr:first-child > th,
-.table---table---2aBqd table > caption + thead > tr:first-child > td,
-.table---table---2aBqd table > colgroup + thead > tr:first-child > td,
-.table---table---2aBqd table > thead:first-child > tr:first-child > td {
+.table---table---2aBqd > .table---thead---1v6TQ > .table---tr---3XEXR:first-child > .table---th---2-0kV,
+.table---table---2aBqd > .table---thead---1v6TQ > .table---tr---3XEXR:first-child > .table---td---EVNU5 {
   border-top: 0;
 }
-.table---table---2aBqd table > tbody + tbody {
-  border-top: 2px solid #ddd;
+.table---table---2aBqd > .table---tbody---3q9RK > .table---tr---3XEXR > .table---td---EVNU5 > .table---td-content---3XCoJ {
+  white-space: normal;
 }
-.table---table---2aBqd table .table---table---2aBqd table {
-  background-color: #fff;
-}
-.table---table---2aBqd table .table---clickable-column---1zeo4 {
+.table---table---2aBqd .table---clickable-column---1zeo4 {
   color: inherit;
   display: block;
 }
-.table---table---2aBqd table .table---clickable-column---1zeo4:hover {
+.table---table---2aBqd .table---clickable-column---1zeo4:hover {
   background-color: #e6e6e6;
   cursor: pointer;
 }
-.table---table-minimalism---1Tk6v table .table---clickable-column---1zeo4:hover {
-  background-color: inherit;
+.table---table-extend-column-width---27-JP .table---table---2aBqd > .table---thead---1v6TQ > .table---tr---3XEXR,
+.table---table-extend-column-width---27-JP .table---table---2aBqd > .table---tbody---3q9RK > .table---tr---3XEXR,
+.table---table-extend-column-width---27-JP .table---table---2aBqd > .table---tfoot---23ZpN > .table---tr---3XEXR {
+  white-space: nowrap;
 }
-.table---table-scrollable---1SrAD {
-  overflow: auto;
+.table---tr-expand---sEKPQ {
+  border-bottom: 1px solid #ddd;
 }
-.table---table---2aBqd table col[class*="col-"] {
-  position: static;
-  float: none;
-  display: table-column;
-}
-.table---table---2aBqd table td[class*="col-"],
-.table---table---2aBqd table th[class*="col-"] {
-  position: static;
-  float: none;
-  display: table-cell;
-}
-.table---table---2aBqd table > thead > tr > th.table---active---2-a32,
-.table---table---2aBqd table > tbody > tr > th.table---active---2-a32,
-.table---table---2aBqd table > tfoot > tr > th.table---active---2-a32,
-.table---table---2aBqd table > thead > tr > td.table---active---2-a32,
-.table---table---2aBqd table > tbody > tr > td.table---active---2-a32,
-.table---table---2aBqd table > tfoot > tr > td.table---active---2-a32 {
-  background-color: #fcf8da;
-}
-.table---table---2aBqd table > thead > tr.table---active---2-a32 > th,
-.table---table---2aBqd table > tbody > tr.table---active---2-a32 > th,
-.table---table---2aBqd table > tfoot > tr.table---active---2-a32 > th,
-.table---table---2aBqd table > thead > tr.table---active---2-a32 > td,
-.table---table---2aBqd table > tbody > tr.table---active---2-a32 > td,
-.table---table---2aBqd table > tfoot > tr.table---active---2-a32 > td {
-  background-color: #fcf8da;
-}
-.table---table-hover---3yCb6 table > tbody tr > th.table---active---2-a32:hover,
-.table---table-hover---3yCb6 table > tbody tr > td.table---active---2-a32:hover,
-.table---table-hover---3yCb6 table > tbody tr:hover > .table---active---2-a32,
-.table---table-hover---3yCb6 table > tbody tr.table---active---2-a32:hover > th {
-  background-color: #faf4c2;
-}
-.table---table---2aBqd.table---table-bordered---1cbV4 .rc-table-placeholder {
+.table---table-bordered---1cbV4 .table---table---2aBqd > .table---thead---1v6TQ > .table---tr---3XEXR > .table---th---2-0kV,
+.table---table-bordered---1cbV4 .table---table---2aBqd > .table---tbody---3q9RK > .table---tr---3XEXR > .table---th---2-0kV,
+.table---table-bordered---1cbV4 .table---table---2aBqd > .table---tfoot---23ZpN > .table---tr---3XEXR > .table---th---2-0kV,
+.table---table-bordered---1cbV4 .table---table---2aBqd > .table---thead---1v6TQ > .table---tr---3XEXR > .table---td---EVNU5,
+.table---table-bordered---1cbV4 .table---table---2aBqd > .table---tbody---3q9RK > .table---tr---3XEXR > .table---td---EVNU5,
+.table---table-bordered---1cbV4 .table---table---2aBqd > .table---tfoot---23ZpN > .table---tr---3XEXR > .table---td---EVNU5 {
   border: 1px solid #ddd;
-  border-top: none;
+  border-width: 0 1px 1px 0;
 }
-.table---table-bordered---1cbV4 table > thead > tr > th,
-.table---table-bordered---1cbV4 table > tbody > tr > th,
-.table---table-bordered---1cbV4 table > tfoot > tr > th,
-.table---table-bordered---1cbV4 table > thead > tr > td,
-.table---table-bordered---1cbV4 table > tbody > tr > td,
-.table---table-bordered---1cbV4 table > tfoot > tr > td {
-  border: 1px solid #ddd;
-  border-width: 1px 0 1px 1px;
-}
-.table---table-bordered---1cbV4 table > thead > tr > th:first-child,
-.table---table-bordered---1cbV4 table > tbody > tr > th:first-child,
-.table---table-bordered---1cbV4 table > tfoot > tr > th:first-child,
-.table---table-bordered---1cbV4 table > thead > tr > td:first-child,
-.table---table-bordered---1cbV4 table > tbody > tr > td:first-child,
-.table---table-bordered---1cbV4 table > tfoot > tr > td:first-child {
+.table---table-bordered---1cbV4 .table---table---2aBqd > .table---thead---1v6TQ > .table---tr---3XEXR > .table---th---2-0kV:first-child,
+.table---table-bordered---1cbV4 .table---table---2aBqd > .table---tbody---3q9RK > .table---tr---3XEXR > .table---th---2-0kV:first-child,
+.table---table-bordered---1cbV4 .table---table---2aBqd > .table---tfoot---23ZpN > .table---tr---3XEXR > .table---th---2-0kV:first-child,
+.table---table-bordered---1cbV4 .table---table---2aBqd > .table---thead---1v6TQ > .table---tr---3XEXR > .table---td---EVNU5:first-child,
+.table---table-bordered---1cbV4 .table---table---2aBqd > .table---tbody---3q9RK > .table---tr---3XEXR > .table---td---EVNU5:first-child,
+.table---table-bordered---1cbV4 .table---table---2aBqd > .table---tfoot---23ZpN > .table---tr---3XEXR > .table---td---EVNU5:first-child {
   border-left-width: 0;
 }
-.table---table-bordered---1cbV4 table > thead > tr > th,
-.table---table-bordered---1cbV4 table > thead > tr > td {
+.table---table-bordered---1cbV4 .table---table---2aBqd > .table---thead---1v6TQ > .table---tr---3XEXR > .table---th---2-0kV:last-of-type,
+.table---table-bordered---1cbV4 .table---table---2aBqd > .table---tbody---3q9RK > .table---tr---3XEXR > .table---th---2-0kV:last-of-type,
+.table---table-bordered---1cbV4 .table---table---2aBqd > .table---tfoot---23ZpN > .table---tr---3XEXR > .table---th---2-0kV:last-of-type,
+.table---table-bordered---1cbV4 .table---table---2aBqd > .table---thead---1v6TQ > .table---tr---3XEXR > .table---td---EVNU5:last-of-type,
+.table---table-bordered---1cbV4 .table---table---2aBqd > .table---tbody---3q9RK > .table---tr---3XEXR > .table---td---EVNU5:last-of-type,
+.table---table-bordered---1cbV4 .table---table---2aBqd > .table---tfoot---23ZpN > .table---tr---3XEXR > .table---td---EVNU5:last-of-type {
+  border-right-width: 0;
+}
+.table---table-bordered---1cbV4 .table---table---2aBqd > .table---thead---1v6TQ > .table---tr---3XEXR > .table---th---2-0kV,
+.table---table-bordered---1cbV4 .table---table---2aBqd > .table---thead---1v6TQ > .table---tr---3XEXR > .table---td---EVNU5 {
   background-color: #eee;
   border-bottom-width: 2px;
   border-bottom-color: #ccc;
 }
-.table---table-bordered---1cbV4 table > tbody > tr:last-child > td {
+.table---table-bordered---1cbV4 .table---table---2aBqd > .table---tbody---3q9RK > .table---tr---3XEXR:last-of-type > .table---td---EVNU5 {
   border-bottom-width: 0;
 }
-.table---table-comfortable---1oadL table > thead > tr > th,
-.table---table-comfortable---1oadL table > tbody > tr > th,
-.table---table-comfortable---1oadL table > tfoot > tr > th,
-.table---table-comfortable---1oadL table > thead > tr > td,
-.table---table-comfortable---1oadL table > tbody > tr > td,
-.table---table-comfortable---1oadL table > tfoot > tr > td {
-  padding: 12px 12px;
-}
-.table---table-condensed---3F-Gm table > thead > tr > th,
-.table---table-condensed---3F-Gm table > tbody > tr > th,
-.table---table-condensed---3F-Gm table > tfoot > tr > th,
-.table---table-condensed---3F-Gm table > thead > tr > td,
-.table---table-condensed---3F-Gm table > tbody > tr > td,
-.table---table-condensed---3F-Gm table > tfoot > tr > td {
-  padding: 5px;
-}
-.table---table-container---2kn91 {
-  position: relative;
-}
-.table---scroll-header---3AQxk .rc-table-placeholder,
-.table---scroll-footer---22OGx .rc-table-placeholder {
-  display: none;
-}
-.table---scroll-footer---22OGx .rc-table-body {
-  display: none;
-}
-.table---scroll-footer---22OGx .rc-table-footer .table---table-toolbar---36lWf {
-  border-top: 1px solid #ddd;
-  border-bottom: none;
-}
-.table---scroll-header---3AQxk {
-  border-bottom: 2px solid #ccc;
-}
-.table---scroll-header---3AQxk .rc-table-content {
+.table---table-fixed-header---3bjFf .table---table---2aBqd > .table---thead---1v6TQ {
   overflow: hidden;
 }
-.table---scroll-header---3AQxk .table---table---2aBqd table {
-  table-layout: fixed;
-  width: 100%;
-}
-.table---scroll-header---3AQxk .table---table---2aBqd table thead th {
-  border-top: 0;
-  border-bottom: 0;
-}
-.table---scroll-header---3AQxk .table---table---2aBqd table thead th.table---th-scroll-bar---3nO0i {
-  border-left: 0;
-  padding: 0;
-}
-.table---scroll-header---3AQxk + .table---scroll-body---3l6aY {
+.table---table-fixed-header---3bjFf .table---table---2aBqd > .table---tbody---3q9RK {
   overflow: auto;
 }
-.table---scroll-header---3AQxk + .table---scroll-body---3l6aY thead {
-  border-top: 0;
-  border-bottom: 0;
-}
-.table---scroll-header---3AQxk + .table---scroll-body---3l6aY thead th {
-  border-top: 0;
-  border-bottom: 0;
-}
-.table---scroll-header---3AQxk + .table---scroll-body---3l6aY tbody > tr:first-child > td {
-  border-top: 0;
-}
-.table---scroll-header---3AQxk + .table---scroll-body---3l6aY .table---loader-overlay---IQP-L {
+.table---table---2aBqd.table---table-fixed-left-container---OojVI {
+  position: absolute;
   top: 0;
+  background-color: #fff;
+  width: auto;
+  overflow: hidden;
 }
-.table---table-hover---3yCb6 table > tbody > tr:hover {
+.table---table---2aBqd.table---table-fixed-left-container---OojVI > .table---thead---1v6TQ > .table---tr---3XEXR > .table---th---2-0kV:last-child,
+.table---table---2aBqd.table---table-fixed-left-container---OojVI > .table---tbody---3q9RK > .table---tr---3XEXR > .table---th---2-0kV:last-child,
+.table---table---2aBqd.table---table-fixed-left-container---OojVI > .table---tfoot---23ZpN > .table---tr---3XEXR > .table---th---2-0kV:last-child,
+.table---table---2aBqd.table---table-fixed-left-container---OojVI > .table---thead---1v6TQ > .table---tr---3XEXR > .table---td---EVNU5:last-child,
+.table---table---2aBqd.table---table-fixed-left-container---OojVI > .table---tbody---3q9RK > .table---tr---3XEXR > .table---td---EVNU5:last-child,
+.table---table---2aBqd.table---table-fixed-left-container---OojVI > .table---tfoot---23ZpN > .table---tr---3XEXR > .table---td---EVNU5:last-child {
+  border-right-width: 1px;
+}
+.table---table---2aBqd.table---table-fixed-left-container---OojVI > .table---tbody---3q9RK {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.table---table-hover---3yCb6 .table---table---2aBqd > .table---tbody---3q9RK > .table---tr---3XEXR:hover,
+.table---table-hover---3yCb6 .table---table---2aBqd > .table---tbody---3q9RK > .table---tr---3XEXR.table---tr-hover---1oNCV {
   background-color: #e6f4fc;
 }
-.table---table-hover---3yCb6 table > tbody > tr > td.table---td-link---2eKF1:hover {
+.table---table-hover---3yCb6 .table---table---2aBqd > .table---tbody---3q9RK > .table---tr---3XEXR > .table---td---EVNU5.table---td-link---2eKF1:hover {
   cursor: pointer;
 }
-.table---table-hover---3yCb6 table > tbody > tr > td.table---td-link---2eKF1:hover a {
+.table---table-hover---3yCb6 .table---table---2aBqd > .table---tbody---3q9RK > .table---tr---3XEXR > .table---td---EVNU5.table---td-link---2eKF1:hover a {
   text-decoration: underline;
   color: #db3d44;
 }
 .table---table-minimalism---1Tk6v.table---table-wrapper---1t2D3 {
   border: 0;
 }
-.table---table-minimalism---1Tk6v table > thead > tr > th,
-.table---table-minimalism---1Tk6v table > tbody > tr > th,
-.table---table-minimalism---1Tk6v table > tfoot > tr > th,
-.table---table-minimalism---1Tk6v table > thead > tr > td,
-.table---table-minimalism---1Tk6v table > tbody > tr > td,
-.table---table-minimalism---1Tk6v table > tfoot > tr > td {
+.table---table-minimalism---1Tk6v .table---table---2aBqd > .table---thead---1v6TQ > .table---tr---3XEXR > .table---th---2-0kV,
+.table---table-minimalism---1Tk6v .table---table---2aBqd > .table---tbody---3q9RK > .table---tr---3XEXR > .table---th---2-0kV,
+.table---table-minimalism---1Tk6v .table---table---2aBqd > .table---tfoot---23ZpN > .table---tr---3XEXR > .table---th---2-0kV,
+.table---table-minimalism---1Tk6v .table---table---2aBqd > .table---thead---1v6TQ > .table---tr---3XEXR > .table---td---EVNU5,
+.table---table-minimalism---1Tk6v .table---table---2aBqd > .table---tbody---3q9RK > .table---tr---3XEXR > .table---td---EVNU5,
+.table---table-minimalism---1Tk6v .table---table---2aBqd > .table---tfoot---23ZpN > .table---tr---3XEXR > .table---td---EVNU5 {
   border-bottom: 1px solid #ddd;
 }
-.table---table-minimalism---1Tk6v table > thead > tr > th,
-.table---table-minimalism---1Tk6v table > thead > tr > td {
+.table---table-minimalism---1Tk6v .table---table---2aBqd > .table---thead---1v6TQ > .table---tr---3XEXR > .table---th---2-0kV,
+.table---table-minimalism---1Tk6v .table---table---2aBqd > .table---thead---1v6TQ > .table---tr---3XEXR > .table---td---EVNU5 {
   border-bottom-width: 2px;
   border-bottom-color: #ccc;
 }
-.table---table---2aBqd .rc-table-placeholder {
+.table---table-minimalism---1Tk6v .table---table---2aBqd .table---clickable-column---1zeo4:hover {
+  background-color: inherit;
+}
+.table---table-no-data---2nuKv .table---table---2aBqd > .table---tbody---3q9RK > .table---table-placeholder---3xuV7 {
   text-align: center;
   padding: 26px 12px;
   color: #999;
 }
-.table---table-no-data---2nuKv table > tbody > tr td {
-  text-align: center;
-  padding: 26px 12px;
-  color: #999;
-}
-.table---table-responsive---3yVaO {
-  overflow-x: auto;
-  min-height: 0.01%;
-}
-.table---table-sortable---KlbyF table > thead > tr > th {
+.table---table-sortable---KlbyF .table---table---2aBqd > .table---thead---1v6TQ > .table---tr---3XEXR > .table---th---2-0kV {
   white-space: nowrap;
   padding: 0;
 }
-.table---table-sortable---KlbyF table > thead > tr > th > *:first-child {
+.table---table-sortable---KlbyF .table---table---2aBqd > .table---thead---1v6TQ > .table---tr---3XEXR > .table---th---2-0kV > .table---td-content---3XCoJ > *:first-child {
   padding: 8px 12px;
 }
-.table---table-sortable---KlbyF table .table---column-sort---2tMOB {
+.table---table-sortable---KlbyF .table---table---2aBqd .table---column-sort---2tMOB {
   color: #222;
 }
-.table---table-sortable---KlbyF table .table---column-sort---2tMOB:hover,
-.table---table-sortable---KlbyF table .table---column-sort---2tMOB:focus {
+.table---table-sortable---KlbyF .table---table---2aBqd .table---column-sort---2tMOB:hover,
+.table---table-sortable---KlbyF .table---table---2aBqd .table---column-sort---2tMOB:focus {
   color: #222;
   text-decoration: none;
 }
-.table---table-sortable---KlbyF table .table---column-sort---2tMOB > .table---overflow-ellipsis---3jIxg {
+.table---table-sortable---KlbyF .table---table---2aBqd .table---column-sort---2tMOB > .table---overflow-ellipsis---3jIxg {
   vertical-align: middle;
   display: inline-block;
   overflow: hidden;
@@ -266,25 +187,22 @@
   text-overflow: ellipsis;
   max-width: calc(100% - 16px);
 }
-.table---table-sortable---KlbyF table .table---column-sort---2tMOB > i {
+.table---table-sortable---KlbyF .table---table---2aBqd .table---column-sort---2tMOB > i {
   vertical-align: middle;
 }
-.table---table-sortable---KlbyF table .table---column-sort-asc---2q1Wg,
-.table---table-sortable---KlbyF table .table---column-sort-desc---3hZbo {
+.table---table-sortable---KlbyF .table---table---2aBqd .table---column-sort-asc---2q1Wg,
+.table---table-sortable---KlbyF .table---table---2aBqd .table---column-sort-desc---3hZbo {
   vertical-align: top;
   margin-top: 1px;
   display: inline-block;
   width: 16px;
   height: 16px;
 }
-.table---table-sortable---KlbyF table .table---column-sort-asc---2q1Wg {
+.table---table-sortable---KlbyF .table---table---2aBqd .table---column-sort-asc---2q1Wg {
   background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxNnB4IiB2aWV3Qm94PSIwIDAgMTYgMTYiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDE2IDE2IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGlkPSJpY29uVGhTb3J0XzJfIiBmaWxsPSIjMjIyMjIyIiBkPSJNMTEuOSw3LjdsLTMtMi41bDAsMGwwLDBjMC0wLjEtMC4xMDMsMC0wLjEwMy0wLjFTOC43LDUsOC43LDVIOC42bDAsMGwwLDBIOC41bDAsMGwwLDANCglIOC40bDAsMEM4LjMsNS4xLDguMiw1LjEsOC4xLDUuMmwwLDBsLTMsMi41QzQuOSw3LjksNC44LDguMiw1LDguNHMwLjUsMC4yLDAuNywwLjFMOCw2LjZ2NS45QzgsMTIuOCw4LjIsMTMsOC41LDEzDQoJQzguNywxMyw5LDEyLjgsOSwxMi41VjYuNmwyLjIsMS45YzAuMiwwLjEsMC41LDAuMSwwLjctMC4xQzEyLjEsOC4yLDEyLDcuOSwxMS45LDcuN3oiLz4NCjwvc3ZnPg0K);
 }
-.table---table-sortable---KlbyF table .table---column-sort-desc---3hZbo {
+.table---table-sortable---KlbyF .table---table---2aBqd .table---column-sort-desc---3hZbo {
   background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxNnB4IiB2aWV3Qm94PSIwIDAgMTYgMTYiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDE2IDE2IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGlkPSJpY29uVGhTb3J0XzFfIiBmaWxsPSIjMjIyMjIyIiBkPSJNMTEuOSw5LjZDMTEuNyw5LjQsMTEuNCw5LjQsMTEuMiw5LjVMOSwxMS40VjUuNUM5LDUuMiw4LjcsNSw4LjUsNUM4LjIsNSw4LDUuMiw4LDUuNQ0KCXY1LjlMNS43LDkuNUM1LjUsOS40LDUuMiw5LjQsNSw5LjZjLTAuMiwwLjItMC4xLDAuNSwwLjEsMC43bDMsMi41bDAsMEM4LjIsMTIuOSw4LjMsMTIuOSw4LjQsMTNsMCwwaDAuMWwwLDBsMCwwaDAuMWwwLDBsMCwwSDguNw0KCWMwLDAsMC4xLDAsMC4xLTAuMUM4LjgsMTIuOCw4LjksMTIuOSw4LjksMTIuOGwwLDBsMCwwbDMtMi41QzEyLDEwLjEsMTIuMSw5LjgsMTEuOSw5LjZ6Ii8+DQo8L3N2Zz4NCg==);
-}
-.table---table-striped---3p6EV table > tbody > tr:nth-of-type(odd) {
-  background-color: #f9f9f9;
 }
 .table---table-toolbar---36lWf {
   position: relative;
@@ -300,6 +218,10 @@
 }
 .table---table-toolbar---36lWf:after {
   clear: both;
+}
+.table---tfoot---23ZpN .table---table-toolbar---36lWf {
+  border-bottom: none;
+  border-top: 1px solid #ddd;
 }
 .table---loader-overlay---IQP-L {
   background-color: rgba(255,255,255,0.8);
@@ -331,9 +253,6 @@
 }
 .table---table---2aBqd + .table---loader-overlay---IQP-L {
   top: 39px;
-}
-.table---table-comfortable---1oadL + .table---loader-overlay---IQP-L {
-  top: 47px;
 }
 .table---loader---3Kv7h {
   display: inline-block;
