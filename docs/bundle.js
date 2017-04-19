@@ -46031,6 +46031,10 @@ var _react = __webpack_require__("../node_modules/react/react.js");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = __webpack_require__("../node_modules/prop-types/index.js");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _reactAddonsShallowCompare = __webpack_require__("../node_modules/react-addons-shallow-compare/index.js");
 
 var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
@@ -46251,25 +46255,25 @@ var _default = (_temp2 = _class = function (_Component) {
 
     return _default;
 }(_react.Component), _class.propTypes = {
-    averageColumnsWidth: _react.PropTypes.bool,
-    bordered: _react.PropTypes.bool,
-    columns: _react.PropTypes.array,
-    data: _react.PropTypes.array,
-    emptyText: _react.PropTypes.func,
-    expandedRowKeys: _react.PropTypes.array,
-    expandedRowRender: _react.PropTypes.func,
-    footer: _react.PropTypes.func,
-    height: _react.PropTypes.number,
-    hoverable: _react.PropTypes.bool,
-    loading: _react.PropTypes.bool,
-    onExpandedRowsChange: _react.PropTypes.func,
-    onRowClick: _react.PropTypes.func,
-    showHeader: _react.PropTypes.bool,
-    sortable: _react.PropTypes.bool,
-    title: _react.PropTypes.func,
-    useFixedHeader: _react.PropTypes.bool,
-    rowClassName: _react.PropTypes.func,
-    rowKey: _react.PropTypes.oneOfType([_react.PropTypes.string, _react.PropTypes.func])
+    averageColumnsWidth: _propTypes2.default.bool,
+    bordered: _propTypes2.default.bool,
+    columns: _propTypes2.default.array,
+    data: _propTypes2.default.array,
+    emptyText: _propTypes2.default.func,
+    expandedRowKeys: _propTypes2.default.array,
+    expandedRowRender: _propTypes2.default.func,
+    footer: _propTypes2.default.func,
+    height: _propTypes2.default.number,
+    hoverable: _propTypes2.default.bool,
+    loading: _propTypes2.default.bool,
+    onExpandedRowsChange: _propTypes2.default.func,
+    onRowClick: _propTypes2.default.func,
+    showHeader: _propTypes2.default.bool,
+    sortable: _propTypes2.default.bool,
+    title: _propTypes2.default.func,
+    useFixedHeader: _propTypes2.default.bool,
+    rowClassName: _propTypes2.default.func,
+    rowKey: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.func])
 }, _class.defaultProps = {
     data: [],
     bordered: true,
@@ -46301,6 +46305,10 @@ var _class, _temp;
 var _react = __webpack_require__("../node_modules/react/react.js");
 
 var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__("../node_modules/prop-types/index.js");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _reactAddonsShallowCompare = __webpack_require__("../node_modules/react-addons-shallow-compare/index.js");
 
@@ -46432,17 +46440,17 @@ var _default = (_temp = _class = function (_Component) {
 
     return _default;
 }(_react.Component), _class.propTypes = {
-    columns: _react.PropTypes.array,
-    currentHoverKey: _react.PropTypes.any,
-    emptyText: _react.PropTypes.func,
-    maxHeight: _react.PropTypes.number,
-    onMouseOver: _react.PropTypes.func,
-    onTouchStart: _react.PropTypes.func,
-    onScroll: _react.PropTypes.func,
-    onRowHover: _react.PropTypes.func,
-    records: _react.PropTypes.array,
-    rowKey: _react.PropTypes.oneOfType([_react.PropTypes.string, _react.PropTypes.func]),
-    scrollTop: _react.PropTypes.number
+    columns: _propTypes2.default.array,
+    currentHoverKey: _propTypes2.default.any,
+    emptyText: _propTypes2.default.func,
+    maxHeight: _propTypes2.default.number,
+    onMouseOver: _propTypes2.default.func,
+    onTouchStart: _propTypes2.default.func,
+    onScroll: _propTypes2.default.func,
+    onRowHover: _propTypes2.default.func,
+    records: _propTypes2.default.array,
+    rowKey: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.func]),
+    scrollTop: _propTypes2.default.number
 }, _class.defaultProps = {
     columns: [],
     emptyText: function emptyText() {
@@ -46477,6 +46485,10 @@ var _class, _temp;
 var _react = __webpack_require__("../node_modules/react/react.js");
 
 var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__("../node_modules/prop-types/index.js");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _reactAddonsShallowCompare = __webpack_require__("../node_modules/react-addons-shallow-compare/index.js");
 
@@ -46532,8 +46544,8 @@ var _default = (_temp = _class = function (_Component) {
 
     return _default;
 }(_react.Component), _class.propTypes = {
-    column: _react.PropTypes.object,
-    record: _react.PropTypes.object
+    column: _propTypes2.default.object,
+    record: _propTypes2.default.object
 }, _class.defaultProps = {
     column: {},
     record: {}
@@ -46571,6 +46583,10 @@ var _classnames2 = _interopRequireDefault(_classnames);
 var _react = __webpack_require__("../node_modules/react/react.js");
 
 var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__("../node_modules/prop-types/index.js");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _reactAddonsShallowCompare = __webpack_require__("../node_modules/react-addons-shallow-compare/index.js");
 
@@ -46662,9 +46678,10 @@ var _default = (_temp = _class = function (_Component) {
 
             var customColumns = this.renderColumns(columns);
             return customColumns.map(function (column, index) {
+                var key = ++index;
                 return _react2.default.createElement(
                     'div',
-                    { key: index, className: _index2.default.th },
+                    { key: key, className: _index2.default.th },
                     _react2.default.createElement(
                         'div',
                         { className: _index2.default.tdContent },
@@ -46697,9 +46714,9 @@ var _default = (_temp = _class = function (_Component) {
 
     return _default;
 }(_react.Component), _class.propTypes = {
-    columns: _react.PropTypes.array,
-    scrollLeft: _react.PropTypes.number,
-    sortable: _react.PropTypes.bool
+    columns: _propTypes2.default.array,
+    scrollLeft: _propTypes2.default.number,
+    sortable: _propTypes2.default.bool
 }, _class.defaultProps = {
     columns: [],
     sortable: false
@@ -46768,6 +46785,10 @@ var _classnames2 = _interopRequireDefault(_classnames);
 var _react = __webpack_require__("../node_modules/react/react.js");
 
 var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__("../node_modules/prop-types/index.js");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _reactAddonsShallowCompare = __webpack_require__("../node_modules/react-addons-shallow-compare/index.js");
 
@@ -46873,6 +46894,7 @@ var _default = (_temp2 = _class = function (_Component) {
                 columns = _props.columns,
                 currentHoverKey = _props.currentHoverKey,
                 expandedRowRender = _props.expandedRowRender,
+                expandedRowKeys = _props.expandedRowKeys,
                 hoverKey = _props.hoverKey,
                 record = _props.record,
                 rowClassName = _props.rowClassName;
@@ -46894,7 +46916,13 @@ var _default = (_temp2 = _class = function (_Component) {
                     onClick: handleRowClick
                 },
                 columns.map(function (column, i) {
-                    return _react2.default.createElement(_TableCell2.default, { key: hoverKey + '_' + i, column: column, record: record });
+                    var index = i++;
+                    return _react2.default.createElement(_TableCell2.default, {
+                        key: hoverKey + '_' + index,
+                        column: column,
+                        record: record,
+                        expandedRowKeys: expandedRowKeys
+                    });
                 }),
                 isRowExpanded && _react2.default.createElement(
                     'section',
@@ -46907,15 +46935,15 @@ var _default = (_temp2 = _class = function (_Component) {
 
     return _default;
 }(_react.Component), _class.propTypes = {
-    columns: _react.PropTypes.array,
-    currentHoverKey: _react.PropTypes.any,
-    expandedRowKeys: _react.PropTypes.array,
-    expandedRowRender: _react.PropTypes.func,
-    hoverKey: _react.PropTypes.any,
-    onHover: _react.PropTypes.func,
-    onRowClick: _react.PropTypes.func,
-    record: _react.PropTypes.object,
-    rowClassName: _react.PropTypes.func
+    columns: _propTypes2.default.array,
+    currentHoverKey: _propTypes2.default.any,
+    expandedRowKeys: _propTypes2.default.array,
+    expandedRowRender: _propTypes2.default.func,
+    hoverKey: _propTypes2.default.any,
+    onHover: _propTypes2.default.func,
+    onRowClick: _propTypes2.default.func,
+    record: _propTypes2.default.object,
+    rowClassName: _propTypes2.default.func
 }, _class.defaultProps = {
     columns: [],
     expandedRowKeys: [],
@@ -46956,6 +46984,10 @@ var _classnames2 = _interopRequireDefault(_classnames);
 var _react = __webpack_require__("../node_modules/react/react.js");
 
 var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__("../node_modules/prop-types/index.js");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _reactAddonsShallowCompare = __webpack_require__("../node_modules/react-addons-shallow-compare/index.js");
 
@@ -47373,25 +47405,25 @@ var _default = (_temp2 = _class = function (_Component) {
 
     return _default;
 }(_react.Component), _class.propTypes = {
-    averageColumnsWidth: _react.PropTypes.bool,
-    bordered: _react.PropTypes.bool,
-    columns: _react.PropTypes.array,
-    currentHoverKey: _react.PropTypes.any,
-    data: _react.PropTypes.array,
-    emptyText: _react.PropTypes.func,
-    footer: _react.PropTypes.func,
-    height: _react.PropTypes.number,
-    hoverable: _react.PropTypes.bool,
-    isFixed: _react.PropTypes.bool,
-    loading: _react.PropTypes.bool,
-    onMouseOver: _react.PropTypes.func,
-    onTouchStart: _react.PropTypes.func,
-    onScroll: _react.PropTypes.func,
-    onRowHover: _react.PropTypes.func,
-    showHeader: _react.PropTypes.bool,
-    sortable: _react.PropTypes.bool,
-    scrollTop: _react.PropTypes.number,
-    title: _react.PropTypes.func
+    averageColumnsWidth: _propTypes2.default.bool,
+    bordered: _propTypes2.default.bool,
+    columns: _propTypes2.default.array,
+    currentHoverKey: _propTypes2.default.any,
+    data: _propTypes2.default.array,
+    emptyText: _propTypes2.default.func,
+    footer: _propTypes2.default.func,
+    height: _propTypes2.default.number,
+    hoverable: _propTypes2.default.bool,
+    isFixed: _propTypes2.default.bool,
+    loading: _propTypes2.default.bool,
+    onMouseOver: _propTypes2.default.func,
+    onTouchStart: _propTypes2.default.func,
+    onScroll: _propTypes2.default.func,
+    onRowHover: _propTypes2.default.func,
+    showHeader: _propTypes2.default.bool,
+    sortable: _propTypes2.default.bool,
+    scrollTop: _propTypes2.default.number,
+    title: _propTypes2.default.func
 }, _class.defaultProps = {
     averageColumnsWidth: true,
     data: [],
@@ -47539,6 +47571,10 @@ var _react = __webpack_require__("../node_modules/react/react.js");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = __webpack_require__("../node_modules/prop-types/index.js");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _reactButtons = __webpack_require__("../node_modules/@trendmicro/react-buttons/lib/index.js");
 
 var _Navbar = __webpack_require__("./Navbar.styl");
@@ -47616,7 +47652,7 @@ var _default = (_temp2 = _class = function (_Component) {
                         ),
                         _react2.default.createElement(
                             'a',
-                            { href: '#', className: _Navbar2.default.navbarBrand },
+                            { href: '', className: _Navbar2.default.navbarBrand },
                             name
                         )
                     ),
@@ -47645,8 +47681,8 @@ var _default = (_temp2 = _class = function (_Component) {
 
     return _default;
 }(_react.Component), _class.propTypes = {
-    name: _react.PropTypes.string,
-    url: _react.PropTypes.string
+    name: _propTypes2.default.string,
+    url: _propTypes2.default.string
 }, _temp2);
 
 exports.default = _default;
@@ -47751,8 +47787,6 @@ if(false) {
 "use strict";
 
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 __webpack_require__("../node_modules/trendmicro-ui/dist/css/trendmicro-ui.css");
 
 var _react = __webpack_require__("../node_modules/react/react.js");
@@ -47793,51 +47827,30 @@ var _ExpandedRow2 = _interopRequireDefault(_ExpandedRow);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+var App = function App(props) {
+    var name = 'React Table';
+    var url = 'https://github.com/trendmicro-frontend/react-table';
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var App = function (_Component) {
-    _inherits(App, _Component);
-
-    function App() {
-        _classCallCheck(this, App);
-
-        return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
-    }
-
-    _createClass(App, [{
-        key: 'render',
-        value: function render() {
-            var name = 'React Table';
-            var url = 'https://github.com/trendmicro-frontend/react-table';
-
-            return _react2.default.createElement(
+    return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(_Navbar2.default, { name: name, url: url }),
+        _react2.default.createElement(
+            'div',
+            { className: 'container-fluid', style: { padding: '20px 20px 0' } },
+            _react2.default.createElement(
                 'div',
-                null,
-                _react2.default.createElement(_Navbar2.default, { name: name, url: url }),
-                _react2.default.createElement(
-                    'div',
-                    { className: 'container-fluid', style: { padding: '20px 20px 0' } },
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'row' },
-                        _react2.default.createElement(_Types2.default, null),
-                        _react2.default.createElement(_Displays2.default, null),
-                        _react2.default.createElement(_FixedColumns2.default, null),
-                        _react2.default.createElement(_Pagination2.default, null),
-                        _react2.default.createElement(_RowSelection2.default, null),
-                        _react2.default.createElement(_ExpandedRow2.default, null)
-                    )
-                )
-            );
-        }
-    }]);
-
-    return App;
-}(_react.Component);
+                { className: 'row' },
+                _react2.default.createElement(_Types2.default, null),
+                _react2.default.createElement(_Displays2.default, null),
+                _react2.default.createElement(_FixedColumns2.default, null),
+                _react2.default.createElement(_Pagination2.default, null),
+                _react2.default.createElement(_RowSelection2.default, null),
+                _react2.default.createElement(_ExpandedRow2.default, null)
+            )
+        )
+    );
+};
 
 _reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('container'));
 
@@ -48161,28 +48174,28 @@ var _default = function (_Component) {
             handleExpandedRowRender: function handleExpandedRowRender(record, key) {
                 return _react2.default.createElement(
                     'div',
-                    null,
-                    'tst'
+                    { style: { padding: '16px' } },
+                    'test sub content'
                 );
             },
             handleToggleDetails: function handleToggleDetails(e, record) {
                 e.preventDefault();
                 e.stopPropagation();
-                var expandedRowKeys = _this.state.expandedRowKeys;
-                var rowIndex = expandedRowKeys.indexOf(record.id);
+                var rowIndex = _this.state.expandedRowKeys.indexOf(record.id);
                 var expanded = rowIndex >= 0;
+                var data = [];
                 // Only display one detail view at one time
                 if (expanded) {
-                    expandedRowKeys = [];
+                    data = [];
                 } else {
-                    expandedRowKeys = [record.id];
+                    data = [record.id];
                 }
-                _this.setState({ expandedRowKeys: expandedRowKeys });
+                _this.setState({ expandedRowKeys: data });
             },
             handleRenderActionColumn: function handleRenderActionColumn(text, record) {
                 return _this.renderDetail(text, record);
             }
-        }, _this.columns = [{ title: '', key: 'detail', dataIndex: 'detail', render: _this.actions.handleRenderActionColumn }, { title: 'Event Type', key: 'eventType', dataIndex: 'eventType' }, { title: 'Affected Devices', key: 'affectedDevices', dataIndex: 'affectedDevices' }, { title: 'Detections', key: 'detections', dataIndex: 'detections', width: 300 }], _this.data = [{ id: 1, eventType: 'Virus/Malware', affectedDevices: 20, detections: 634 }, { id: 2, eventType: 'Spyware/Grayware', affectedDevices: 20, detections: 634 }, { id: 3, eventType: 'URL Filtering', affectedDevices: 15, detections: 598 }, { id: 4, eventType: 'Web Reputation', affectedDevices: 15, detections: 598 }, { id: 5, eventType: 'Network Virus', affectedDevices: 15, detections: 497 }, { id: 6, eventType: 'Application Control', affectedDevices: 30, detections: 111 }, { id: 7, eventType: 'Predictive Machine Learning', affectedDevices: 40, detections: 0 }, { id: 8, eventType: 'Behavior Monitoring', affectedDevices: 22, detections: 333 }, { id: 9, eventType: 'Device Ontrol', affectedDevices: 9, detections: 555 }, { id: 10, eventType: 'Ransomware Summary', affectedDevices: 0, detections: 66 }, { id: 11, eventType: 'Agent Status', affectedDevices: 2, detections: 789 }, { id: 12, eventType: 'Security Risk Detections Over Time', affectedDevices: 66, detections: 34 }, { id: 13, eventType: 'Action Center', affectedDevices: 32, detections: 2234 }, { id: 14, eventType: 'License Status', affectedDevices: 8, detections: 34325 }, { id: 15, eventType: 'Component Status', affectedDevices: 12, detections: 46465 }, { id: 16, eventType: 'Outbreak Defense', affectedDevices: 12, detections: 123 }, { id: 17, eventType: 'Test long long long long long long long long long long long long long long long long long long long long long long long long long long content', affectedDevices: 11, detections: 345 }, { id: 18, eventType: 'Computer Status', affectedDevices: 90, detections: 466 }, { id: 19, eventType: 'Mobile Devices', affectedDevices: 100, detections: 234 }, { id: 20, eventType: 'Desktops', affectedDevices: 102, detections: 477 }, { id: 21, eventType: 'Servers', affectedDevices: 33, detections: 235 }], _temp), _possibleConstructorReturn(_this, _ret);
+        }, _this.columns = [{ title: '', key: 'detail', dataIndex: 'detail', render: _this.actions.handleRenderActionColumn }, { title: 'Event Type', key: 'eventType', dataIndex: 'eventType' }, { title: 'Affected Devices', key: 'affectedDevices', dataIndex: 'affectedDevices' }, { title: 'Detections', key: 'detections', dataIndex: 'detections', width: 300 }], _this.data = [{ id: 1, eventType: 'Virus/Malware', affectedDevices: 20, detections: 634 }, { id: 2, eventType: 'Spyware/Grayware', affectedDevices: 20, detections: 634 }, { id: 3, eventType: 'URL Filtering', affectedDevices: 15, detections: 598 }, { id: 4, eventType: 'Web Reputation', affectedDevices: 15, detections: 598 }, { id: 5, eventType: 'Network Virus', affectedDevices: 15, detections: 497 }, { id: 6, eventType: 'Application Control', affectedDevices: 30, detections: 111 }, { id: 7, eventType: 'Predictive Machine Learning', affectedDevices: 40, detections: 0 }, { id: 8, eventType: 'Behavior Monitoring', affectedDevices: 22, detections: 333 }, { id: 9, eventType: 'Device Ontrol', affectedDevices: 9, detections: 555 }, { id: 10, eventType: 'Ransomware Summary', affectedDevices: 0, detections: 66 }, { id: 11, eventType: 'Agent Status', affectedDevices: 2, detections: 789 }, { id: 12, eventType: 'Security Risk Detections Over Time', affectedDevices: 66, detections: 34 }, { id: 13, eventType: 'Action Center', affectedDevices: 32, detections: 2234 }, { id: 14, eventType: 'License Status', affectedDevices: 8, detections: 34325 }, { id: 15, eventType: 'Component Status', affectedDevices: 12, detections: 46465 }, { id: 16, eventType: 'Outbreak Defense', affectedDevices: 12, detections: 123 }, { id: 17, eventType: 'Test long long long long long long long long long long long long long long long content', affectedDevices: 11, detections: 345 }, { id: 18, eventType: 'Computer Status', affectedDevices: 90, detections: 466 }, { id: 19, eventType: 'Mobile Devices', affectedDevices: 100, detections: 234 }, { id: 20, eventType: 'Desktops', affectedDevices: 102, detections: 477 }, { id: 21, eventType: 'Servers', affectedDevices: 33, detections: 235 }], _temp), _possibleConstructorReturn(_this, _ret);
     }
 
     _createClass(_default, [{
@@ -48454,10 +48467,10 @@ var _default = function (_Component) {
             }
         }, _this.columns = [{ title: 'Event Type', key: 'eventType', dataIndex: 'eventType' }, { title: 'Affected Devices', key: 'affectedDevices', dataIndex: 'affectedDevices' }, { title: 'Detections', key: 'detections', dataIndex: 'detections' }], _this.data = [{ id: 1, eventType: 'Virus/Malware', affectedDevices: 20, detections: 634 }, { id: 2, eventType: 'Spyware/Grayware', affectedDevices: 20, detections: 634 }, { id: 3, eventType: 'URL Filtering', affectedDevices: 15, detections: 598 }, { id: 4, eventType: 'Web Reputation', affectedDevices: 15, detections: 598 }, { id: 5, eventType: 'Network Virus', affectedDevices: 15, detections: 497 }, { id: 6, eventType: 'Application Control', affectedDevices: 0, detections: 0 }], _this.actions = {
             fetchRecords: function fetchRecords(_ref2) {
+                //console.log(`page=${page}, pageLength=${pageLength}`);
+
                 var page = _ref2.page,
                     pageLength = _ref2.pageLength;
-
-                console.log('page=' + page + ', pageLength=' + pageLength);
             }
         }, _temp), _possibleConstructorReturn(_this, _ret);
     }
@@ -48666,7 +48679,13 @@ var _default = function (_Component) {
         }
 
         return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = _default.__proto__ || Object.getPrototypeOf(_default)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
-            selectionData: [{ id: 1, checked: true, eventType: 'Virus/Malware', affectedDevices: 20, detections: 634 }, { id: 2, checked: false, eventType: 'Spyware/Grayware', affectedDevices: 20, detections: 634 }, { id: 3, checked: false, eventType: 'URL Filtering', affectedDevices: 15, detections: 598 }, { id: 4, checked: false, eventType: 'Test long long long long long long long long long long long long long long long long long long long long long long long long long long content', affectedDevices: 15, detections: 598 }, { id: 5, checked: false, eventType: 'Network Virus', affectedDevices: 15, detections: 497 }, { id: 6, checked: false, eventType: 'Application Control', affectedDevices: 0, detections: 0 }]
+            selectionData: [{ id: 1, checked: true, eventType: 'Virus/Malware', affectedDevices: 20, detections: 634 }, { id: 2, checked: false, eventType: 'Spyware/Grayware', affectedDevices: 20, detections: 634 }, { id: 3, checked: false, eventType: 'URL Filtering', affectedDevices: 15, detections: 598 }, {
+                id: 4,
+                checked: false,
+                eventType: 'Test long long long long long long long long long long long long long long long long content',
+                affectedDevices: 15,
+                detections: 598
+            }, { id: 5, checked: false, eventType: 'Network Virus', affectedDevices: 15, detections: 497 }, { id: 6, checked: false, eventType: 'Application Control', affectedDevices: 0, detections: 0 }]
         }, _this.actions = {
             handleClickRow: function handleClickRow(record, index, event) {
                 var checked = record.checked;
@@ -48759,7 +48778,8 @@ var _default = function (_Component) {
                     type: 'checkbox',
                     id: row.id,
                     className: 'input-checkbox',
-                    checked: row.checked
+                    checked: row.checked,
+                    onChange: function onChange(e) {}
                 }),
                 _react2.default.createElement('label', null)
             );
@@ -48973,4 +48993,4 @@ exports.default = _default;
 /***/ })
 
 /******/ });
-//# sourceMappingURL=bundle.js.map?a545b5f075275e2f4241
+//# sourceMappingURL=bundle.js.map?943a25b2f51647cd5f1e
