@@ -12,7 +12,13 @@ export default class extends Component {
             { id: 1, checked: true, eventType: 'Virus/Malware', affectedDevices: 20, detections: 634 },
             { id: 2, checked: false, eventType: 'Spyware/Grayware', affectedDevices: 20, detections: 634 },
             { id: 3, checked: false, eventType: 'URL Filtering', affectedDevices: 15, detections: 598 },
-            { id: 4, checked: false, eventType: 'Test long long long long long long long long long long long long long long long long long long long long long long long long long long content', affectedDevices: 15, detections: 598 },
+            {
+                id: 4,
+                checked: false,
+                eventType: 'Test long long long long long long long long long long long long long long long long content',
+                affectedDevices: 15,
+                detections: 598
+            },
             { id: 5, checked: false, eventType: 'Network Virus', affectedDevices: 15, detections: 497 },
             { id: 6, checked: false, eventType: 'Application Control', affectedDevices: 0, detections: 0 }
         ]
@@ -113,6 +119,7 @@ export default class extends Component {
                     id={row.id}
                     className="input-checkbox"
                     checked={row.checked}
+                    onChange={(e) => {}}
                 />
                 <label />
             </div>
@@ -129,7 +136,10 @@ export default class extends Component {
                     <h3>Row selection</h3>
                     <p>Change the color of a table row when it is selected.</p>
                     <ul>
-                        <li>Row selection should take effect when the user clicks anywhere in a row, except for table cells that contain hyperlinks. Note the following checkboxes are greyed out for demo purposes.</li>
+                        <li>
+                            Row selection should take effect when the user clicks anywhere in a row,
+                            except for table cells that contain hyperlinks. Note the following checkboxes are greyed out for demo purposes.
+                        </li>
                     </ul>
                     <div className={styles.sectionGroup}>
                         <h5>Row Selection</h5>

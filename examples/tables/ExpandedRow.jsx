@@ -12,21 +12,25 @@ export default class extends Component {
 
     actions = {
         handleExpandedRowRender: (record, key) => {
-            return (<div>tst</div>);
+            return (
+                <div style={{ padding: '16px' }}>
+                    test sub content
+                </div>
+            );
         },
         handleToggleDetails: (e, record) => {
             e.preventDefault();
             e.stopPropagation();
-            let expandedRowKeys = this.state.expandedRowKeys;
-            const rowIndex = expandedRowKeys.indexOf(record.id);
+            const rowIndex = this.state.expandedRowKeys.indexOf(record.id);
             const expanded = (rowIndex >= 0);
+            let data = [];
             // Only display one detail view at one time
             if (expanded) {
-                expandedRowKeys = [];
+                data = [];
             } else {
-                expandedRowKeys = [record.id];
+                data = [record.id];
             }
-            this.setState({ expandedRowKeys: expandedRowKeys });
+            this.setState({ expandedRowKeys: data });
         },
         handleRenderActionColumn: (text, record) => {
             return this.renderDetail(text, record);
@@ -57,7 +61,7 @@ export default class extends Component {
         { id: 14, eventType: 'License Status', affectedDevices: 8, detections: 34325 },
         { id: 15, eventType: 'Component Status', affectedDevices: 12, detections: 46465 },
         { id: 16, eventType: 'Outbreak Defense', affectedDevices: 12, detections: 123 },
-        { id: 17, eventType: 'Test long long long long long long long long long long long long long long long long long long long long long long long long long long content', affectedDevices: 11, detections: 345 },
+        { id: 17, eventType: 'Test long long long long long long long long long long long long long long long content', affectedDevices: 11, detections: 345 },
         { id: 18, eventType: 'Computer Status', affectedDevices: 90, detections: 466 },
         { id: 19, eventType: 'Mobile Devices', affectedDevices: 100, detections: 234 },
         { id: 20, eventType: 'Desktops', affectedDevices: 102, detections: 477 },

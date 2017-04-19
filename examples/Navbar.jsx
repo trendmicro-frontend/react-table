@@ -36,7 +36,7 @@ export default class extends Component {
                             <span className={styles.iconBar} />
                             <span className={styles.iconBar} />
                         </button>
-                        <a href="#" className={styles.navbarBrand}>{name}</a>
+                        <a href="" className={styles.navbarBrand}>{name}</a>
                     </div>
                     <div
                         className={classNames(

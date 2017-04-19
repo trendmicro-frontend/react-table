@@ -73,6 +73,7 @@ export default class extends Component {
             columns,
             currentHoverKey,
             expandedRowRender,
+            expandedRowKeys,
             hoverKey,
             record,
             rowClassName
@@ -98,7 +99,15 @@ export default class extends Component {
             >
                 {
                     columns.map((column, i) => {
-                        return <TableCell key={`${hoverKey}_${i}`} column={column} record={record} />;
+                        const index = i++;
+                        return (
+                            <TableCell
+                                key={`${hoverKey}_${index}`}
+                                column={column}
+                                record={record}
+                                expandedRowKeys={expandedRowKeys}
+                            />
+                        );
                     })
                 }
                 { isRowExpanded &&

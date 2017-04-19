@@ -69,8 +69,9 @@ export default class extends Component {
         const { columns } = this.props;
         const customColumns = this.renderColumns(columns);
         return customColumns.map((column, index) => {
+            const key = ++index;
             return (
-                <div key={index} className={styles.th}>
+                <div key={key} className={styles.th}>
                     <div className={styles.tdContent}>
                         {column.title}
                     </div>

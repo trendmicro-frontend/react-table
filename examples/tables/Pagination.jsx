@@ -33,7 +33,7 @@ export default class extends Component {
 
     actions = {
         fetchRecords: ({ page, pageLength }) => {
-            console.log(`page=${page}, pageLength=${pageLength}`);
+            //console.log(`page=${page}, pageLength=${pageLength}`);
         }
     };
 
