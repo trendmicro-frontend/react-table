@@ -61,8 +61,37 @@ Demo: https://trendmicro-frontend.github.io/react-table
 
 #### Table
 
-Name | Type | Default | Description 
-:--- | :--- | :------ | :----------
+Name                | Type                              | Default | Description
+:---                | :---                              | :------ | :----------
+averageColumnsWidth | Boolean                           | true    | Whether average table cell width.
+bordered            | Boolean                           | true    | Whether table border is shown.
+columns             | Object[]                          | []      | The columns config of table, see table below.
+data                | Object[]                          | []      | Data record array to be rendered.
+emptyText           | Function                          | () => { return 'No Data'; } | Display text when data is empty.
+expandedRowKeys     | String[]                          |         | Current expanded rows keys.
+expandedRowRender   | Function(record, key)             |         | Expanded content render function.
+footer              | Function                          |         | Table footer render function.
+height              | Number                            |         | Table height.
+hoverable           | Boolean                           | true    | Whether use row hover style.
+loading             | Boolean                           | false   | Whether table is loading.
+onRowClick          | Function(record, key)             |         | Handle rowClick action.
+showHeader          | Boolean                           | true    | Whether table head is shown.
+sortable            | Boolean                           | false   | Whether use sortting event at table head.
+title               | Function                          |         | Table title render function.
+useFixedHeader      | Boolean                           | false   | Whether table head is fixed.
+rowClassName        | Function(record, key):string      |         | Get row's className.
+rowKey              | string or Function(record):string | 'key'   | If rowKey is string, `record[rowKey]` will be used as key. If rowKey is function, the return value of `rowKey(record)` will be use as key.
+
+#### Column Props
+
+Name      | Type                 | Default | Description
+:---      | :---                 | :------ | :----------
+key       | String               |         | Key of this column.
+title     | React Node           |         | Title of this column.
+dataIndex | String               |         | Display field of the data record.
+width     | Number               |         | Width of the specific proportion calculation according to the width of the columns.
+fixed     | Boolean              |         | This column will be fixed af left side when table scroll horizontally.
+render    | Function(value, row) |         | The render function of cell, has two params: the text of this cell, the record of this row, it's return a react node.
 
 #### TableToolbar
 

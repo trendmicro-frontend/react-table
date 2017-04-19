@@ -18,7 +18,6 @@ export default class extends Component {
         height: PropTypes.number,
         hoverable: PropTypes.bool,
         loading: PropTypes.bool,
-        onExpandedRowsChange: PropTypes.func,
         onRowClick: PropTypes.func,
         showHeader: PropTypes.bool,
         sortable: PropTypes.bool,
