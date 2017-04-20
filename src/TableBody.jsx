@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import shallowCompare from 'react-addons-shallow-compare';
 import styles from './index.styl';
 import TableRow from './TableRow';
 
-export default class extends Component {
+class TableBody extends PureComponent {
     static propTypes = {
         columns: PropTypes.array,
         currentHoverKey: PropTypes.any,
@@ -30,10 +29,6 @@ export default class extends Component {
         records: [],
         rowKey: 'key'
     };
-
-    shouldComponentUpdate(nextProps, nextState) {
-        return shallowCompare(this, nextProps, nextState);
-    }
 
     componentDidMount() {
         const { onMouseOver, onTouchStart, onScroll } = this.props;
@@ -114,3 +109,5 @@ export default class extends Component {
         );
     }
 }
+
+export default TableBody;

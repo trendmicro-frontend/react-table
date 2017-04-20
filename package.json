@@ -46,15 +46,14 @@
     "react": "^0.14.0 || ^15.0.0"
   },
   "dependencies": {
-    "@trendmicro/react-anchor": "^0.5.4",
-    "@trendmicro/react-paginations": "^0.5.9",
+    "@trendmicro/react-anchor": "^0.5.5",
+    "@trendmicro/react-paginations": "^0.5.10",
     "trendmicro-ui": "^0.4.0",
     "classnames": "^2.2.5",
-    "prop-types": "^15.5.8",
-    "react-addons-shallow-compare": "^0.14.0 || ^15.0.0"
+    "prop-types": "^15.5.8"
   },
   "devDependencies": {
-    "@trendmicro/react-buttons": "~1.0.3",
+    "@trendmicro/react-buttons": "~1.0.4",
     "babel-cli": "~6.24.1",
     "babel-core": "~6.24.1",
     "babel-eslint": "~7.2.2",

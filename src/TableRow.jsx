@@ -1,11 +1,10 @@
 import classNames from 'classnames';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import shallowCompare from 'react-addons-shallow-compare';
 import styles from './index.styl';
 import TableCell from './TableCell';
 
-export default class extends Component {
+class TableRow extends PureComponent {
     static propTypes = {
         columns: PropTypes.array,
         currentHoverKey: PropTypes.any,
@@ -44,10 +43,6 @@ export default class extends Component {
             onHover(true, hoverKey);
         }
     };
-
-    shouldComponentUpdate(nextProps, nextState) {
-        return shallowCompare(this, nextProps, nextState);
-    }
 
     componentDidMount() {
         const { handleRowMouseOver, handleRowMouseLeave } = this.actions;
@@ -119,3 +114,5 @@ export default class extends Component {
         );
     }
 }
+
+export default TableRow;

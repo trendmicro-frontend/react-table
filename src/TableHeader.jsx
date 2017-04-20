@@ -1,11 +1,10 @@
 import Anchor from '@trendmicro/react-anchor';
 import classNames from 'classnames';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import shallowCompare from 'react-addons-shallow-compare';
 import styles from './index.styl';
 
-export default class extends Component {
+class TableHeader extends PureComponent {
     static propTypes = {
         columns: PropTypes.array,
         scrollLeft: PropTypes.number,
@@ -16,10 +15,6 @@ export default class extends Component {
         columns: [],
         sortable: false
     };
-
-    shouldComponentUpdate(nextProps, nextState) {
-        return shallowCompare(this, nextProps, nextState);
-    }
 
     componentDidUpdate(prevProps, prevState) {
         const { scrollLeft } = this.props;
@@ -95,3 +90,5 @@ export default class extends Component {
         );
     }
 }
+
+export default TableHeader;

@@ -1,12 +1,11 @@
 import classNames from 'classnames';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import shallowCompare from 'react-addons-shallow-compare';
 import styles from './index.styl';
 import TableHeader from './TableHeader';
 import TableBody from './TableBody';
 
-export default class extends Component {
+class TableTemplate extends PureComponent {
     static propTypes = {
         averageColumnsWidth: PropTypes.bool,
         bordered: PropTypes.bool,
@@ -302,10 +301,6 @@ export default class extends Component {
         };
     }
 
-    shouldComponentUpdate(nextProps, nextState) {
-        return shallowCompare(this, nextProps, nextState);
-    }
-
     componentDidMount() {
         const { getTableHeight } = this.actions;
         window.addEventListener('resize', getTableHeight);
@@ -395,3 +390,5 @@ export default class extends Component {
         );
     }
 }
+
+export default TableTemplate;

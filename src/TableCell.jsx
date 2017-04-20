@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import shallowCompare from 'react-addons-shallow-compare';
 import styles from './index.styl';
 
-export default class extends Component {
+class TableCell extends PureComponent {
     static propTypes = {
         column: PropTypes.object,
         record: PropTypes.object
@@ -13,10 +12,6 @@ export default class extends Component {
         column: {},
         record: {}
     };
-
-    shouldComponentUpdate(nextProps, nextState) {
-        return shallowCompare(this, nextProps, nextState);
-    }
 
     render() {
         const { column, record } = this.props;
@@ -34,3 +29,5 @@ export default class extends Component {
         );
     }
 }
+
+export default TableCell;

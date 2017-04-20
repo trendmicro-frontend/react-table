@@ -1,11 +1,10 @@
 import classNames from 'classnames';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import shallowCompare from 'react-addons-shallow-compare';
 import styles from './index.styl';
 import TableTemplate from './TableTemplate';
 
-export default class extends Component {
+class Table extends PureComponent {
     static propTypes = {
         averageColumnsWidth: PropTypes.bool,
         bordered: PropTypes.bool,
@@ -85,11 +84,6 @@ export default class extends Component {
         return columns.some((column) => {
             return column.fixed === true;
         });
-    }
-
-
-    shouldComponentUpdate(nextProps, nextState) {
-        return shallowCompare(this, nextProps, nextState);
     }
 
     renderTable() {
@@ -198,3 +192,5 @@ export default class extends Component {
         );
     }
 }
+
+export default Table;
