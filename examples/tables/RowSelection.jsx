@@ -1,6 +1,7 @@
 import 'trendmicro-ui/dist/css/trendmicro-ui.css';
 import React, { Component } from 'react';
 import _ from 'lodash';
+import elementClass from 'element-class';
 import Table from '../../src';
 import Section from '../Section';
 import styles from '../index.styl';
@@ -44,22 +45,16 @@ export default class extends Component {
                 const selectedItems = _.filter(data, { 'checked': true });
                 const selectedLength = selectedItems.length;
                 const dataLength = data.length;
-                let classes = this.headerCheckbox.className.split(' ');
-                const index = classes.indexOf('checkbox-partial');
                 if (selectedLength === dataLength) {
                     this.headerCheckbox.checked = true;
                 } else {
                     this.headerCheckbox.checked = false;
                 }
                 if (selectedLength > 0 && selectedLength < dataLength) {
-                    if (index === -1) {
-                        classes.push('checkbox-partial');
-                    }
-                } else if (index > -1) {
-                    classes.splice(index, 1);
+                    elementClass(this.headerCheckbox).add('checkbox-partial');
+                } else {
+                    elementClass(this.headerCheckbox).remove('checkbox-partial');
                 }
-                // classList is not supported in IE9.
-                this.headerCheckbox.className = classes.join(' ');
             });
         },
         handleRowClassName: (record, key) => {
@@ -81,13 +76,7 @@ export default class extends Component {
             this.setState({
                 selectionData: data
             }, () => {
-                let classes = this.headerCheckbox.className.split(' ');
-                const index = classes.indexOf('checkbox-partial');
-                if (index > -1) {
-                    classes.splice(index, 1);
-                }
-                // classList is not supported in IE9.
-                this.headerCheckbox.className = classes.join(' ');
+                elementClass(this.headerCheckbox).remove('checkbox-partial');
             });
         }
     };

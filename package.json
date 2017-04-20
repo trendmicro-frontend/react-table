@@ -67,6 +67,7 @@
     "clean-css-cli": "~4.0.12",
     "coveralls": "~2.13.0",
     "css-loader": "~0.28.0",
+    "element-class": "~0.2.2",
     "eslint": "~3.19.0",
     "eslint-config-trendmicro": "~0.5.1",
     "eslint-loader": "~1.7.1",
