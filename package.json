@@ -47,7 +47,7 @@
   },
   "dependencies": {
     "@trendmicro/react-anchor": "^0.5.4",
-    "@trendmicro/react-paginations": "^0.5.8",
+    "@trendmicro/react-paginations": "^0.5.9",
     "trendmicro-ui": "^0.4.0",
     "classnames": "^2.2.5",
     "prop-types": "^15.5.8",
