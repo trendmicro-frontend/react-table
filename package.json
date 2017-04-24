@@ -50,6 +50,7 @@
     "@trendmicro/react-paginations": "^0.5.10",
     "trendmicro-ui": "^0.4.0",
     "classnames": "^2.2.5",
+    "lodash.get": "^4.4.2",
     "prop-types": "^15.5.8"
   },
   "devDependencies": {
