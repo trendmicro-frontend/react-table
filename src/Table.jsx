@@ -34,7 +34,7 @@ class Table extends PureComponent {
 
     mainTable = null;
 
-    state = this.getDefaultState();
+    state = this.getInitialState();
 
     actions = {
         detectScrollTarget: (e) => {
@@ -60,7 +60,7 @@ class Table extends PureComponent {
         }
     };
 
-    getDefaultState () {
+    getInitialState () {
         return {
             currentHoverKey: null,
             scrollTop: 0

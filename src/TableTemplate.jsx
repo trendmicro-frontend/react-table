@@ -39,7 +39,7 @@ class TableTemplate extends PureComponent {
         sortable: false
     };
 
-    state = this.getDefaultState();
+    state = this.getInitialState();
 
     actions = {
         handleBodyScroll: (e) => {
@@ -293,7 +293,7 @@ class TableTemplate extends PureComponent {
         }
     };
 
-    getDefaultState() {
+    getInitialState() {
         return {
             scrollLeft: 0,
             tableHeight: 0,
