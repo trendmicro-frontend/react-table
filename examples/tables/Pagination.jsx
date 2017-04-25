@@ -56,7 +56,7 @@ export default class extends Component {
                             data={data}
                             height={180}
                             title={() => (
-                                <Table.Toolbar>
+                                <div className={styles.tableToolbar}>
                                     <Button btnStyle="flat">
                                         Export
                                     </Button>
@@ -75,7 +75,7 @@ export default class extends Component {
                                         prevPageRenderer={() => <i className="fa fa-angle-left" />}
                                         nextPageRenderer={() => <i className="fa fa-angle-right" />}
                                     />
-                                </Table.Toolbar>
+                                </div>
                             )}
                         />
                         <br />
@@ -87,7 +87,7 @@ export default class extends Component {
                             height={200}
                             useFixedHeader={true}
                             title={() => (
-                                <Table.Toolbar>
+                                <div className={styles.tableToolbar}>
                                     <Button btnStyle="flat">
                                         Export
                                     </Button>
@@ -106,10 +106,10 @@ export default class extends Component {
                                         prevPageRenderer={() => <i className="fa fa-angle-left" />}
                                         nextPageRenderer={() => <i className="fa fa-angle-right" />}
                                     />
-                                </Table.Toolbar>
+                                </div>
                             )}
                             footer={() => (
-                                <Table.Toolbar>
+                                <div className={styles.tableToolbar}>
                                     <Button btnStyle="flat">
                                         Export
                                     </Button>
@@ -128,7 +128,7 @@ export default class extends Component {
                                         prevPageRenderer={() => <i className="fa fa-angle-left" />}
                                         nextPageRenderer={() => <i className="fa fa-angle-right" />}
                                     />
-                                </Table.Toolbar>
+                                </div>
                             )}
                         />
                     </div>
