@@ -28,6 +28,7 @@ class Table extends PureComponent {
     static defaultProps = {
         data: [],
         bordered: true,
+        hoverable: true,
         loading: false,
         useFixedHeader: false
     };

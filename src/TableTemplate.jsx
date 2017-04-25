@@ -34,7 +34,6 @@ class TableTemplate extends PureComponent {
         emptyText: function emptyText() {
             return 'No Data';
         },
-        hoverable: true,
         showHeader: true,
         sortable: false
     };
