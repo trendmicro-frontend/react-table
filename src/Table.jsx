@@ -30,6 +30,7 @@ class Table extends PureComponent {
         bordered: true,
         hoverable: true,
         loading: false,
+        sortable: false,
         useFixedHeader: false
     };
 

@@ -7,13 +7,11 @@ import styles from './index.styl';
 class TableHeader extends PureComponent {
     static propTypes = {
         columns: PropTypes.array,
-        scrollLeft: PropTypes.number,
-        sortable: PropTypes.bool
+        scrollLeft: PropTypes.number
     };
 
     static defaultProps = {
-        columns: [],
-        sortable: false
+        columns: []
     };
 
     componentDidUpdate(prevProps, prevState) {

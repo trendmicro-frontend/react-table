@@ -23,7 +23,6 @@ class TableTemplate extends PureComponent {
         onScroll: PropTypes.func,
         onRowHover: PropTypes.func,
         showHeader: PropTypes.bool,
-        sortable: PropTypes.bool,
         scrollTop: PropTypes.number,
         title: PropTypes.func
     };
@@ -34,8 +33,7 @@ class TableTemplate extends PureComponent {
         emptyText: function emptyText() {
             return 'No Data';
         },
-        showHeader: true,
-        sortable: false
+        showHeader: true
     };
 
     state = this.getInitState();
@@ -311,13 +309,12 @@ class TableTemplate extends PureComponent {
     }
 
     renderHeader() {
-        const { columns, sortable } = this.props;
+        const { columns } = this.props;
         const { scrollLeft } = this.state;
         return (
             <TableHeader
                 scrollLeft={scrollLeft}
                 columns={columns}
-                sortable={sortable}
                 ref={node => {
                     this.tableHeader = node;
                 }}
