@@ -2,6 +2,7 @@ import 'trendmicro-ui/dist/css/trendmicro-ui.css';
 import '@trendmicro/react-buttons/dist/react-buttons.css';
 import '@trendmicro/react-paginations/dist/react-paginations.css';
 import { Button } from '@trendmicro/react-buttons';
+import { TablePagination } from '@trendmicro/react-paginations';
 import React, { Component } from 'react';
 import Table from '../../src';
 import Section from '../Section';
@@ -59,7 +60,12 @@ export default class extends Component {
                                     <Button btnStyle="flat">
                                         Export
                                     </Button>
-                                    <Table.Pagination
+                                    <TablePagination
+                                        style={{
+                                            position: 'absolute',
+                                            right: 0,
+                                            top: 0
+                                        }}
                                         page={page}
                                         pageLength={pageLength}
                                         totalRecords={totalRecords}
@@ -85,7 +91,12 @@ export default class extends Component {
                                     <Button btnStyle="flat">
                                         Export
                                     </Button>
-                                    <Table.Pagination
+                                    <TablePagination
+                                        style={{
+                                            position: 'absolute',
+                                            right: 0,
+                                            top: 0
+                                        }}
                                         page={page}
                                         pageLength={pageLength}
                                         totalRecords={totalRecords}
@@ -102,7 +113,12 @@ export default class extends Component {
                                     <Button btnStyle="flat">
                                         Export
                                     </Button>
-                                    <Table.Pagination
+                                    <TablePagination
+                                        style={{
+                                            position: 'absolute',
+                                            right: 0,
+                                            top: 0
+                                        }}
                                         page={page}
                                         pageLength={pageLength}
                                         totalRecords={totalRecords}
