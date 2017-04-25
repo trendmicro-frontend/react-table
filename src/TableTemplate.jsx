@@ -47,7 +47,7 @@ class TableTemplate extends PureComponent {
             onScroll(e);
         },
         getTableCellWidth: () => {
-            const { averageColumnsWidth, columns } = this.props;
+            const { averageColumnsWidth, columns, loading } = this.props;
             let thsWidth = [];
             if (this.tableHeader) {
                 const tHeader = this.tableHeader.header;
@@ -79,7 +79,7 @@ class TableTemplate extends PureComponent {
                 });
             }
 
-            if (averageColumnsWidth) {
+            if (averageColumnsWidth || loading) {
                 cellWidth = (totalWidth - customWidth.width) / (columns.length - customColumns.length);
             }
 
@@ -112,7 +112,7 @@ class TableTemplate extends PureComponent {
                     const customColumn = columns[j];
                     if (customColumn && customColumn.width) {
                         cellsWidth[j] = customColumn.width;
-                    } else if (averageColumnsWidth) {
+                    } else {
                         cellsWidth[j] = cellWidth;
                     }
                     cellTotalWidth += cellsWidth[j];
@@ -306,6 +306,12 @@ class TableTemplate extends PureComponent {
     componentWillUnmount() {
         const { getTableHeight } = this.actions;
         window.removeEventListener('resize', getTableHeight);
+    }
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.data !== this.props.data) {
+            const { getTableHeight } = this.actions;
+            getTableHeight();
+        }
     }
 
     renderHeader() {
