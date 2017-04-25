@@ -1,4 +1,4 @@
-/*! react-table v0.3.4 | (c) 2017 Trend Micro Inc. | MIT | https://github.com/trendmicro-frontend/react-table */
+/*! react-table v0.3.6 | (c) 2017 Trend Micro Inc. | MIT | https://github.com/trendmicro-frontend/react-table */
 .table---table-wrapper---1t2D3 {
   border: 1px solid #ddd;
   position: relative;
@@ -203,25 +203,6 @@
 }
 .table---table-sortable---KlbyF .table---table---2aBqd .table---column-sort-desc---3hZbo {
   background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxNnB4IiB2aWV3Qm94PSIwIDAgMTYgMTYiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDE2IDE2IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGlkPSJpY29uVGhTb3J0XzFfIiBmaWxsPSIjMjIyMjIyIiBkPSJNMTEuOSw5LjZDMTEuNyw5LjQsMTEuNCw5LjQsMTEuMiw5LjVMOSwxMS40VjUuNUM5LDUuMiw4LjcsNSw4LjUsNUM4LjIsNSw4LDUuMiw4LDUuNQ0KCXY1LjlMNS43LDkuNUM1LjUsOS40LDUuMiw5LjQsNSw5LjZjLTAuMiwwLjItMC4xLDAuNSwwLjEsMC43bDMsMi41bDAsMEM4LjIsMTIuOSw4LjMsMTIuOSw4LjQsMTNsMCwwaDAuMWwwLDBsMCwwaDAuMWwwLDBsMCwwSDguNw0KCWMwLDAsMC4xLDAsMC4xLTAuMUM4LjgsMTIuOCw4LjksMTIuOSw4LjksMTIuOGwwLDBsMCwwbDMtMi41QzEyLDEwLjEsMTIuMSw5LjgsMTEuOSw5LjZ6Ii8+DQo8L3N2Zz4NCg==);
-}
-.table---table-toolbar---36lWf {
-  position: relative;
-  background-color: #f8f8f8;
-  border-bottom: 1px solid #ddd;
-  padding: 8px 16px;
-  zoom: 1;
-}
-.table---table-toolbar---36lWf:before,
-.table---table-toolbar---36lWf:after {
-  content: "";
-  display: table;
-}
-.table---table-toolbar---36lWf:after {
-  clear: both;
-}
-.table---tfoot---23ZpN .table---table-toolbar---36lWf {
-  border-bottom: none;
-  border-top: 1px solid #ddd;
 }
 .table---loader-overlay---IQP-L {
   background-color: rgba(255,255,255,0.8);

@@ -3371,7 +3371,7 @@ exports = module.exports = __webpack_require__("../node_modules/css-loader/lib/c
 
 
 // module
-exports.push([module.i, ".table-wrapper---Nn8DN {\n  border: 1px solid #ddd;\n  position: relative;\n}\n.table---4nI0A {\n  width: 100%;\n  max-width: 100%;\n  table-layout: fixed;\n  background-color: #fff;\n  overflow: auto;\n}\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS,\n.table---4nI0A > .tbody---26gFd > .tr---H4SLB > .th---2_qSS,\n.table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS,\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B,\n.table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B,\n.table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B {\n  padding: 8px 12px;\n  vertical-align: middle;\n  display: inline-block;\n  overflow: hidden;\n}\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS > .td-content---2Mdz2,\n.table---4nI0A > .tbody---26gFd > .tr---H4SLB > .th---2_qSS > .td-content---2Mdz2,\n.table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS > .td-content---2Mdz2,\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B > .td-content---2Mdz2,\n.table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B > .td-content---2Mdz2,\n.table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B > .td-content---2Mdz2 {\n  position: relative;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n  -moz-transform: translateY(-50%);\n  -o-transform: translateY(-50%);\n  -ms-transform: translateY(-50%);\n  transform: translateY(-50%);\n}\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS a,\n.table---4nI0A > .tbody---26gFd > .tr---H4SLB > .th---2_qSS a,\n.table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS a,\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B a,\n.table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B a,\n.table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B a {\n  text-decoration: none;\n}\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS {\n  color: #777;\n  font-weight: bold;\n}\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB:first-child > .th---2_qSS,\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB:first-child > .td---2vh6B {\n  border-top: 0;\n}\n.table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B > .td-content---2Mdz2 {\n  white-space: normal;\n}\n.table---4nI0A .clickable-column---1Ldga {\n  color: inherit;\n  display: block;\n}\n.table---4nI0A .clickable-column---1Ldga:hover {\n  background-color: #e6e6e6;\n  cursor: pointer;\n}\n.table-extend-column-width---224gB .table---4nI0A > .thead---F7gFU > .tr---H4SLB,\n.table-extend-column-width---224gB .table---4nI0A > .tbody---26gFd > .tr---H4SLB,\n.table-extend-column-width---224gB .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB {\n  white-space: nowrap;\n}\n.tr-expand---2ULb6 {\n  border-bottom: 1px solid #ddd;\n}\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS,\n.table-bordered---1t2f2 .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .th---2_qSS,\n.table-bordered---1t2f2 .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS,\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B,\n.table-bordered---1t2f2 .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B,\n.table-bordered---1t2f2 .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B {\n  border: 1px solid #ddd;\n  border-width: 0 1px 1px 0;\n}\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS:first-child,\n.table-bordered---1t2f2 .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .th---2_qSS:first-child,\n.table-bordered---1t2f2 .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS:first-child,\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B:first-child,\n.table-bordered---1t2f2 .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B:first-child,\n.table-bordered---1t2f2 .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B:first-child {\n  border-left-width: 0;\n}\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS:last-of-type,\n.table-bordered---1t2f2 .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .th---2_qSS:last-of-type,\n.table-bordered---1t2f2 .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS:last-of-type,\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B:last-of-type,\n.table-bordered---1t2f2 .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B:last-of-type,\n.table-bordered---1t2f2 .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B:last-of-type {\n  border-right-width: 0;\n}\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS,\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B {\n  background-color: #eee;\n  border-bottom-width: 2px;\n  border-bottom-color: #ccc;\n}\n.table-bordered---1t2f2 .table---4nI0A > .tbody---26gFd > .tr---H4SLB:last-of-type > .td---2vh6B {\n  border-bottom-width: 0;\n}\n.table-fixed-header---3s7iS .table---4nI0A > .thead---F7gFU {\n  overflow: hidden;\n}\n.table-fixed-header---3s7iS .table---4nI0A > .tbody---26gFd {\n  overflow: auto;\n}\n.table---4nI0A.table-fixed-left-container---XMhgL {\n  position: absolute;\n  top: 0;\n  background-color: #fff;\n  width: auto;\n  overflow: hidden;\n}\n.table---4nI0A.table-fixed-left-container---XMhgL > .thead---F7gFU > .tr---H4SLB > .th---2_qSS:last-child,\n.table---4nI0A.table-fixed-left-container---XMhgL > .tbody---26gFd > .tr---H4SLB > .th---2_qSS:last-child,\n.table---4nI0A.table-fixed-left-container---XMhgL > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS:last-child,\n.table---4nI0A.table-fixed-left-container---XMhgL > .thead---F7gFU > .tr---H4SLB > .td---2vh6B:last-child,\n.table---4nI0A.table-fixed-left-container---XMhgL > .tbody---26gFd > .tr---H4SLB > .td---2vh6B:last-child,\n.table---4nI0A.table-fixed-left-container---XMhgL > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B:last-child {\n  border-right-width: 1px;\n}\n.table---4nI0A.table-fixed-left-container---XMhgL > .tbody---26gFd {\n  overflow-x: hidden;\n  overflow-y: auto;\n}\n.table-hover---vAzWN .table---4nI0A > .tbody---26gFd > .tr---H4SLB:hover,\n.table-hover---vAzWN .table---4nI0A > .tbody---26gFd > .tr---H4SLB.tr-hover---3Dpwe {\n  background-color: #e6f4fc;\n}\n.table-hover---vAzWN .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B.td-link---1wbR-:hover {\n  cursor: pointer;\n}\n.table-hover---vAzWN .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B.td-link---1wbR-:hover a {\n  text-decoration: underline;\n  color: #db3d44;\n}\n.table-minimalism---1M3bc.table-wrapper---Nn8DN {\n  border: 0;\n}\n.table-minimalism---1M3bc .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS,\n.table-minimalism---1M3bc .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .th---2_qSS,\n.table-minimalism---1M3bc .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS,\n.table-minimalism---1M3bc .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B,\n.table-minimalism---1M3bc .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B,\n.table-minimalism---1M3bc .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B {\n  border-bottom: 1px solid #ddd;\n}\n.table-minimalism---1M3bc .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS,\n.table-minimalism---1M3bc .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B {\n  border-bottom-width: 2px;\n  border-bottom-color: #ccc;\n}\n.table-minimalism---1M3bc .table---4nI0A .clickable-column---1Ldga:hover {\n  background-color: inherit;\n}\n.table-no-data---19dlA .table---4nI0A > .tbody---26gFd > .table-placeholder---p9qSt {\n  text-align: center;\n  padding: 26px 12px;\n  color: #999;\n}\n.table-sortable---3OW0J .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS {\n  white-space: nowrap;\n  padding: 0;\n}\n.table-sortable---3OW0J .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS > .td-content---2Mdz2 > *:first-child {\n  padding: 8px 12px;\n}\n.table-sortable---3OW0J .table---4nI0A .column-sort---1nz7N {\n  color: #222;\n}\n.table-sortable---3OW0J .table---4nI0A .column-sort---1nz7N:hover,\n.table-sortable---3OW0J .table---4nI0A .column-sort---1nz7N:focus {\n  color: #222;\n  text-decoration: none;\n}\n.table-sortable---3OW0J .table---4nI0A .column-sort---1nz7N > .overflow-ellipsis---1F1Bs {\n  vertical-align: middle;\n  display: inline-block;\n  overflow: hidden;\n  -o-text-overflow: ellipsis;\n  text-overflow: ellipsis;\n  max-width: calc(100% - 16px);\n}\n.table-sortable---3OW0J .table---4nI0A .column-sort---1nz7N > i {\n  vertical-align: middle;\n}\n.table-sortable---3OW0J .table---4nI0A .column-sort-asc---VbD-9,\n.table-sortable---3OW0J .table---4nI0A .column-sort-desc---LdkEY {\n  vertical-align: top;\n  margin-top: 1px;\n  display: inline-block;\n  width: 16px;\n  height: 16px;\n}\n.table-sortable---3OW0J .table---4nI0A .column-sort-asc---VbD-9 {\n  background-image: url(" + __webpack_require__("../src/icon-thSortAscending.svg") + ");\n}\n.table-sortable---3OW0J .table---4nI0A .column-sort-desc---LdkEY {\n  background-image: url(" + __webpack_require__("../src/icon-thSortDescending.svg") + ");\n}\n.table-toolbar---3G5Ue {\n  position: relative;\n  background-color: #f8f8f8;\n  border-bottom: 1px solid #ddd;\n  padding: 8px 16px;\n  zoom: 1;\n}\n.table-toolbar---3G5Ue:before,\n.table-toolbar---3G5Ue:after {\n  content: \"\";\n  display: table;\n}\n.table-toolbar---3G5Ue:after {\n  clear: both;\n}\n.tfoot---1jkPO .table-toolbar---3G5Ue {\n  border-bottom: none;\n  border-top: 1px solid #ddd;\n}\n.loader-overlay---2tv2u {\n  background-color: rgba(255,255,255,0.8);\n  cursor: wait;\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n}\n.loader-overlay---2tv2u .loader---2BVR-,\n.loader-overlay---2tv2u .loader-small---4hf-S,\n.loader-overlay---2tv2u .loader-large---2lAcm {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n}\n.loader-overlay---2tv2u .loader-large---2lAcm {\n  margin-top: -28px;\n  margin-left: -28px;\n}\n.loader-overlay---2tv2u .loader-small---4hf-S {\n  margin-top: -8px;\n  margin-left: -8px;\n}\n.loader-overlay---2tv2u .loader---2BVR- {\n  margin-top: -16px;\n  margin-left: -16px;\n}\n.table---4nI0A + .loader-overlay---2tv2u {\n  top: 39px;\n}\n.loader---2BVR- {\n  display: inline-block;\n  margin: 0 auto;\n  position: relative;\n  text-indent: -9999em;\n  vertical-align: top;\n  border: 2px solid rgba(0,0,0,0.2);\n  border-left-color: rgba(0,0,0,0.8);\n  -webkit-transform: translateZ(0);\n  -moz-transform: translateZ(0);\n  -o-transform: translateZ(0);\n  -ms-transform: translateZ(0);\n  transform: translateZ(0);\n  -webkit-animation: spinner---CmkKg 1s infinite linear;\n  -moz-animation: spinner---CmkKg 1s infinite linear;\n  -o-animation: spinner---CmkKg 1s infinite linear;\n  -ms-animation: spinner---CmkKg 1s infinite linear;\n  animation: spinner---CmkKg 1s infinite linear;\n  border-radius: 50%;\n  width: 32px;\n  height: 32px;\n}\n.loader-large---2lAcm {\n  width: 56px;\n  height: 56px;\n}\n.loader-small---4hf-S {\n  width: 16px;\n  height: 16px;\n}\n@-moz-keyframes spinner---CmkKg {\n  0% {\n    -webkit-transform: rotate(0deg);\n    -moz-transform: rotate(0deg);\n    -o-transform: rotate(0deg);\n    -ms-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n  100% {\n    -webkit-transform: rotate(360deg);\n    -moz-transform: rotate(360deg);\n    -o-transform: rotate(360deg);\n    -ms-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n@-webkit-keyframes spinner---CmkKg {\n  0% {\n    -webkit-transform: rotate(0deg);\n    -moz-transform: rotate(0deg);\n    -o-transform: rotate(0deg);\n    -ms-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n  100% {\n    -webkit-transform: rotate(360deg);\n    -moz-transform: rotate(360deg);\n    -o-transform: rotate(360deg);\n    -ms-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n@-o-keyframes spinner---CmkKg {\n  0% {\n    -webkit-transform: rotate(0deg);\n    -moz-transform: rotate(0deg);\n    -o-transform: rotate(0deg);\n    -ms-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n  100% {\n    -webkit-transform: rotate(360deg);\n    -moz-transform: rotate(360deg);\n    -o-transform: rotate(360deg);\n    -ms-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n@keyframes spinner---CmkKg {\n  0% {\n    -webkit-transform: rotate(0deg);\n    -moz-transform: rotate(0deg);\n    -o-transform: rotate(0deg);\n    -ms-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n  100% {\n    -webkit-transform: rotate(360deg);\n    -moz-transform: rotate(360deg);\n    -o-transform: rotate(360deg);\n    -ms-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n", ""]);
+exports.push([module.i, ".table-wrapper---Nn8DN {\n  border: 1px solid #ddd;\n  position: relative;\n}\n.table---4nI0A {\n  width: 100%;\n  max-width: 100%;\n  table-layout: fixed;\n  background-color: #fff;\n  overflow: auto;\n}\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS,\n.table---4nI0A > .tbody---26gFd > .tr---H4SLB > .th---2_qSS,\n.table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS,\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B,\n.table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B,\n.table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B {\n  padding: 8px 12px;\n  vertical-align: middle;\n  display: inline-block;\n  overflow: hidden;\n}\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS > .td-content---2Mdz2,\n.table---4nI0A > .tbody---26gFd > .tr---H4SLB > .th---2_qSS > .td-content---2Mdz2,\n.table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS > .td-content---2Mdz2,\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B > .td-content---2Mdz2,\n.table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B > .td-content---2Mdz2,\n.table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B > .td-content---2Mdz2 {\n  position: relative;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n  -moz-transform: translateY(-50%);\n  -o-transform: translateY(-50%);\n  -ms-transform: translateY(-50%);\n  transform: translateY(-50%);\n}\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS a,\n.table---4nI0A > .tbody---26gFd > .tr---H4SLB > .th---2_qSS a,\n.table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS a,\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B a,\n.table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B a,\n.table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B a {\n  text-decoration: none;\n}\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS {\n  color: #777;\n  font-weight: bold;\n}\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB:first-child > .th---2_qSS,\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB:first-child > .td---2vh6B {\n  border-top: 0;\n}\n.table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B > .td-content---2Mdz2 {\n  white-space: normal;\n}\n.table---4nI0A .clickable-column---1Ldga {\n  color: inherit;\n  display: block;\n}\n.table---4nI0A .clickable-column---1Ldga:hover {\n  background-color: #e6e6e6;\n  cursor: pointer;\n}\n.table-extend-column-width---224gB .table---4nI0A > .thead---F7gFU > .tr---H4SLB,\n.table-extend-column-width---224gB .table---4nI0A > .tbody---26gFd > .tr---H4SLB,\n.table-extend-column-width---224gB .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB {\n  white-space: nowrap;\n}\n.tr-expand---2ULb6 {\n  border-bottom: 1px solid #ddd;\n}\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS,\n.table-bordered---1t2f2 .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .th---2_qSS,\n.table-bordered---1t2f2 .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS,\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B,\n.table-bordered---1t2f2 .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B,\n.table-bordered---1t2f2 .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B {\n  border: 1px solid #ddd;\n  border-width: 0 1px 1px 0;\n}\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS:first-child,\n.table-bordered---1t2f2 .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .th---2_qSS:first-child,\n.table-bordered---1t2f2 .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS:first-child,\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B:first-child,\n.table-bordered---1t2f2 .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B:first-child,\n.table-bordered---1t2f2 .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B:first-child {\n  border-left-width: 0;\n}\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS:last-of-type,\n.table-bordered---1t2f2 .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .th---2_qSS:last-of-type,\n.table-bordered---1t2f2 .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS:last-of-type,\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B:last-of-type,\n.table-bordered---1t2f2 .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B:last-of-type,\n.table-bordered---1t2f2 .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B:last-of-type {\n  border-right-width: 0;\n}\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS,\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B {\n  background-color: #eee;\n  border-bottom-width: 2px;\n  border-bottom-color: #ccc;\n}\n.table-bordered---1t2f2 .table---4nI0A > .tbody---26gFd > .tr---H4SLB:last-of-type > .td---2vh6B {\n  border-bottom-width: 0;\n}\n.table-fixed-header---3s7iS .table---4nI0A > .thead---F7gFU {\n  overflow: hidden;\n}\n.table-fixed-header---3s7iS .table---4nI0A > .tbody---26gFd {\n  overflow: auto;\n}\n.table---4nI0A.table-fixed-left-container---XMhgL {\n  position: absolute;\n  top: 0;\n  background-color: #fff;\n  width: auto;\n  overflow: hidden;\n}\n.table---4nI0A.table-fixed-left-container---XMhgL > .thead---F7gFU > .tr---H4SLB > .th---2_qSS:last-child,\n.table---4nI0A.table-fixed-left-container---XMhgL > .tbody---26gFd > .tr---H4SLB > .th---2_qSS:last-child,\n.table---4nI0A.table-fixed-left-container---XMhgL > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS:last-child,\n.table---4nI0A.table-fixed-left-container---XMhgL > .thead---F7gFU > .tr---H4SLB > .td---2vh6B:last-child,\n.table---4nI0A.table-fixed-left-container---XMhgL > .tbody---26gFd > .tr---H4SLB > .td---2vh6B:last-child,\n.table---4nI0A.table-fixed-left-container---XMhgL > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B:last-child {\n  border-right-width: 1px;\n}\n.table---4nI0A.table-fixed-left-container---XMhgL > .tbody---26gFd {\n  overflow-x: hidden;\n  overflow-y: auto;\n}\n.table-hover---vAzWN .table---4nI0A > .tbody---26gFd > .tr---H4SLB:hover,\n.table-hover---vAzWN .table---4nI0A > .tbody---26gFd > .tr---H4SLB.tr-hover---3Dpwe {\n  background-color: #e6f4fc;\n}\n.table-hover---vAzWN .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B.td-link---1wbR-:hover {\n  cursor: pointer;\n}\n.table-hover---vAzWN .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B.td-link---1wbR-:hover a {\n  text-decoration: underline;\n  color: #db3d44;\n}\n.table-minimalism---1M3bc.table-wrapper---Nn8DN {\n  border: 0;\n}\n.table-minimalism---1M3bc .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS,\n.table-minimalism---1M3bc .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .th---2_qSS,\n.table-minimalism---1M3bc .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS,\n.table-minimalism---1M3bc .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B,\n.table-minimalism---1M3bc .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B,\n.table-minimalism---1M3bc .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B {\n  border-bottom: 1px solid #ddd;\n}\n.table-minimalism---1M3bc .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS,\n.table-minimalism---1M3bc .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B {\n  border-bottom-width: 2px;\n  border-bottom-color: #ccc;\n}\n.table-minimalism---1M3bc .table---4nI0A .clickable-column---1Ldga:hover {\n  background-color: inherit;\n}\n.table-no-data---19dlA .table---4nI0A > .tbody---26gFd > .table-placeholder---p9qSt {\n  text-align: center;\n  padding: 26px 12px;\n  color: #999;\n}\n.table-sortable---3OW0J .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS {\n  white-space: nowrap;\n  padding: 0;\n}\n.table-sortable---3OW0J .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS > .td-content---2Mdz2 > *:first-child {\n  padding: 8px 12px;\n}\n.table-sortable---3OW0J .table---4nI0A .column-sort---1nz7N {\n  color: #222;\n}\n.table-sortable---3OW0J .table---4nI0A .column-sort---1nz7N:hover,\n.table-sortable---3OW0J .table---4nI0A .column-sort---1nz7N:focus {\n  color: #222;\n  text-decoration: none;\n}\n.table-sortable---3OW0J .table---4nI0A .column-sort---1nz7N > .overflow-ellipsis---1F1Bs {\n  vertical-align: middle;\n  display: inline-block;\n  overflow: hidden;\n  -o-text-overflow: ellipsis;\n  text-overflow: ellipsis;\n  max-width: calc(100% - 16px);\n}\n.table-sortable---3OW0J .table---4nI0A .column-sort---1nz7N > i {\n  vertical-align: middle;\n}\n.table-sortable---3OW0J .table---4nI0A .column-sort-asc---VbD-9,\n.table-sortable---3OW0J .table---4nI0A .column-sort-desc---LdkEY {\n  vertical-align: top;\n  margin-top: 1px;\n  display: inline-block;\n  width: 16px;\n  height: 16px;\n}\n.table-sortable---3OW0J .table---4nI0A .column-sort-asc---VbD-9 {\n  background-image: url(" + __webpack_require__("../src/icon-thSortAscending.svg") + ");\n}\n.table-sortable---3OW0J .table---4nI0A .column-sort-desc---LdkEY {\n  background-image: url(" + __webpack_require__("../src/icon-thSortDescending.svg") + ");\n}\n.loader-overlay---2tv2u {\n  background-color: rgba(255,255,255,0.8);\n  cursor: wait;\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n}\n.loader-overlay---2tv2u .loader---2BVR-,\n.loader-overlay---2tv2u .loader-small---4hf-S,\n.loader-overlay---2tv2u .loader-large---2lAcm {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n}\n.loader-overlay---2tv2u .loader-large---2lAcm {\n  margin-top: -28px;\n  margin-left: -28px;\n}\n.loader-overlay---2tv2u .loader-small---4hf-S {\n  margin-top: -8px;\n  margin-left: -8px;\n}\n.loader-overlay---2tv2u .loader---2BVR- {\n  margin-top: -16px;\n  margin-left: -16px;\n}\n.table---4nI0A + .loader-overlay---2tv2u {\n  top: 39px;\n}\n.loader---2BVR- {\n  display: inline-block;\n  margin: 0 auto;\n  position: relative;\n  text-indent: -9999em;\n  vertical-align: top;\n  border: 2px solid rgba(0,0,0,0.2);\n  border-left-color: rgba(0,0,0,0.8);\n  -webkit-transform: translateZ(0);\n  -moz-transform: translateZ(0);\n  -o-transform: translateZ(0);\n  -ms-transform: translateZ(0);\n  transform: translateZ(0);\n  -webkit-animation: spinner---CmkKg 1s infinite linear;\n  -moz-animation: spinner---CmkKg 1s infinite linear;\n  -o-animation: spinner---CmkKg 1s infinite linear;\n  -ms-animation: spinner---CmkKg 1s infinite linear;\n  animation: spinner---CmkKg 1s infinite linear;\n  border-radius: 50%;\n  width: 32px;\n  height: 32px;\n}\n.loader-large---2lAcm {\n  width: 56px;\n  height: 56px;\n}\n.loader-small---4hf-S {\n  width: 16px;\n  height: 16px;\n}\n@-moz-keyframes spinner---CmkKg {\n  0% {\n    -webkit-transform: rotate(0deg);\n    -moz-transform: rotate(0deg);\n    -o-transform: rotate(0deg);\n    -ms-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n  100% {\n    -webkit-transform: rotate(360deg);\n    -moz-transform: rotate(360deg);\n    -o-transform: rotate(360deg);\n    -ms-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n@-webkit-keyframes spinner---CmkKg {\n  0% {\n    -webkit-transform: rotate(0deg);\n    -moz-transform: rotate(0deg);\n    -o-transform: rotate(0deg);\n    -ms-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n  100% {\n    -webkit-transform: rotate(360deg);\n    -moz-transform: rotate(360deg);\n    -o-transform: rotate(360deg);\n    -ms-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n@-o-keyframes spinner---CmkKg {\n  0% {\n    -webkit-transform: rotate(0deg);\n    -moz-transform: rotate(0deg);\n    -o-transform: rotate(0deg);\n    -ms-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n  100% {\n    -webkit-transform: rotate(360deg);\n    -moz-transform: rotate(360deg);\n    -o-transform: rotate(360deg);\n    -ms-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n@keyframes spinner---CmkKg {\n  0% {\n    -webkit-transform: rotate(0deg);\n    -moz-transform: rotate(0deg);\n    -o-transform: rotate(0deg);\n    -ms-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n  100% {\n    -webkit-transform: rotate(360deg);\n    -moz-transform: rotate(360deg);\n    -o-transform: rotate(360deg);\n    -ms-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n", ""]);
 
 // exports
 exports.locals = {
@@ -3420,8 +3420,6 @@ exports.locals = {
 	"columnSortAsc": "column-sort-asc---VbD-9",
 	"column-sort-desc": "column-sort-desc---LdkEY",
 	"columnSortDesc": "column-sort-desc---LdkEY",
-	"table-toolbar": "table-toolbar---3G5Ue",
-	"tableToolbar": "table-toolbar---3G5Ue",
 	"loader-overlay": "loader-overlay---2tv2u",
 	"loaderOverlay": "loader-overlay---2tv2u",
 	"loader": "loader---2BVR-",
@@ -3551,7 +3549,7 @@ exports = module.exports = __webpack_require__("../node_modules/css-loader/lib/c
 
 
 // module
-exports.push([module.i, ".section-group---2NZXl {\n  margin-top: 20px;\n}\n.tr-active---3OvWL > [class*=\"td\"] {\n  background-color: #fcf8da;\n}\n.expand-icon---zy7O- {\n  cursor: pointer;\n  display: inline-block;\n  width: 16px;\n  height: 16px;\n  text-align: center;\n  line-height: 16px;\n  border: 1px solid #e9e9e9;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  background: #fff;\n}\n.row-expanded---2LFtA:after {\n  content: '-';\n}\n.row-collapsed---6zMxF:after {\n  content: '+';\n}\n", ""]);
+exports.push([module.i, ".section-group---2NZXl {\n  margin-top: 20px;\n}\n.tr-active---3OvWL > [class*=\"td\"] {\n  background-color: #fcf8da;\n}\n.expand-icon---zy7O- {\n  cursor: pointer;\n  display: inline-block;\n  width: 16px;\n  height: 16px;\n  text-align: center;\n  line-height: 16px;\n  border: 1px solid #e9e9e9;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  background: #fff;\n}\n.row-expanded---2LFtA:after {\n  content: '-';\n}\n.row-collapsed---6zMxF:after {\n  content: '+';\n}\n.table-toolbar---3PBhb {\n  position: relative;\n  background-color: #f8f8f8;\n  border-bottom: 1px solid #ddd;\n  padding: 8px 16px;\n  zoom: 1;\n}\n.table-toolbar---3PBhb:before,\n.table-toolbar---3PBhb:after {\n  content: \"\";\n  display: table;\n}\n.table-toolbar---3PBhb:after {\n  clear: both;\n}\n.tfoot---2IV8S .table-toolbar---3PBhb {\n  border-bottom: none;\n  border-top: 1px solid #ddd;\n}\n", ""]);
 
 // exports
 exports.locals = {
@@ -3564,7 +3562,10 @@ exports.locals = {
 	"row-expanded": "row-expanded---2LFtA",
 	"rowExpanded": "row-expanded---2LFtA",
 	"row-collapsed": "row-collapsed---6zMxF",
-	"rowCollapsed": "row-collapsed---6zMxF"
+	"rowCollapsed": "row-collapsed---6zMxF",
+	"table-toolbar": "table-toolbar---3PBhb",
+	"tableToolbar": "table-toolbar---3PBhb",
+	"tfoot": "tfoot---2IV8S"
 };
 
 /***/ }),
@@ -47143,7 +47144,7 @@ var Table = (_temp2 = _class = function (_PureComponent) {
             args[_key] = arguments[_key];
         }
 
-        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Table.__proto__ || Object.getPrototypeOf(Table)).call.apply(_ref, [this].concat(args))), _this), _this.mainTable = null, _this.state = _this.getInitialState(), _this.actions = {
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Table.__proto__ || Object.getPrototypeOf(Table)).call.apply(_ref, [this].concat(args))), _this), _this.mainTable = null, _this.state = _this.getInitState(), _this.actions = {
             detectScrollTarget: function detectScrollTarget(e) {
                 if (_this.scrollTarget !== e.currentTarget) {
                     _this.scrollTarget = e.currentTarget;
@@ -47170,8 +47171,8 @@ var Table = (_temp2 = _class = function (_PureComponent) {
     }
 
     _createClass(Table, [{
-        key: 'getInitialState',
-        value: function getInitialState() {
+        key: 'getInitState',
+        value: function getInitState() {
             return {
                 currentHoverKey: null,
                 scrollTop: 0
@@ -47341,7 +47342,9 @@ var Table = (_temp2 = _class = function (_PureComponent) {
 }, _class.defaultProps = {
     data: [],
     bordered: true,
+    hoverable: true,
     loading: false,
+    sortable: false,
     useFixedHeader: false
 }, _temp2);
 exports.default = Table;
@@ -47750,50 +47753,11 @@ var TableHeader = (_temp = _class = function (_PureComponent) {
     return TableHeader;
 }(_react.PureComponent), _class.propTypes = {
     columns: _propTypes2.default.array,
-    scrollLeft: _propTypes2.default.number,
-    sortable: _propTypes2.default.bool
+    scrollLeft: _propTypes2.default.number
 }, _class.defaultProps = {
-    columns: [],
-    sortable: false
+    columns: []
 }, _temp);
 exports.default = TableHeader;
-
-/***/ }),
-
-/***/ "../src/TablePagination.jsx":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _reactPaginations = __webpack_require__("../node_modules/@trendmicro/react-paginations/lib/index.js");
-
-var _react = __webpack_require__("../node_modules/react/react.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-
-exports.default = function (_ref) {
-    var style = _ref.style,
-        props = _objectWithoutProperties(_ref, ['style']);
-
-    return _react2.default.createElement(_reactPaginations.TablePagination, _extends({}, props, {
-        style: _extends({
-            position: 'absolute',
-            right: 0,
-            top: 0
-        }, style)
-    }));
-};
 
 /***/ }),
 
@@ -48047,7 +48011,7 @@ var TableTemplate = (_temp2 = _class = function (_PureComponent) {
             args[_key] = arguments[_key];
         }
 
-        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = TableTemplate.__proto__ || Object.getPrototypeOf(TableTemplate)).call.apply(_ref, [this].concat(args))), _this), _this.state = _this.getInitialState(), _this.actions = {
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = TableTemplate.__proto__ || Object.getPrototypeOf(TableTemplate)).call.apply(_ref, [this].concat(args))), _this), _this.state = _this.getInitState(), _this.actions = {
             handleBodyScroll: function handleBodyScroll(e) {
                 var onScroll = _this.props.onScroll;
 
@@ -48059,7 +48023,8 @@ var TableTemplate = (_temp2 = _class = function (_PureComponent) {
             getTableCellWidth: function getTableCellWidth() {
                 var _this$props = _this.props,
                     averageColumnsWidth = _this$props.averageColumnsWidth,
-                    columns = _this$props.columns;
+                    columns = _this$props.columns,
+                    loading = _this$props.loading;
 
                 var thsWidth = [];
                 if (_this.tableHeader) {
@@ -48092,7 +48057,7 @@ var TableTemplate = (_temp2 = _class = function (_PureComponent) {
                     });
                 }
 
-                if (averageColumnsWidth) {
+                if (averageColumnsWidth || loading) {
                     cellWidth = (totalWidth - customWidth.width) / (columns.length - customColumns.length);
                 }
 
@@ -48125,7 +48090,7 @@ var TableTemplate = (_temp2 = _class = function (_PureComponent) {
                         var _customColumn = columns[_j2];
                         if (_customColumn && _customColumn.width) {
                             cellsWidth[_j2] = _customColumn.width;
-                        } else if (averageColumnsWidth) {
+                        } else {
                             cellsWidth[_j2] = cellWidth;
                         }
                         cellTotalWidth += cellsWidth[_j2];
@@ -48309,8 +48274,8 @@ var TableTemplate = (_temp2 = _class = function (_PureComponent) {
     }
 
     _createClass(TableTemplate, [{
-        key: 'getInitialState',
-        value: function getInitialState() {
+        key: 'getInitState',
+        value: function getInitState() {
             return {
                 scrollLeft: 0,
                 tableHeight: 0,
@@ -48333,19 +48298,25 @@ var TableTemplate = (_temp2 = _class = function (_PureComponent) {
             window.removeEventListener('resize', getTableHeight);
         }
     }, {
+        key: 'componentDidUpdate',
+        value: function componentDidUpdate(prevProps, prevState) {
+            if (prevProps.data !== this.props.data) {
+                var getTableHeight = this.actions.getTableHeight;
+
+                getTableHeight();
+            }
+        }
+    }, {
         key: 'renderHeader',
         value: function renderHeader() {
             var _this2 = this;
 
-            var _props = this.props,
-                columns = _props.columns,
-                sortable = _props.sortable;
+            var columns = this.props.columns;
             var scrollLeft = this.state.scrollLeft;
 
             return _react2.default.createElement(_TableHeader2.default, {
                 scrollLeft: scrollLeft,
                 columns: columns,
-                sortable: sortable,
                 ref: function ref(node) {
                     _this2.tableHeader = node;
                 }
@@ -48356,15 +48327,15 @@ var TableTemplate = (_temp2 = _class = function (_PureComponent) {
         value: function renderBody() {
             var _this3 = this;
 
-            var _props2 = this.props,
-                columns = _props2.columns,
-                currentHoverKey = _props2.currentHoverKey,
-                data = _props2.data,
-                onMouseOver = _props2.onMouseOver,
-                onTouchStart = _props2.onTouchStart,
-                onRowHover = _props2.onRowHover,
-                scrollTop = _props2.scrollTop,
-                props = _objectWithoutProperties(_props2, ['columns', 'currentHoverKey', 'data', 'onMouseOver', 'onTouchStart', 'onRowHover', 'scrollTop']);
+            var _props = this.props,
+                columns = _props.columns,
+                currentHoverKey = _props.currentHoverKey,
+                data = _props.data,
+                onMouseOver = _props.onMouseOver,
+                onTouchStart = _props.onTouchStart,
+                onRowHover = _props.onRowHover,
+                scrollTop = _props.scrollTop,
+                props = _objectWithoutProperties(_props, ['columns', 'currentHoverKey', 'data', 'onMouseOver', 'onTouchStart', 'onRowHover', 'scrollTop']);
 
             var bodyHeight = this.state.bodyHeight;
             var handleBodyScroll = this.actions.handleBodyScroll;
@@ -48389,9 +48360,9 @@ var TableTemplate = (_temp2 = _class = function (_PureComponent) {
         value: function render() {
             var _this4 = this;
 
-            var _props3 = this.props,
-                className = _props3.className,
-                showHeader = _props3.showHeader;
+            var _props2 = this.props,
+                className = _props2.className,
+                showHeader = _props2.showHeader;
             var tableHeight = this.state.tableHeight;
 
             var customStyles = {
@@ -48434,7 +48405,6 @@ var TableTemplate = (_temp2 = _class = function (_PureComponent) {
     onScroll: _propTypes2.default.func,
     onRowHover: _propTypes2.default.func,
     showHeader: _propTypes2.default.bool,
-    sortable: _propTypes2.default.bool,
     scrollTop: _propTypes2.default.number,
     title: _propTypes2.default.func
 }, _class.defaultProps = {
@@ -48443,52 +48413,9 @@ var TableTemplate = (_temp2 = _class = function (_PureComponent) {
     emptyText: function emptyText() {
         return 'No Data';
     },
-    hoverable: true,
-    showHeader: true,
-    sortable: false
+    showHeader: true
 }, _temp2);
 exports.default = TableTemplate;
-
-/***/ }),
-
-/***/ "../src/TableToolbar.jsx":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _classnames = __webpack_require__("../node_modules/classnames/index.js");
-
-var _classnames2 = _interopRequireDefault(_classnames);
-
-var _react = __webpack_require__("../node_modules/react/react.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _index = __webpack_require__("../src/index.styl");
-
-var _index2 = _interopRequireDefault(_index);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-
-var TableToolbar = function TableToolbar(_ref) {
-    var className = _ref.className,
-        props = _objectWithoutProperties(_ref, ['className']);
-
-    return _react2.default.createElement('div', _extends({}, props, {
-        className: (0, _classnames2.default)(className, _index2.default.tableToolbar)
-    }));
-};
-
-exports.default = TableToolbar;
 
 /***/ }),
 
@@ -48516,18 +48443,7 @@ var _Table = __webpack_require__("../src/Table.jsx");
 
 var _Table2 = _interopRequireDefault(_Table);
 
-var _TableToolbar = __webpack_require__("../src/TableToolbar.jsx");
-
-var _TableToolbar2 = _interopRequireDefault(_TableToolbar);
-
-var _TablePagination = __webpack_require__("../src/TablePagination.jsx");
-
-var _TablePagination2 = _interopRequireDefault(_TablePagination);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-_Table2.default.Toolbar = _TableToolbar2.default;
-_Table2.default.Pagination = _TablePagination2.default;
 
 module.exports = _Table2.default;
 
@@ -49434,6 +49350,8 @@ __webpack_require__("../node_modules/@trendmicro/react-paginations/dist/react-pa
 
 var _reactButtons = __webpack_require__("../node_modules/@trendmicro/react-buttons/lib/index.js");
 
+var _reactPaginations = __webpack_require__("../node_modules/@trendmicro/react-paginations/lib/index.js");
+
 var _react = __webpack_require__("../node_modules/react/react.js");
 
 var _react2 = _interopRequireDefault(_react);
@@ -49524,14 +49442,19 @@ var _default = function (_Component) {
                             height: 180,
                             title: function title() {
                                 return _react2.default.createElement(
-                                    _src2.default.Toolbar,
-                                    null,
+                                    'div',
+                                    { className: _index2.default.tableToolbar },
                                     _react2.default.createElement(
                                         _reactButtons.Button,
                                         { btnStyle: 'flat' },
                                         'Export'
                                     ),
-                                    _react2.default.createElement(_src2.default.Pagination, {
+                                    _react2.default.createElement(_reactPaginations.TablePagination, {
+                                        style: {
+                                            position: 'absolute',
+                                            right: 0,
+                                            top: 0
+                                        },
                                         page: page,
                                         pageLength: pageLength,
                                         totalRecords: totalRecords,
@@ -49563,14 +49486,19 @@ var _default = function (_Component) {
                             useFixedHeader: true,
                             title: function title() {
                                 return _react2.default.createElement(
-                                    _src2.default.Toolbar,
-                                    null,
+                                    'div',
+                                    { className: _index2.default.tableToolbar },
                                     _react2.default.createElement(
                                         _reactButtons.Button,
                                         { btnStyle: 'flat' },
                                         'Export'
                                     ),
-                                    _react2.default.createElement(_src2.default.Pagination, {
+                                    _react2.default.createElement(_reactPaginations.TablePagination, {
+                                        style: {
+                                            position: 'absolute',
+                                            right: 0,
+                                            top: 0
+                                        },
                                         page: page,
                                         pageLength: pageLength,
                                         totalRecords: totalRecords,
@@ -49591,14 +49519,19 @@ var _default = function (_Component) {
                             },
                             footer: function footer() {
                                 return _react2.default.createElement(
-                                    _src2.default.Toolbar,
-                                    null,
+                                    'div',
+                                    { className: _index2.default.tableToolbar },
                                     _react2.default.createElement(
                                         _reactButtons.Button,
                                         { btnStyle: 'flat' },
                                         'Export'
                                     ),
-                                    _react2.default.createElement(_src2.default.Pagination, {
+                                    _react2.default.createElement(_reactPaginations.TablePagination, {
+                                        style: {
+                                            position: 'absolute',
+                                            right: 0,
+                                            top: 0
+                                        },
                                         page: page,
                                         pageLength: pageLength,
                                         totalRecords: totalRecords,
@@ -50009,4 +49942,4 @@ exports.default = _default;
 /***/ })
 
 /******/ });
-//# sourceMappingURL=bundle.js.map?9a7d79073427d4c1f1ad
+//# sourceMappingURL=bundle.js.map?8e0b3126d508f93ed53c
