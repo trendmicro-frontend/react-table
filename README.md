@@ -18,6 +18,7 @@ Demo: https://trendmicro-frontend.github.io/react-table
 
   ```js
   import Table from '@trendmicro/react-table';
+  import { TablePagination } from '@trendmicro/react-paginations';
 
   // Be sure to include styles at some point, probably during your bootstraping
   import '@trendmicro/react-table/dist/react-table.css';
@@ -35,11 +36,11 @@ Demo: https://trendmicro-frontend.github.io/react-table
     columns={columns}
     data={data}
     title={() => (
-        <Table.Toolbar>
+        <div className={styles.tableToolbar}>
             <Button btnStyle="flat">
                 Export
             </Button>
-            <Table.Pagination
+            <TablePagination
                 page={page}
                 pageLength={pageLength}
                 totalRecords={totalRecords}
@@ -49,7 +50,7 @@ Demo: https://trendmicro-frontend.github.io/react-table
                 prevPageRenderer={() => <i className="fa fa-angle-left" />}
                 nextPageRenderer={() => <i className="fa fa-angle-right" />}
             />
-        </Table.Toolbar>
+        </div>
     )}
 />
 ```
@@ -92,16 +93,6 @@ dataIndex | String               |         | Display field of the data record.
 width     | Number               |         | Width of the specific proportion calculation according to the width of the columns.
 fixed     | Boolean              |         | This column will be fixed af left side when table scroll horizontally.
 render    | Function(value, row) |         | The render function of cell, has two params: the text of this cell, the record of this row, it's return a react node.
-
-#### TableToolbar
-
-Name | Type | Default | Description 
-:--- | :--- | :------ | :----------
-
-#### TablePagination
-
-Name | Type | Default | Description 
-:--- | :--- | :------ | :----------
 
 ## License
 
