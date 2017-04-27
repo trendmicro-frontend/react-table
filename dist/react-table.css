@@ -1,6 +1,9 @@
-/*! react-table v0.3.6 | (c) 2017 Trend Micro Inc. | MIT | https://github.com/trendmicro-frontend/react-table */
+/*! react-table v0.3.7 | (c) 2017 Trend Micro Inc. | MIT | https://github.com/trendmicro-frontend/react-table */
 .table---table-wrapper---1t2D3 {
   border: 1px solid #ddd;
+  position: relative;
+}
+.table---table-wrapper---1t2D3 > .table---table-area---KA_N2 {
   position: relative;
 }
 .table---table---2aBqd {
