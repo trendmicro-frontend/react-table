@@ -59,13 +59,39 @@ class Table extends PureComponent {
                     currentHoverKey: isHover ? key : null
                 });
             }
+        },
+        getTableHeight: () => {
+            const { height } = this.props;
+            const headerHeight = this.title ? this.title.getBoundingClientRect().height : 0;
+            const footerHeight = this.foot ? this.foot.getBoundingClientRect().height : 0;
+            const tableHeight = height - headerHeight - footerHeight;
+            this.setState({ tableHeight });
         }
     };
+
+    componentDidMount() {
+        const { getTableHeight } = this.actions;
+        window.addEventListener('resize', getTableHeight);
+        getTableHeight();
+    }
+
+    componentWillUnmount() {
+        const { getTableHeight } = this.actions;
+        window.removeEventListener('resize', getTableHeight);
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.data !== this.props.data || prevProps.height !== this.props.height) {
+            const { getTableHeight } = this.actions;
+            getTableHeight();
+        }
+    }
 
     getInitState () {
         return {
             currentHoverKey: null,
-            scrollTop: 0
+            scrollTop: 0,
+            tableHeight: 0
         };
     }
 
@@ -89,12 +115,13 @@ class Table extends PureComponent {
     }
 
     renderTable() {
-        const { currentHoverKey, scrollTop } = this.state;
+        const { currentHoverKey, scrollTop, tableHeight } = this.state;
         const { detectScrollTarget, handleBodyScroll, handleRowHover } = this.actions;
         return (
             <TableTemplate
                 {...this.props}
                 currentHoverKey={currentHoverKey}
+                height={tableHeight}
                 onMouseOver={detectScrollTarget}
                 onRowHover={handleRowHover}
                 onTouchStart={detectScrollTarget}
@@ -108,7 +135,7 @@ class Table extends PureComponent {
     }
 
     renderFixedLeftTable() {
-        const { currentHoverKey, scrollTop } = this.state;
+        const { currentHoverKey, scrollTop, tableHeight } = this.state;
         const { detectScrollTarget, handleBodyScroll, handleRowHover } = this.actions;
         let fixedColumns = this.leftColumns();
         return (
@@ -117,6 +144,7 @@ class Table extends PureComponent {
                 columns={fixedColumns}
                 currentHoverKey={currentHoverKey}
                 className={styles.tableFixedLeftContainer}
+                height={tableHeight}
                 isFixed={true}
                 onMouseOver={detectScrollTarget}
                 onRowHover={handleRowHover}
@@ -133,7 +161,12 @@ class Table extends PureComponent {
     renderTitle() {
         const { title } = this.props;
         return (
-            <div className={styles.title}>
+            <div
+                className={styles.title}
+                ref={(node) => {
+                    this.title = node;
+                }}
+            >
                 {title()}
             </div>
         );
@@ -142,7 +175,12 @@ class Table extends PureComponent {
     renderFooter () {
         const { footer } = this.props;
         return (
-            <div className={styles.tfoot}>
+            <div
+                className={styles.tfoot}
+                ref={(node) => {
+                    this.foot = node;
+                }}
+            >
                 {footer()}
             </div>
         );

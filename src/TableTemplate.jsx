@@ -315,12 +315,14 @@ class TableTemplate extends PureComponent {
         window.addEventListener('resize', getTableHeight);
         getTableHeight();
     }
+
     componentWillUnmount() {
         const { getTableHeight } = this.actions;
         window.removeEventListener('resize', getTableHeight);
     }
+
     componentDidUpdate(prevProps, prevState) {
-        if (prevProps.data !== this.props.data) {
+        if (prevProps.data !== this.props.data || prevProps.height !== this.props.height) {
             const { getTableHeight } = this.actions;
             getTableHeight();
         }
