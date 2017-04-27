@@ -134,12 +134,24 @@ class TableTemplate extends PureComponent {
             const bodyRows = tBody.getElementsByClassName(styles.tr);
             let cellHeight = 0;
             let rowsHeight = [];
+            let headerHeight = 0;
+
+            for (let i = 0; i < headerRow.length; i++) {
+                const headerCell = headerRow[i].getElementsByClassName(styles.th);
+                for (let j = 0; j < headerCell.length; j++) {
+                    let th = headerCell[j];
+                    th.style.height = 'auto';
+                    const thHeight = th.getBoundingClientRect().height;
+                    headerHeight = Math.max(cellHeight, thHeight);
+                }
+            }
 
             for (let i = 0; i < bodyRows.length; i++) {
                 const bodyCell = bodyRows[i].getElementsByClassName(styles.td);
                 cellHeight = rowsHeight[i] || 0;
                 for (let j = 0; j < bodyCell.length; j++) {
                     let td = bodyCell[j];
+                    td.style.height = 'auto';
                     const tdHeight = td.getBoundingClientRect().height;
                     cellHeight = Math.max(cellHeight, tdHeight);
                 }
@@ -148,7 +160,7 @@ class TableTemplate extends PureComponent {
 
             return {
                 heights: rowsHeight,
-                headerHeight: headerRow.length > 0 ? headerRow[0].getBoundingClientRect().height : 0
+                headerHeight: headerHeight
             };
         },
         getFixedTableCellsSize: () => {
