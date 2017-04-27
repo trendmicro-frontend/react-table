@@ -186,9 +186,11 @@ class Table extends PureComponent {
                 }}
             >
                 { title && this.renderTitle() }
-                { this.renderTable() }
-                { this.isAnyColumnsLeftFixed() && this.renderFixedLeftTable() }
-                { loading && this.renderLoader() }
+                <div className={styles.tableArea}>
+                    { this.renderTable() }
+                    { this.isAnyColumnsLeftFixed() && this.renderFixedLeftTable() }
+                    { loading && this.renderLoader() }
+                </div>
                 { footer && this.renderFooter() }
             </div>
         );
