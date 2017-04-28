@@ -3371,7 +3371,7 @@ exports = module.exports = __webpack_require__("../node_modules/css-loader/lib/c
 
 
 // module
-exports.push([module.i, ".table-wrapper---Nn8DN {\n  border: 1px solid #ddd;\n  position: relative;\n}\n.table-wrapper---Nn8DN > .table-area---jazFv {\n  position: relative;\n}\n.table---4nI0A {\n  width: 100%;\n  max-width: 100%;\n  table-layout: fixed;\n  background-color: #fff;\n  overflow: auto;\n}\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS,\n.table---4nI0A > .tbody---26gFd > .tr---H4SLB > .th---2_qSS,\n.table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS,\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B,\n.table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B,\n.table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B {\n  padding: 8px 12px;\n  vertical-align: middle;\n  display: inline-block;\n  overflow: hidden;\n}\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS > .td-content---2Mdz2,\n.table---4nI0A > .tbody---26gFd > .tr---H4SLB > .th---2_qSS > .td-content---2Mdz2,\n.table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS > .td-content---2Mdz2,\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B > .td-content---2Mdz2,\n.table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B > .td-content---2Mdz2,\n.table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B > .td-content---2Mdz2 {\n  position: relative;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n  -moz-transform: translateY(-50%);\n  -o-transform: translateY(-50%);\n  -ms-transform: translateY(-50%);\n  transform: translateY(-50%);\n}\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS a,\n.table---4nI0A > .tbody---26gFd > .tr---H4SLB > .th---2_qSS a,\n.table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS a,\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B a,\n.table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B a,\n.table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B a {\n  text-decoration: none;\n}\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS {\n  color: #777;\n  font-weight: bold;\n}\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB:first-child > .th---2_qSS,\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB:first-child > .td---2vh6B {\n  border-top: 0;\n}\n.table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B > .td-content---2Mdz2 {\n  white-space: normal;\n}\n.table---4nI0A .clickable-column---1Ldga {\n  color: inherit;\n  display: block;\n}\n.table---4nI0A .clickable-column---1Ldga:hover {\n  background-color: #e6e6e6;\n  cursor: pointer;\n}\n.table-extend-column-width---224gB .table---4nI0A > .thead---F7gFU > .tr---H4SLB,\n.table-extend-column-width---224gB .table---4nI0A > .tbody---26gFd > .tr---H4SLB,\n.table-extend-column-width---224gB .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB {\n  white-space: nowrap;\n}\n.tr-expand---2ULb6 {\n  border-bottom: 1px solid #ddd;\n}\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS,\n.table-bordered---1t2f2 .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .th---2_qSS,\n.table-bordered---1t2f2 .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS,\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B,\n.table-bordered---1t2f2 .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B,\n.table-bordered---1t2f2 .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B {\n  border: 1px solid #ddd;\n  border-width: 0 1px 1px 0;\n}\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS:first-child,\n.table-bordered---1t2f2 .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .th---2_qSS:first-child,\n.table-bordered---1t2f2 .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS:first-child,\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B:first-child,\n.table-bordered---1t2f2 .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B:first-child,\n.table-bordered---1t2f2 .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B:first-child {\n  border-left-width: 0;\n}\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS:last-of-type,\n.table-bordered---1t2f2 .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .th---2_qSS:last-of-type,\n.table-bordered---1t2f2 .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS:last-of-type,\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B:last-of-type,\n.table-bordered---1t2f2 .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B:last-of-type,\n.table-bordered---1t2f2 .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B:last-of-type {\n  border-right-width: 0;\n}\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS,\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B {\n  background-color: #eee;\n  border-bottom-width: 2px;\n  border-bottom-color: #ccc;\n}\n.table-bordered---1t2f2 .table---4nI0A > .tbody---26gFd > .tr---H4SLB:last-of-type > .td---2vh6B {\n  border-bottom-width: 0;\n}\n.table-fixed-header---3s7iS .table---4nI0A > .thead---F7gFU {\n  overflow: hidden;\n}\n.table-fixed-header---3s7iS .table---4nI0A > .tbody---26gFd {\n  overflow: auto;\n}\n.table---4nI0A.table-fixed-left-container---XMhgL {\n  position: absolute;\n  top: 0;\n  background-color: #fff;\n  width: auto;\n  overflow: hidden;\n}\n.table---4nI0A.table-fixed-left-container---XMhgL > .thead---F7gFU > .tr---H4SLB > .th---2_qSS:last-child,\n.table---4nI0A.table-fixed-left-container---XMhgL > .tbody---26gFd > .tr---H4SLB > .th---2_qSS:last-child,\n.table---4nI0A.table-fixed-left-container---XMhgL > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS:last-child,\n.table---4nI0A.table-fixed-left-container---XMhgL > .thead---F7gFU > .tr---H4SLB > .td---2vh6B:last-child,\n.table---4nI0A.table-fixed-left-container---XMhgL > .tbody---26gFd > .tr---H4SLB > .td---2vh6B:last-child,\n.table---4nI0A.table-fixed-left-container---XMhgL > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B:last-child {\n  border-right-width: 1px;\n}\n.table---4nI0A.table-fixed-left-container---XMhgL > .tbody---26gFd {\n  overflow-x: hidden;\n  overflow-y: auto;\n}\n.table-hover---vAzWN .table---4nI0A > .tbody---26gFd > .tr---H4SLB:hover,\n.table-hover---vAzWN .table---4nI0A > .tbody---26gFd > .tr---H4SLB.tr-hover---3Dpwe {\n  background-color: #e6f4fc;\n}\n.table-hover---vAzWN .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B.td-link---1wbR-:hover {\n  cursor: pointer;\n}\n.table-hover---vAzWN .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B.td-link---1wbR-:hover a {\n  text-decoration: underline;\n  color: #db3d44;\n}\n.table-minimalism---1M3bc.table-wrapper---Nn8DN {\n  border: 0;\n}\n.table-minimalism---1M3bc .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS,\n.table-minimalism---1M3bc .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .th---2_qSS,\n.table-minimalism---1M3bc .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS,\n.table-minimalism---1M3bc .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B,\n.table-minimalism---1M3bc .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B,\n.table-minimalism---1M3bc .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B {\n  border-bottom: 1px solid #ddd;\n}\n.table-minimalism---1M3bc .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS,\n.table-minimalism---1M3bc .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B {\n  border-bottom-width: 2px;\n  border-bottom-color: #ccc;\n}\n.table-minimalism---1M3bc .table---4nI0A .clickable-column---1Ldga:hover {\n  background-color: inherit;\n}\n.table-no-data---19dlA .table---4nI0A > .tbody---26gFd > .table-placeholder---p9qSt {\n  text-align: center;\n  padding: 26px 12px;\n  color: #999;\n}\n.table-sortable---3OW0J .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS {\n  white-space: nowrap;\n  padding: 0;\n}\n.table-sortable---3OW0J .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS > .td-content---2Mdz2 > *:first-child {\n  padding: 8px 12px;\n}\n.table-sortable---3OW0J .table---4nI0A .column-sort---1nz7N {\n  color: #222;\n}\n.table-sortable---3OW0J .table---4nI0A .column-sort---1nz7N:hover,\n.table-sortable---3OW0J .table---4nI0A .column-sort---1nz7N:focus {\n  color: #222;\n  text-decoration: none;\n}\n.table-sortable---3OW0J .table---4nI0A .column-sort---1nz7N > .overflow-ellipsis---1F1Bs {\n  vertical-align: middle;\n  display: inline-block;\n  overflow: hidden;\n  -o-text-overflow: ellipsis;\n  text-overflow: ellipsis;\n  max-width: calc(100% - 16px);\n}\n.table-sortable---3OW0J .table---4nI0A .column-sort---1nz7N > i {\n  vertical-align: middle;\n}\n.table-sortable---3OW0J .table---4nI0A .column-sort-asc---VbD-9,\n.table-sortable---3OW0J .table---4nI0A .column-sort-desc---LdkEY {\n  vertical-align: top;\n  margin-top: 1px;\n  display: inline-block;\n  width: 16px;\n  height: 16px;\n}\n.table-sortable---3OW0J .table---4nI0A .column-sort-asc---VbD-9 {\n  background-image: url(" + __webpack_require__("../src/icon-thSortAscending.svg") + ");\n}\n.table-sortable---3OW0J .table---4nI0A .column-sort-desc---LdkEY {\n  background-image: url(" + __webpack_require__("../src/icon-thSortDescending.svg") + ");\n}\n.loader-overlay---2tv2u {\n  background-color: rgba(255,255,255,0.8);\n  cursor: wait;\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n}\n.loader-overlay---2tv2u .loader---2BVR-,\n.loader-overlay---2tv2u .loader-small---4hf-S,\n.loader-overlay---2tv2u .loader-large---2lAcm {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n}\n.loader-overlay---2tv2u .loader-large---2lAcm {\n  margin-top: -28px;\n  margin-left: -28px;\n}\n.loader-overlay---2tv2u .loader-small---4hf-S {\n  margin-top: -8px;\n  margin-left: -8px;\n}\n.loader-overlay---2tv2u .loader---2BVR- {\n  margin-top: -16px;\n  margin-left: -16px;\n}\n.table---4nI0A + .loader-overlay---2tv2u {\n  top: 39px;\n}\n.loader---2BVR- {\n  display: inline-block;\n  margin: 0 auto;\n  position: relative;\n  text-indent: -9999em;\n  vertical-align: top;\n  border: 2px solid rgba(0,0,0,0.2);\n  border-left-color: rgba(0,0,0,0.8);\n  -webkit-transform: translateZ(0);\n  -moz-transform: translateZ(0);\n  -o-transform: translateZ(0);\n  -ms-transform: translateZ(0);\n  transform: translateZ(0);\n  -webkit-animation: spinner---CmkKg 1s infinite linear;\n  -moz-animation: spinner---CmkKg 1s infinite linear;\n  -o-animation: spinner---CmkKg 1s infinite linear;\n  -ms-animation: spinner---CmkKg 1s infinite linear;\n  animation: spinner---CmkKg 1s infinite linear;\n  border-radius: 50%;\n  width: 32px;\n  height: 32px;\n}\n.loader-large---2lAcm {\n  width: 56px;\n  height: 56px;\n}\n.loader-small---4hf-S {\n  width: 16px;\n  height: 16px;\n}\n@-moz-keyframes spinner---CmkKg {\n  0% {\n    -webkit-transform: rotate(0deg);\n    -moz-transform: rotate(0deg);\n    -o-transform: rotate(0deg);\n    -ms-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n  100% {\n    -webkit-transform: rotate(360deg);\n    -moz-transform: rotate(360deg);\n    -o-transform: rotate(360deg);\n    -ms-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n@-webkit-keyframes spinner---CmkKg {\n  0% {\n    -webkit-transform: rotate(0deg);\n    -moz-transform: rotate(0deg);\n    -o-transform: rotate(0deg);\n    -ms-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n  100% {\n    -webkit-transform: rotate(360deg);\n    -moz-transform: rotate(360deg);\n    -o-transform: rotate(360deg);\n    -ms-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n@-o-keyframes spinner---CmkKg {\n  0% {\n    -webkit-transform: rotate(0deg);\n    -moz-transform: rotate(0deg);\n    -o-transform: rotate(0deg);\n    -ms-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n  100% {\n    -webkit-transform: rotate(360deg);\n    -moz-transform: rotate(360deg);\n    -o-transform: rotate(360deg);\n    -ms-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n@keyframes spinner---CmkKg {\n  0% {\n    -webkit-transform: rotate(0deg);\n    -moz-transform: rotate(0deg);\n    -o-transform: rotate(0deg);\n    -ms-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n  100% {\n    -webkit-transform: rotate(360deg);\n    -moz-transform: rotate(360deg);\n    -o-transform: rotate(360deg);\n    -ms-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n", ""]);
+exports.push([module.i, ".table-wrapper---Nn8DN {\n  border: 1px solid #ddd;\n  position: relative;\n}\n.table-wrapper---Nn8DN > .table-area---jazFv {\n  position: relative;\n}\n.table---4nI0A {\n  width: 100%;\n  max-width: 100%;\n  table-layout: fixed;\n  background-color: #fff;\n  overflow: auto;\n}\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS,\n.table---4nI0A > .tbody---26gFd > .tr---H4SLB > .th---2_qSS,\n.table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS,\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B,\n.table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B,\n.table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B {\n  padding: 8px 12px;\n  vertical-align: middle;\n  display: inline-block;\n  overflow: hidden;\n}\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS > .td-content---2Mdz2,\n.table---4nI0A > .tbody---26gFd > .tr---H4SLB > .th---2_qSS > .td-content---2Mdz2,\n.table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS > .td-content---2Mdz2,\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B > .td-content---2Mdz2,\n.table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B > .td-content---2Mdz2,\n.table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B > .td-content---2Mdz2 {\n  position: relative;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n  -moz-transform: translateY(-50%);\n  -o-transform: translateY(-50%);\n  -ms-transform: translateY(-50%);\n  transform: translateY(-50%);\n}\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS a,\n.table---4nI0A > .tbody---26gFd > .tr---H4SLB > .th---2_qSS a,\n.table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS a,\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B a,\n.table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B a,\n.table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B a {\n  text-decoration: none;\n}\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS {\n  color: #777;\n  font-weight: bold;\n}\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB:first-child > .th---2_qSS,\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB:first-child > .td---2vh6B {\n  border-top: 0;\n}\n.table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B > .td-content---2Mdz2 {\n  white-space: normal;\n}\n.table---4nI0A .clickable-column---1Ldga {\n  color: inherit;\n  display: block;\n}\n.table---4nI0A .clickable-column---1Ldga:hover {\n  background-color: #e6e6e6;\n  cursor: pointer;\n}\n.table-extend-column-width---224gB .table---4nI0A > .thead---F7gFU > .tr---H4SLB,\n.table-extend-column-width---224gB .table---4nI0A > .tbody---26gFd > .tr---H4SLB,\n.table-extend-column-width---224gB .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB {\n  white-space: nowrap;\n}\n.tr-expand---2ULb6 {\n  border-bottom: 1px solid #ddd;\n  white-space: normal;\n}\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS,\n.table-bordered---1t2f2 .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .th---2_qSS,\n.table-bordered---1t2f2 .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS,\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B,\n.table-bordered---1t2f2 .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B,\n.table-bordered---1t2f2 .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B {\n  border: 1px solid #ddd;\n  border-width: 0 1px 1px 0;\n}\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS:first-child,\n.table-bordered---1t2f2 .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .th---2_qSS:first-child,\n.table-bordered---1t2f2 .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS:first-child,\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B:first-child,\n.table-bordered---1t2f2 .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B:first-child,\n.table-bordered---1t2f2 .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B:first-child {\n  border-left-width: 0;\n}\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS:last-of-type,\n.table-bordered---1t2f2 .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .th---2_qSS:last-of-type,\n.table-bordered---1t2f2 .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS:last-of-type,\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B:last-of-type,\n.table-bordered---1t2f2 .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B:last-of-type,\n.table-bordered---1t2f2 .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B:last-of-type {\n  border-right-width: 0;\n}\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS,\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B {\n  background-color: #eee;\n  border-bottom-width: 2px;\n  border-bottom-color: #ccc;\n}\n.table-bordered---1t2f2 .table---4nI0A > .tbody---26gFd > .tr---H4SLB:last-of-type > .td---2vh6B {\n  border-bottom-width: 0;\n}\n.table-fixed-header---3s7iS .table---4nI0A > .thead---F7gFU {\n  overflow: hidden;\n}\n.table-fixed-header---3s7iS .table---4nI0A > .tbody---26gFd {\n  overflow: auto;\n}\n.table---4nI0A.table-fixed-left-container---XMhgL {\n  position: absolute;\n  top: 0;\n  background-color: #fff;\n  width: auto;\n  overflow: hidden;\n}\n.table---4nI0A.table-fixed-left-container---XMhgL > .thead---F7gFU > .tr---H4SLB > .th---2_qSS:last-child,\n.table---4nI0A.table-fixed-left-container---XMhgL > .tbody---26gFd > .tr---H4SLB > .th---2_qSS:last-child,\n.table---4nI0A.table-fixed-left-container---XMhgL > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS:last-child,\n.table---4nI0A.table-fixed-left-container---XMhgL > .thead---F7gFU > .tr---H4SLB > .td---2vh6B:last-child,\n.table---4nI0A.table-fixed-left-container---XMhgL > .tbody---26gFd > .tr---H4SLB > .td---2vh6B:last-child,\n.table---4nI0A.table-fixed-left-container---XMhgL > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B:last-child {\n  border-right-width: 1px;\n}\n.table---4nI0A.table-fixed-left-container---XMhgL > .tbody---26gFd {\n  overflow-x: hidden;\n  overflow-y: auto;\n}\n.table-hover---vAzWN .table---4nI0A > .tbody---26gFd > .tr---H4SLB:hover,\n.table-hover---vAzWN .table---4nI0A > .tbody---26gFd > .tr---H4SLB.tr-hover---3Dpwe {\n  background-color: #e6f4fc;\n}\n.table-hover---vAzWN .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B.td-link---1wbR-:hover {\n  cursor: pointer;\n}\n.table-hover---vAzWN .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B.td-link---1wbR-:hover a {\n  text-decoration: underline;\n  color: #db3d44;\n}\n.table-minimalism---1M3bc.table-wrapper---Nn8DN {\n  border: 0;\n}\n.table-minimalism---1M3bc .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS,\n.table-minimalism---1M3bc .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .th---2_qSS,\n.table-minimalism---1M3bc .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS,\n.table-minimalism---1M3bc .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B,\n.table-minimalism---1M3bc .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B,\n.table-minimalism---1M3bc .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B {\n  border-bottom: 1px solid #ddd;\n}\n.table-minimalism---1M3bc .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS,\n.table-minimalism---1M3bc .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B {\n  border-bottom-width: 2px;\n  border-bottom-color: #ccc;\n}\n.table-minimalism---1M3bc .table---4nI0A .clickable-column---1Ldga:hover {\n  background-color: inherit;\n}\n.table-no-data---19dlA .table---4nI0A > .tbody---26gFd > .table-placeholder---p9qSt {\n  text-align: center;\n  padding: 26px 12px;\n  color: #999;\n}\n.table-sortable---3OW0J .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS {\n  white-space: nowrap;\n  padding: 0;\n}\n.table-sortable---3OW0J .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS > .td-content---2Mdz2 > *:first-child {\n  padding: 8px 12px;\n}\n.table-sortable---3OW0J .table---4nI0A .column-sort---1nz7N {\n  color: #222;\n}\n.table-sortable---3OW0J .table---4nI0A .column-sort---1nz7N:hover,\n.table-sortable---3OW0J .table---4nI0A .column-sort---1nz7N:focus {\n  color: #222;\n  text-decoration: none;\n}\n.table-sortable---3OW0J .table---4nI0A .column-sort---1nz7N > .overflow-ellipsis---1F1Bs {\n  vertical-align: middle;\n  display: inline-block;\n  overflow: hidden;\n  -o-text-overflow: ellipsis;\n  text-overflow: ellipsis;\n  max-width: calc(100% - 16px);\n}\n.table-sortable---3OW0J .table---4nI0A .column-sort---1nz7N > i {\n  vertical-align: middle;\n}\n.table-sortable---3OW0J .table---4nI0A .column-sort-asc---VbD-9,\n.table-sortable---3OW0J .table---4nI0A .column-sort-desc---LdkEY {\n  vertical-align: top;\n  margin-top: 1px;\n  display: inline-block;\n  width: 16px;\n  height: 16px;\n}\n.table-sortable---3OW0J .table---4nI0A .column-sort-asc---VbD-9 {\n  background-image: url(" + __webpack_require__("../src/icon-thSortAscending.svg") + ");\n}\n.table-sortable---3OW0J .table---4nI0A .column-sort-desc---LdkEY {\n  background-image: url(" + __webpack_require__("../src/icon-thSortDescending.svg") + ");\n}\n.loader-overlay---2tv2u {\n  background-color: rgba(255,255,255,0.8);\n  cursor: wait;\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n}\n.loader-overlay---2tv2u .loader---2BVR-,\n.loader-overlay---2tv2u .loader-small---4hf-S,\n.loader-overlay---2tv2u .loader-large---2lAcm {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n}\n.loader-overlay---2tv2u .loader-large---2lAcm {\n  margin-top: -28px;\n  margin-left: -28px;\n}\n.loader-overlay---2tv2u .loader-small---4hf-S {\n  margin-top: -8px;\n  margin-left: -8px;\n}\n.loader-overlay---2tv2u .loader---2BVR- {\n  margin-top: -16px;\n  margin-left: -16px;\n}\n.table---4nI0A + .loader-overlay---2tv2u {\n  top: 39px;\n}\n.loader---2BVR- {\n  display: inline-block;\n  margin: 0 auto;\n  position: relative;\n  text-indent: -9999em;\n  vertical-align: top;\n  border: 2px solid rgba(0,0,0,0.2);\n  border-left-color: rgba(0,0,0,0.8);\n  -webkit-transform: translateZ(0);\n  -moz-transform: translateZ(0);\n  -o-transform: translateZ(0);\n  -ms-transform: translateZ(0);\n  transform: translateZ(0);\n  -webkit-animation: spinner---CmkKg 1s infinite linear;\n  -moz-animation: spinner---CmkKg 1s infinite linear;\n  -o-animation: spinner---CmkKg 1s infinite linear;\n  -ms-animation: spinner---CmkKg 1s infinite linear;\n  animation: spinner---CmkKg 1s infinite linear;\n  border-radius: 50%;\n  width: 32px;\n  height: 32px;\n}\n.loader-large---2lAcm {\n  width: 56px;\n  height: 56px;\n}\n.loader-small---4hf-S {\n  width: 16px;\n  height: 16px;\n}\n@-moz-keyframes spinner---CmkKg {\n  0% {\n    -webkit-transform: rotate(0deg);\n    -moz-transform: rotate(0deg);\n    -o-transform: rotate(0deg);\n    -ms-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n  100% {\n    -webkit-transform: rotate(360deg);\n    -moz-transform: rotate(360deg);\n    -o-transform: rotate(360deg);\n    -ms-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n@-webkit-keyframes spinner---CmkKg {\n  0% {\n    -webkit-transform: rotate(0deg);\n    -moz-transform: rotate(0deg);\n    -o-transform: rotate(0deg);\n    -ms-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n  100% {\n    -webkit-transform: rotate(360deg);\n    -moz-transform: rotate(360deg);\n    -o-transform: rotate(360deg);\n    -ms-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n@-o-keyframes spinner---CmkKg {\n  0% {\n    -webkit-transform: rotate(0deg);\n    -moz-transform: rotate(0deg);\n    -o-transform: rotate(0deg);\n    -ms-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n  100% {\n    -webkit-transform: rotate(360deg);\n    -moz-transform: rotate(360deg);\n    -o-transform: rotate(360deg);\n    -ms-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n@keyframes spinner---CmkKg {\n  0% {\n    -webkit-transform: rotate(0deg);\n    -moz-transform: rotate(0deg);\n    -o-transform: rotate(0deg);\n    -ms-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n  100% {\n    -webkit-transform: rotate(360deg);\n    -moz-transform: rotate(360deg);\n    -o-transform: rotate(360deg);\n    -ms-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n", ""]);
 
 // exports
 exports.locals = {
@@ -47168,16 +47168,49 @@ var Table = (_temp2 = _class = function (_PureComponent) {
                         currentHoverKey: isHover ? key : null
                     });
                 }
+            },
+            getTableHeight: function getTableHeight() {
+                var height = _this.props.height;
+
+                var headerHeight = _this.title ? _this.title.getBoundingClientRect().height : 0;
+                var footerHeight = _this.foot ? _this.foot.getBoundingClientRect().height : 0;
+                var tableHeight = height - headerHeight - footerHeight;
+                _this.setState({ tableHeight: tableHeight });
             }
         }, _temp), _possibleConstructorReturn(_this, _ret);
     }
 
     _createClass(Table, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var getTableHeight = this.actions.getTableHeight;
+
+            window.addEventListener('resize', getTableHeight);
+            getTableHeight();
+        }
+    }, {
+        key: 'componentWillUnmount',
+        value: function componentWillUnmount() {
+            var getTableHeight = this.actions.getTableHeight;
+
+            window.removeEventListener('resize', getTableHeight);
+        }
+    }, {
+        key: 'componentDidUpdate',
+        value: function componentDidUpdate(prevProps, prevState) {
+            if (prevProps.data !== this.props.data || prevProps.height !== this.props.height) {
+                var getTableHeight = this.actions.getTableHeight;
+
+                getTableHeight();
+            }
+        }
+    }, {
         key: 'getInitState',
         value: function getInitState() {
             return {
                 currentHoverKey: null,
-                scrollTop: 0
+                scrollTop: 0,
+                tableHeight: 0
             };
         }
     }, {
@@ -47210,7 +47243,8 @@ var Table = (_temp2 = _class = function (_PureComponent) {
 
             var _state = this.state,
                 currentHoverKey = _state.currentHoverKey,
-                scrollTop = _state.scrollTop;
+                scrollTop = _state.scrollTop,
+                tableHeight = _state.tableHeight;
             var _actions = this.actions,
                 detectScrollTarget = _actions.detectScrollTarget,
                 handleBodyScroll = _actions.handleBodyScroll,
@@ -47218,6 +47252,7 @@ var Table = (_temp2 = _class = function (_PureComponent) {
 
             return _react2.default.createElement(_TableTemplate2.default, _extends({}, this.props, {
                 currentHoverKey: currentHoverKey,
+                height: tableHeight,
                 onMouseOver: detectScrollTarget,
                 onRowHover: handleRowHover,
                 onTouchStart: detectScrollTarget,
@@ -47235,7 +47270,8 @@ var Table = (_temp2 = _class = function (_PureComponent) {
 
             var _state2 = this.state,
                 currentHoverKey = _state2.currentHoverKey,
-                scrollTop = _state2.scrollTop;
+                scrollTop = _state2.scrollTop,
+                tableHeight = _state2.tableHeight;
             var _actions2 = this.actions,
                 detectScrollTarget = _actions2.detectScrollTarget,
                 handleBodyScroll = _actions2.handleBodyScroll,
@@ -47246,6 +47282,7 @@ var Table = (_temp2 = _class = function (_PureComponent) {
                 columns: fixedColumns,
                 currentHoverKey: currentHoverKey,
                 className: _index2.default.tableFixedLeftContainer,
+                height: tableHeight,
                 isFixed: true,
                 onMouseOver: detectScrollTarget,
                 onRowHover: handleRowHover,
@@ -47260,38 +47297,58 @@ var Table = (_temp2 = _class = function (_PureComponent) {
     }, {
         key: 'renderTitle',
         value: function renderTitle() {
+            var _this4 = this;
+
             var title = this.props.title;
 
             return _react2.default.createElement(
                 'div',
-                { className: _index2.default.title },
+                {
+                    className: _index2.default.title,
+                    ref: function ref(node) {
+                        _this4.title = node;
+                    }
+                },
                 title()
             );
         }
     }, {
         key: 'renderFooter',
         value: function renderFooter() {
+            var _this5 = this;
+
             var footer = this.props.footer;
 
             return _react2.default.createElement(
                 'div',
-                { className: _index2.default.tfoot },
+                {
+                    className: _index2.default.tfoot,
+                    ref: function ref(node) {
+                        _this5.foot = node;
+                    }
+                },
                 footer()
             );
         }
     }, {
         key: 'renderLoader',
         value: function renderLoader() {
-            return _react2.default.createElement(
-                'div',
-                { className: _index2.default.loaderOverlay },
-                _react2.default.createElement('span', { className: (0, _classnames2.default)(_index2.default.loader, _index2.default.loaderLarge) })
-            );
+            var loaderRender = this.props.loaderRender;
+
+            var defaultLoader = function defaultLoader() {
+                return _react2.default.createElement(
+                    'div',
+                    { className: _index2.default.loaderOverlay },
+                    _react2.default.createElement('span', { className: (0, _classnames2.default)(_index2.default.loader, _index2.default.loaderLarge) })
+                );
+            };
+            var loader = loaderRender || defaultLoader;
+            return loader();
         }
     }, {
         key: 'render',
         value: function render() {
-            var _this4 = this;
+            var _this6 = this;
 
             var _props = this.props,
                 loading = _props.loading,
@@ -47309,7 +47366,7 @@ var Table = (_temp2 = _class = function (_PureComponent) {
                 {
                     className: (0, _classnames2.default)(_index2.default.tableWrapper, _defineProperty({}, _index2.default.tableMinimalism, !bordered), _defineProperty({}, _index2.default.tableBordered, bordered), _defineProperty({}, _index2.default.tableExtendColumnWidth, !averageColumnsWidth), _defineProperty({}, _index2.default.tableFixedHeader, useFixedHeader), _defineProperty({}, _index2.default.tableNoData, !props.data || props.data.length === 0), _defineProperty({}, _index2.default.tableHover, hoverable), _defineProperty({}, _index2.default.tableSortable, sortable)),
                     ref: function ref(node) {
-                        _this4.tableWrapper = node;
+                        _this6.tableWrapper = node;
                     }
                 },
                 title && this.renderTitle(),
@@ -47338,6 +47395,7 @@ var Table = (_temp2 = _class = function (_PureComponent) {
     height: _propTypes2.default.number,
     hoverable: _propTypes2.default.bool,
     loading: _propTypes2.default.bool,
+    loaderRender: _propTypes2.default.func,
     onRowClick: _propTypes2.default.func,
     showHeader: _propTypes2.default.bool,
     sortable: _propTypes2.default.bool,
@@ -48318,7 +48376,7 @@ var TableTemplate = (_temp2 = _class = function (_PureComponent) {
     }, {
         key: 'componentDidUpdate',
         value: function componentDidUpdate(prevProps, prevState) {
-            if (prevProps.data !== this.props.data) {
+            if (prevProps.data !== this.props.data || prevProps.height !== this.props.height) {
                 var getTableHeight = this.actions.getTableHeight;
 
                 getTableHeight();
@@ -49960,4 +50018,4 @@ exports.default = _default;
 /***/ })
 
 /******/ });
-//# sourceMappingURL=bundle.js.map?9e7062de1dec0dc9a343
+//# sourceMappingURL=bundle.js.map?4603659f7847bf5061de

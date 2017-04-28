@@ -1,4 +1,4 @@
-/*! react-table v0.3.7 | (c) 2017 Trend Micro Inc. | MIT | https://github.com/trendmicro-frontend/react-table */
+/*! react-table v0.3.8 | (c) 2017 Trend Micro Inc. | MIT | https://github.com/trendmicro-frontend/react-table */
 .table---table-wrapper---1t2D3 {
   border: 1px solid #ddd;
   position: relative;
@@ -72,6 +72,7 @@
 }
 .table---tr-expand---sEKPQ {
   border-bottom: 1px solid #ddd;
+  white-space: normal;
 }
 .table---table-bordered---1cbV4 .table---table---2aBqd > .table---thead---1v6TQ > .table---tr---3XEXR > .table---th---2-0kV,
 .table---table-bordered---1cbV4 .table---table---2aBqd > .table---tbody---3q9RK > .table---tr---3XEXR > .table---th---2-0kV,
