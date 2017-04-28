@@ -47170,11 +47170,13 @@ var Table = (_temp2 = _class = function (_PureComponent) {
                 }
             },
             getTableHeight: function getTableHeight() {
-                var height = _this.props.height;
+                var maxHeight = _this.props.maxHeight;
 
+                var tableTopBorder = _this.tableWrapper.style['border-top-width'] || window.getComputedStyle(_this.tableWrapper, null)['border-top-width'];
+                var tableBottomBorder = _this.tableWrapper.style['border-bottom-width'] || window.getComputedStyle(_this.tableWrapper, null)['border-bottom-width'];
                 var headerHeight = _this.title ? _this.title.getBoundingClientRect().height : 0;
                 var footerHeight = _this.foot ? _this.foot.getBoundingClientRect().height : 0;
-                var tableHeight = height - headerHeight - footerHeight;
+                var tableHeight = maxHeight - headerHeight - footerHeight - parseInt(tableTopBorder, 10) - parseInt(tableBottomBorder, 10);
                 _this.setState({ tableHeight: tableHeight });
             }
         }, _temp), _possibleConstructorReturn(_this, _ret);
@@ -47198,7 +47200,7 @@ var Table = (_temp2 = _class = function (_PureComponent) {
     }, {
         key: 'componentDidUpdate',
         value: function componentDidUpdate(prevProps, prevState) {
-            if (prevProps.data !== this.props.data || prevProps.height !== this.props.height) {
+            if (prevProps.data !== this.props.data || prevProps.maxHeight !== this.props.maxHeight) {
                 var getTableHeight = this.actions.getTableHeight;
 
                 getTableHeight();
@@ -47252,7 +47254,7 @@ var Table = (_temp2 = _class = function (_PureComponent) {
 
             return _react2.default.createElement(_TableTemplate2.default, _extends({}, this.props, {
                 currentHoverKey: currentHoverKey,
-                height: tableHeight,
+                maxHeight: tableHeight,
                 onMouseOver: detectScrollTarget,
                 onRowHover: handleRowHover,
                 onTouchStart: detectScrollTarget,
@@ -47282,7 +47284,7 @@ var Table = (_temp2 = _class = function (_PureComponent) {
                 columns: fixedColumns,
                 currentHoverKey: currentHoverKey,
                 className: _index2.default.tableFixedLeftContainer,
-                height: tableHeight,
+                maxHeight: tableHeight,
                 isFixed: true,
                 onMouseOver: detectScrollTarget,
                 onRowHover: handleRowHover,
@@ -47392,10 +47394,10 @@ var Table = (_temp2 = _class = function (_PureComponent) {
     expandedRowKeys: _propTypes2.default.array,
     expandedRowRender: _propTypes2.default.func,
     footer: _propTypes2.default.func,
-    height: _propTypes2.default.number,
     hoverable: _propTypes2.default.bool,
     loading: _propTypes2.default.bool,
     loaderRender: _propTypes2.default.func,
+    maxHeight: _propTypes2.default.number,
     onRowClick: _propTypes2.default.func,
     showHeader: _propTypes2.default.bool,
     sortable: _propTypes2.default.bool,
@@ -47408,6 +47410,7 @@ var Table = (_temp2 = _class = function (_PureComponent) {
     bordered: true,
     hoverable: true,
     loading: false,
+    maxHeight: 0,
     sortable: false,
     useFixedHeader: false
 }, _temp2);
@@ -48232,11 +48235,11 @@ var TableTemplate = (_temp2 = _class = function (_PureComponent) {
                 };
             },
             getTableHeight: function getTableHeight() {
-                var height = _this.props.height;
+                var maxHeight = _this.props.maxHeight;
 
                 var headerHeight = _this.tableHeader ? _this.tableHeader.header.getBoundingClientRect().height : 0;
-                var tableHeight = height;
-                var bodyHeight = height ? height - headerHeight : 0;
+                var tableHeight = maxHeight;
+                var bodyHeight = maxHeight ? maxHeight - headerHeight : 0;
                 _this.setState({
                     tableHeight: tableHeight,
                     bodyHeight: bodyHeight
@@ -48376,7 +48379,7 @@ var TableTemplate = (_temp2 = _class = function (_PureComponent) {
     }, {
         key: 'componentDidUpdate',
         value: function componentDidUpdate(prevProps, prevState) {
-            if (prevProps.data !== this.props.data || prevProps.height !== this.props.height) {
+            if (prevProps.data !== this.props.data || prevProps.maxHeight !== this.props.maxHeight) {
                 var getTableHeight = this.actions.getTableHeight;
 
                 getTableHeight();
@@ -48442,10 +48445,11 @@ var TableTemplate = (_temp2 = _class = function (_PureComponent) {
             var tableHeight = this.state.tableHeight;
 
             var customStyles = {
-                height: 'none'
+                minHeight: '0%',
+                maxHeight: 'none'
             };
             if (tableHeight) {
-                customStyles.height = tableHeight + 'px';
+                customStyles.maxHeight = tableHeight + 'px';
             }
 
             return _react2.default.createElement(
@@ -48454,7 +48458,7 @@ var TableTemplate = (_temp2 = _class = function (_PureComponent) {
                     ref: function ref(node) {
                         _this4.table = node;
                     },
-                    style: { height: customStyles.height },
+                    style: customStyles,
                     className: (0, _classnames2.default)(className, _index2.default.table)
                 },
                 showHeader && this.renderHeader(),
@@ -48472,10 +48476,10 @@ var TableTemplate = (_temp2 = _class = function (_PureComponent) {
     data: _propTypes2.default.array,
     emptyText: _propTypes2.default.func,
     footer: _propTypes2.default.func,
-    height: _propTypes2.default.number,
     hoverable: _propTypes2.default.bool,
     isFixed: _propTypes2.default.bool,
     loading: _propTypes2.default.bool,
+    maxHeight: _propTypes2.default.number,
     onMouseOver: _propTypes2.default.func,
     onTouchStart: _propTypes2.default.func,
     onScroll: _propTypes2.default.func,
@@ -49099,7 +49103,7 @@ var _default = function (_Component) {
                             hoverable: true,
                             sortable: true,
                             showHeader: false,
-                            height: 180,
+                            maxHeight: 180,
                             rowKey: function rowKey(record) {
                                 return record.id;
                             },
@@ -49245,7 +49249,7 @@ var _default = function (_Component) {
                         _react2.default.createElement(_src2.default, {
                             hoverable: true,
                             averageColumnsWidth: false,
-                            height: 180,
+                            maxHeight: 180,
                             rowKey: 'id',
                             columns: columns,
                             data: data,
@@ -49354,7 +49358,7 @@ var _default = function (_Component) {
                         _react2.default.createElement(_src2.default, {
                             averageColumnsWidth: true,
                             hoverable: true,
-                            height: 180,
+                            maxHeight: 180,
                             useFixedHeader: true,
                             rowKey: function rowKey(record) {
                                 return record.id;
@@ -49366,7 +49370,7 @@ var _default = function (_Component) {
                         _react2.default.createElement(_src2.default, {
                             averageColumnsWidth: false,
                             hoverable: true,
-                            height: 180,
+                            maxHeight: 180,
                             useFixedHeader: true,
                             rowKey: function rowKey(record) {
                                 return record.id;
@@ -49386,7 +49390,7 @@ var _default = function (_Component) {
                         _react2.default.createElement(_src2.default, {
                             averageColumnsWidth: false,
                             hoverable: false,
-                            height: 180,
+                            maxHeight: 180,
                             useFixedHeader: true,
                             rowKey: 'id',
                             columns: this.columns3,
@@ -49515,7 +49519,7 @@ var _default = function (_Component) {
                             },
                             columns: columns,
                             data: data,
-                            height: 180,
+                            maxHeight: 180,
                             title: function title() {
                                 return _react2.default.createElement(
                                     'div',
@@ -49558,7 +49562,7 @@ var _default = function (_Component) {
                             },
                             columns: columns,
                             data: data,
-                            height: 200,
+                            maxHeight: 300,
                             useFixedHeader: true,
                             title: function title() {
                                 return _react2.default.createElement(
@@ -50018,4 +50022,4 @@ exports.default = _default;
 /***/ })
 
 /******/ });
-//# sourceMappingURL=bundle.js.map?4603659f7847bf5061de
+//# sourceMappingURL=bundle.js.map?7db55b11fec6d69261ba
