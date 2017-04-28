@@ -17,6 +17,7 @@ class Table extends PureComponent {
         height: PropTypes.number,
         hoverable: PropTypes.bool,
         loading: PropTypes.bool,
+        loaderRender: PropTypes.func,
         onRowClick: PropTypes.func,
         showHeader: PropTypes.bool,
         sortable: PropTypes.bool,
@@ -187,11 +188,16 @@ class Table extends PureComponent {
     }
 
     renderLoader() {
-        return (
-            <div className={styles.loaderOverlay}>
-                <span className={classNames(styles.loader, styles.loaderLarge)} />
-            </div>
-        );
+        const { loaderRender } = this.props;
+        const defaultLoader = () => {
+            return (
+                <div className={styles.loaderOverlay}>
+                    <span className={classNames(styles.loader, styles.loaderLarge)} />
+                </div>
+            );
+        };
+        const loader = loaderRender || defaultLoader;
+        return loader();
     }
 
     render() {
