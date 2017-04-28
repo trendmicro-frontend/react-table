@@ -99,7 +99,7 @@ export default class extends Component {
                         <Table
                             hoverable
                             averageColumnsWidth={false}
-                            height={180}
+                            maxHeight={180}
                             rowKey="id"
                             columns={columns}
                             data={data}

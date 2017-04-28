@@ -72,9 +72,9 @@ emptyText           | Function                          | () => { return 'No Dat
 expandedRowKeys     | String[]                          |         | Current expanded rows keys.
 expandedRowRender   | Function(record, key)             |         | Expanded content render function.
 footer              | Function                          |         | Table footer render function.
-height              | Number                            |         | Table height.
 hoverable           | Boolean                           | true    | Whether use row hover style.
 loading             | Boolean                           | false   | Whether table is loading.
+maxHeight           | Number                            |         | Table maximum height.
 onRowClick          | Function(record, key)             |         | Handle rowClick action.
 showHeader          | Boolean                           | true    | Whether table head is shown.
 sortable            | Boolean                           | false   | Whether use sortting event at table head.

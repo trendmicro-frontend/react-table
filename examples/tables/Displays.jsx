@@ -127,7 +127,7 @@ export default class extends Component {
                             hoverable
                             sortable
                             showHeader={false}
-                            height={180}
+                            maxHeight={180}
                             rowKey={record => record.id}
                             columns={columns}
                             data={data}

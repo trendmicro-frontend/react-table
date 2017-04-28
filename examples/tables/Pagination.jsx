@@ -54,7 +54,7 @@ export default class extends Component {
                             rowKey={record => record.id}
                             columns={columns}
                             data={data}
-                            height={180}
+                            maxHeight={180}
                             title={() => (
                                 <div className={styles.tableToolbar}>
                                     <Button btnStyle="flat">
@@ -84,7 +84,7 @@ export default class extends Component {
                             rowKey={record => record.id}
                             columns={columns}
                             data={data}
-                            height={200}
+                            maxHeight={300}
                             useFixedHeader={true}
                             title={() => (
                                 <div className={styles.tableToolbar}>

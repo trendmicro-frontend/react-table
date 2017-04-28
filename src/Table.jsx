@@ -14,10 +14,10 @@ class Table extends PureComponent {
         expandedRowKeys: PropTypes.array,
         expandedRowRender: PropTypes.func,
         footer: PropTypes.func,
-        height: PropTypes.number,
         hoverable: PropTypes.bool,
         loading: PropTypes.bool,
         loaderRender: PropTypes.func,
+        maxHeight: PropTypes.number,
         onRowClick: PropTypes.func,
         showHeader: PropTypes.bool,
         sortable: PropTypes.bool,
@@ -31,6 +31,7 @@ class Table extends PureComponent {
         bordered: true,
         hoverable: true,
         loading: false,
+        maxHeight: 0,
         sortable: false,
         useFixedHeader: false
     };
@@ -62,10 +63,12 @@ class Table extends PureComponent {
             }
         },
         getTableHeight: () => {
-            const { height } = this.props;
+            const { maxHeight } = this.props;
+            const tableTopBorder = this.tableWrapper.style['border-top-width'] || window.getComputedStyle(this.tableWrapper, null)['border-top-width'];
+            const tableBottomBorder = this.tableWrapper.style['border-bottom-width'] || window.getComputedStyle(this.tableWrapper, null)['border-bottom-width'];
             const headerHeight = this.title ? this.title.getBoundingClientRect().height : 0;
             const footerHeight = this.foot ? this.foot.getBoundingClientRect().height : 0;
-            const tableHeight = height - headerHeight - footerHeight;
+            const tableHeight = maxHeight - headerHeight - footerHeight - parseInt(tableTopBorder, 10) - parseInt(tableBottomBorder, 10);
             this.setState({ tableHeight });
         }
     };
@@ -82,7 +85,7 @@ class Table extends PureComponent {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (prevProps.data !== this.props.data || prevProps.height !== this.props.height) {
+        if (prevProps.data !== this.props.data || prevProps.maxHeight !== this.props.maxHeight) {
             const { getTableHeight } = this.actions;
             getTableHeight();
         }
@@ -122,7 +125,7 @@ class Table extends PureComponent {
             <TableTemplate
                 {...this.props}
                 currentHoverKey={currentHoverKey}
-                height={tableHeight}
+                maxHeight={tableHeight}
                 onMouseOver={detectScrollTarget}
                 onRowHover={handleRowHover}
                 onTouchStart={detectScrollTarget}
@@ -145,7 +148,7 @@ class Table extends PureComponent {
                 columns={fixedColumns}
                 currentHoverKey={currentHoverKey}
                 className={styles.tableFixedLeftContainer}
-                height={tableHeight}
+                maxHeight={tableHeight}
                 isFixed={true}
                 onMouseOver={detectScrollTarget}
                 onRowHover={handleRowHover}

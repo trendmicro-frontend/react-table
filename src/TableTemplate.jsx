@@ -14,10 +14,10 @@ class TableTemplate extends PureComponent {
         data: PropTypes.array,
         emptyText: PropTypes.func,
         footer: PropTypes.func,
-        height: PropTypes.number,
         hoverable: PropTypes.bool,
         isFixed: PropTypes.bool,
         loading: PropTypes.bool,
+        maxHeight: PropTypes.number,
         onMouseOver: PropTypes.func,
         onTouchStart: PropTypes.func,
         onScroll: PropTypes.func,
@@ -190,10 +190,10 @@ class TableTemplate extends PureComponent {
             };
         },
         getTableHeight: () => {
-            const { height } = this.props;
+            const { maxHeight } = this.props;
             const headerHeight = this.tableHeader ? this.tableHeader.header.getBoundingClientRect().height : 0;
-            const tableHeight = height;
-            let bodyHeight = height ? (height - headerHeight) : 0;
+            const tableHeight = maxHeight;
+            let bodyHeight = maxHeight ? (maxHeight - headerHeight) : 0;
             this.setState({
                 tableHeight,
                 bodyHeight
@@ -322,7 +322,7 @@ class TableTemplate extends PureComponent {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (prevProps.data !== this.props.data || prevProps.height !== this.props.height) {
+        if (prevProps.data !== this.props.data || prevProps.maxHeight !== this.props.maxHeight) {
             const { getTableHeight } = this.actions;
             getTableHeight();
         }
@@ -383,10 +383,11 @@ class TableTemplate extends PureComponent {
         } = this.props;
         const { tableHeight } = this.state;
         let customStyles = {
-            height: 'none'
+            minHeight: '0%',
+            maxHeight: 'none'
         };
         if (tableHeight) {
-            customStyles.height = `${tableHeight}px`;
+            customStyles.maxHeight = `${tableHeight}px`;
         }
 
         return (
@@ -394,7 +395,7 @@ class TableTemplate extends PureComponent {
                 ref={node => {
                     this.table = node;
                 }}
-                style={{ height: customStyles.height }}
+                style={customStyles}
                 className={classNames(
                     className,
                     styles.table

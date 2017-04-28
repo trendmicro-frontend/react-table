@@ -46,7 +46,7 @@ export default class extends Component {
                         <Table
                             averageColumnsWidth
                             hoverable
-                            height={180}
+                            maxHeight={180}
                             useFixedHeader={true}
                             rowKey={record => record.id}
                             columns={this.columns1}
@@ -56,7 +56,7 @@ export default class extends Component {
                         <Table
                             averageColumnsWidth={false}
                             hoverable
-                            height={180}
+                            maxHeight={180}
                             useFixedHeader={true}
                             rowKey={record => record.id}
                             columns={this.columns2}
@@ -68,7 +68,7 @@ export default class extends Component {
                         <Table
                             averageColumnsWidth={false}
                             hoverable={false}
-                            height={180}
+                            maxHeight={180}
                             useFixedHeader={true}
                             rowKey="id"
                             columns={this.columns3}
