@@ -47146,7 +47146,7 @@ var Table = (_temp2 = _class = function (_PureComponent) {
             args[_key] = arguments[_key];
         }
 
-        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Table.__proto__ || Object.getPrototypeOf(Table)).call.apply(_ref, [this].concat(args))), _this), _this.mainTable = null, _this.state = _this.getInitState(), _this.actions = {
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Table.__proto__ || Object.getPrototypeOf(Table)).call.apply(_ref, [this].concat(args))), _this), _this.mainTable = null, _this.thisColumns = _this.columnsParser(), _this.state = _this.getInitState(), _this.actions = {
             detectScrollTarget: function detectScrollTarget(e) {
                 if (_this.scrollTarget !== e.currentTarget) {
                     _this.scrollTarget = e.currentTarget;
@@ -47183,6 +47183,13 @@ var Table = (_temp2 = _class = function (_PureComponent) {
     }
 
     _createClass(Table, [{
+        key: 'componentWillReceiveProps',
+        value: function componentWillReceiveProps(nextProps) {
+            if (nextProps.columns !== this.props.columns) {
+                this.thisColumns = this.columnsParser();
+            }
+        }
+    }, {
         key: 'componentDidMount',
         value: function componentDidMount() {
             var getTableHeight = this.actions.getTableHeight;
@@ -47216,10 +47223,16 @@ var Table = (_temp2 = _class = function (_PureComponent) {
             };
         }
     }, {
+        key: 'columnsParser',
+        value: function columnsParser() {
+            return this.props.columns.filter(function (column) {
+                return column;
+            });
+        }
+    }, {
         key: 'leftColumns',
         value: function leftColumns() {
-            var columns = this.props.columns;
-
+            var columns = this.thisColumns;
             var fixedColumns = columns.filter(function (column) {
                 return column.fixed === true;
             });
@@ -47232,8 +47245,7 @@ var Table = (_temp2 = _class = function (_PureComponent) {
     }, {
         key: 'isAnyColumnsLeftFixed',
         value: function isAnyColumnsLeftFixed() {
-            var columns = this.props.columns;
-
+            var columns = this.thisColumns;
             return columns.some(function (column) {
                 return column.fixed === true;
             });
@@ -47243,6 +47255,7 @@ var Table = (_temp2 = _class = function (_PureComponent) {
         value: function renderTable() {
             var _this2 = this;
 
+            var columns = this.thisColumns;
             var _state = this.state,
                 currentHoverKey = _state.currentHoverKey,
                 scrollTop = _state.scrollTop,
@@ -47253,6 +47266,7 @@ var Table = (_temp2 = _class = function (_PureComponent) {
                 handleRowHover = _actions.handleRowHover;
 
             return _react2.default.createElement(_TableTemplate2.default, _extends({}, this.props, {
+                columns: columns,
                 currentHoverKey: currentHoverKey,
                 maxHeight: tableHeight,
                 onMouseOver: detectScrollTarget,
@@ -47406,6 +47420,7 @@ var Table = (_temp2 = _class = function (_PureComponent) {
     rowClassName: _propTypes2.default.func,
     rowKey: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.func])
 }, _class.defaultProps = {
+    columns: [],
     data: [],
     bordered: true,
     hoverable: true,
@@ -47575,7 +47590,6 @@ var TableBody = (_temp = _class = function (_PureComponent) {
     rowKey: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.func]),
     scrollTop: _propTypes2.default.number
 }, _class.defaultProps = {
-    columns: [],
     emptyText: function emptyText() {
         return 'No Data';
     },
@@ -47821,8 +47835,6 @@ var TableHeader = (_temp = _class = function (_PureComponent) {
 }(_react.PureComponent), _class.propTypes = {
     columns: _propTypes2.default.array,
     scrollLeft: _propTypes2.default.number
-}, _class.defaultProps = {
-    columns: []
 }, _temp);
 exports.default = TableHeader;
 
@@ -48000,7 +48012,6 @@ var TableRow = (_temp2 = _class = function (_PureComponent) {
     record: _propTypes2.default.object,
     rowClassName: _propTypes2.default.func
 }, _class.defaultProps = {
-    columns: [],
     expandedRowKeys: [],
     expandedRowRender: function expandedRowRender() {},
     onHover: function onHover() {},
@@ -50022,4 +50033,4 @@ exports.default = _default;
 /***/ })
 
 /******/ });
-//# sourceMappingURL=bundle.js.map?fe013a8861f1fe583f8a
+//# sourceMappingURL=bundle.js.map?aa35608c864f5095ad93
