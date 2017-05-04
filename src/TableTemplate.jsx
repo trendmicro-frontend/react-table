@@ -47,7 +47,7 @@ class TableTemplate extends PureComponent {
             onScroll(e);
         },
         getTableCellWidth: () => {
-            const { averageColumnsWidth, columns, loading } = this.props;
+            const { averageColumnsWidth, columns, loading, data } = this.props;
             let thsWidth = [];
             if (this.tableHeader) {
                 const tHeader = this.tableHeader.header;
@@ -79,7 +79,7 @@ class TableTemplate extends PureComponent {
                 });
             }
 
-            if (averageColumnsWidth || loading) {
+            if (averageColumnsWidth || loading || data.length === 0) {
                 cellWidth = (totalWidth - customWidth.width) / (columns.length - customColumns.length);
             }
 
@@ -108,13 +108,9 @@ class TableTemplate extends PureComponent {
                     }
                 }
             } else {
+                // No data
                 for (let j = 0; j < columns.length; j++) {
-                    const customColumn = columns[j];
-                    if (customColumn && customColumn.width) {
-                        cellsWidth[j] = customColumn.width;
-                    } else {
-                        cellsWidth[j] = cellWidth;
-                    }
+                    cellsWidth[j] = cellWidth;
                     cellTotalWidth += cellsWidth[j];
                 }
             }

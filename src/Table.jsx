@@ -39,8 +39,6 @@ class Table extends PureComponent {
 
     mainTable = null;
 
-    thisColumns = this.columnsParser();
-
     state = this.getInitState();
 
     actions = {
@@ -76,12 +74,6 @@ class Table extends PureComponent {
         }
     };
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.columns !== this.props.columns) {
-            this.thisColumns = this.columnsParser();
-        }
-    }
-
     componentDidMount() {
         const { getTableHeight } = this.actions;
         window.addEventListener('resize', getTableHeight);
@@ -94,6 +86,11 @@ class Table extends PureComponent {
     }
 
     componentDidUpdate(prevProps, prevState) {
+        if (prevProps.columns !== this.props.columns) {
+            this.setState({
+                thisColumns: this.columnsParser()
+            });
+        }
         if (prevProps.data !== this.props.data || prevProps.maxHeight !== this.props.maxHeight) {
             const { getTableHeight } = this.actions;
             getTableHeight();
@@ -104,7 +101,8 @@ class Table extends PureComponent {
         return {
             currentHoverKey: null,
             scrollTop: 0,
-            tableHeight: 0
+            tableHeight: 0,
+            thisColumns: this.columnsParser()
         };
     }
 
@@ -115,7 +113,7 @@ class Table extends PureComponent {
     }
 
     leftColumns() {
-        const columns = this.thisColumns;
+        const columns = this.state.thisColumns;
         const fixedColumns = columns.filter((column) => {
             return column.fixed === true;
         });
@@ -127,14 +125,14 @@ class Table extends PureComponent {
     }
 
     isAnyColumnsLeftFixed() {
-        const columns = this.thisColumns;
+        const columns = this.state.thisColumns;
         return columns.some((column) => {
             return column.fixed === true;
         });
     }
 
     renderTable() {
-        const columns = this.thisColumns;
+        const columns = this.state.thisColumns;
         const { currentHoverKey, scrollTop, tableHeight } = this.state;
         const { detectScrollTarget, handleBodyScroll, handleRowHover } = this.actions;
         return (
