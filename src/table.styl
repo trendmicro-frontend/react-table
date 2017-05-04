@@ -54,6 +54,7 @@
     }
     > .tbody {
          > .tr {
+            overflow: hidden;
             > .td {
                 > .td-content {
                     white-space: normal;
@@ -82,6 +83,15 @@
         > .tfoot {
             > .tr {
                 white-space: nowrap;
+            }
+        }
+        > .tbody {
+             > .tr {
+                > .td {
+                    > .td-content {
+                        white-space: nowrap;
+                    }
+                }
             }
         }
     }
