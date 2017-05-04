@@ -18,7 +18,6 @@ class TableRow extends PureComponent {
     };
 
     static defaultProps = {
-        columns: [],
         expandedRowKeys: [],
         expandedRowRender: () => {},
         onHover: () => {},

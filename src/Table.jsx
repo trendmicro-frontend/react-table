@@ -27,6 +27,7 @@ class Table extends PureComponent {
         rowKey: PropTypes.oneOfType([PropTypes.string, PropTypes.func])
     };
     static defaultProps = {
+        columns: [],
         data: [],
         bordered: true,
         hoverable: true,
@@ -37,6 +38,8 @@ class Table extends PureComponent {
     };
 
     mainTable = null;
+
+    thisColumns = this.columnsParser();
 
     state = this.getInitState();
 
@@ -73,6 +76,12 @@ class Table extends PureComponent {
         }
     };
 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.columns !== this.props.columns) {
+            this.thisColumns = this.columnsParser();
+        }
+    }
+
     componentDidMount() {
         const { getTableHeight } = this.actions;
         window.addEventListener('resize', getTableHeight);
@@ -99,8 +108,14 @@ class Table extends PureComponent {
         };
     }
 
+    columnsParser() {
+        return this.props.columns.filter((column) => {
+            return column;
+        });
+    }
+
     leftColumns() {
-        const { columns } = this.props;
+        const columns = this.thisColumns;
         const fixedColumns = columns.filter((column) => {
             return column.fixed === true;
         });
@@ -112,18 +127,20 @@ class Table extends PureComponent {
     }
 
     isAnyColumnsLeftFixed() {
-        const { columns } = this.props;
+        const columns = this.thisColumns;
         return columns.some((column) => {
             return column.fixed === true;
         });
     }
 
     renderTable() {
+        const columns = this.thisColumns;
         const { currentHoverKey, scrollTop, tableHeight } = this.state;
         const { detectScrollTarget, handleBodyScroll, handleRowHover } = this.actions;
         return (
             <TableTemplate
                 {...this.props}
+                columns={columns}
                 currentHoverKey={currentHoverKey}
                 maxHeight={tableHeight}
                 onMouseOver={detectScrollTarget}

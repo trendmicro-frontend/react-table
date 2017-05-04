@@ -10,10 +10,6 @@ class TableHeader extends PureComponent {
         scrollLeft: PropTypes.number
     };
 
-    static defaultProps = {
-        columns: []
-    };
-
     componentDidUpdate(prevProps, prevState) {
         const { scrollLeft } = this.props;
         if (this.header.scrollLeft !== scrollLeft) {

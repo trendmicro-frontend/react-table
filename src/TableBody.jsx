@@ -19,7 +19,6 @@ class TableBody extends PureComponent {
     };
 
     static defaultProps = {
-        columns: [],
         emptyText: () => {
             return 'No Data';
         },
