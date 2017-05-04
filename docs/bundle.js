@@ -47146,7 +47146,7 @@ var Table = (_temp2 = _class = function (_PureComponent) {
             args[_key] = arguments[_key];
         }
 
-        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Table.__proto__ || Object.getPrototypeOf(Table)).call.apply(_ref, [this].concat(args))), _this), _this.mainTable = null, _this.thisColumns = _this.columnsParser(), _this.state = _this.getInitState(), _this.actions = {
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Table.__proto__ || Object.getPrototypeOf(Table)).call.apply(_ref, [this].concat(args))), _this), _this.mainTable = null, _this.state = _this.getInitState(), _this.actions = {
             detectScrollTarget: function detectScrollTarget(e) {
                 if (_this.scrollTarget !== e.currentTarget) {
                     _this.scrollTarget = e.currentTarget;
@@ -47183,13 +47183,6 @@ var Table = (_temp2 = _class = function (_PureComponent) {
     }
 
     _createClass(Table, [{
-        key: 'componentWillReceiveProps',
-        value: function componentWillReceiveProps(nextProps) {
-            if (nextProps.columns !== this.props.columns) {
-                this.thisColumns = this.columnsParser();
-            }
-        }
-    }, {
         key: 'componentDidMount',
         value: function componentDidMount() {
             var getTableHeight = this.actions.getTableHeight;
@@ -47207,6 +47200,11 @@ var Table = (_temp2 = _class = function (_PureComponent) {
     }, {
         key: 'componentDidUpdate',
         value: function componentDidUpdate(prevProps, prevState) {
+            if (prevProps.columns !== this.props.columns) {
+                this.setState({
+                    thisColumns: this.columnsParser()
+                });
+            }
             if (prevProps.data !== this.props.data || prevProps.maxHeight !== this.props.maxHeight) {
                 var getTableHeight = this.actions.getTableHeight;
 
@@ -47219,7 +47217,8 @@ var Table = (_temp2 = _class = function (_PureComponent) {
             return {
                 currentHoverKey: null,
                 scrollTop: 0,
-                tableHeight: 0
+                tableHeight: 0,
+                thisColumns: this.columnsParser()
             };
         }
     }, {
@@ -47232,7 +47231,7 @@ var Table = (_temp2 = _class = function (_PureComponent) {
     }, {
         key: 'leftColumns',
         value: function leftColumns() {
-            var columns = this.thisColumns;
+            var columns = this.state.thisColumns;
             var fixedColumns = columns.filter(function (column) {
                 return column.fixed === true;
             });
@@ -47245,7 +47244,7 @@ var Table = (_temp2 = _class = function (_PureComponent) {
     }, {
         key: 'isAnyColumnsLeftFixed',
         value: function isAnyColumnsLeftFixed() {
-            var columns = this.thisColumns;
+            var columns = this.state.thisColumns;
             return columns.some(function (column) {
                 return column.fixed === true;
             });
@@ -47255,7 +47254,7 @@ var Table = (_temp2 = _class = function (_PureComponent) {
         value: function renderTable() {
             var _this2 = this;
 
-            var columns = this.thisColumns;
+            var columns = this.state.thisColumns;
             var _state = this.state,
                 currentHoverKey = _state.currentHoverKey,
                 scrollTop = _state.scrollTop,
@@ -48102,7 +48101,8 @@ var TableTemplate = (_temp2 = _class = function (_PureComponent) {
                 var _this$props = _this.props,
                     averageColumnsWidth = _this$props.averageColumnsWidth,
                     columns = _this$props.columns,
-                    loading = _this$props.loading;
+                    loading = _this$props.loading,
+                    data = _this$props.data;
 
                 var thsWidth = [];
                 if (_this.tableHeader) {
@@ -48135,7 +48135,7 @@ var TableTemplate = (_temp2 = _class = function (_PureComponent) {
                     });
                 }
 
-                if (averageColumnsWidth || loading) {
+                if (averageColumnsWidth || loading || data.length === 0) {
                     cellWidth = (totalWidth - customWidth.width) / (columns.length - customColumns.length);
                 }
 
@@ -48164,13 +48164,9 @@ var TableTemplate = (_temp2 = _class = function (_PureComponent) {
                         }
                     }
                 } else {
+                    // No data
                     for (var _j2 = 0; _j2 < columns.length; _j2++) {
-                        var _customColumn = columns[_j2];
-                        if (_customColumn && _customColumn.width) {
-                            cellsWidth[_j2] = _customColumn.width;
-                        } else {
-                            cellsWidth[_j2] = cellWidth;
-                        }
+                        cellsWidth[_j2] = cellWidth;
                         cellTotalWidth += cellsWidth[_j2];
                     }
                 }
@@ -50033,4 +50029,4 @@ exports.default = _default;
 /***/ })
 
 /******/ });
-//# sourceMappingURL=bundle.js.map?aa35608c864f5095ad93
+//# sourceMappingURL=bundle.js.map?2835598b4c46495f2f9e
