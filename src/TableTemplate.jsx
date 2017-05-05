@@ -28,11 +28,6 @@ class TableTemplate extends PureComponent {
     };
 
     static defaultProps = {
-        averageColumnsWidth: true,
-        data: [],
-        emptyText: function emptyText() {
-            return 'No Data';
-        },
         showHeader: true
     };
 
@@ -47,7 +42,7 @@ class TableTemplate extends PureComponent {
             onScroll(e);
         },
         getTableCellWidth: () => {
-            const { averageColumnsWidth, columns, loading, data } = this.props;
+            const { averageColumnsWidth, columns, loading } = this.props;
             let thsWidth = [];
             if (this.tableHeader) {
                 const tHeader = this.tableHeader.header;
@@ -79,7 +74,7 @@ class TableTemplate extends PureComponent {
                 });
             }
 
-            if (averageColumnsWidth || loading || data.length === 0) {
+            if (averageColumnsWidth || loading) {
                 cellWidth = (totalWidth - customWidth.width) / (columns.length - customColumns.length);
             }
 
@@ -94,6 +89,7 @@ class TableTemplate extends PureComponent {
                         let td = bodyCell[j];
                         if (customColumn && customColumn.width) {
                             cellsWidth[j] = customColumn.width;
+                            index = j;
                         } else if (averageColumnsWidth) {
                             cellsWidth[j] = cellWidth;
                         } else {
@@ -110,7 +106,16 @@ class TableTemplate extends PureComponent {
             } else {
                 // No data
                 for (let j = 0; j < columns.length; j++) {
-                    cellsWidth[j] = cellWidth;
+                    const customColumn = columns[j];
+                    if (customColumn && customColumn.width) {
+                        cellsWidth[j] = customColumn.width;
+                        index = j;
+                    } else if (cellWidth > 0) {
+                        cellsWidth[j] = cellWidth;
+                    } else {
+                        cellsWidth[j] = thsWidth[j];
+                        index = j;
+                    }
                     cellTotalWidth += cellsWidth[j];
                 }
             }
@@ -138,7 +143,7 @@ class TableTemplate extends PureComponent {
                     let th = headerCell[j];
                     th.style.height = 'auto';
                     const thHeight = th.getBoundingClientRect().height;
-                    headerHeight = Math.max(cellHeight, thHeight);
+                    headerHeight = Math.max(headerHeight, thHeight);
                 }
             }
 
@@ -197,26 +202,28 @@ class TableTemplate extends PureComponent {
         },
         sizeTableCells: () => {
             const { isFixed } = this.props;
-            let size = {};
             if (isFixed) {
-                size = this.actions.getFixedTableCellsSize();
+                const size = this.actions.getFixedTableCellsSize();
                 this.actions.setTableBodyCellWidth(size.widths);
                 this.actions.setTableBodyCellHeight(size.heights);
+                if (this.tableHeader) {
+                    this.actions.setTableHeaderCellWidth(size.widths);
+                    this.actions.setTableHeaderCellHeight(size.headerHeight);
+                }
                 this.actions.sizeFixedTable();
             } else {
                 // Set cells width first
                 const cellsWidth = this.actions.getTableCellWidth();
                 this.actions.setTableBodyCellWidth(cellsWidth.widths);
+                if (this.tableHeader) {
+                    this.actions.setTableHeaderCellWidth(cellsWidth.widths);
+                }
                 // Then set cells height
                 const rowsHeight = this.actions.getTableRowHeight();
                 this.actions.setTableBodyCellHeight(rowsHeight.heights);
-                size.widths = cellsWidth.widths;
-                size.heights = rowsHeight.heights;
-                size.headerHeight = rowsHeight.headerHeight;
-            }
-
-            if (this.tableHeader) {
-                this.actions.sizeTableHeader(size);
+                if (this.tableHeader) {
+                    this.actions.setTableHeaderCellHeight(rowsHeight.headerHeight);
+                }
             }
         },
         setTableBodyCellWidth: (cellsWidth) => {
@@ -249,7 +256,7 @@ class TableTemplate extends PureComponent {
                 }
             }
         },
-        sizeTableHeader: (size) => {
+        setTableHeaderCellWidth: (cellsWidth) => {
             const { isFixed } = this.props;
             let tHeader = this.tableHeader.header;
             let tBody = this.tableBody.body;
@@ -257,42 +264,50 @@ class TableTemplate extends PureComponent {
             const offsetWidth = tBody.getBoundingClientRect().width;
             const clientWidth = tBody.clientWidth;
             const scrollbarWidth = offsetWidth - clientWidth;
-            const cellsWidth = size.widths || [];
-            const headerHeight = size.headerHeight;
             let totalWidth = 0;
 
             for (let i = 0; i < headerRows.length; i++) {
                 const headerCell = headerRows[i].getElementsByClassName(styles.th);
                 totalWidth = 0;
                 for (let j = 0; j < headerCell.length; j++) {
-                    let cellWidth = cellsWidth[j];
+                    let cellWidth = cellsWidth[j] || 0;
                     let th = headerCell[j];
                     if (th) {
                         if (j === headerCell.length - 1) {
                             cellWidth = isFixed ? cellWidth : (cellWidth + scrollbarWidth);
                         }
                         th.style.width = `${cellWidth}px`;
-                        th.style.height = `${headerHeight}px`;
                     }
                     totalWidth += cellWidth;
                 }
                 headerRows[i].style.width = `${totalWidth}px`;
             }
         },
+        setTableHeaderCellHeight: (headerHeight) => {
+            let tHeader = this.tableHeader.header;
+            const headerRows = tHeader.getElementsByClassName(styles.tr);
+
+            for (let i = 0; i < headerRows.length; i++) {
+                const headerCell = headerRows[i].getElementsByClassName(styles.th);
+                for (let j = 0; j < headerCell.length; j++) {
+                    let th = headerCell[j];
+                    if (th) {
+                        th.style.height = `${headerHeight}px`;
+                    }
+                }
+            }
+        },
         sizeFixedTable: () => {
-            const { tableHeight } = this.state;
             const mainTable = this.table.previousSibling;
             const mainBody = mainTable.getElementsByClassName(styles.tbody)[0];
             const offsetWidth = mainBody.getBoundingClientRect().width;
             const clientHeight = mainBody.clientHeight;
-            const scrollbarHeight = mainBody.getBoundingClientRect().height - clientHeight;
             const tBody = this.tableBody.body;
             const totalWidth = tBody.getElementsByClassName(styles.tr)[0];
 
             this.table.style.width = `${totalWidth.getBoundingClientRect().width}px`;
             tBody.style.width = `${offsetWidth}px`;
             this.setState({
-                tableHeight: (tableHeight - scrollbarHeight),
                 bodyHeight: clientHeight
             });
         }

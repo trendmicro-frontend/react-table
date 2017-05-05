@@ -27,6 +27,7 @@ class Table extends PureComponent {
         rowKey: PropTypes.oneOfType([PropTypes.string, PropTypes.func])
     };
     static defaultProps = {
+        averageColumnsWidth: true,
         columns: [],
         data: [],
         bordered: true,
