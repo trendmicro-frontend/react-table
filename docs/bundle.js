@@ -47419,6 +47419,7 @@ var Table = (_temp2 = _class = function (_PureComponent) {
     rowClassName: _propTypes2.default.func,
     rowKey: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.func])
 }, _class.defaultProps = {
+    averageColumnsWidth: true,
     columns: [],
     data: [],
     bordered: true,
@@ -48101,8 +48102,7 @@ var TableTemplate = (_temp2 = _class = function (_PureComponent) {
                 var _this$props = _this.props,
                     averageColumnsWidth = _this$props.averageColumnsWidth,
                     columns = _this$props.columns,
-                    loading = _this$props.loading,
-                    data = _this$props.data;
+                    loading = _this$props.loading;
 
                 var thsWidth = [];
                 if (_this.tableHeader) {
@@ -48135,7 +48135,7 @@ var TableTemplate = (_temp2 = _class = function (_PureComponent) {
                     });
                 }
 
-                if (averageColumnsWidth || loading || data.length === 0) {
+                if (averageColumnsWidth || loading) {
                     cellWidth = (totalWidth - customWidth.width) / (columns.length - customColumns.length);
                 }
 
@@ -48150,6 +48150,7 @@ var TableTemplate = (_temp2 = _class = function (_PureComponent) {
                             var td = bodyCell[_j];
                             if (customColumn && customColumn.width) {
                                 cellsWidth[_j] = customColumn.width;
+                                index = _j;
                             } else if (averageColumnsWidth) {
                                 cellsWidth[_j] = cellWidth;
                             } else {
@@ -48166,7 +48167,16 @@ var TableTemplate = (_temp2 = _class = function (_PureComponent) {
                 } else {
                     // No data
                     for (var _j2 = 0; _j2 < columns.length; _j2++) {
-                        cellsWidth[_j2] = cellWidth;
+                        var _customColumn = columns[_j2];
+                        if (_customColumn && _customColumn.width) {
+                            cellsWidth[_j2] = _customColumn.width;
+                            index = _j2;
+                        } else if (cellWidth > 0) {
+                            cellsWidth[_j2] = cellWidth;
+                        } else {
+                            cellsWidth[_j2] = thsWidth[_j2];
+                            index = _j2;
+                        }
                         cellTotalWidth += cellsWidth[_j2];
                     }
                 }
@@ -48194,7 +48204,7 @@ var TableTemplate = (_temp2 = _class = function (_PureComponent) {
                         var th = headerCell[j];
                         th.style.height = 'auto';
                         var thHeight = th.getBoundingClientRect().height;
-                        headerHeight = Math.max(cellHeight, thHeight);
+                        headerHeight = Math.max(headerHeight, thHeight);
                     }
                 }
 
@@ -48255,26 +48265,28 @@ var TableTemplate = (_temp2 = _class = function (_PureComponent) {
             sizeTableCells: function sizeTableCells() {
                 var isFixed = _this.props.isFixed;
 
-                var size = {};
                 if (isFixed) {
-                    size = _this.actions.getFixedTableCellsSize();
+                    var size = _this.actions.getFixedTableCellsSize();
                     _this.actions.setTableBodyCellWidth(size.widths);
                     _this.actions.setTableBodyCellHeight(size.heights);
+                    if (_this.tableHeader) {
+                        _this.actions.setTableHeaderCellWidth(size.widths);
+                        _this.actions.setTableHeaderCellHeight(size.headerHeight);
+                    }
                     _this.actions.sizeFixedTable();
                 } else {
                     // Set cells width first
                     var cellsWidth = _this.actions.getTableCellWidth();
                     _this.actions.setTableBodyCellWidth(cellsWidth.widths);
+                    if (_this.tableHeader) {
+                        _this.actions.setTableHeaderCellWidth(cellsWidth.widths);
+                    }
                     // Then set cells height
                     var rowsHeight = _this.actions.getTableRowHeight();
                     _this.actions.setTableBodyCellHeight(rowsHeight.heights);
-                    size.widths = cellsWidth.widths;
-                    size.heights = rowsHeight.heights;
-                    size.headerHeight = rowsHeight.headerHeight;
-                }
-
-                if (_this.tableHeader) {
-                    _this.actions.sizeTableHeader(size);
+                    if (_this.tableHeader) {
+                        _this.actions.setTableHeaderCellHeight(rowsHeight.headerHeight);
+                    }
                 }
             },
             setTableBodyCellWidth: function setTableBodyCellWidth(cellsWidth) {
@@ -48307,7 +48319,7 @@ var TableTemplate = (_temp2 = _class = function (_PureComponent) {
                     }
                 }
             },
-            sizeTableHeader: function sizeTableHeader(size) {
+            setTableHeaderCellWidth: function setTableHeaderCellWidth(cellsWidth) {
                 var isFixed = _this.props.isFixed;
 
                 var tHeader = _this.tableHeader.header;
@@ -48316,43 +48328,50 @@ var TableTemplate = (_temp2 = _class = function (_PureComponent) {
                 var offsetWidth = tBody.getBoundingClientRect().width;
                 var clientWidth = tBody.clientWidth;
                 var scrollbarWidth = offsetWidth - clientWidth;
-                var cellsWidth = size.widths || [];
-                var headerHeight = size.headerHeight;
                 var totalWidth = 0;
 
                 for (var i = 0; i < headerRows.length; i++) {
                     var headerCell = headerRows[i].getElementsByClassName(_index2.default.th);
                     totalWidth = 0;
                     for (var j = 0; j < headerCell.length; j++) {
-                        var cellWidth = cellsWidth[j];
+                        var cellWidth = cellsWidth[j] || 0;
                         var th = headerCell[j];
                         if (th) {
                             if (j === headerCell.length - 1) {
                                 cellWidth = isFixed ? cellWidth : cellWidth + scrollbarWidth;
                             }
                             th.style.width = cellWidth + 'px';
-                            th.style.height = headerHeight + 'px';
                         }
                         totalWidth += cellWidth;
                     }
                     headerRows[i].style.width = totalWidth + 'px';
                 }
             },
-            sizeFixedTable: function sizeFixedTable() {
-                var tableHeight = _this.state.tableHeight;
+            setTableHeaderCellHeight: function setTableHeaderCellHeight(headerHeight) {
+                var tHeader = _this.tableHeader.header;
+                var headerRows = tHeader.getElementsByClassName(_index2.default.tr);
 
+                for (var i = 0; i < headerRows.length; i++) {
+                    var headerCell = headerRows[i].getElementsByClassName(_index2.default.th);
+                    for (var j = 0; j < headerCell.length; j++) {
+                        var th = headerCell[j];
+                        if (th) {
+                            th.style.height = headerHeight + 'px';
+                        }
+                    }
+                }
+            },
+            sizeFixedTable: function sizeFixedTable() {
                 var mainTable = _this.table.previousSibling;
                 var mainBody = mainTable.getElementsByClassName(_index2.default.tbody)[0];
                 var offsetWidth = mainBody.getBoundingClientRect().width;
                 var clientHeight = mainBody.clientHeight;
-                var scrollbarHeight = mainBody.getBoundingClientRect().height - clientHeight;
                 var tBody = _this.tableBody.body;
                 var totalWidth = tBody.getElementsByClassName(_index2.default.tr)[0];
 
                 _this.table.style.width = totalWidth.getBoundingClientRect().width + 'px';
                 tBody.style.width = offsetWidth + 'px';
                 _this.setState({
-                    tableHeight: tableHeight - scrollbarHeight,
                     bodyHeight: clientHeight
                 });
             }
@@ -48495,11 +48514,6 @@ var TableTemplate = (_temp2 = _class = function (_PureComponent) {
     scrollTop: _propTypes2.default.number,
     title: _propTypes2.default.func
 }, _class.defaultProps = {
-    averageColumnsWidth: true,
-    data: [],
-    emptyText: function emptyText() {
-        return 'No Data';
-    },
     showHeader: true
 }, _temp2);
 exports.default = TableTemplate;
@@ -50029,4 +50043,4 @@ exports.default = _default;
 /***/ })
 
 /******/ });
-//# sourceMappingURL=bundle.js.map?2835598b4c46495f2f9e
+//# sourceMappingURL=bundle.js.map?b4fb55b81106a799ca9f
