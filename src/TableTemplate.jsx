@@ -41,12 +41,18 @@ class TableTemplate extends PureComponent {
             });
             onScroll(e);
         },
+        getSubElements: (parent, selector) => {
+            return [].filter.call(parent.querySelectorAll(selector), (e) => {
+                return e.parentNode === parent;
+            });
+        },
         getTableCellWidth: () => {
+            const { getSubElements } = this.actions;
             const { averageColumnsWidth, columns, loading } = this.props;
             let thsWidth = [];
             if (this.tableHeader) {
                 const tHeader = this.tableHeader.header;
-                const headerCell = tHeader.getElementsByClassName(styles.th);
+                const headerCell = getSubElements(getSubElements(tHeader, `.${styles.tr}`)[0], `.${styles.th}`);
                 for (let j = 0; j < headerCell.length; j++) {
                     let th = headerCell[j];
                     let thWidth = 0;
@@ -59,7 +65,7 @@ class TableTemplate extends PureComponent {
             }
 
             const tBody = this.tableBody.body;
-            const bodyRows = tBody.getElementsByClassName(styles.tr);
+            const bodyRows = getSubElements(tBody, `.${styles.tr}`);
             const totalWidth = tBody.clientWidth;
             let cellTotalWidth = 0;
             let cellsWidth = [];
@@ -81,7 +87,7 @@ class TableTemplate extends PureComponent {
             let index = -1;
             if (bodyRows.length > 0) {
                 for (let i = 0; i < bodyRows.length; i++) {
-                    const bodyCell = bodyRows[i].getElementsByClassName(styles.td);
+                    const bodyCell = getSubElements(bodyRows[i], `.${styles.td}`);
                     cellTotalWidth = 0;
                     index = -1;
                     for (let j = 0; j < bodyCell.length; j++) {
@@ -129,16 +135,17 @@ class TableTemplate extends PureComponent {
             };
         },
         getTableRowHeight: () => {
+            const { getSubElements } = this.actions;
             const tHeader = this.tableHeader ? this.tableHeader.header : null;
-            const headerRow = tHeader ? tHeader.getElementsByClassName(styles.tr) : [];
+            const headerRow = tHeader ? getSubElements(tHeader, `.${styles.tr}`) : [];
             const tBody = this.tableBody.body;
-            const bodyRows = tBody.getElementsByClassName(styles.tr);
+            const bodyRows = getSubElements(tBody, `.${styles.tr}`);
             let cellHeight = 0;
             let rowsHeight = [];
             let headerHeight = 0;
 
             for (let i = 0; i < headerRow.length; i++) {
-                const headerCell = headerRow[i].getElementsByClassName(styles.th);
+                const headerCell = getSubElements(headerRow[i], `.${styles.th}`);
                 for (let j = 0; j < headerCell.length; j++) {
                     let th = headerCell[j];
                     th.style.height = 'auto';
@@ -148,7 +155,7 @@ class TableTemplate extends PureComponent {
             }
 
             for (let i = 0; i < bodyRows.length; i++) {
-                const bodyCell = bodyRows[i].getElementsByClassName(styles.td);
+                const bodyCell = getSubElements(bodyRows[i], `.${styles.td}`);
                 cellHeight = rowsHeight[i] || 0;
                 for (let j = 0; j < bodyCell.length; j++) {
                     let td = bodyCell[j];
@@ -165,18 +172,19 @@ class TableTemplate extends PureComponent {
             };
         },
         getFixedTableCellsSize: () => {
+            const { getSubElements } = this.actions;
             const mainTable = this.table.previousSibling;
             let cellsWidth = [];
             let rowsHeight = [];
             let tHeader;
             let headerRow = [];
             if (mainTable) {
-                tHeader = mainTable.getElementsByClassName(styles.thead) || [];
-                headerRow = tHeader.length > 0 ? tHeader[0].getElementsByClassName(styles.tr) : [];
-                const tBody = mainTable.getElementsByClassName(styles.tbody)[0];
-                const bodyRows = tBody.getElementsByClassName(styles.tr);
+                tHeader = getSubElements(mainTable, `.${styles.thead}`) || [];
+                headerRow = tHeader.length > 0 ? getSubElements(tHeader[0], `.${styles.tr}`) : [];
+                const tBody = getSubElements(mainTable, `.${styles.tbody}`)[0];
+                const bodyRows = getSubElements(tBody, `.${styles.tr}`);
                 for (let i = 0; i < bodyRows.length; i++) {
-                    const bodyCell = bodyRows[i].getElementsByClassName(styles.td);
+                    const bodyCell = getSubElements(bodyRows[i], `.${styles.td}`);
                     for (let j = 0; j < bodyCell.length; j++) {
                         const td = bodyCell[j];
                         cellsWidth[j] = parseFloat(td.style.width);
@@ -227,12 +235,13 @@ class TableTemplate extends PureComponent {
             }
         },
         setTableBodyCellWidth: (cellsWidth) => {
+            const { getSubElements } = this.actions;
             const tBody = this.tableBody.body;
-            const bodyRows = tBody.getElementsByClassName(styles.tr);
+            const bodyRows = getSubElements(tBody, `.${styles.tr}`);
             let cellWidth;
             let totalWidth = 0;
             for (let i = 0; i < bodyRows.length; i++) {
-                const bodyCell = bodyRows[i].getElementsByClassName(styles.td);
+                const bodyCell = getSubElements(bodyRows[i], `.${styles.td}`);
                 totalWidth = 0;
                 for (let j = 0; j < bodyCell.length; j++) {
                     let td = bodyCell[j];
@@ -244,11 +253,12 @@ class TableTemplate extends PureComponent {
             }
         },
         setTableBodyCellHeight: (rowsHeight) => {
+            const { getSubElements } = this.actions;
             const tBody = this.tableBody.body;
-            const bodyRows = tBody.getElementsByClassName(styles.tr);
+            const bodyRows = getSubElements(tBody, `.${styles.tr}`);
             let rowHeight = 0;
             for (let i = 0; i < bodyRows.length; i++) {
-                const bodyCell = bodyRows[i].getElementsByClassName(styles.td);
+                const bodyCell = getSubElements(bodyRows[i], `.${styles.td}`);
                 rowHeight = rowsHeight[i] || 0;
                 for (let j = 0; j < bodyCell.length; j++) {
                     let td = bodyCell[j];
@@ -257,17 +267,18 @@ class TableTemplate extends PureComponent {
             }
         },
         setTableHeaderCellWidth: (cellsWidth) => {
+            const { getSubElements } = this.actions;
             const { isFixed } = this.props;
             let tHeader = this.tableHeader.header;
             let tBody = this.tableBody.body;
-            const headerRows = tHeader.getElementsByClassName(styles.tr);
+            const headerRows = getSubElements(tHeader, `.${styles.tr}`);
             const offsetWidth = tBody.getBoundingClientRect().width;
             const clientWidth = tBody.clientWidth;
             const scrollbarWidth = offsetWidth - clientWidth;
             let totalWidth = 0;
 
             for (let i = 0; i < headerRows.length; i++) {
-                const headerCell = headerRows[i].getElementsByClassName(styles.th);
+                const headerCell = getSubElements(headerRows[i], `.${styles.th}`);
                 totalWidth = 0;
                 for (let j = 0; j < headerCell.length; j++) {
                     let cellWidth = cellsWidth[j] || 0;
@@ -284,11 +295,12 @@ class TableTemplate extends PureComponent {
             }
         },
         setTableHeaderCellHeight: (headerHeight) => {
+            const { getSubElements } = this.actions;
             let tHeader = this.tableHeader.header;
-            const headerRows = tHeader.getElementsByClassName(styles.tr);
+            const headerRows = getSubElements(tHeader, `.${styles.tr}`);
 
             for (let i = 0; i < headerRows.length; i++) {
-                const headerCell = headerRows[i].getElementsByClassName(styles.th);
+                const headerCell = getSubElements(headerRows[i], `.${styles.th}`);
                 for (let j = 0; j < headerCell.length; j++) {
                     let th = headerCell[j];
                     if (th) {
@@ -298,14 +310,15 @@ class TableTemplate extends PureComponent {
             }
         },
         sizeFixedTable: () => {
+            const { getSubElements } = this.actions;
             const mainTable = this.table.previousSibling;
-            const mainBody = mainTable.getElementsByClassName(styles.tbody)[0];
+            const mainBody = getSubElements(mainTable, `.${styles.tbody}`)[0];
             const offsetWidth = mainBody.getBoundingClientRect().width;
-            const clientHeight = mainBody.clientHeight;
+            const clientHeight = mainBody.clientHeight + 0.5;
             const tBody = this.tableBody.body;
-            const totalWidth = tBody.getElementsByClassName(styles.tr)[0];
+            const totalWidth = getSubElements(tBody, `.${styles.tr}`)[0].getBoundingClientRect().width;
 
-            this.table.style.width = `${totalWidth.getBoundingClientRect().width}px`;
+            this.table.style.width = `${totalWidth}px`;
             tBody.style.width = `${offsetWidth}px`;
             this.setState({
                 bodyHeight: clientHeight

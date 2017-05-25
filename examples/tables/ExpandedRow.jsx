@@ -14,7 +14,16 @@ export default class extends Component {
         handleExpandedRowRender: (record, key) => {
             return (
                 <div style={{ padding: '16px' }}>
-                    test sub content
+                    Sub content
+                    <Table
+                        averageColumnsWidth={true}
+                        hoverable={false}
+                        maxHeight={150}
+                        useFixedHeader={true}
+                        rowKey="id"
+                        columns={this.columns1}
+                        data={this.data1}
+                    />
                 </div>
             );
         },
@@ -43,7 +52,10 @@ export default class extends Component {
         { title: 'Affected Devices', key: 'affectedDevices', dataIndex: 'affectedDevices' },
         { title: 'Detections', key: 'detections', dataIndex: 'detections', width: 300 }
     ];
-
+    columns1 = [
+        { title: 'Application Name', key: 'app', dataIndex: 'app' },
+        { title: 'Vendor Name', key: 'vendor', dataIndex: 'vendor' }
+    ];
     data = [
         { id: 1, eventType: 'Virus/Malware', affectedDevices: 20, detections: 634 },
         { id: 2, eventType: 'Spyware/Grayware', affectedDevices: 20, detections: 634 },
@@ -67,6 +79,10 @@ export default class extends Component {
         { id: 20, eventType: 'Desktops', affectedDevices: 102, detections: 477 },
         { id: 21, eventType: 'Servers', affectedDevices: 33, detections: 235 }
     ];
+    data1 = [
+        { id: 1, app: 'chrome', vendor: 'google' },
+        { id: 2, app: 'ie', vendor: 'microsoft' }
+    ]
 
     renderDetail(value, row) {
         const expandedRowKeys = this.state.expandedRowKeys;
@@ -93,13 +109,13 @@ export default class extends Component {
 
         return (
             <div className="col-md-12">
-                <Section className="row-md-4">
+                <Section className="row-md-6">
                     <div className={styles.sectionGroup}>
                         <h5>Expanded Row</h5>
                         <Table
                             hoverable
                             averageColumnsWidth={false}
-                            maxHeight={180}
+                            maxHeight={320}
                             rowKey="id"
                             columns={columns}
                             data={data}
