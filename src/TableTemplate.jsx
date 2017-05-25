@@ -71,7 +71,22 @@ class TableTemplate extends PureComponent {
             let cellsWidth = [];
             let cellWidth = 0;
             let customWidth = { width: 0 };
-            const customColumns = columns.filter((column) => {
+            const newColumns = columns.map((column, index) => {
+                let width = column.width;
+                if (typeof width === 'string') {
+                    const lastChar = width.substr(width.length - 1);
+                    if (lastChar === '%') {
+                        width = totalWidth * (parseFloat(width) / 100);
+                    } else {
+                        width = parseFloat(width);
+                    }
+                }
+                return {
+                    ...column,
+                    width: width
+                };
+            });
+            const customColumns = newColumns.filter((column) => {
                 return column.width && column.width > 0;
             });
             if (customColumns.length > 0) {
@@ -81,7 +96,7 @@ class TableTemplate extends PureComponent {
             }
 
             if (averageColumnsWidth || loading) {
-                cellWidth = (totalWidth - customWidth.width) / (columns.length - customColumns.length);
+                cellWidth = (totalWidth - customWidth.width) / (newColumns.length - customColumns.length);
             }
 
             let index = -1;
@@ -91,7 +106,7 @@ class TableTemplate extends PureComponent {
                     cellTotalWidth = 0;
                     index = -1;
                     for (let j = 0; j < bodyCell.length; j++) {
-                        const customColumn = columns[j];
+                        const customColumn = newColumns[j];
                         let td = bodyCell[j];
                         if (customColumn && customColumn.width) {
                             cellsWidth[j] = customColumn.width;
@@ -111,8 +126,8 @@ class TableTemplate extends PureComponent {
                 }
             } else {
                 // No data
-                for (let j = 0; j < columns.length; j++) {
-                    const customColumn = columns[j];
+                for (let j = 0; j < newColumns.length; j++) {
+                    const customColumn = newColumns[j];
                     if (customColumn && customColumn.width) {
                         cellsWidth[j] = customColumn.width;
                         index = j;
