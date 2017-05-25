@@ -52,7 +52,7 @@ class TableBody extends PureComponent {
     getRowKey (record, index) {
         const rowKey = this.props.rowKey;
         let key = (typeof rowKey === 'function' ? rowKey(record, index) : record[rowKey]);
-        return key === undefined ? index : key;
+        return key === undefined ? new Date().getTime() : key;
     }
 
     render() {
@@ -91,6 +91,7 @@ class TableBody extends PureComponent {
                                 columns={columns}
                                 currentHoverKey={currentHoverKey}
                                 hoverKey={key}
+                                index={index}
                                 key={key}
                                 onHover={onRowHover}
                                 record={row}

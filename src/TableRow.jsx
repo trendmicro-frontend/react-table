@@ -11,6 +11,7 @@ class TableRow extends PureComponent {
         expandedRowKeys: PropTypes.array,
         expandedRowRender: PropTypes.func,
         hoverKey: PropTypes.any,
+        index: PropTypes.number,
         onHover: PropTypes.func,
         onRowClick: PropTypes.func,
         record: PropTypes.object,
@@ -30,8 +31,8 @@ class TableRow extends PureComponent {
 
     actions = {
         handleRowClick: (e) => {
-            const { onRowClick, record, hoverKey } = this.props;
-            onRowClick(record, hoverKey, e);
+            const { onRowClick, record, index } = this.props;
+            onRowClick(record, index, e);
         },
         handleRowMouseLeave: () => {
             const { hoverKey, onHover } = this.props;
