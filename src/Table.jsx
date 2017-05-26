@@ -38,6 +38,8 @@ class Table extends PureComponent {
         useFixedHeader: false
     };
 
+    customEvent = null;
+
     mainTable = null;
 
     state = this.getInitState();
@@ -84,6 +86,13 @@ class Table extends PureComponent {
     componentDidMount() {
         const { getTableHeight, getTableWidth } = this.actions;
         window.addEventListener('resize', getTableHeight);
+        if (document.createEvent) {
+            // IE version
+            this.customEvent = document.createEvent('Event');
+            this.customEvent.initEvent('checkWidth', true, true);
+        } else {
+            this.customEvent = new Event('checkWidth');
+        }
         window.addEventListener('checkWidth', getTableWidth);
         getTableHeight();
     }
@@ -108,7 +117,7 @@ class Table extends PureComponent {
             // Issue: Page has no vertical scrollbar at begin, but appears the scrollbar after expanding A table,
             // and B table width also displays horizontal scrollbar.
             // Solution: Add this action to check other tables size in the same page.
-            window.dispatchEvent(new Event('checkWidth'));
+            window.dispatchEvent(this.customEvent);
         }
     }
 
@@ -257,6 +266,8 @@ class Table extends PureComponent {
         delete props.maxHeight;
         delete props.rowClassName;
         delete props.onRowClick;
+        delete props.emptyText;
+        delete props.showHeader;
 
         return (
             <div
