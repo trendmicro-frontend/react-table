@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
 import styles from './index.styl';
 import TableRow from './TableRow';
 
@@ -53,7 +52,7 @@ class TableBody extends PureComponent {
     getRowKey (record, index) {
         const rowKey = this.props.rowKey;
         let key = (typeof rowKey === 'function' ? rowKey(record, index) : record[rowKey]);
-        return key === undefined ? _.uniqueId('table_row_') : key;
+        return key === undefined ? `table_row_${index}` : key;
     }
 
     render() {

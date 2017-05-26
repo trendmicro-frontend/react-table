@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
+import get from 'lodash.get';
 import styles from './index.styl';
 
 class TableCell extends PureComponent {
@@ -18,7 +18,7 @@ class TableCell extends PureComponent {
         const { column, record } = this.props;
         const cName = column.dataIndex;
         const render = column.render;
-        let text = _.get(record, cName);
+        let text = get(record, cName);
         return (
             <div className={styles.td}>
                 <div className={styles.tdContent}>
