@@ -19,6 +19,7 @@ class TableTemplate extends PureComponent {
         isFixed: PropTypes.bool,
         loading: PropTypes.bool,
         maxHeight: PropTypes.number,
+        maxWidth: PropTypes.number,
         onMouseOver: PropTypes.func,
         onTouchStart: PropTypes.func,
         onScroll: PropTypes.func,
@@ -374,6 +375,7 @@ class TableTemplate extends PureComponent {
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.data !== this.props.data ||
             prevProps.maxHeight !== this.props.maxHeight ||
+            prevProps.maxWidth !== this.props.maxWidth ||
             prevProps.expandedRowKeys !== this.props.expandedRowKeys) {
             const { getTableHeight } = this.actions;
             getTableHeight();

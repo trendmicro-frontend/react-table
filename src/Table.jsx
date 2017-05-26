@@ -72,18 +72,26 @@ class Table extends PureComponent {
             const footerHeight = this.foot ? this.foot.getBoundingClientRect().height : 0;
             const tableHeight = maxHeight - headerHeight - footerHeight - parseInt(tableTopBorder, 10) - parseInt(tableBottomBorder, 10);
             this.setState({ tableHeight });
+        },
+        getTableWidth: () => {
+            const tableWidth = this.tableWrapper.getBoundingClientRect().width;
+            if (tableWidth !== this.state.tableWidth) {
+                this.setState({ tableWidth });
+            }
         }
     };
 
     componentDidMount() {
-        const { getTableHeight } = this.actions;
+        const { getTableHeight, getTableWidth } = this.actions;
         window.addEventListener('resize', getTableHeight);
+        window.addEventListener('checkWidth', getTableWidth);
         getTableHeight();
     }
 
     componentWillUnmount() {
-        const { getTableHeight } = this.actions;
+        const { getTableHeight, getTableWidth } = this.actions;
         window.removeEventListener('resize', getTableHeight);
+        window.removeEventListener('checkWidth', getTableWidth);
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -97,6 +105,10 @@ class Table extends PureComponent {
             prevProps.expandedRowKeys !== this.props.expandedRowKeys) {
             const { getTableHeight } = this.actions;
             getTableHeight();
+            // Issue: Page has no vertical scrollbar at begin, but appears the scrollbar after expanding A table,
+            // and B table width also displays horizontal scrollbar.
+            // Solution: Add this action to check other tables size in the same page.
+            window.dispatchEvent(new Event('checkWidth'));
         }
     }
 
@@ -105,6 +117,7 @@ class Table extends PureComponent {
             currentHoverKey: null,
             scrollTop: 0,
             tableHeight: 0,
+            tableWidth: 0,
             thisColumns: this.columnsParser()
         };
     }
@@ -136,7 +149,7 @@ class Table extends PureComponent {
 
     renderTable() {
         const columns = this.state.thisColumns;
-        const { currentHoverKey, scrollTop, tableHeight } = this.state;
+        const { currentHoverKey, scrollTop, tableHeight, tableWidth } = this.state;
         const { detectScrollTarget, handleBodyScroll, handleRowHover } = this.actions;
         return (
             <TableTemplate
@@ -144,6 +157,7 @@ class Table extends PureComponent {
                 columns={columns}
                 currentHoverKey={currentHoverKey}
                 maxHeight={tableHeight}
+                maxWidth={tableWidth}
                 onMouseOver={detectScrollTarget}
                 onRowHover={handleRowHover}
                 onTouchStart={detectScrollTarget}
@@ -157,7 +171,7 @@ class Table extends PureComponent {
     }
 
     renderFixedLeftTable() {
-        const { currentHoverKey, scrollTop, tableHeight } = this.state;
+        const { currentHoverKey, scrollTop, tableHeight, tableWidth } = this.state;
         const { detectScrollTarget, handleBodyScroll, handleRowHover } = this.actions;
         let fixedColumns = this.leftColumns();
         return (
@@ -167,6 +181,7 @@ class Table extends PureComponent {
                 currentHoverKey={currentHoverKey}
                 className={styles.tableFixedLeftContainer}
                 maxHeight={tableHeight}
+                maxWidth={tableWidth}
                 isFixed={true}
                 onMouseOver={detectScrollTarget}
                 onRowHover={handleRowHover}
@@ -223,6 +238,7 @@ class Table extends PureComponent {
 
     render() {
         const {
+            className,
             loading,
             bordered,
             title,
@@ -234,9 +250,19 @@ class Table extends PureComponent {
             ...props
         } = this.props;
 
+        delete props.rowKey;
+        delete props.columns;
+        delete props.expandedRowRender;
+        delete props.expandedRowKeys;
+        delete props.maxHeight;
+        delete props.rowClassName;
+        delete props.onRowClick;
+
         return (
             <div
+                {...props}
                 className={classNames(
+                    className,
                     styles.tableWrapper,
                     { [styles.tableMinimalism]: !bordered },
                     { [styles.tableBordered]: bordered },
