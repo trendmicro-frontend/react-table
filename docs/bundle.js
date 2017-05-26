@@ -47146,7 +47146,7 @@ var Table = (_temp2 = _class = function (_PureComponent) {
             args[_key] = arguments[_key];
         }
 
-        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Table.__proto__ || Object.getPrototypeOf(Table)).call.apply(_ref, [this].concat(args))), _this), _this.mainTable = null, _this.state = _this.getInitState(), _this.actions = {
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Table.__proto__ || Object.getPrototypeOf(Table)).call.apply(_ref, [this].concat(args))), _this), _this.customEvent = null, _this.mainTable = null, _this.state = _this.getInitState(), _this.actions = {
             detectScrollTarget: function detectScrollTarget(e) {
                 if (_this.scrollTarget !== e.currentTarget) {
                     _this.scrollTarget = e.currentTarget;
@@ -47196,6 +47196,13 @@ var Table = (_temp2 = _class = function (_PureComponent) {
                 getTableWidth = _actions.getTableWidth;
 
             window.addEventListener('resize', getTableHeight);
+            if (document.createEvent) {
+                // IE version
+                this.customEvent = document.createEvent('Event');
+                this.customEvent.initEvent('checkWidth', true, true);
+            } else {
+                this.customEvent = new Event('checkWidth');
+            }
             window.addEventListener('checkWidth', getTableWidth);
             getTableHeight();
         }
@@ -47224,7 +47231,7 @@ var Table = (_temp2 = _class = function (_PureComponent) {
                 // Issue: Page has no vertical scrollbar at begin, but appears the scrollbar after expanding A table,
                 // and B table width also displays horizontal scrollbar.
                 // Solution: Add this action to check other tables size in the same page.
-                window.dispatchEvent(new Event('checkWidth'));
+                window.dispatchEvent(this.customEvent);
             }
         }
     }, {
@@ -47405,6 +47412,8 @@ var Table = (_temp2 = _class = function (_PureComponent) {
             delete props.maxHeight;
             delete props.rowClassName;
             delete props.onRowClick;
+            delete props.emptyText;
+            delete props.showHeader;
 
             return _react2.default.createElement(
                 'div',
@@ -50129,4 +50138,4 @@ exports.default = _default;
 /***/ })
 
 /******/ });
-//# sourceMappingURL=bundle.js.map?da5ec3504701a220a456
+//# sourceMappingURL=bundle.js.map?d0e012a2c0482f744a5e
