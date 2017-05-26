@@ -3371,7 +3371,7 @@ exports = module.exports = __webpack_require__("../node_modules/css-loader/lib/c
 
 
 // module
-exports.push([module.i, ".table-wrapper---Nn8DN {\n  border: 1px solid #ddd;\n  position: relative;\n}\n.table-wrapper---Nn8DN > .table-area---jazFv {\n  position: relative;\n}\n.table---4nI0A {\n  width: 100%;\n  max-width: 100%;\n  table-layout: fixed;\n  background-color: #fff;\n  overflow: auto;\n}\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS,\n.table---4nI0A > .tbody---26gFd > .tr---H4SLB > .th---2_qSS,\n.table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS,\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B,\n.table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B,\n.table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B {\n  padding: 8px 12px;\n  vertical-align: middle;\n  display: inline-block;\n  overflow: hidden;\n}\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS > .td-content---2Mdz2,\n.table---4nI0A > .tbody---26gFd > .tr---H4SLB > .th---2_qSS > .td-content---2Mdz2,\n.table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS > .td-content---2Mdz2,\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B > .td-content---2Mdz2,\n.table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B > .td-content---2Mdz2,\n.table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B > .td-content---2Mdz2 {\n  position: relative;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n  -moz-transform: translateY(-50%);\n  -o-transform: translateY(-50%);\n  -ms-transform: translateY(-50%);\n  transform: translateY(-50%);\n}\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS a,\n.table---4nI0A > .tbody---26gFd > .tr---H4SLB > .th---2_qSS a,\n.table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS a,\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B a,\n.table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B a,\n.table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B a {\n  text-decoration: none;\n}\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS {\n  color: #777;\n  font-weight: bold;\n}\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB:first-child > .th---2_qSS,\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB:first-child > .td---2vh6B {\n  border-top: 0;\n}\n.table---4nI0A > .tbody---26gFd > .tr---H4SLB {\n  overflow: hidden;\n}\n.table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B > .td-content---2Mdz2 {\n  white-space: normal;\n}\n.table---4nI0A .clickable-column---1Ldga {\n  color: inherit;\n  display: block;\n}\n.table---4nI0A .clickable-column---1Ldga:hover {\n  background-color: #e6e6e6;\n  cursor: pointer;\n}\n.table-extend-column-width---224gB .table---4nI0A > .thead---F7gFU > .tr---H4SLB,\n.table-extend-column-width---224gB .table---4nI0A > .tbody---26gFd > .tr---H4SLB,\n.table-extend-column-width---224gB .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB {\n  white-space: nowrap;\n}\n.table-extend-column-width---224gB .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B > .td-content---2Mdz2 {\n  white-space: nowrap;\n}\n.tr-expand---2ULb6 {\n  border-bottom: 1px solid #ddd;\n  white-space: normal;\n}\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS,\n.table-bordered---1t2f2 .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .th---2_qSS,\n.table-bordered---1t2f2 .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS,\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B,\n.table-bordered---1t2f2 .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B,\n.table-bordered---1t2f2 .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B {\n  border: 1px solid #ddd;\n  border-width: 0 1px 1px 0;\n}\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS:first-child,\n.table-bordered---1t2f2 .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .th---2_qSS:first-child,\n.table-bordered---1t2f2 .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS:first-child,\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B:first-child,\n.table-bordered---1t2f2 .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B:first-child,\n.table-bordered---1t2f2 .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B:first-child {\n  border-left-width: 0;\n}\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS:last-of-type,\n.table-bordered---1t2f2 .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .th---2_qSS:last-of-type,\n.table-bordered---1t2f2 .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS:last-of-type,\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B:last-of-type,\n.table-bordered---1t2f2 .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B:last-of-type,\n.table-bordered---1t2f2 .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B:last-of-type {\n  border-right-width: 0;\n}\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS,\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B {\n  background-color: #eee;\n  border-bottom-width: 2px;\n  border-bottom-color: #ccc;\n}\n.table-bordered---1t2f2 .table---4nI0A > .tbody---26gFd > .tr---H4SLB:last-of-type > .td---2vh6B {\n  border-bottom-width: 0;\n}\n.table-fixed-header---3s7iS .table---4nI0A > .thead---F7gFU {\n  overflow: hidden;\n}\n.table-fixed-header---3s7iS .table---4nI0A > .tbody---26gFd {\n  overflow: auto;\n}\n.table---4nI0A.table-fixed-left-container---XMhgL {\n  position: absolute;\n  top: 0;\n  background-color: #fff;\n  width: auto;\n  overflow: hidden;\n}\n.table---4nI0A.table-fixed-left-container---XMhgL > .thead---F7gFU > .tr---H4SLB > .th---2_qSS:last-child,\n.table---4nI0A.table-fixed-left-container---XMhgL > .tbody---26gFd > .tr---H4SLB > .th---2_qSS:last-child,\n.table---4nI0A.table-fixed-left-container---XMhgL > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS:last-child,\n.table---4nI0A.table-fixed-left-container---XMhgL > .thead---F7gFU > .tr---H4SLB > .td---2vh6B:last-child,\n.table---4nI0A.table-fixed-left-container---XMhgL > .tbody---26gFd > .tr---H4SLB > .td---2vh6B:last-child,\n.table---4nI0A.table-fixed-left-container---XMhgL > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B:last-child {\n  border-right-width: 1px;\n}\n.table---4nI0A.table-fixed-left-container---XMhgL > .tbody---26gFd {\n  overflow-x: hidden;\n  overflow-y: auto;\n}\n.table-hover---vAzWN .table---4nI0A > .tbody---26gFd > .tr---H4SLB:hover,\n.table-hover---vAzWN .table---4nI0A > .tbody---26gFd > .tr---H4SLB.tr-hover---3Dpwe {\n  background-color: #e6f4fc;\n}\n.table-hover---vAzWN .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B.td-link---1wbR-:hover {\n  cursor: pointer;\n}\n.table-hover---vAzWN .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B.td-link---1wbR-:hover a {\n  text-decoration: underline;\n  color: #db3d44;\n}\n.table-minimalism---1M3bc.table-wrapper---Nn8DN {\n  border: 0;\n}\n.table-minimalism---1M3bc .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS,\n.table-minimalism---1M3bc .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .th---2_qSS,\n.table-minimalism---1M3bc .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS,\n.table-minimalism---1M3bc .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B,\n.table-minimalism---1M3bc .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B,\n.table-minimalism---1M3bc .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B {\n  border-bottom: 1px solid #ddd;\n}\n.table-minimalism---1M3bc .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS,\n.table-minimalism---1M3bc .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B {\n  border-bottom-width: 2px;\n  border-bottom-color: #ccc;\n}\n.table-minimalism---1M3bc .table---4nI0A .clickable-column---1Ldga:hover {\n  background-color: inherit;\n}\n.table-no-data---19dlA .table---4nI0A > .tbody---26gFd > .table-placeholder---p9qSt {\n  text-align: center;\n  padding: 26px 12px;\n  color: #999;\n}\n.table-sortable---3OW0J .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS {\n  white-space: nowrap;\n  padding: 0;\n}\n.table-sortable---3OW0J .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS > .td-content---2Mdz2 > *:first-child {\n  padding: 8px 12px;\n}\n.table-sortable---3OW0J .table---4nI0A .column-sort---1nz7N {\n  color: #222;\n}\n.table-sortable---3OW0J .table---4nI0A .column-sort---1nz7N:hover,\n.table-sortable---3OW0J .table---4nI0A .column-sort---1nz7N:focus {\n  color: #222;\n  text-decoration: none;\n}\n.table-sortable---3OW0J .table---4nI0A .column-sort---1nz7N > .overflow-ellipsis---1F1Bs {\n  vertical-align: middle;\n  display: inline-block;\n  overflow: hidden;\n  -o-text-overflow: ellipsis;\n  text-overflow: ellipsis;\n  max-width: calc(100% - 16px);\n}\n.table-sortable---3OW0J .table---4nI0A .column-sort---1nz7N > i {\n  vertical-align: middle;\n}\n.table-sortable---3OW0J .table---4nI0A .column-sort-asc---VbD-9,\n.table-sortable---3OW0J .table---4nI0A .column-sort-desc---LdkEY {\n  vertical-align: top;\n  margin-top: 1px;\n  display: inline-block;\n  width: 16px;\n  height: 16px;\n}\n.table-sortable---3OW0J .table---4nI0A .column-sort-asc---VbD-9 {\n  background-image: url(" + __webpack_require__("../src/icon-thSortAscending.svg") + ");\n}\n.table-sortable---3OW0J .table---4nI0A .column-sort-desc---LdkEY {\n  background-image: url(" + __webpack_require__("../src/icon-thSortDescending.svg") + ");\n}\n.loader-overlay---2tv2u {\n  background-color: rgba(255,255,255,0.8);\n  cursor: wait;\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n}\n.loader-overlay---2tv2u .loader---2BVR-,\n.loader-overlay---2tv2u .loader-small---4hf-S,\n.loader-overlay---2tv2u .loader-large---2lAcm {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n}\n.loader-overlay---2tv2u .loader-large---2lAcm {\n  margin-top: -28px;\n  margin-left: -28px;\n}\n.loader-overlay---2tv2u .loader-small---4hf-S {\n  margin-top: -8px;\n  margin-left: -8px;\n}\n.loader-overlay---2tv2u .loader---2BVR- {\n  margin-top: -16px;\n  margin-left: -16px;\n}\n.table---4nI0A + .loader-overlay---2tv2u {\n  top: 39px;\n}\n.loader---2BVR- {\n  display: inline-block;\n  margin: 0 auto;\n  position: relative;\n  text-indent: -9999em;\n  vertical-align: top;\n  border: 2px solid rgba(0,0,0,0.2);\n  border-left-color: rgba(0,0,0,0.8);\n  -webkit-transform: translateZ(0);\n  -moz-transform: translateZ(0);\n  -o-transform: translateZ(0);\n  -ms-transform: translateZ(0);\n  transform: translateZ(0);\n  -webkit-animation: spinner---CmkKg 1s infinite linear;\n  -moz-animation: spinner---CmkKg 1s infinite linear;\n  -o-animation: spinner---CmkKg 1s infinite linear;\n  -ms-animation: spinner---CmkKg 1s infinite linear;\n  animation: spinner---CmkKg 1s infinite linear;\n  border-radius: 50%;\n  width: 32px;\n  height: 32px;\n}\n.loader-large---2lAcm {\n  width: 56px;\n  height: 56px;\n}\n.loader-small---4hf-S {\n  width: 16px;\n  height: 16px;\n}\n@-moz-keyframes spinner---CmkKg {\n  0% {\n    -webkit-transform: rotate(0deg);\n    -moz-transform: rotate(0deg);\n    -o-transform: rotate(0deg);\n    -ms-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n  100% {\n    -webkit-transform: rotate(360deg);\n    -moz-transform: rotate(360deg);\n    -o-transform: rotate(360deg);\n    -ms-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n@-webkit-keyframes spinner---CmkKg {\n  0% {\n    -webkit-transform: rotate(0deg);\n    -moz-transform: rotate(0deg);\n    -o-transform: rotate(0deg);\n    -ms-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n  100% {\n    -webkit-transform: rotate(360deg);\n    -moz-transform: rotate(360deg);\n    -o-transform: rotate(360deg);\n    -ms-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n@-o-keyframes spinner---CmkKg {\n  0% {\n    -webkit-transform: rotate(0deg);\n    -moz-transform: rotate(0deg);\n    -o-transform: rotate(0deg);\n    -ms-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n  100% {\n    -webkit-transform: rotate(360deg);\n    -moz-transform: rotate(360deg);\n    -o-transform: rotate(360deg);\n    -ms-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n@keyframes spinner---CmkKg {\n  0% {\n    -webkit-transform: rotate(0deg);\n    -moz-transform: rotate(0deg);\n    -o-transform: rotate(0deg);\n    -ms-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n  100% {\n    -webkit-transform: rotate(360deg);\n    -moz-transform: rotate(360deg);\n    -o-transform: rotate(360deg);\n    -ms-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n", ""]);
+exports.push([module.i, ".table-wrapper---Nn8DN {\n  border: 1px solid #ddd;\n  position: relative;\n}\n.table-wrapper---Nn8DN > .table-area---jazFv {\n  position: relative;\n}\n.table---4nI0A {\n  width: 100%;\n  max-width: 100%;\n  table-layout: fixed;\n  background-color: #fff;\n  overflow: auto;\n}\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS,\n.table---4nI0A > .tbody---26gFd > .tr---H4SLB > .th---2_qSS,\n.table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS,\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B,\n.table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B,\n.table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B {\n  padding: 8px 12px;\n  vertical-align: middle;\n  display: inline-block;\n  overflow: hidden;\n}\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS > .td-content---2Mdz2,\n.table---4nI0A > .tbody---26gFd > .tr---H4SLB > .th---2_qSS > .td-content---2Mdz2,\n.table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS > .td-content---2Mdz2,\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B > .td-content---2Mdz2,\n.table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B > .td-content---2Mdz2,\n.table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B > .td-content---2Mdz2 {\n  position: relative;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n  -moz-transform: translateY(-50%);\n  -o-transform: translateY(-50%);\n  -ms-transform: translateY(-50%);\n  transform: translateY(-50%);\n}\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS a,\n.table---4nI0A > .tbody---26gFd > .tr---H4SLB > .th---2_qSS a,\n.table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS a,\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B a,\n.table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B a,\n.table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B a {\n  text-decoration: none;\n}\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS {\n  color: #777;\n  font-weight: bold;\n}\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB:first-child > .th---2_qSS,\n.table---4nI0A > .thead---F7gFU > .tr---H4SLB:first-child > .td---2vh6B {\n  border-top: 0;\n}\n.table---4nI0A > .tbody---26gFd > .tr---H4SLB {\n  overflow: hidden;\n}\n.table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B > .td-content---2Mdz2 {\n  white-space: normal;\n}\n.table---4nI0A .clickable-column---1Ldga {\n  color: inherit;\n  display: block;\n}\n.table---4nI0A .clickable-column---1Ldga:hover {\n  background-color: #e6e6e6;\n  cursor: pointer;\n}\n.table-extend-column-width---224gB .table---4nI0A > .thead---F7gFU > .tr---H4SLB,\n.table-extend-column-width---224gB .table---4nI0A > .tbody---26gFd > .tr---H4SLB,\n.table-extend-column-width---224gB .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB {\n  white-space: nowrap;\n}\n.table-extend-column-width---224gB .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B > .td-content---2Mdz2 {\n  white-space: nowrap;\n}\n.tr-expand---2ULb6 {\n  border-bottom: 1px solid #ddd;\n  white-space: normal;\n}\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS,\n.table-bordered---1t2f2 .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .th---2_qSS,\n.table-bordered---1t2f2 .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS,\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B,\n.table-bordered---1t2f2 .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B,\n.table-bordered---1t2f2 .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B {\n  border: 1px solid #ddd;\n  border-width: 0 1px 1px 0;\n}\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS:first-child,\n.table-bordered---1t2f2 .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .th---2_qSS:first-child,\n.table-bordered---1t2f2 .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS:first-child,\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B:first-child,\n.table-bordered---1t2f2 .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B:first-child,\n.table-bordered---1t2f2 .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B:first-child {\n  border-left-width: 0;\n}\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS:last-of-type,\n.table-bordered---1t2f2 .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .th---2_qSS:last-of-type,\n.table-bordered---1t2f2 .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS:last-of-type,\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B:last-of-type,\n.table-bordered---1t2f2 .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B:last-of-type,\n.table-bordered---1t2f2 .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B:last-of-type {\n  border-right-width: 0;\n}\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS,\n.table-bordered---1t2f2 .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B {\n  background-color: #eee;\n  border-bottom-width: 2px;\n  border-bottom-color: #ccc;\n}\n.table-bordered---1t2f2 .table---4nI0A > .tbody---26gFd > .tr---H4SLB:last-of-type > .td---2vh6B {\n  border-bottom-width: 0;\n}\n.table-fixed-header---3s7iS .table---4nI0A > .thead---F7gFU {\n  overflow: hidden;\n}\n.table-fixed-header---3s7iS .table---4nI0A > .tbody---26gFd {\n  overflow: auto;\n}\n.table---4nI0A.table-fixed-left-container---XMhgL {\n  position: absolute;\n  top: 0;\n  background-color: #fff;\n  width: auto;\n  overflow: hidden;\n}\n.table---4nI0A.table-fixed-left-container---XMhgL > .thead---F7gFU > .tr---H4SLB > .th---2_qSS:last-child,\n.table---4nI0A.table-fixed-left-container---XMhgL > .tbody---26gFd > .tr---H4SLB > .th---2_qSS:last-child,\n.table---4nI0A.table-fixed-left-container---XMhgL > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS:last-child,\n.table---4nI0A.table-fixed-left-container---XMhgL > .thead---F7gFU > .tr---H4SLB > .td---2vh6B:last-child,\n.table---4nI0A.table-fixed-left-container---XMhgL > .tbody---26gFd > .tr---H4SLB > .td---2vh6B:last-child,\n.table---4nI0A.table-fixed-left-container---XMhgL > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B:last-child {\n  border-right-width: 1px;\n}\n.table---4nI0A.table-fixed-left-container---XMhgL > .tbody---26gFd {\n  overflow-x: hidden;\n  overflow-y: auto;\n}\n.table-hover---vAzWN > .table-area---jazFv > .table---4nI0A > .tbody---26gFd > .tr---H4SLB:hover,\n.table-hover---vAzWN > .table-area---jazFv > .table---4nI0A > .tbody---26gFd > .tr---H4SLB.tr-hover---3Dpwe {\n  background-color: #e6f4fc;\n}\n.table-hover---vAzWN > .table-area---jazFv > .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B.td-link---1wbR-:hover {\n  cursor: pointer;\n}\n.table-hover---vAzWN > .table-area---jazFv > .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B.td-link---1wbR-:hover a {\n  text-decoration: underline;\n  color: #db3d44;\n}\n.table-minimalism---1M3bc.table-wrapper---Nn8DN {\n  border: 0;\n}\n.table-minimalism---1M3bc .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS,\n.table-minimalism---1M3bc .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .th---2_qSS,\n.table-minimalism---1M3bc .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .th---2_qSS,\n.table-minimalism---1M3bc .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B,\n.table-minimalism---1M3bc .table---4nI0A > .tbody---26gFd > .tr---H4SLB > .td---2vh6B,\n.table-minimalism---1M3bc .table---4nI0A > .tfoot---1jkPO > .tr---H4SLB > .td---2vh6B {\n  border-bottom: 1px solid #ddd;\n}\n.table-minimalism---1M3bc .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS,\n.table-minimalism---1M3bc .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .td---2vh6B {\n  border-bottom-width: 2px;\n  border-bottom-color: #ccc;\n}\n.table-minimalism---1M3bc .table---4nI0A .clickable-column---1Ldga:hover {\n  background-color: inherit;\n}\n.table-no-data---19dlA .table---4nI0A > .tbody---26gFd > .table-placeholder---p9qSt {\n  text-align: center;\n  padding: 26px 12px;\n  color: #999;\n}\n.table-sortable---3OW0J .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS {\n  white-space: nowrap;\n  padding: 0;\n}\n.table-sortable---3OW0J .table---4nI0A > .thead---F7gFU > .tr---H4SLB > .th---2_qSS > .td-content---2Mdz2 > *:first-child {\n  padding: 8px 12px;\n}\n.table-sortable---3OW0J .table---4nI0A .column-sort---1nz7N {\n  color: #222;\n}\n.table-sortable---3OW0J .table---4nI0A .column-sort---1nz7N:hover,\n.table-sortable---3OW0J .table---4nI0A .column-sort---1nz7N:focus {\n  color: #222;\n  text-decoration: none;\n}\n.table-sortable---3OW0J .table---4nI0A .column-sort---1nz7N > .overflow-ellipsis---1F1Bs {\n  vertical-align: middle;\n  display: inline-block;\n  overflow: hidden;\n  -o-text-overflow: ellipsis;\n  text-overflow: ellipsis;\n  max-width: calc(100% - 16px);\n}\n.table-sortable---3OW0J .table---4nI0A .column-sort---1nz7N > i {\n  vertical-align: middle;\n}\n.table-sortable---3OW0J .table---4nI0A .column-sort-asc---VbD-9,\n.table-sortable---3OW0J .table---4nI0A .column-sort-desc---LdkEY {\n  vertical-align: top;\n  margin-top: 1px;\n  display: inline-block;\n  width: 16px;\n  height: 16px;\n}\n.table-sortable---3OW0J .table---4nI0A .column-sort-asc---VbD-9 {\n  background-image: url(" + __webpack_require__("../src/icon-thSortAscending.svg") + ");\n}\n.table-sortable---3OW0J .table---4nI0A .column-sort-desc---LdkEY {\n  background-image: url(" + __webpack_require__("../src/icon-thSortDescending.svg") + ");\n}\n.loader-overlay---2tv2u {\n  background-color: rgba(255,255,255,0.8);\n  cursor: wait;\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n}\n.loader-overlay---2tv2u .loader---2BVR-,\n.loader-overlay---2tv2u .loader-small---4hf-S,\n.loader-overlay---2tv2u .loader-large---2lAcm {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n}\n.loader-overlay---2tv2u .loader-large---2lAcm {\n  margin-top: -28px;\n  margin-left: -28px;\n}\n.loader-overlay---2tv2u .loader-small---4hf-S {\n  margin-top: -8px;\n  margin-left: -8px;\n}\n.loader-overlay---2tv2u .loader---2BVR- {\n  margin-top: -16px;\n  margin-left: -16px;\n}\n.table---4nI0A + .loader-overlay---2tv2u {\n  top: 39px;\n}\n.loader---2BVR- {\n  display: inline-block;\n  margin: 0 auto;\n  position: relative;\n  text-indent: -9999em;\n  vertical-align: top;\n  border: 2px solid rgba(0,0,0,0.2);\n  border-left-color: rgba(0,0,0,0.8);\n  -webkit-transform: translateZ(0);\n  -moz-transform: translateZ(0);\n  -o-transform: translateZ(0);\n  -ms-transform: translateZ(0);\n  transform: translateZ(0);\n  -webkit-animation: spinner---CmkKg 1s infinite linear;\n  -moz-animation: spinner---CmkKg 1s infinite linear;\n  -o-animation: spinner---CmkKg 1s infinite linear;\n  -ms-animation: spinner---CmkKg 1s infinite linear;\n  animation: spinner---CmkKg 1s infinite linear;\n  border-radius: 50%;\n  width: 32px;\n  height: 32px;\n}\n.loader-large---2lAcm {\n  width: 56px;\n  height: 56px;\n}\n.loader-small---4hf-S {\n  width: 16px;\n  height: 16px;\n}\n@-moz-keyframes spinner---CmkKg {\n  0% {\n    -webkit-transform: rotate(0deg);\n    -moz-transform: rotate(0deg);\n    -o-transform: rotate(0deg);\n    -ms-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n  100% {\n    -webkit-transform: rotate(360deg);\n    -moz-transform: rotate(360deg);\n    -o-transform: rotate(360deg);\n    -ms-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n@-webkit-keyframes spinner---CmkKg {\n  0% {\n    -webkit-transform: rotate(0deg);\n    -moz-transform: rotate(0deg);\n    -o-transform: rotate(0deg);\n    -ms-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n  100% {\n    -webkit-transform: rotate(360deg);\n    -moz-transform: rotate(360deg);\n    -o-transform: rotate(360deg);\n    -ms-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n@-o-keyframes spinner---CmkKg {\n  0% {\n    -webkit-transform: rotate(0deg);\n    -moz-transform: rotate(0deg);\n    -o-transform: rotate(0deg);\n    -ms-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n  100% {\n    -webkit-transform: rotate(360deg);\n    -moz-transform: rotate(360deg);\n    -o-transform: rotate(360deg);\n    -ms-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n@keyframes spinner---CmkKg {\n  0% {\n    -webkit-transform: rotate(0deg);\n    -moz-transform: rotate(0deg);\n    -o-transform: rotate(0deg);\n    -ms-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n  100% {\n    -webkit-transform: rotate(360deg);\n    -moz-transform: rotate(360deg);\n    -o-transform: rotate(360deg);\n    -ms-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n", ""]);
 
 // exports
 exports.locals = {
@@ -47522,7 +47522,7 @@ var TableBody = (_temp = _class = function (_PureComponent) {
         value: function getRowKey(record, index) {
             var rowKey = this.props.rowKey;
             var key = typeof rowKey === 'function' ? rowKey(record, index) : record[rowKey];
-            return key === undefined ? index : key;
+            return key === undefined ? new Date().getTime() : key;
         }
     }, {
         key: 'render',
@@ -47562,6 +47562,7 @@ var TableBody = (_temp = _class = function (_PureComponent) {
                         columns: columns,
                         currentHoverKey: currentHoverKey,
                         hoverKey: key,
+                        index: index,
                         key: key,
                         onHover: onRowHover,
                         record: row
@@ -47903,9 +47904,9 @@ var TableRow = (_temp2 = _class = function (_PureComponent) {
                 var _this$props = _this.props,
                     onRowClick = _this$props.onRowClick,
                     record = _this$props.record,
-                    hoverKey = _this$props.hoverKey;
+                    index = _this$props.index;
 
-                onRowClick(record, hoverKey, e);
+                onRowClick(record, index, e);
             },
             handleRowMouseLeave: function handleRowMouseLeave() {
                 var _this$props2 = _this.props,
@@ -48007,6 +48008,7 @@ var TableRow = (_temp2 = _class = function (_PureComponent) {
     expandedRowKeys: _propTypes2.default.array,
     expandedRowRender: _propTypes2.default.func,
     hoverKey: _propTypes2.default.any,
+    index: _propTypes2.default.number,
     onHover: _propTypes2.default.func,
     onRowClick: _propTypes2.default.func,
     record: _propTypes2.default.object,
@@ -48098,7 +48100,13 @@ var TableTemplate = (_temp2 = _class = function (_PureComponent) {
                 });
                 onScroll(e);
             },
+            getSubElements: function getSubElements(parent, selector) {
+                return [].filter.call(parent.querySelectorAll(selector), function (e) {
+                    return e.parentNode === parent;
+                });
+            },
             getTableCellWidth: function getTableCellWidth() {
+                var getSubElements = _this.actions.getSubElements;
                 var _this$props = _this.props,
                     averageColumnsWidth = _this$props.averageColumnsWidth,
                     columns = _this$props.columns,
@@ -48107,7 +48115,7 @@ var TableTemplate = (_temp2 = _class = function (_PureComponent) {
                 var thsWidth = [];
                 if (_this.tableHeader) {
                     var tHeader = _this.tableHeader.header;
-                    var headerCell = tHeader.getElementsByClassName(_index2.default.th);
+                    var headerCell = getSubElements(getSubElements(tHeader, '.' + _index2.default.tr)[0], '.' + _index2.default.th);
                     for (var j = 0; j < headerCell.length; j++) {
                         var th = headerCell[j];
                         var thWidth = 0;
@@ -48120,13 +48128,27 @@ var TableTemplate = (_temp2 = _class = function (_PureComponent) {
                 }
 
                 var tBody = _this.tableBody.body;
-                var bodyRows = tBody.getElementsByClassName(_index2.default.tr);
+                var bodyRows = getSubElements(tBody, '.' + _index2.default.tr);
                 var totalWidth = tBody.clientWidth;
                 var cellTotalWidth = 0;
                 var cellsWidth = [];
                 var cellWidth = 0;
                 var customWidth = { width: 0 };
-                var customColumns = columns.filter(function (column) {
+                var newColumns = columns.map(function (column, index) {
+                    var width = column.width;
+                    if (typeof width === 'string') {
+                        var lastChar = width.substr(width.length - 1);
+                        if (lastChar === '%') {
+                            width = totalWidth * (parseFloat(width) / 100);
+                        } else {
+                            width = parseFloat(width);
+                        }
+                    }
+                    return _extends({}, column, {
+                        width: width
+                    });
+                });
+                var customColumns = newColumns.filter(function (column) {
                     return column.width && column.width > 0;
                 });
                 if (customColumns.length > 0) {
@@ -48136,21 +48158,20 @@ var TableTemplate = (_temp2 = _class = function (_PureComponent) {
                 }
 
                 if (averageColumnsWidth || loading) {
-                    cellWidth = (totalWidth - customWidth.width) / (columns.length - customColumns.length);
+                    cellWidth = (totalWidth - customWidth.width) / (newColumns.length - customColumns.length);
                 }
 
-                var index = -1;
+                var nonCustomColumnsIndex = [];
                 if (bodyRows.length > 0) {
                     for (var i = 0; i < bodyRows.length; i++) {
-                        var bodyCell = bodyRows[i].getElementsByClassName(_index2.default.td);
+                        var bodyCell = getSubElements(bodyRows[i], '.' + _index2.default.td);
                         cellTotalWidth = 0;
-                        index = -1;
+                        nonCustomColumnsIndex = [];
                         for (var _j = 0; _j < bodyCell.length; _j++) {
-                            var customColumn = columns[_j];
+                            var customColumn = newColumns[_j];
                             var td = bodyCell[_j];
                             if (customColumn && customColumn.width) {
                                 cellsWidth[_j] = customColumn.width;
-                                index = _j;
                             } else if (averageColumnsWidth) {
                                 cellsWidth[_j] = cellWidth;
                             } else {
@@ -48159,30 +48180,41 @@ var TableTemplate = (_temp2 = _class = function (_PureComponent) {
                                 var tdWidth = td.getBoundingClientRect().width;
                                 cellWidth = cellsWidth[_j] || 0;
                                 cellsWidth[_j] = Math.max(cellWidth, _thWidth, tdWidth);
-                                index = _j;
+                                nonCustomColumnsIndex.push(_j);
                             }
                             cellTotalWidth += cellsWidth[_j];
                         }
                     }
                 } else {
                     // No data
-                    for (var _j2 = 0; _j2 < columns.length; _j2++) {
-                        var _customColumn = columns[_j2];
+                    for (var _j2 = 0; _j2 < newColumns.length; _j2++) {
+                        var _customColumn = newColumns[_j2];
                         if (_customColumn && _customColumn.width) {
                             cellsWidth[_j2] = _customColumn.width;
-                            index = _j2;
                         } else if (cellWidth > 0) {
                             cellsWidth[_j2] = cellWidth;
                         } else {
                             cellsWidth[_j2] = thsWidth[_j2];
-                            index = _j2;
+                            nonCustomColumnsIndex.push(_j2);
                         }
                         cellTotalWidth += cellsWidth[_j2];
                     }
                 }
 
-                if (totalWidth > cellTotalWidth && index) {
-                    cellsWidth[index] += totalWidth - cellTotalWidth;
+                if (totalWidth > cellTotalWidth) {
+                    var extra = totalWidth - cellTotalWidth;
+                    var extraCellWidth = void 0;
+                    if (nonCustomColumnsIndex.length > 0) {
+                        extraCellWidth = extra / (newColumns.length - customColumns.length);
+                        for (var _i = 0; _i < nonCustomColumnsIndex.length; _i++) {
+                            cellsWidth[nonCustomColumnsIndex[_i]] += extraCellWidth;
+                        }
+                    } else {
+                        extraCellWidth = extra / newColumns.length;
+                        for (var _i2 = 0; _i2 < newColumns.length; _i2++) {
+                            cellsWidth[_i2] += extraCellWidth;
+                        }
+                    }
                 }
 
                 return {
@@ -48190,16 +48222,18 @@ var TableTemplate = (_temp2 = _class = function (_PureComponent) {
                 };
             },
             getTableRowHeight: function getTableRowHeight() {
+                var getSubElements = _this.actions.getSubElements;
+
                 var tHeader = _this.tableHeader ? _this.tableHeader.header : null;
-                var headerRow = tHeader ? tHeader.getElementsByClassName(_index2.default.tr) : [];
+                var headerRow = tHeader ? getSubElements(tHeader, '.' + _index2.default.tr) : [];
                 var tBody = _this.tableBody.body;
-                var bodyRows = tBody.getElementsByClassName(_index2.default.tr);
+                var bodyRows = getSubElements(tBody, '.' + _index2.default.tr);
                 var cellHeight = 0;
                 var rowsHeight = [];
                 var headerHeight = 0;
 
                 for (var i = 0; i < headerRow.length; i++) {
-                    var headerCell = headerRow[i].getElementsByClassName(_index2.default.th);
+                    var headerCell = getSubElements(headerRow[i], '.' + _index2.default.th);
                     for (var j = 0; j < headerCell.length; j++) {
                         var th = headerCell[j];
                         th.style.height = 'auto';
@@ -48208,16 +48242,16 @@ var TableTemplate = (_temp2 = _class = function (_PureComponent) {
                     }
                 }
 
-                for (var _i = 0; _i < bodyRows.length; _i++) {
-                    var bodyCell = bodyRows[_i].getElementsByClassName(_index2.default.td);
-                    cellHeight = rowsHeight[_i] || 0;
+                for (var _i3 = 0; _i3 < bodyRows.length; _i3++) {
+                    var bodyCell = getSubElements(bodyRows[_i3], '.' + _index2.default.td);
+                    cellHeight = rowsHeight[_i3] || 0;
                     for (var _j3 = 0; _j3 < bodyCell.length; _j3++) {
                         var td = bodyCell[_j3];
                         td.style.height = 'auto';
                         var tdHeight = td.getBoundingClientRect().height;
                         cellHeight = Math.max(cellHeight, tdHeight);
                     }
-                    rowsHeight[_i] = cellHeight;
+                    rowsHeight[_i3] = cellHeight;
                 }
 
                 return {
@@ -48226,18 +48260,20 @@ var TableTemplate = (_temp2 = _class = function (_PureComponent) {
                 };
             },
             getFixedTableCellsSize: function getFixedTableCellsSize() {
+                var getSubElements = _this.actions.getSubElements;
+
                 var mainTable = _this.table.previousSibling;
                 var cellsWidth = [];
                 var rowsHeight = [];
                 var tHeader = void 0;
                 var headerRow = [];
                 if (mainTable) {
-                    tHeader = mainTable.getElementsByClassName(_index2.default.thead) || [];
-                    headerRow = tHeader.length > 0 ? tHeader[0].getElementsByClassName(_index2.default.tr) : [];
-                    var tBody = mainTable.getElementsByClassName(_index2.default.tbody)[0];
-                    var bodyRows = tBody.getElementsByClassName(_index2.default.tr);
+                    tHeader = getSubElements(mainTable, '.' + _index2.default.thead) || [];
+                    headerRow = tHeader.length > 0 ? getSubElements(tHeader[0], '.' + _index2.default.tr) : [];
+                    var tBody = getSubElements(mainTable, '.' + _index2.default.tbody)[0];
+                    var bodyRows = getSubElements(tBody, '.' + _index2.default.tr);
                     for (var i = 0; i < bodyRows.length; i++) {
-                        var bodyCell = bodyRows[i].getElementsByClassName(_index2.default.td);
+                        var bodyCell = getSubElements(bodyRows[i], '.' + _index2.default.td);
                         for (var j = 0; j < bodyCell.length; j++) {
                             var td = bodyCell[j];
                             cellsWidth[j] = parseFloat(td.style.width);
@@ -48290,12 +48326,14 @@ var TableTemplate = (_temp2 = _class = function (_PureComponent) {
                 }
             },
             setTableBodyCellWidth: function setTableBodyCellWidth(cellsWidth) {
+                var getSubElements = _this.actions.getSubElements;
+
                 var tBody = _this.tableBody.body;
-                var bodyRows = tBody.getElementsByClassName(_index2.default.tr);
+                var bodyRows = getSubElements(tBody, '.' + _index2.default.tr);
                 var cellWidth = void 0;
                 var totalWidth = 0;
                 for (var i = 0; i < bodyRows.length; i++) {
-                    var bodyCell = bodyRows[i].getElementsByClassName(_index2.default.td);
+                    var bodyCell = getSubElements(bodyRows[i], '.' + _index2.default.td);
                     totalWidth = 0;
                     for (var j = 0; j < bodyCell.length; j++) {
                         var td = bodyCell[j];
@@ -48307,11 +48345,13 @@ var TableTemplate = (_temp2 = _class = function (_PureComponent) {
                 }
             },
             setTableBodyCellHeight: function setTableBodyCellHeight(rowsHeight) {
+                var getSubElements = _this.actions.getSubElements;
+
                 var tBody = _this.tableBody.body;
-                var bodyRows = tBody.getElementsByClassName(_index2.default.tr);
+                var bodyRows = getSubElements(tBody, '.' + _index2.default.tr);
                 var rowHeight = 0;
                 for (var i = 0; i < bodyRows.length; i++) {
-                    var bodyCell = bodyRows[i].getElementsByClassName(_index2.default.td);
+                    var bodyCell = getSubElements(bodyRows[i], '.' + _index2.default.td);
                     rowHeight = rowsHeight[i] || 0;
                     for (var j = 0; j < bodyCell.length; j++) {
                         var td = bodyCell[j];
@@ -48320,18 +48360,19 @@ var TableTemplate = (_temp2 = _class = function (_PureComponent) {
                 }
             },
             setTableHeaderCellWidth: function setTableHeaderCellWidth(cellsWidth) {
+                var getSubElements = _this.actions.getSubElements;
                 var isFixed = _this.props.isFixed;
 
                 var tHeader = _this.tableHeader.header;
                 var tBody = _this.tableBody.body;
-                var headerRows = tHeader.getElementsByClassName(_index2.default.tr);
+                var headerRows = getSubElements(tHeader, '.' + _index2.default.tr);
                 var offsetWidth = tBody.getBoundingClientRect().width;
                 var clientWidth = tBody.clientWidth;
                 var scrollbarWidth = offsetWidth - clientWidth;
                 var totalWidth = 0;
 
                 for (var i = 0; i < headerRows.length; i++) {
-                    var headerCell = headerRows[i].getElementsByClassName(_index2.default.th);
+                    var headerCell = getSubElements(headerRows[i], '.' + _index2.default.th);
                     totalWidth = 0;
                     for (var j = 0; j < headerCell.length; j++) {
                         var cellWidth = cellsWidth[j] || 0;
@@ -48348,11 +48389,13 @@ var TableTemplate = (_temp2 = _class = function (_PureComponent) {
                 }
             },
             setTableHeaderCellHeight: function setTableHeaderCellHeight(headerHeight) {
+                var getSubElements = _this.actions.getSubElements;
+
                 var tHeader = _this.tableHeader.header;
-                var headerRows = tHeader.getElementsByClassName(_index2.default.tr);
+                var headerRows = getSubElements(tHeader, '.' + _index2.default.tr);
 
                 for (var i = 0; i < headerRows.length; i++) {
-                    var headerCell = headerRows[i].getElementsByClassName(_index2.default.th);
+                    var headerCell = getSubElements(headerRows[i], '.' + _index2.default.th);
                     for (var j = 0; j < headerCell.length; j++) {
                         var th = headerCell[j];
                         if (th) {
@@ -48362,14 +48405,16 @@ var TableTemplate = (_temp2 = _class = function (_PureComponent) {
                 }
             },
             sizeFixedTable: function sizeFixedTable() {
-                var mainTable = _this.table.previousSibling;
-                var mainBody = mainTable.getElementsByClassName(_index2.default.tbody)[0];
-                var offsetWidth = mainBody.getBoundingClientRect().width;
-                var clientHeight = mainBody.clientHeight;
-                var tBody = _this.tableBody.body;
-                var totalWidth = tBody.getElementsByClassName(_index2.default.tr)[0];
+                var getSubElements = _this.actions.getSubElements;
 
-                _this.table.style.width = totalWidth.getBoundingClientRect().width + 'px';
+                var mainTable = _this.table.previousSibling;
+                var mainBody = getSubElements(mainTable, '.' + _index2.default.tbody)[0];
+                var offsetWidth = mainBody.getBoundingClientRect().width;
+                var clientHeight = mainBody.clientHeight + 0.5;
+                var tBody = _this.tableBody.body;
+                var totalWidth = getSubElements(tBody, '.' + _index2.default.tr)[0].getBoundingClientRect().width;
+
+                _this.table.style.width = totalWidth + 'px';
                 tBody.style.width = offsetWidth + 'px';
                 _this.setState({
                     bodyHeight: clientHeight
@@ -49204,7 +49249,16 @@ var _default = function (_Component) {
                 return _react2.default.createElement(
                     'div',
                     { style: { padding: '16px' } },
-                    'test sub content'
+                    'Sub content',
+                    _react2.default.createElement(_src2.default, {
+                        averageColumnsWidth: true,
+                        hoverable: false,
+                        maxHeight: 150,
+                        useFixedHeader: true,
+                        rowKey: 'id',
+                        columns: _this.columns1,
+                        data: _this.data1
+                    })
                 );
             },
             handleToggleDetails: function handleToggleDetails(e, record) {
@@ -49224,7 +49278,7 @@ var _default = function (_Component) {
             handleRenderActionColumn: function handleRenderActionColumn(text, record) {
                 return _this.renderDetail(text, record);
             }
-        }, _this.columns = [{ title: '', key: 'detail', dataIndex: 'detail', render: _this.actions.handleRenderActionColumn }, { title: 'Event Type', key: 'eventType', dataIndex: 'eventType' }, { title: 'Affected Devices', key: 'affectedDevices', dataIndex: 'affectedDevices' }, { title: 'Detections', key: 'detections', dataIndex: 'detections', width: 300 }], _this.data = [{ id: 1, eventType: 'Virus/Malware', affectedDevices: 20, detections: 634 }, { id: 2, eventType: 'Spyware/Grayware', affectedDevices: 20, detections: 634 }, { id: 3, eventType: 'URL Filtering', affectedDevices: 15, detections: 598 }, { id: 4, eventType: 'Web Reputation', affectedDevices: 15, detections: 598 }, { id: 5, eventType: 'Network Virus', affectedDevices: 15, detections: 497 }, { id: 6, eventType: 'Application Control', affectedDevices: 30, detections: 111 }, { id: 7, eventType: 'Predictive Machine Learning', affectedDevices: 40, detections: 0 }, { id: 8, eventType: 'Behavior Monitoring', affectedDevices: 22, detections: 333 }, { id: 9, eventType: 'Device Ontrol', affectedDevices: 9, detections: 555 }, { id: 10, eventType: 'Ransomware Summary', affectedDevices: 0, detections: 66 }, { id: 11, eventType: 'Agent Status', affectedDevices: 2, detections: 789 }, { id: 12, eventType: 'Security Risk Detections Over Time', affectedDevices: 66, detections: 34 }, { id: 13, eventType: 'Action Center', affectedDevices: 32, detections: 2234 }, { id: 14, eventType: 'License Status', affectedDevices: 8, detections: 34325 }, { id: 15, eventType: 'Component Status', affectedDevices: 12, detections: 46465 }, { id: 16, eventType: 'Outbreak Defense', affectedDevices: 12, detections: 123 }, { id: 17, eventType: 'Test long long long long long long long long long long long long long long long content', affectedDevices: 11, detections: 345 }, { id: 18, eventType: 'Computer Status', affectedDevices: 90, detections: 466 }, { id: 19, eventType: 'Mobile Devices', affectedDevices: 100, detections: 234 }, { id: 20, eventType: 'Desktops', affectedDevices: 102, detections: 477 }, { id: 21, eventType: 'Servers', affectedDevices: 33, detections: 235 }], _temp), _possibleConstructorReturn(_this, _ret);
+        }, _this.columns = [{ title: '', key: 'detail', dataIndex: 'detail', render: _this.actions.handleRenderActionColumn, width: 40 }, { title: 'Event Type', key: 'eventType', dataIndex: 'eventType' }, { title: 'Affected Devices', key: 'affectedDevices', dataIndex: 'affectedDevices' }, { title: 'Detections', key: 'detections', dataIndex: 'detections', width: 300 }], _this.columns1 = [{ title: 'Application Name', key: 'app', dataIndex: 'app' }, { title: 'Vendor Name', key: 'vendor', dataIndex: 'vendor' }], _this.data = [{ id: 1, eventType: 'Virus/Malware', affectedDevices: 20, detections: 634 }, { id: 2, eventType: 'Spyware/Grayware', affectedDevices: 20, detections: 634 }, { id: 3, eventType: 'URL Filtering', affectedDevices: 15, detections: 598 }, { id: 4, eventType: 'Web Reputation', affectedDevices: 15, detections: 598 }, { id: 5, eventType: 'Network Virus', affectedDevices: 15, detections: 497 }, { id: 6, eventType: 'Application Control', affectedDevices: 30, detections: 111 }, { id: 7, eventType: 'Predictive Machine Learning', affectedDevices: 40, detections: 0 }, { id: 8, eventType: 'Behavior Monitoring', affectedDevices: 22, detections: 333 }, { id: 9, eventType: 'Device Ontrol', affectedDevices: 9, detections: 555 }, { id: 10, eventType: 'Ransomware Summary', affectedDevices: 0, detections: 66 }, { id: 11, eventType: 'Agent Status', affectedDevices: 2, detections: 789 }, { id: 12, eventType: 'Security Risk Detections Over Time', affectedDevices: 66, detections: 34 }, { id: 13, eventType: 'Action Center', affectedDevices: 32, detections: 2234 }, { id: 14, eventType: 'License Status', affectedDevices: 8, detections: 34325 }, { id: 15, eventType: 'Component Status', affectedDevices: 12, detections: 46465 }, { id: 16, eventType: 'Outbreak Defense', affectedDevices: 12, detections: 123 }, { id: 17, eventType: 'Test long long long long long long long long long long long long long long long content', affectedDevices: 11, detections: 345 }, { id: 18, eventType: 'Computer Status', affectedDevices: 90, detections: 466 }, { id: 19, eventType: 'Mobile Devices', affectedDevices: 100, detections: 234 }, { id: 20, eventType: 'Desktops', affectedDevices: 102, detections: 477 }, { id: 21, eventType: 'Servers', affectedDevices: 33, detections: 235 }], _this.data1 = [{ id: 1, app: 'chrome', vendor: 'google' }, { id: 2, app: 'ie', vendor: 'microsoft' }], _temp), _possibleConstructorReturn(_this, _ret);
     }
 
     _createClass(_default, [{
@@ -49258,7 +49312,7 @@ var _default = function (_Component) {
                 { className: 'col-md-12' },
                 _react2.default.createElement(
                     _Section2.default,
-                    { className: 'row-md-4' },
+                    { className: 'row-md-6' },
                     _react2.default.createElement(
                         'div',
                         { className: _index2.default.sectionGroup },
@@ -49270,7 +49324,7 @@ var _default = function (_Component) {
                         _react2.default.createElement(_src2.default, {
                             hoverable: true,
                             averageColumnsWidth: false,
-                            maxHeight: 180,
+                            maxHeight: 320,
                             rowKey: 'id',
                             columns: columns,
                             data: data,
@@ -50043,4 +50097,4 @@ exports.default = _default;
 /***/ })
 
 /******/ });
-//# sourceMappingURL=bundle.js.map?b4fb55b81106a799ca9f
+//# sourceMappingURL=bundle.js.map?4b5e083fb64b0d81c8e2

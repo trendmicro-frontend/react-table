@@ -1,4 +1,4 @@
-/*! react-table v0.4.3 | (c) 2017 Trend Micro Inc. | MIT | https://github.com/trendmicro-frontend/react-table */
+/*! react-table v0.4.5 | (c) 2017 Trend Micro Inc. | MIT | https://github.com/trendmicro-frontend/react-table */
 .table---table-wrapper---1t2D3 {
   border: 1px solid #ddd;
   position: relative;
@@ -139,14 +139,14 @@
   overflow-x: hidden;
   overflow-y: auto;
 }
-.table---table-hover---3yCb6 .table---table---2aBqd > .table---tbody---3q9RK > .table---tr---3XEXR:hover,
-.table---table-hover---3yCb6 .table---table---2aBqd > .table---tbody---3q9RK > .table---tr---3XEXR.table---tr-hover---1oNCV {
+.table---table-hover---3yCb6 > .table---table-area---KA_N2 > .table---table---2aBqd > .table---tbody---3q9RK > .table---tr---3XEXR:hover,
+.table---table-hover---3yCb6 > .table---table-area---KA_N2 > .table---table---2aBqd > .table---tbody---3q9RK > .table---tr---3XEXR.table---tr-hover---1oNCV {
   background-color: #e6f4fc;
 }
-.table---table-hover---3yCb6 .table---table---2aBqd > .table---tbody---3q9RK > .table---tr---3XEXR > .table---td---EVNU5.table---td-link---2eKF1:hover {
+.table---table-hover---3yCb6 > .table---table-area---KA_N2 > .table---table---2aBqd > .table---tbody---3q9RK > .table---tr---3XEXR > .table---td---EVNU5.table---td-link---2eKF1:hover {
   cursor: pointer;
 }
-.table---table-hover---3yCb6 .table---table---2aBqd > .table---tbody---3q9RK > .table---tr---3XEXR > .table---td---EVNU5.table---td-link---2eKF1:hover a {
+.table---table-hover---3yCb6 > .table---table-area---KA_N2 > .table---table---2aBqd > .table---tbody---3q9RK > .table---tr---3XEXR > .table---td---EVNU5.table---td-link---2eKF1:hover a {
   text-decoration: underline;
   color: #db3d44;
 }
