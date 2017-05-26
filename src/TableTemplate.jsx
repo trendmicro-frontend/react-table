@@ -99,18 +99,17 @@ class TableTemplate extends PureComponent {
                 cellWidth = (totalWidth - customWidth.width) / (newColumns.length - customColumns.length);
             }
 
-            let index = -1;
+            let nonCustomColumnsIndex = [];
             if (bodyRows.length > 0) {
                 for (let i = 0; i < bodyRows.length; i++) {
                     const bodyCell = getSubElements(bodyRows[i], `.${styles.td}`);
                     cellTotalWidth = 0;
-                    index = -1;
+                    nonCustomColumnsIndex = [];
                     for (let j = 0; j < bodyCell.length; j++) {
                         const customColumn = newColumns[j];
                         let td = bodyCell[j];
                         if (customColumn && customColumn.width) {
                             cellsWidth[j] = customColumn.width;
-                            index = j;
                         } else if (averageColumnsWidth) {
                             cellsWidth[j] = cellWidth;
                         } else {
@@ -119,7 +118,7 @@ class TableTemplate extends PureComponent {
                             const tdWidth = td.getBoundingClientRect().width;
                             cellWidth = cellsWidth[j] || 0;
                             cellsWidth[j] = Math.max(cellWidth, thWidth, tdWidth);
-                            index = j;
+                            nonCustomColumnsIndex.push(j);
                         }
                         cellTotalWidth += cellsWidth[j];
                     }
@@ -130,19 +129,30 @@ class TableTemplate extends PureComponent {
                     const customColumn = newColumns[j];
                     if (customColumn && customColumn.width) {
                         cellsWidth[j] = customColumn.width;
-                        index = j;
                     } else if (cellWidth > 0) {
                         cellsWidth[j] = cellWidth;
                     } else {
                         cellsWidth[j] = thsWidth[j];
-                        index = j;
+                        nonCustomColumnsIndex.push(j);
                     }
                     cellTotalWidth += cellsWidth[j];
                 }
             }
 
-            if (totalWidth > cellTotalWidth && index) {
-                cellsWidth[index] += (totalWidth - cellTotalWidth);
+            if (totalWidth > cellTotalWidth) {
+                const extra = totalWidth - cellTotalWidth;
+                let extraCellWidth;
+                if (nonCustomColumnsIndex.length > 0) {
+                    extraCellWidth = extra / (newColumns.length - customColumns.length);
+                    for (let i = 0; i < nonCustomColumnsIndex.length; i++) {
+                        cellsWidth[nonCustomColumnsIndex[i]] += extraCellWidth;
+                    }
+                } else {
+                    extraCellWidth = extra / newColumns.length;
+                    for (let i = 0; i < newColumns.length; i++) {
+                        cellsWidth[i] += extraCellWidth;
+                    }
+                }
             }
 
             return {

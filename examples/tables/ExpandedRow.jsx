@@ -47,7 +47,7 @@ export default class extends Component {
     };
 
     columns = [
-        { title: '', key: 'detail', dataIndex: 'detail', render: this.actions.handleRenderActionColumn },
+        { title: '', key: 'detail', dataIndex: 'detail', render: this.actions.handleRenderActionColumn, width: 40 },
         { title: 'Event Type', key: 'eventType', dataIndex: 'eventType' },
         { title: 'Affected Devices', key: 'affectedDevices', dataIndex: 'affectedDevices' },
         { title: 'Detections', key: 'detections', dataIndex: 'detections', width: 300 }
