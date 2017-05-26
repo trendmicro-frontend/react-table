@@ -92,7 +92,9 @@ class Table extends PureComponent {
                 thisColumns: this.columnsParser()
             });
         }
-        if (prevProps.data !== this.props.data || prevProps.maxHeight !== this.props.maxHeight) {
+        if (prevProps.data !== this.props.data ||
+            prevProps.maxHeight !== this.props.maxHeight ||
+            prevProps.expandedRowKeys !== this.props.expandedRowKeys) {
             const { getTableHeight } = this.actions;
             getTableHeight();
         }

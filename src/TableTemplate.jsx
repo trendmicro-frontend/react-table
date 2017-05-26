@@ -13,6 +13,7 @@ class TableTemplate extends PureComponent {
         currentHoverKey: PropTypes.any,
         data: PropTypes.array,
         emptyText: PropTypes.func,
+        expandedRowKeys: PropTypes.array,
         footer: PropTypes.func,
         hoverable: PropTypes.bool,
         isFixed: PropTypes.bool,
@@ -371,7 +372,9 @@ class TableTemplate extends PureComponent {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (prevProps.data !== this.props.data || prevProps.maxHeight !== this.props.maxHeight) {
+        if (prevProps.data !== this.props.data ||
+            prevProps.maxHeight !== this.props.maxHeight ||
+            prevProps.expandedRowKeys !== this.props.expandedRowKeys) {
             const { getTableHeight } = this.actions;
             getTableHeight();
         }
