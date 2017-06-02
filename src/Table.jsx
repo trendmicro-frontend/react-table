@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import elementResizeDetectorMaker from 'element-resize-detector';
 import styles from './index.styl';
 import TableTemplate from './TableTemplate';
 
@@ -38,7 +39,7 @@ class Table extends PureComponent {
         useFixedHeader: false
     };
 
-    customEvent = null;
+    resizer = elementResizeDetectorMaker();
 
     mainTable = null;
 
@@ -66,41 +67,32 @@ class Table extends PureComponent {
                 });
             }
         },
-        getTableHeight: () => {
+        getTableSize: () => {
             const { maxHeight } = this.props;
             const tableTopBorder = this.tableWrapper.style['border-top-width'] || window.getComputedStyle(this.tableWrapper, null)['border-top-width'];
             const tableBottomBorder = this.tableWrapper.style['border-bottom-width'] || window.getComputedStyle(this.tableWrapper, null)['border-bottom-width'];
             const headerHeight = this.title ? this.title.getBoundingClientRect().height : 0;
             const footerHeight = this.foot ? this.foot.getBoundingClientRect().height : 0;
             const tableHeight = maxHeight - headerHeight - footerHeight - parseInt(tableTopBorder, 10) - parseInt(tableBottomBorder, 10);
-            this.setState({ tableHeight });
-        },
-        getTableWidth: () => {
             const tableWidth = this.tableWrapper.getBoundingClientRect().width;
-            if (tableWidth !== this.state.tableWidth) {
-                this.setState({ tableWidth });
-            }
+            this.setState({
+                tableHeight,
+                tableWidth
+            });
         }
     };
 
     componentDidMount() {
-        const { getTableHeight, getTableWidth } = this.actions;
-        window.addEventListener('resize', getTableHeight);
-        if (document.createEvent) {
-            // IE version
-            this.customEvent = document.createEvent('Event');
-            this.customEvent.initEvent('checkWidth', true, true);
-        } else {
-            this.customEvent = new Event('checkWidth');
-        }
-        window.addEventListener('checkWidth', getTableWidth);
-        getTableHeight();
+        const { getTableSize } = this.actions;
+        this.resizer.listenTo(this.tableWrapper, getTableSize);
+        window.addEventListener('resize', getTableSize);
+        getTableSize();
     }
 
     componentWillUnmount() {
-        const { getTableHeight, getTableWidth } = this.actions;
-        window.removeEventListener('resize', getTableHeight);
-        window.removeEventListener('checkWidth', getTableWidth);
+        const { getTableSize } = this.actions;
+        this.resizer.removeListener(this.tableWrapper, getTableSize);
+        window.removeEventListener('resize', getTableSize);
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -112,12 +104,8 @@ class Table extends PureComponent {
         if (prevProps.data !== this.props.data ||
             prevProps.maxHeight !== this.props.maxHeight ||
             prevProps.expandedRowKeys !== this.props.expandedRowKeys) {
-            const { getTableHeight } = this.actions;
-            getTableHeight();
-            // Issue: Page has no vertical scrollbar at begin, but appears the scrollbar after expanding A table,
-            // and B table width also displays horizontal scrollbar.
-            // Solution: Add this action to check other tables size in the same page.
-            window.dispatchEvent(this.customEvent);
+            const { getTableSize } = this.actions;
+            getTableSize();
         }
     }
 
@@ -247,6 +235,7 @@ class Table extends PureComponent {
 
     render() {
         const {
+            data,
             className,
             loading,
             bordered,
@@ -279,7 +268,7 @@ class Table extends PureComponent {
                     { [styles.tableBordered]: bordered },
                     { [styles.tableExtendColumnWidth]: !averageColumnsWidth },
                     { [styles.tableFixedHeader]: useFixedHeader },
-                    { [styles.tableNoData]: !props.data || props.data.length === 0 },
+                    { [styles.tableNoData]: !data || data.length === 0 },
                     { [styles.tableHover]: hoverable },
                     { [styles.tableSortable]: sortable }
                 )}
