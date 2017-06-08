@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import get from 'lodash.get';
@@ -18,9 +19,15 @@ class TableCell extends PureComponent {
         const { column, record } = this.props;
         const cName = column.dataIndex;
         const render = column.render;
+        const className = column.className;
         let text = get(record, cName);
         return (
-            <div className={styles.td}>
+            <div
+                className={classNames(
+                    className,
+                    styles.td
+                )}
+            >
                 <div className={styles.tdContent}>
                     {
                         render ? render(text, record) : text
