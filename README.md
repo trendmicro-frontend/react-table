@@ -27,6 +27,8 @@ Demo: https://trendmicro-frontend.github.io/react-table
 
 ## Usage
 
+### Pagination
+
 ```js
 <Table
     bordered
@@ -55,6 +57,252 @@ Demo: https://trendmicro-frontend.github.io/react-table
 />
 ```
 
+
+### Sortable
+
+```js
+const actions = {
+    toggleSortOrder: (key, event) => {
+        let sortColumnKey = key;
+        let sortOrder = (this.state.sortOrder === 'desc') ? 'asc' : 'desc';
+        if (this.state.sortColumnKey !== sortColumnKey) {
+            sortOrder = 'desc';
+        }
+        this.setState({ sortColumnKey, sortOrder });
+    }
+};
+const sortableColumns =(columns) => {
+    return (
+        columns.map((column, index) => {
+            return {
+                ...column,
+                onClick: actions.toggleSortOrder,
+                sortOrder: column.key === this.state.sortColumnKey ? this.state.sortOrder : ''
+            };
+        })
+    );
+};
+const sortableColumns = sortableColumns(columns);
+
+<Table
+    hoverable
+    sortable
+    rowKey={record => record.id}
+    columns={sortableColumns}
+    data={sortableData}
+/>
+```
+
+
+### Expanded Row
+
+```js
+const actions = {
+    handleExpandedRowRender: (record, key) => {
+        return (
+            <div style={{ padding: '16px' }}>
+                Sub content
+            </div>
+        );
+    },
+    handleToggleDetails: (record) => (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const rowIndex = this.state.expandedRowKeys.indexOf(record.id);
+        const expanded = (rowIndex >= 0);
+        let data = [];
+        // Only display one detail view at one time
+        if (expanded) {
+            data = [];
+        } else {
+            data = [record.id];
+        }
+        this.setState({ expandedRowKeys: data });
+    },
+    handleRenderActionColumn: (text, record) => {
+        const expandedRowKeys = this.state.expandedRowKeys;
+        const expanded = (expandedRowKeys.indexOf(record.id) >= 0);
+        let className = styles.expandIcon;
+        if (expanded) {
+            className += ' ' + styles.rowExpanded;
+        } else {
+            className += ' ' + styles.rowCollapsed;
+        }
+        return (
+            <i
+                className={className}
+                onClick={this.actions.handleToggleDetails(record)}
+            />
+        );
+    }
+};
+const columns = [
+    { title: '', key: 'detail', dataIndex: 'detail', render: actions.handleRenderActionColumn, width: 40 },
+    { title: 'Event Type', key: 'eventType', dataIndex: 'eventType' },
+    { title: 'Affected Devices', key: 'affectedDevices', dataIndex: 'affectedDevices' },
+    { title: 'Detections', key: 'detections', dataIndex: 'detections', width: 300 }
+];
+
+<Table
+    hoverable
+    averageColumnsWidth={false}
+    maxHeight={320}
+    rowKey="id"
+    columns={columns}
+    data={data}
+    expandedRowRender={this.actions.handleExpandedRowRender}
+    expandedRowKeys={this.state.expandedRowKeys}
+    useFixedHeader={true}
+/>
+```
+
+
+### Fixed Columns
+
+#### Fixed Header
+
+```js
+<Table
+    averageColumnsWidth={false}
+    hoverable
+    maxHeight={180}
+    useFixedHeader={true}
+    rowKey={record => record.id}
+    columns={this.columns2}
+    data={data}
+/>
+```
+
+#### Fix left columns
+
+```js
+const columns = [
+    { title: 'Event Type', key: 'eventType', dataIndex: 'eventType' },
+    { title: 'Affected Devices', key: 'affectedDevices', dataIndex: 'affectedDevices', fixed: true },
+    { title: 'Detections', key: 'detections', dataIndex: 'detections', width: 800 }
+];
+<Table
+    averageColumnsWidth={false}
+    hoverable={false}
+    maxHeight={180}
+    useFixedHeader={true}
+    rowKey="id"
+    columns={columns}
+    data={data}
+/>
+```
+
+
+### Row selection
+
+```js
+const actions = {
+    handleClickRow: (record, index, event) => {
+        const checked = record.checked;
+        const data = this.state.selectionData.map(item => {
+            if (record.id === item.id) {
+                return {
+                    ...item,
+                    checked: !checked
+                };
+            }
+            return item;
+        });
+
+        this.setState({
+            selectionData: data
+        }, () => {
+            // Change elements status
+            const selectedItems = _.filter(data, { 'checked': true });
+            const selectedLength = selectedItems.length;
+            const dataLength = data.length;
+            if (selectedLength === dataLength) {
+                this.headerCheckbox.checked = true;
+            } else {
+                this.headerCheckbox.checked = false;
+            }
+            if (selectedLength > 0 && selectedLength < dataLength) {
+                elementClass(this.headerCheckbox).add('checkbox-partial');
+            } else {
+                elementClass(this.headerCheckbox).remove('checkbox-partial');
+            }
+        });
+    },
+    handleRowClassName: (record, key) => {
+        const checked = record.checked;
+        if (checked) {
+            return styles['tr-active'];
+        } else {
+            return null;
+        }
+    },
+    handleHeaderCheckbox: (e) => {
+        const checkbox = e.target;
+        const data = this.state.selectionData.map((item, i) => {
+            return {
+                ...item,
+                checked: checkbox.checked
+            };
+        });
+        this.setState({
+            selectionData: data
+        }, () => {
+            elementClass(this.headerCheckbox).remove('checkbox-partial');
+        });
+    }
+};
+const renderHeaderCheckbox = (row) => {
+    let className = 'input-checkbox';
+    const selectedItems = _.filter(this.state.selectionData, { 'checked': true });
+    const selectedLength = selectedItems.length;
+    const dataLength = this.state.selectionData.length;
+    if (selectedLength > 0 && selectedLength < dataLength) {
+        className += ' checkbox-partial';
+    }
+    return (
+        <div className="checkbox">
+            <input
+                type="checkbox"
+                id="headerCheckbox"
+                className={className}
+                onChange={actions.handleHeaderCheckbox}
+                ref={e => {
+                    this.headerCheckbox = e;
+                }}
+            />
+            <label htmlFor="headerCheckbox" />
+        </div>
+    );
+};
+const renderCheckbox = (value, row) => {
+    return (
+        <div className="checkbox">
+            <input
+                type="checkbox"
+                id={row.id}
+                className="input-checkbox"
+                checked={row.checked}
+                onChange={(e) => {}}
+            />
+            <label />
+        </div>
+    );
+};
+const columns = [
+    { title: renderHeaderCheckbox(), key: 'checked', dataIndex: 'checked', render: renderCheckbox, width: 38 },
+    { title: 'Event Type', key: 'eventType', dataIndex: 'eventType' },
+    { title: 'Affected Devices', key: 'affectedDevices', dataIndex: 'affectedDevices' },
+    { title: 'Detections', key: 'detections', dataIndex: 'detections' }
+];
+
+<Table
+    rowKey="id"
+    columns={columns}
+    data={data}
+    rowClassName={actions.handleRowClassName}
+    onRowClick={actions.handleClickRow}
+/>
+```
 
 ## API
 

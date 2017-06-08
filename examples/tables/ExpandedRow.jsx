@@ -28,7 +28,7 @@ export default class extends Component {
                 </div>
             );
         },
-        handleToggleDetails: (e, record) => {
+        handleToggleDetails: (record) => (e) => {
             e.preventDefault();
             e.stopPropagation();
             const rowIndex = this.state.expandedRowKeys.indexOf(record.id);
@@ -43,7 +43,20 @@ export default class extends Component {
             this.setState({ expandedRowKeys: data });
         },
         handleRenderActionColumn: (text, record) => {
-            return this.renderDetail(text, record);
+            const expandedRowKeys = this.state.expandedRowKeys;
+            const expanded = (expandedRowKeys.indexOf(record.id) >= 0);
+            let className = styles.expandIcon;
+            if (expanded) {
+                className += ' ' + styles.rowExpanded;
+            } else {
+                className += ' ' + styles.rowCollapsed;
+            }
+            return (
+                <i
+                    className={className}
+                    onClick={this.actions.handleToggleDetails(record)}
+                />
+            );
         }
     };
 
@@ -84,25 +97,6 @@ export default class extends Component {
         { id: 1, app: 'chrome', vendor: 'google' },
         { id: 2, app: 'ie', vendor: 'microsoft' }
     ]
-
-    renderDetail(value, row) {
-        const expandedRowKeys = this.state.expandedRowKeys;
-        const expanded = (expandedRowKeys.indexOf(row.id) >= 0);
-        let className = styles.expandIcon;
-        if (expanded) {
-            className += ' ' + styles.rowExpanded;
-        } else {
-            className += ' ' + styles.rowCollapsed;
-        }
-        return (
-            <i
-                className={className}
-                onClick={e => {
-                    this.actions.handleToggleDetails(e, row);
-                }}
-            />
-        );
-    }
 
     render() {
         const columns = this.columns;
