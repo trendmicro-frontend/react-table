@@ -17,6 +17,7 @@ export default class extends Component {
                     Sub content
                     <Table
                         averageColumnsWidth={true}
+                        bordered={false}
                         hoverable={false}
                         maxHeight={150}
                         useFixedHeader={true}
