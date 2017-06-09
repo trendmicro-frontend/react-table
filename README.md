@@ -61,9 +61,10 @@ Demo: https://trendmicro-frontend.github.io/react-table
 ### Sortable Table
 
 ```js
+import React, { Component } from 'react';
 import Table from '@trendmicro/react-table';
 
-class SortableTable extends React.PureComponent {
+class SortableTable extends Component {
     static propTypes = {
         columns: Table.PropTypes.columns,
         data: Table.PropTypes.data
