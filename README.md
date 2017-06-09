@@ -86,10 +86,11 @@ class SortableTable extends Component {
     
     render() {
         const { sortColumnKey, sortOrder } = this.state;
+        const { columns, ...props } = this.props;
         
         return (
             <Table
-                {...this.props}
+                {...props}
                 columns={columns.map(column => ({
                     ...column,
                     onClick: this.toggleSortOrder(column),
