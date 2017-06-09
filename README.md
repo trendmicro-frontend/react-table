@@ -61,13 +61,16 @@ Demo: https://trendmicro-frontend.github.io/react-table
 ### Sortable Table
 
 ```js
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import Table from '@trendmicro/react-table';
 
 class SortableTable extends Component {
     static propTypes = {
-        columns: Table.PropTypes.columns,
-        data: Table.PropTypes.data
+        ...Table.propTypes
+    };
+    static defaultProps = {
+        ...Table.defaultProps
     };
     state = {
         sortColumnKey: '',
@@ -83,18 +86,15 @@ class SortableTable extends Component {
     
     render() {
         const { sortColumnKey, sortOrder } = this.state;
-        const { columns, data } = this.props;
         
         return (
             <Table
-                sortable
-                rowKey={record => record.id}
+                {...this.props}
                 columns={columns.map(column => ({
                     ...column,
                     onClick: this.toggleSortOrder(column),
                     sortOrder: (column.key === sortColumnKey) ? sortOrder : ''
                 }))
-                data={data}
             />
         );
     }
