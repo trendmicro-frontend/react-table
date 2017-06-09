@@ -70,8 +70,8 @@ class SortableTable extends Component {
         data: Table.PropTypes.data
     };
     state = {
-        sortColumnKey = '',
-        sortOrder = 'asc'
+        sortColumnKey: '',
+        sortOrder: 'asc'
     };
 
     toggleSortOrder = (column) => (event) => {
