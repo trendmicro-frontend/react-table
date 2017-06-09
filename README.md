@@ -58,41 +58,49 @@ Demo: https://trendmicro-frontend.github.io/react-table
 ```
 
 
-### Sortable
+### Sortable Table
 
 ```js
-const actions = {
-    toggleSortOrder: (key, event) => {
-        let sortColumnKey = key;
-        let sortOrder = (this.state.sortOrder === 'desc') ? 'asc' : 'desc';
-        if (this.state.sortColumnKey !== sortColumnKey) {
-            sortOrder = 'desc';
-        }
-        this.setState({ sortColumnKey, sortOrder });
+import Table from '@trendmicro/react-table';
+
+class SortableTable extends React.PureComponent {
+    static propTypes = {
+        columns: Table.PropTypes.columns,
+        data: Table.PropTypes.data
+    };
+    state = {
+        sortColumnKey = '',
+        sortOrder = 'asc'
+    };
+
+    toggleSortOrder = (column) => (event) => {
+        this.setState(state => ({
+            sortColumnKey: column.key
+            sortOrder: state.sortOrder === 'asc' ? 'desc' : 'asc';
+        }));
+    };
+    
+    render() {
+        const { sortColumnKey, sortOrder } = this.state;
+        const { columns, data } = this.props;
+        
+        return (
+            <Table
+                sortable
+                rowKey={record => record.id}
+                columns={columns.map(column => ({
+                    ...column,
+                    onClick: this.toggleSortOrder(column),
+                    sortOrder: (column.key === sortColumnKey) ? sortOrder : ''
+                }))
+                data={data}
+            />
+        );
     }
-};
-const sortableColumns =(columns) => {
-    return (
-        columns.map((column, index) => {
-            return {
-                ...column,
-                onClick: actions.toggleSortOrder,
-                sortOrder: column.key === this.state.sortColumnKey ? this.state.sortOrder : ''
-            };
-        })
-    );
-};
-const newColumns = sortableColumns(columns);
+}
 
-<Table
-    hoverable
-    sortable
-    rowKey={record => record.id}
-    columns={newColumns}
-    data={sortableData}
-/>
+export default SortableTable;
 ```
-
 
 ### Expanded Row
 
