@@ -82,13 +82,13 @@ const sortableColumns =(columns) => {
         })
     );
 };
-const sortableColumns = sortableColumns(columns);
+const newColumns = sortableColumns(columns);
 
 <Table
     hoverable
     sortable
     rowKey={record => record.id}
-    columns={sortableColumns}
+    columns={newColumns}
     data={sortableData}
 />
 ```
