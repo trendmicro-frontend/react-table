@@ -46,8 +46,8 @@ export default class extends Component {
     ];
 
     actions = {
-        toggleSortOrder: (key, event) => {
-            let sortColumnKey = key;
+        toggleSortOrder: (column) => (event) => {
+            let sortColumnKey = column.key;
             let sortOrder = (this.state.sortOrder === 'desc') ? 'asc' : 'desc';
             if (this.state.sortColumnKey !== sortColumnKey) {
                 sortOrder = 'desc';
@@ -64,7 +64,7 @@ export default class extends Component {
                 } else {
                     return {
                         ...column,
-                        onClick: this.actions.toggleSortOrder,
+                        onClick: this.actions.toggleSortOrder(column),
                         sortOrder: column.key === this.state.sortColumnKey ? this.state.sortOrder : ''
                     };
                 }

@@ -19,7 +19,7 @@ class TableHeader extends PureComponent {
 
     renderColumns(columns) {
         return columns.map(column => {
-            const { key, title = '', sortOrder, onClick } = { ...column };
+            const { title = '', sortOrder, onClick } = { ...column };
             const clickable = (typeof onClick === 'function');
 
             if (!clickable) {
@@ -40,9 +40,7 @@ class TableHeader extends PureComponent {
                             styles.clickableColumn,
                             { [styles.columnSort]: isSortColumn }
                         )}
-                        onClick={(event) => {
-                            onClick(key, event);
-                        }}
+                        onClick={onClick}
                     >
                         <span className={styles.overflowEllipsis}>{title}</span>
                         {columnSortStyle &&
