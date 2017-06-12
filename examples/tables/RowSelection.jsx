@@ -1,7 +1,6 @@
 import 'trendmicro-ui/dist/css/trendmicro-ui.css';
 import React, { Component } from 'react';
 import _ from 'lodash';
-import elementClass from 'element-class';
 import Table from '../../src';
 import Section from '../Section';
 import styles from '../index.styl';
@@ -26,7 +25,7 @@ export default class extends Component {
     };
 
     actions = {
-        handleClickRow: (record, index, event) => {
+        handleClickRow: (record, index, e) => {
             const checked = record.checked;
             const data = this.state.selectionData.map(item => {
                 if (record.id === item.id) {
@@ -38,24 +37,9 @@ export default class extends Component {
                 return item;
             });
 
-            this.setState({
-                selectionData: data
-            }, () => {
-                // Change elements status
-                const selectedItems = _.filter(data, { 'checked': true });
-                const selectedLength = selectedItems.length;
-                const dataLength = data.length;
-                if (selectedLength === dataLength) {
-                    this.headerCheckbox.checked = true;
-                } else {
-                    this.headerCheckbox.checked = false;
-                }
-                if (selectedLength > 0 && selectedLength < dataLength) {
-                    elementClass(this.headerCheckbox).add('checkbox-partial');
-                } else {
-                    elementClass(this.headerCheckbox).remove('checkbox-partial');
-                }
-            });
+            this.setState({ selectionData: data });
+            e.stopPropagation();
+            e.preventDefault();
         },
         handleRowClassName: (record, key) => {
             const checked = record.checked;
@@ -73,62 +57,58 @@ export default class extends Component {
                     checked: checkbox.checked
                 };
             });
-            this.setState({
-                selectionData: data
-            }, () => {
-                elementClass(this.headerCheckbox).remove('checkbox-partial');
-            });
+            this.setState({ selectionData: data });
+            e.stopPropagation();
+        },
+        renderHeaderCheckbox: () => {
+            let className = 'input-checkbox';
+            const selectedItems = _.filter(this.state.selectionData, { 'checked': true });
+            const dataLength = this.state.selectionData.length;
+            const selectedLength = selectedItems.length;
+            const isSelectedAll = selectedLength > 0 && selectedLength === dataLength;
+            if (selectedLength > 0 && selectedLength < dataLength) {
+                className += ' checkbox-partial';
+            }
+            return (
+                <div className="checkbox">
+                    <input
+                        type="checkbox"
+                        id="headerCheckbox"
+                        checked={isSelectedAll}
+                        className={className}
+                        onChange={this.actions.handleHeaderCheckbox}
+                    />
+                    <label htmlFor="headerCheckbox" />
+                </div>
+            );
+        },
+        renderCheckbox: (value, row) => {
+            return (
+                <div className="checkbox">
+                    <input
+                        type="checkbox"
+                        id={row.id}
+                        className="input-checkbox"
+                        checked={row.checked}
+                        onChange={(e) => {}}
+                    />
+                    <label />
+                </div>
+            );
         }
     };
 
     columns = [
-        { title: this.renderHeaderCheckbox(), key: 'checked', dataIndex: 'checked', render: this.renderCheckbox, width: 38 },
+        { title: this.actions.renderHeaderCheckbox, key: 'checked', dataIndex: 'checked', render: this.actions.renderCheckbox, width: 38 },
         { title: 'Event Type', key: 'eventType', dataIndex: 'eventType' },
         { title: 'Affected Devices', key: 'affectedDevices', dataIndex: 'affectedDevices' },
         { title: 'Detections', key: 'detections', dataIndex: 'detections' }
     ];
 
-    renderHeaderCheckbox(row) {
-        let className = 'input-checkbox';
-        const selectedItems = _.filter(this.state.selectionData, { 'checked': true });
-        const selectedLength = selectedItems.length;
-        const dataLength = this.state.selectionData.length;
-        if (selectedLength > 0 && selectedLength < dataLength) {
-            className += ' checkbox-partial';
-        }
-        return (
-            <div className="checkbox">
-                <input
-                    type="checkbox"
-                    id="headerCheckbox"
-                    className={className}
-                    onChange={this.actions.handleHeaderCheckbox}
-                    ref={e => {
-                        this.headerCheckbox = e;
-                    }}
-                />
-                <label htmlFor="headerCheckbox" />
-            </div>
-        );
-    }
-
-    renderCheckbox(value, row) {
-        return (
-            <div className="checkbox">
-                <input
-                    type="checkbox"
-                    id={row.id}
-                    className="input-checkbox"
-                    checked={row.checked}
-                    onChange={(e) => {}}
-                />
-                <label />
-            </div>
-        );
-    }
-
     render() {
-        const columns = this.columns;
+        const columns = this.columns.map(c => {
+            return c;
+        });
         const data = this.state.selectionData;
 
         return (
