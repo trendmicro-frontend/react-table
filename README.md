@@ -83,11 +83,11 @@ class SortableTable extends Component {
             sortOrder: state.sortOrder === 'asc' ? 'desc' : 'asc';
         }));
     };
-    
+
     render() {
         const { sortColumnKey, sortOrder } = this.state;
         const { columns, ...props } = this.props;
-        
+
         return (
             <Table
                 {...props}
@@ -348,10 +348,10 @@ Name      | Type                 | Default | Description
 className | String               |         | class name of the table cell.
 onClick   | Function(event)      |         | onClick event handler.
 key       | String               |         | Key of this column.
-title     | React Node           |         | Title of this column.
+title     | React Node or Function(): React Node|         | Title of this column.
 dataIndex | String               |         | Display field of the data record.
 width     | Number               |         | Width of the specific proportion calculation according to the width of the columns.
-fixed     | Boolean              | false   | This column will be fixed af left side when table scroll horizontally.
+fixed     | Boolean              | false   | This column will be fixed at left side when table scroll horizontally.
 render    | Function(value, row) |         | The render function of cell, has two params: the text of this cell, the record of this row, it's return a react node.
 
 ## License

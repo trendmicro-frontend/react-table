@@ -62,7 +62,7 @@ class TableHeader extends PureComponent {
             return (
                 <div key={key} className={styles.th}>
                     <div className={styles.tdContent}>
-                        {column.title}
+                        {typeof column.title === 'function' ? column.title() : column.title}
                     </div>
                 </div>
             );
