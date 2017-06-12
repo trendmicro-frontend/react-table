@@ -3824,72 +3824,6 @@ function toComment(sourceMap) {
 
 /***/ }),
 
-/***/ "../node_modules/element-class/index.js":
-/***/ (function(module, exports) {
-
-module.exports = function(opts) {
-  return new ElementClass(opts)
-}
-
-function indexOf(arr, prop) {
-  if (arr.indexOf) return arr.indexOf(prop)
-  for (var i = 0, len = arr.length; i < len; i++)
-    if (arr[i] === prop) return i
-  return -1
-}
-
-function ElementClass(opts) {
-  if (!(this instanceof ElementClass)) return new ElementClass(opts)
-  var self = this
-  if (!opts) opts = {}
-
-  // similar doing instanceof HTMLElement but works in IE8
-  if (opts.nodeType) opts = {el: opts}
-
-  this.opts = opts
-  this.el = opts.el || document.body
-  if (typeof this.el !== 'object') this.el = document.querySelector(this.el)
-}
-
-ElementClass.prototype.add = function(className) {
-  var el = this.el
-  if (!el) return
-  if (el.className === "") return el.className = className
-  var classes = el.className.split(' ')
-  if (indexOf(classes, className) > -1) return classes
-  classes.push(className)
-  el.className = classes.join(' ')
-  return classes
-}
-
-ElementClass.prototype.remove = function(className) {
-  var el = this.el
-  if (!el) return
-  if (el.className === "") return
-  var classes = el.className.split(' ')
-  var idx = indexOf(classes, className)
-  if (idx > -1) classes.splice(idx, 1)
-  el.className = classes.join(' ')
-  return classes
-}
-
-ElementClass.prototype.has = function(className) {
-  var el = this.el
-  if (!el) return
-  var classes = el.className.split(' ')
-  return indexOf(classes, className) > -1
-}
-
-ElementClass.prototype.toggle = function(className) {
-  var el = this.el
-  if (!el) return
-  if (this.has(className)) this.remove(className)
-  else this.add(className)
-}
-
-
-/***/ }),
-
 /***/ "../node_modules/element-resize-detector/src/browser-detector.js":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -49526,13 +49460,12 @@ var TableHeader = (_temp = _class = function (_PureComponent) {
         value: function renderColumns(columns) {
             return columns.map(function (column) {
                 var _column = _extends({}, column),
-                    key = _column.key,
                     _column$title = _column.title,
                     title = _column$title === undefined ? '' : _column$title,
                     sortOrder = _column.sortOrder,
-                    _onClick = _column.onClick;
+                    onClick = _column.onClick;
 
-                var clickable = typeof _onClick === 'function';
+                var clickable = typeof onClick === 'function';
 
                 if (!clickable) {
                     return column;
@@ -49549,9 +49482,7 @@ var TableHeader = (_temp = _class = function (_PureComponent) {
                         _reactAnchor2.default,
                         {
                             className: (0, _classnames2.default)(_index2.default.clickableColumn, _defineProperty({}, _index2.default.columnSort, isSortColumn)),
-                            onClick: function onClick(event) {
-                                _onClick(key, event);
-                            }
+                            onClick: onClick
                         },
                         _react2.default.createElement(
                             'span',
@@ -49577,7 +49508,7 @@ var TableHeader = (_temp = _class = function (_PureComponent) {
                     _react2.default.createElement(
                         'div',
                         { className: _index2.default.tdContent },
-                        column.title
+                        typeof column.title === 'function' ? column.title() : column.title
                     )
                 );
             });
@@ -50812,13 +50743,15 @@ var _default = function (_Component) {
                 return row.detections;
             }
         }], _this.data = [{ id: 1, eventType: 'Virus/Malware', affectedDevices: 20, detections: 634 }, { id: 2, eventType: 'Spyware/Grayware', affectedDevices: 20, detections: 634 }, { id: 3, eventType: 'URL Filtering', affectedDevices: 15, detections: 598 }, { id: 4, eventType: 'Web Reputation', affectedDevices: 15, detections: 598 }, { id: 5, eventType: 'Network Virus', affectedDevices: 15, detections: 497 }, { id: 6, eventType: 'Application Control', affectedDevices: 0, detections: 0 }], _this.actions = {
-            toggleSortOrder: function toggleSortOrder(key, event) {
-                var sortColumnKey = key;
-                var sortOrder = _this.state.sortOrder === 'desc' ? 'asc' : 'desc';
-                if (_this.state.sortColumnKey !== sortColumnKey) {
-                    sortOrder = 'desc';
-                }
-                _this.setState({ sortColumnKey: sortColumnKey, sortOrder: sortOrder });
+            toggleSortOrder: function toggleSortOrder(column) {
+                return function (event) {
+                    var sortColumnKey = column.key;
+                    var sortOrder = _this.state.sortOrder === 'desc' ? 'asc' : 'desc';
+                    if (_this.state.sortColumnKey !== sortColumnKey) {
+                        sortOrder = 'desc';
+                    }
+                    _this.setState({ sortColumnKey: sortColumnKey, sortOrder: sortOrder });
+                };
             }
         }, _temp), _possibleConstructorReturn(_this, _ret);
     }
@@ -50833,7 +50766,7 @@ var _default = function (_Component) {
                     return column;
                 } else {
                     return _extends({}, column, {
-                        onClick: _this2.actions.toggleSortOrder,
+                        onClick: _this2.actions.toggleSortOrder(column),
                         sortOrder: column.key === _this2.state.sortColumnKey ? _this2.state.sortOrder : ''
                     });
                 }
@@ -51512,10 +51445,6 @@ var _lodash = __webpack_require__("../node_modules/lodash/lodash.js");
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _elementClass = __webpack_require__("../node_modules/element-class/index.js");
-
-var _elementClass2 = _interopRequireDefault(_elementClass);
-
 var _src = __webpack_require__("../src/index.js");
 
 var _src2 = _interopRequireDefault(_src);
@@ -51559,7 +51488,7 @@ var _default = function (_Component) {
                 detections: 598
             }, { id: 5, checked: false, eventType: 'Network Virus', affectedDevices: 15, detections: 497 }, { id: 6, checked: false, eventType: 'Application Control', affectedDevices: 0, detections: 0 }]
         }, _this.actions = {
-            handleClickRow: function handleClickRow(record, index, event) {
+            handleClickRow: function handleClickRow(record, index, e) {
                 var checked = record.checked;
                 var data = _this.state.selectionData.map(function (item) {
                     if (record.id === item.id) {
@@ -51570,24 +51499,9 @@ var _default = function (_Component) {
                     return item;
                 });
 
-                _this.setState({
-                    selectionData: data
-                }, function () {
-                    // Change elements status
-                    var selectedItems = _lodash2.default.filter(data, { 'checked': true });
-                    var selectedLength = selectedItems.length;
-                    var dataLength = data.length;
-                    if (selectedLength === dataLength) {
-                        _this.headerCheckbox.checked = true;
-                    } else {
-                        _this.headerCheckbox.checked = false;
-                    }
-                    if (selectedLength > 0 && selectedLength < dataLength) {
-                        (0, _elementClass2.default)(_this.headerCheckbox).add('checkbox-partial');
-                    } else {
-                        (0, _elementClass2.default)(_this.headerCheckbox).remove('checkbox-partial');
-                    }
-                });
+                _this.setState({ selectionData: data });
+                e.stopPropagation();
+                e.preventDefault();
             },
             handleRowClassName: function handleRowClassName(record, key) {
                 var checked = record.checked;
@@ -51604,62 +51518,54 @@ var _default = function (_Component) {
                         checked: checkbox.checked
                     });
                 });
-                _this.setState({
-                    selectionData: data
-                }, function () {
-                    (0, _elementClass2.default)(_this.headerCheckbox).remove('checkbox-partial');
-                });
+                _this.setState({ selectionData: data });
+                e.stopPropagation();
+            },
+            renderHeaderCheckbox: function renderHeaderCheckbox() {
+                var className = 'input-checkbox';
+                var selectedItems = _lodash2.default.filter(_this.state.selectionData, { 'checked': true });
+                var dataLength = _this.state.selectionData.length;
+                var selectedLength = selectedItems.length;
+                var isSelectedAll = selectedLength > 0 && selectedLength === dataLength;
+                if (selectedLength > 0 && selectedLength < dataLength) {
+                    className += ' checkbox-partial';
+                }
+                return _react2.default.createElement(
+                    'div',
+                    { className: 'checkbox' },
+                    _react2.default.createElement('input', {
+                        type: 'checkbox',
+                        id: 'headerCheckbox',
+                        checked: isSelectedAll,
+                        className: className,
+                        onChange: _this.actions.handleHeaderCheckbox
+                    }),
+                    _react2.default.createElement('label', { htmlFor: 'headerCheckbox' })
+                );
+            },
+            renderCheckbox: function renderCheckbox(value, row) {
+                return _react2.default.createElement(
+                    'div',
+                    { className: 'checkbox' },
+                    _react2.default.createElement('input', {
+                        type: 'checkbox',
+                        id: row.id,
+                        className: 'input-checkbox',
+                        checked: row.checked,
+                        onChange: function onChange(e) {}
+                    }),
+                    _react2.default.createElement('label', null)
+                );
             }
-        }, _this.columns = [{ title: _this.renderHeaderCheckbox(), key: 'checked', dataIndex: 'checked', render: _this.renderCheckbox, width: 38 }, { title: 'Event Type', key: 'eventType', dataIndex: 'eventType' }, { title: 'Affected Devices', key: 'affectedDevices', dataIndex: 'affectedDevices' }, { title: 'Detections', key: 'detections', dataIndex: 'detections' }], _temp), _possibleConstructorReturn(_this, _ret);
+        }, _this.columns = [{ title: _this.actions.renderHeaderCheckbox, key: 'checked', dataIndex: 'checked', render: _this.actions.renderCheckbox, width: 38 }, { title: 'Event Type', key: 'eventType', dataIndex: 'eventType' }, { title: 'Affected Devices', key: 'affectedDevices', dataIndex: 'affectedDevices' }, { title: 'Detections', key: 'detections', dataIndex: 'detections' }], _temp), _possibleConstructorReturn(_this, _ret);
     }
 
     _createClass(_default, [{
-        key: 'renderHeaderCheckbox',
-        value: function renderHeaderCheckbox(row) {
-            var _this2 = this;
-
-            var className = 'input-checkbox';
-            var selectedItems = _lodash2.default.filter(this.state.selectionData, { 'checked': true });
-            var selectedLength = selectedItems.length;
-            var dataLength = this.state.selectionData.length;
-            if (selectedLength > 0 && selectedLength < dataLength) {
-                className += ' checkbox-partial';
-            }
-            return _react2.default.createElement(
-                'div',
-                { className: 'checkbox' },
-                _react2.default.createElement('input', {
-                    type: 'checkbox',
-                    id: 'headerCheckbox',
-                    className: className,
-                    onChange: this.actions.handleHeaderCheckbox,
-                    ref: function ref(e) {
-                        _this2.headerCheckbox = e;
-                    }
-                }),
-                _react2.default.createElement('label', { htmlFor: 'headerCheckbox' })
-            );
-        }
-    }, {
-        key: 'renderCheckbox',
-        value: function renderCheckbox(value, row) {
-            return _react2.default.createElement(
-                'div',
-                { className: 'checkbox' },
-                _react2.default.createElement('input', {
-                    type: 'checkbox',
-                    id: row.id,
-                    className: 'input-checkbox',
-                    checked: row.checked,
-                    onChange: function onChange(e) {}
-                }),
-                _react2.default.createElement('label', null)
-            );
-        }
-    }, {
         key: 'render',
         value: function render() {
-            var columns = this.columns;
+            var columns = this.columns.map(function (c) {
+                return c;
+            });
             var data = this.state.selectionData;
 
             return _react2.default.createElement(
@@ -51865,4 +51771,4 @@ exports.default = _default;
 /***/ })
 
 /******/ });
-//# sourceMappingURL=bundle.js.map?659b0cc944cf007f755a
+//# sourceMappingURL=bundle.js.map?df026247410ae273a775
