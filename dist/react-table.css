@@ -1,7 +1,15 @@
-/*! react-table v0.5.1 | (c) 2017 Trend Micro Inc. | MIT | https://github.com/trendmicro-frontend/react-table */
+/*! react-table v0.5.2 | (c) 2017 Trend Micro Inc. | MIT | https://github.com/trendmicro-frontend/react-table */
 .table---table-wrapper---1t2D3 {
   border: 1px solid #ddd;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   position: relative;
+}
+.table---table-wrapper---1t2D3 * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 .table---table-wrapper---1t2D3 > .table---table-area---KA_N2 {
   position: relative;
@@ -124,22 +132,22 @@
 .table---table-fixed-header---3bjFf > .table---table-area---KA_N2 > .table---table---2aBqd > .table---tbody---3q9RK {
   overflow: auto;
 }
-.table---table---2aBqd.table---table-fixed-left-container---OojVI {
+.table---table-area---KA_N2 > .table---table---2aBqd.table---table-fixed-left-container---OojVI {
   position: absolute;
   top: 0;
   background-color: #fff;
   width: auto;
   overflow: hidden;
 }
-.table---table---2aBqd.table---table-fixed-left-container---OojVI > .table---thead---1v6TQ > .table---tr---3XEXR > .table---th---2-0kV:last-child,
-.table---table---2aBqd.table---table-fixed-left-container---OojVI > .table---tbody---3q9RK > .table---tr---3XEXR > .table---th---2-0kV:last-child,
-.table---table---2aBqd.table---table-fixed-left-container---OojVI > .table---tfoot---23ZpN > .table---tr---3XEXR > .table---th---2-0kV:last-child,
-.table---table---2aBqd.table---table-fixed-left-container---OojVI > .table---thead---1v6TQ > .table---tr---3XEXR > .table---td---EVNU5:last-child,
-.table---table---2aBqd.table---table-fixed-left-container---OojVI > .table---tbody---3q9RK > .table---tr---3XEXR > .table---td---EVNU5:last-child,
-.table---table---2aBqd.table---table-fixed-left-container---OojVI > .table---tfoot---23ZpN > .table---tr---3XEXR > .table---td---EVNU5:last-child {
+.table---table-area---KA_N2 > .table---table---2aBqd.table---table-fixed-left-container---OojVI > .table---thead---1v6TQ > .table---tr---3XEXR > .table---th---2-0kV:last-child,
+.table---table-area---KA_N2 > .table---table---2aBqd.table---table-fixed-left-container---OojVI > .table---tbody---3q9RK > .table---tr---3XEXR > .table---th---2-0kV:last-child,
+.table---table-area---KA_N2 > .table---table---2aBqd.table---table-fixed-left-container---OojVI > .table---tfoot---23ZpN > .table---tr---3XEXR > .table---th---2-0kV:last-child,
+.table---table-area---KA_N2 > .table---table---2aBqd.table---table-fixed-left-container---OojVI > .table---thead---1v6TQ > .table---tr---3XEXR > .table---td---EVNU5:last-child,
+.table---table-area---KA_N2 > .table---table---2aBqd.table---table-fixed-left-container---OojVI > .table---tbody---3q9RK > .table---tr---3XEXR > .table---td---EVNU5:last-child,
+.table---table-area---KA_N2 > .table---table---2aBqd.table---table-fixed-left-container---OojVI > .table---tfoot---23ZpN > .table---tr---3XEXR > .table---td---EVNU5:last-child {
   border-right-width: 1px;
 }
-.table---table---2aBqd.table---table-fixed-left-container---OojVI > .table---tbody---3q9RK {
+.table---table-area---KA_N2 > .table---table---2aBqd.table---table-fixed-left-container---OojVI > .table---tbody---3q9RK {
   overflow-x: hidden;
   overflow-y: auto;
 }
