@@ -1,4 +1,4 @@
-/*! react-table v0.5.2 | (c) 2017 Trend Micro Inc. | MIT | https://github.com/trendmicro-frontend/react-table */
+/*! react-table v0.5.3 | (c) 2017 Trend Micro Inc. | MIT | https://github.com/trendmicro-frontend/react-table */
 .table---table-wrapper---1t2D3 {
   border: 1px solid #ddd;
   -webkit-box-sizing: border-box;
@@ -45,14 +45,6 @@
   -o-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
-}
-.table---table---2aBqd > .table---thead---1v6TQ > .table---tr---3XEXR > .table---th---2-0kV a,
-.table---table---2aBqd > .table---tbody---3q9RK > .table---tr---3XEXR > .table---th---2-0kV a,
-.table---table---2aBqd > .table---tfoot---23ZpN > .table---tr---3XEXR > .table---th---2-0kV a,
-.table---table---2aBqd > .table---thead---1v6TQ > .table---tr---3XEXR > .table---td---EVNU5 a,
-.table---table---2aBqd > .table---tbody---3q9RK > .table---tr---3XEXR > .table---td---EVNU5 a,
-.table---table---2aBqd > .table---tfoot---23ZpN > .table---tr---3XEXR > .table---td---EVNU5 a {
-  text-decoration: none;
 }
 .table---table---2aBqd > .table---thead---1v6TQ > .table---tr---3XEXR > .table---th---2-0kV {
   color: #777;
@@ -193,13 +185,16 @@
 .table---table-sortable---KlbyF > .table---table-area---KA_N2 > .table---table---2aBqd > .table---thead---1v6TQ > .table---tr---3XEXR > .table---th---2-0kV > .table---td-content---3XCoJ > *:first-child {
   padding: 8px 12px;
 }
-.table---table-sortable---KlbyF > .table---table-area---KA_N2 > .table---table---2aBqd .table---column-sort---2tMOB {
-  color: #222;
+.table---table-sortable---KlbyF > .table---table-area---KA_N2 > .table---table---2aBqd .table---clickable-column---1zeo4 {
+  text-decoration: none;
 }
-.table---table-sortable---KlbyF > .table---table-area---KA_N2 > .table---table---2aBqd .table---column-sort---2tMOB:hover,
-.table---table-sortable---KlbyF > .table---table-area---KA_N2 > .table---table---2aBqd .table---column-sort---2tMOB:focus {
+.table---table-sortable---KlbyF > .table---table-area---KA_N2 > .table---table---2aBqd .table---clickable-column---1zeo4:hover,
+.table---table-sortable---KlbyF > .table---table-area---KA_N2 > .table---table---2aBqd .table---clickable-column---1zeo4:focus {
   color: #222;
   text-decoration: none;
+}
+.table---table-sortable---KlbyF > .table---table-area---KA_N2 > .table---table---2aBqd .table---column-sort---2tMOB {
+  color: #222;
 }
 .table---table-sortable---KlbyF > .table---table-area---KA_N2 > .table---table---2aBqd .table---column-sort---2tMOB > .table---overflow-ellipsis---3jIxg {
   vertical-align: middle;
