@@ -1,4 +1,5 @@
 import 'trendmicro-ui/dist/css/trendmicro-ui.css';
+import Anchor from '@trendmicro/react-anchor';
 import React, { Component } from 'react';
 import orderBy from 'lodash.orderby';
 import Table from '../../src';
@@ -16,23 +17,19 @@ export default class extends Component {
         {
             title: 'Event Type',
             key: 'eventType',
-            render: (value, row, index) => {
-                return row.eventType;
+            render: (value, row) => {
+                return (<Anchor>{row.eventType}</Anchor>);
             }
         },
         {
+            dataIndex: 'affectedDevices',
             title: 'Affected Devices',
-            key: 'affectedDevices',
-            render: (value, row, index) => {
-                return row.affectedDevices;
-            }
+            key: 'affectedDevices'
         },
         {
+            dataIndex: 'detections',
             title: 'Detections',
-            key: 'detections',
-            render: (value, row, index) => {
-                return row.detections;
-            }
+            key: 'detections'
         }
     ];
 
