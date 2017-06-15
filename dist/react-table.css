@@ -1,15 +1,17 @@
-/*! react-table v0.5.3 | (c) 2017 Trend Micro Inc. | MIT | https://github.com/trendmicro-frontend/react-table */
+/*! react-table v0.5.4 | (c) 2017 Trend Micro Inc. | MIT | https://github.com/trendmicro-frontend/react-table */
 .table---table-wrapper---1t2D3 {
   border: 1px solid #ddd;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
   position: relative;
-}
-.table---table-wrapper---1t2D3 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+}
+.table---table-wrapper---1t2D3 *,
+.table---table-wrapper---1t2D3 *:before,
+.table---table-wrapper---1t2D3 *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
 }
 .table---table-wrapper---1t2D3 > .table---table-area---KA_N2 {
   position: relative;
