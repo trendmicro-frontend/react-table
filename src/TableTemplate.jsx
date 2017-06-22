@@ -226,14 +226,16 @@ class TableTemplate extends PureComponent {
             };
         },
         getTableHeight: () => {
-            const { maxHeight } = this.props;
-            const headerHeight = this.tableHeader ? this.tableHeader.header.getBoundingClientRect().height : 0;
-            const tableHeight = maxHeight;
-            let bodyHeight = maxHeight ? (maxHeight - headerHeight) : 0;
-            this.setState({
-                tableHeight,
-                bodyHeight
-            }, this.actions.sizeTableCells);
+            if (this.table) {
+                const { maxHeight } = this.props;
+                const headerHeight = this.tableHeader ? this.tableHeader.header.getBoundingClientRect().height : 0;
+                const tableHeight = maxHeight;
+                let bodyHeight = maxHeight ? (maxHeight - headerHeight) : 0;
+                this.setState({
+                    tableHeight,
+                    bodyHeight
+                }, this.actions.sizeTableCells);
+            }
         },
         sizeTableCells: () => {
             const { isFixed } = this.props;

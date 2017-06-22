@@ -68,17 +68,19 @@ class Table extends PureComponent {
             }
         },
         getTableSize: () => {
-            const { maxHeight } = this.props;
-            const tableTopBorder = this.tableWrapper.style['border-top-width'] || window.getComputedStyle(this.tableWrapper, null)['border-top-width'];
-            const tableBottomBorder = this.tableWrapper.style['border-bottom-width'] || window.getComputedStyle(this.tableWrapper, null)['border-bottom-width'];
-            const headerHeight = this.title ? this.title.getBoundingClientRect().height : 0;
-            const footerHeight = this.foot ? this.foot.getBoundingClientRect().height : 0;
-            const tableHeight = maxHeight - headerHeight - footerHeight - parseInt(tableTopBorder, 10) - parseInt(tableBottomBorder, 10);
-            const tableWidth = this.tableWrapper.getBoundingClientRect().width;
-            this.setState({
-                tableHeight,
-                tableWidth
-            });
+            if (this.tableWrapper) {
+                const { maxHeight } = this.props;
+                const tableTopBorder = this.tableWrapper.style['border-top-width'] || window.getComputedStyle(this.tableWrapper, null)['border-top-width'];
+                const tableBottomBorder = this.tableWrapper.style['border-bottom-width'] || window.getComputedStyle(this.tableWrapper, null)['border-bottom-width'];
+                const headerHeight = this.title ? this.title.getBoundingClientRect().height : 0;
+                const footerHeight = this.foot ? this.foot.getBoundingClientRect().height : 0;
+                const tableHeight = maxHeight - headerHeight - footerHeight - parseInt(tableTopBorder, 10) - parseInt(tableBottomBorder, 10);
+                const tableWidth = this.tableWrapper.getBoundingClientRect().width;
+                this.setState({
+                    tableHeight,
+                    tableWidth
+                });
+            }
         }
     };
 
