@@ -25,8 +25,7 @@ class TableTemplate extends PureComponent {
         onScroll: PropTypes.func,
         onRowHover: PropTypes.func,
         showHeader: PropTypes.bool,
-        scrollTop: PropTypes.number,
-        title: PropTypes.func
+        scrollTop: PropTypes.number
     };
 
     static defaultProps = {

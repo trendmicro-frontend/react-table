@@ -362,14 +362,14 @@ data                | Object[]                          | []      | Data record 
 emptyText           | Function                          | () => { return 'No Data'; } | Display text when data is empty.
 expandedRowKeys     | String[]                          |         | Current expanded rows keys.
 expandedRowRender   | Function(record, key)             |         | Expanded content render function.
-footer              | Function                          |         | Table footer render function.
+footer              | React Node or Function(): React Node|       | Table footer render function.
 hoverable           | Boolean                           | true    | Whether use row hover style.
 loading             | Boolean                           | false   | Whether table is loading.
 maxHeight           | Number                            |         | Table maximum height.
 onRowClick          | Function(record, key)             |         | Handle rowClick action.
 showHeader          | Boolean                           | true    | Whether table head is shown.
 sortable            | Boolean                           | false   | Whether use sortting event at table head.
-title               | Function                          |         | Table title render function.
+title               | React Node or Function(): React Node|       | Table title render function.
 useFixedHeader      | Boolean                           | false   | Whether table head is fixed.
 rowClassName        | Function(record, key):string      |         | Get row's className.
 rowKey              | string or Function(record):string | 'key'   | If rowKey is string, `record[rowKey]` will be used as key. If rowKey is function, the return value of `rowKey(record)` will be use as key.

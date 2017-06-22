@@ -14,7 +14,7 @@ class Table extends PureComponent {
         emptyText: PropTypes.func,
         expandedRowKeys: PropTypes.array,
         expandedRowRender: PropTypes.func,
-        footer: PropTypes.func,
+        footer: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
         hoverable: PropTypes.bool,
         loading: PropTypes.bool,
         loaderRender: PropTypes.func,
@@ -22,7 +22,7 @@ class Table extends PureComponent {
         onRowClick: PropTypes.func,
         showHeader: PropTypes.bool,
         sortable: PropTypes.bool,
-        title: PropTypes.func,
+        title: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
         useFixedHeader: PropTypes.bool,
         rowClassName: PropTypes.func,
         rowKey: PropTypes.oneOfType([PropTypes.string, PropTypes.func])
@@ -88,9 +88,7 @@ class Table extends PureComponent {
         const { getTableSize } = this.actions;
         this.resizer.listenTo(this.tableWrapper, getTableSize);
         window.addEventListener('resize', getTableSize);
-        setTimeout(() => {
-            getTableSize();
-        }, 0);
+        getTableSize();
     }
 
     componentWillUnmount() {
@@ -199,6 +197,7 @@ class Table extends PureComponent {
 
     renderTitle() {
         const { title } = this.props;
+        const content = (typeof title === 'function' ? title() : title);
         return (
             <div
                 className={styles.title}
@@ -206,13 +205,14 @@ class Table extends PureComponent {
                     this.title = node;
                 }}
             >
-                {title()}
+                {content}
             </div>
         );
     }
 
     renderFooter () {
         const { footer } = this.props;
+        const content = (typeof footer === 'function' ? footer() : footer);
         return (
             <div
                 className={styles.tfoot}
@@ -220,7 +220,7 @@ class Table extends PureComponent {
                     this.foot = node;
                 }}
             >
-                {footer()}
+                {content}
             </div>
         );
     }

@@ -86,7 +86,7 @@ export default class extends Component {
                             data={data}
                             maxHeight={300}
                             useFixedHeader={true}
-                            title={() => (
+                            title={
                                 <div className={styles.tableToolbar}>
                                     <Button btnStyle="flat">
                                         Export
@@ -107,27 +107,29 @@ export default class extends Component {
                                         nextPageRenderer={() => <i className="fa fa-angle-right" />}
                                     />
                                 </div>
-                            )}
+                            }
                             footer={() => (
-                                <div className={styles.tableToolbar}>
-                                    <Button btnStyle="flat">
-                                        Export
-                                    </Button>
-                                    <TablePagination
-                                        style={{
-                                            position: 'absolute',
-                                            right: 0,
-                                            top: 0
-                                        }}
-                                        page={page}
-                                        pageLength={pageLength}
-                                        totalRecords={totalRecords}
-                                        onPageChange={({ page, pageLength }) => {
-                                            this.actions.fetchRecords({ page, pageLength });
-                                        }}
-                                        prevPageRenderer={() => <i className="fa fa-angle-left" />}
-                                        nextPageRenderer={() => <i className="fa fa-angle-right" />}
-                                    />
+                                <div className={styles.tfoot}>
+                                    <div className={styles.tableToolbar}>
+                                        <Button btnStyle="flat">
+                                            Export
+                                        </Button>
+                                        <TablePagination
+                                            style={{
+                                                position: 'absolute',
+                                                right: 0,
+                                                top: 0
+                                            }}
+                                            page={page}
+                                            pageLength={pageLength}
+                                            totalRecords={totalRecords}
+                                            onPageChange={({ page, pageLength }) => {
+                                                this.actions.fetchRecords({ page, pageLength });
+                                            }}
+                                            prevPageRenderer={() => <i className="fa fa-angle-left" />}
+                                            nextPageRenderer={() => <i className="fa fa-angle-right" />}
+                                        />
+                                    </div>
                                 </div>
                             )}
                         />
