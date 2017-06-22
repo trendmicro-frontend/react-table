@@ -364,12 +364,17 @@ class TableTemplate extends PureComponent {
     componentDidMount() {
         const { getTableHeight } = this.actions;
         window.addEventListener('resize', getTableHeight);
-        getTableHeight();
+        setTimeout(() => {
+            getTableHeight();
+        }, 0);
     }
 
     componentWillUnmount() {
         const { getTableHeight } = this.actions;
         window.removeEventListener('resize', getTableHeight);
+        this.tableHeader = null;
+        this.tableBody = null;
+        this.table = null;
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -390,7 +395,9 @@ class TableTemplate extends PureComponent {
                 scrollLeft={scrollLeft}
                 columns={columns}
                 ref={node => {
-                    this.tableHeader = node;
+                    if (node) {
+                        this.tableHeader = node;
+                    }
                 }}
             />
         );
@@ -424,7 +431,9 @@ class TableTemplate extends PureComponent {
                 scrollTop={scrollTop}
                 records={data}
                 ref={node => {
-                    this.tableBody = node;
+                    if (node) {
+                        this.tableBody = node;
+                    }
                 }}
             />
         );
@@ -447,7 +456,9 @@ class TableTemplate extends PureComponent {
         return (
             <div
                 ref={node => {
-                    this.table = node;
+                    if (node) {
+                        this.table = node;
+                    }
                 }}
                 style={customStyles}
                 className={classNames(

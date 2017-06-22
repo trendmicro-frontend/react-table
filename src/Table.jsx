@@ -86,13 +86,16 @@ class Table extends PureComponent {
         const { getTableSize } = this.actions;
         this.resizer.listenTo(this.tableWrapper, getTableSize);
         window.addEventListener('resize', getTableSize);
-        getTableSize();
+        setTimeout(() => {
+            getTableSize();
+        }, 0);
     }
 
     componentWillUnmount() {
         const { getTableSize } = this.actions;
         this.resizer.removeListener(this.tableWrapper, getTableSize);
         window.removeEventListener('resize', getTableSize);
+        this.tableWrapper = null;
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -273,7 +276,9 @@ class Table extends PureComponent {
                     { [styles.tableSortable]: sortable }
                 )}
                 ref={(node) => {
-                    this.tableWrapper = node;
+                    if (node) {
+                        this.tableWrapper = node;
+                    }
                 }}
             >
                 { title && this.renderTitle() }
