@@ -1,14 +1,11 @@
+@import "reset-context";
 @import "variables";
 
 .table-wrapper {
+    reset-context();
+
     border: 1px solid $table-border-color;
     position: relative;
-
-    // https://www.paulirish.com/2012/box-sizing-border-box-ftw/
-    box-sizing: border-box;
-    *, *:before, *:after {
-        box-sizing: inherit;
-    }
 
     > .table-area {
         position: relative;
