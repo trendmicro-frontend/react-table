@@ -155,7 +155,7 @@ const columns = [
 
 <Table
     hoverable
-    averageColumnsWidth={false}
+    justified={false}
     maxHeight={320}
     rowKey="id"
     columns={columns}
@@ -173,7 +173,7 @@ const columns = [
 
 ```js
 <Table
-    averageColumnsWidth={false}
+    justified={false}
     hoverable
     maxHeight={180}
     useFixedHeader={true}
@@ -192,7 +192,7 @@ const columns = [
     { title: 'Detections', key: 'detections', dataIndex: 'detections', width: 800 }
 ];
 <Table
-    averageColumnsWidth={false}
+    justified={false}
     hoverable={false}
     maxHeight={180}
     useFixedHeader={true}
@@ -355,8 +355,9 @@ export default SelectableTable;
 
 Name                | Type                              | Default | Description
 :---                | :---                              | :------ | :----------
-averageColumnsWidth | Boolean                           | true    | Whether average table cell width.
-bordered            | Boolean                           | true    | Whether table border is shown.
+bordered            | Boolean                           | true    | Specify whether the table should be bordered.
+justified           | Boolean                           | true    | Specify whether to keep table columns equal width.
+averageColumnsWidth | Boolean                           | true    | (Deprecated) Same as justified.
 columns             | Object[]                          | []      | The columns config of table, see table below.
 data                | Object[]                          | []      | Data record array to be rendered.
 emptyText           | Function                          | () => { return 'No Data'; } | Display text when data is empty.

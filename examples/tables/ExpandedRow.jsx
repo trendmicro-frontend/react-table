@@ -16,7 +16,7 @@ export default class extends Component {
                 <div style={{ padding: '16px' }}>
                     Sub content
                     <Table
-                        averageColumnsWidth={true}
+                        justified
                         bordered={false}
                         hoverable={false}
                         maxHeight={150}
@@ -109,7 +109,7 @@ export default class extends Component {
                         <h5>Expanded Row</h5>
                         <Table
                             hoverable
-                            averageColumnsWidth={false}
+                            justified={false}
                             maxHeight={320}
                             rowKey="id"
                             columns={columns}

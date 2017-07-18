@@ -7,8 +7,10 @@ import TableTemplate from './TableTemplate';
 
 class Table extends PureComponent {
     static propTypes = {
-        averageColumnsWidth: PropTypes.bool,
         bordered: PropTypes.bool,
+        justified: PropTypes.bool,
+        // averageColumnsWidth is deprecated and will be removed in a future release.
+        averageColumnsWidth: PropTypes.bool,
         columns: PropTypes.array,
         data: PropTypes.array,
         emptyText: PropTypes.func,
@@ -28,10 +30,10 @@ class Table extends PureComponent {
         rowKey: PropTypes.oneOfType([PropTypes.string, PropTypes.func])
     };
     static defaultProps = {
-        averageColumnsWidth: true,
+        bordered: true,
+        justified: true,
         columns: [],
         data: [],
-        bordered: true,
         hoverable: true,
         loading: false,
         maxHeight: 0,
@@ -246,12 +248,17 @@ class Table extends PureComponent {
             bordered,
             title,
             footer,
-            averageColumnsWidth,
             hoverable,
             sortable,
             useFixedHeader,
             ...props
         } = this.props;
+
+        const justified = (props.averageColumnsWidth !== undefined)
+            ? props.averageColumnsWidth
+            : props.justified;
+        delete props.justified;
+        delete props.averageColumnsWidth;
 
         delete props.rowKey;
         delete props.columns;
@@ -271,7 +278,7 @@ class Table extends PureComponent {
                     styles.tableWrapper,
                     { [styles.tableMinimalism]: !bordered },
                     { [styles.tableBordered]: bordered },
-                    { [styles.tableExtendColumnWidth]: !averageColumnsWidth },
+                    { [styles.tableExtendColumnWidth]: !justified },
                     { [styles.tableFixedHeader]: useFixedHeader },
                     { [styles.tableNoData]: !data || data.length === 0 },
                     { [styles.tableHover]: hoverable },

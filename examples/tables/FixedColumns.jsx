@@ -44,7 +44,7 @@ export default class extends Component {
                         <h5>Fixed Header</h5>
                         <p>A fixed header remains visible as the table body is scrolled. This is useful for larger amounts of data.</p>
                         <Table
-                            averageColumnsWidth
+                            justified
                             hoverable
                             maxHeight={180}
                             useFixedHeader={true}
@@ -54,7 +54,7 @@ export default class extends Component {
                         />
                         <br />
                         <Table
-                            averageColumnsWidth={false}
+                            justified={false}
                             hoverable
                             maxHeight={180}
                             useFixedHeader={true}
@@ -66,7 +66,7 @@ export default class extends Component {
                     <div className={styles.sectionGroup}>
                         <h5>Fix left columns</h5>
                         <Table
-                            averageColumnsWidth={false}
+                            justified={false}
                             hoverable={false}
                             maxHeight={180}
                             useFixedHeader={true}

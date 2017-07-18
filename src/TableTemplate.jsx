@@ -7,8 +7,10 @@ import TableBody from './TableBody';
 
 class TableTemplate extends PureComponent {
     static propTypes = {
-        averageColumnsWidth: PropTypes.bool,
         bordered: PropTypes.bool,
+        justified: PropTypes.bool,
+        // averageColumnsWidth is deprecated and will be removed in a future release.
+        averageColumnsWidth: PropTypes.bool,
         columns: PropTypes.array,
         currentHoverKey: PropTypes.any,
         data: PropTypes.array,
@@ -49,7 +51,11 @@ class TableTemplate extends PureComponent {
         },
         getTableCellWidth: () => {
             const { getSubElements } = this.actions;
-            const { averageColumnsWidth, columns, loading } = this.props;
+            const { columns, loading } = this.props;
+            const justified = (this.props.averageColumnsWidth !== undefined)
+                ? this.props.averageColumnsWidth
+                : this.props.justified;
+
             let thsWidth = [];
             if (this.tableHeader) {
                 const tHeader = this.tableHeader.header;
@@ -96,7 +102,7 @@ class TableTemplate extends PureComponent {
                 });
             }
 
-            if (averageColumnsWidth || loading) {
+            if (justified || loading) {
                 cellWidth = (totalWidth - customWidth.width) / (newColumns.length - customColumns.length);
             }
 
@@ -111,7 +117,7 @@ class TableTemplate extends PureComponent {
                         let td = bodyCell[j];
                         if (customColumn && customColumn.width) {
                             cellsWidth[j] = customColumn.width;
-                        } else if (averageColumnsWidth) {
+                        } else if (justified) {
                             cellsWidth[j] = cellWidth;
                         } else {
                             const thWidth = thsWidth[j] || 0;
