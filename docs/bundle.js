@@ -47540,11 +47540,14 @@ var Table = (_temp2 = _class = function (_PureComponent) {
                 bordered = _props.bordered,
                 title = _props.title,
                 footer = _props.footer,
-                averageColumnsWidth = _props.averageColumnsWidth,
                 hoverable = _props.hoverable,
                 sortable = _props.sortable,
                 useFixedHeader = _props.useFixedHeader,
-                props = _objectWithoutProperties(_props, ['data', 'className', 'loading', 'bordered', 'title', 'footer', 'averageColumnsWidth', 'hoverable', 'sortable', 'useFixedHeader']);
+                props = _objectWithoutProperties(_props, ['data', 'className', 'loading', 'bordered', 'title', 'footer', 'hoverable', 'sortable', 'useFixedHeader']);
+
+            var justified = props.averageColumnsWidth !== undefined ? props.averageColumnsWidth : props.justified;
+            delete props.justified;
+            delete props.averageColumnsWidth;
 
             delete props.rowKey;
             delete props.columns;
@@ -47559,7 +47562,7 @@ var Table = (_temp2 = _class = function (_PureComponent) {
             return _react2.default.createElement(
                 'div',
                 _extends({}, props, {
-                    className: (0, _classnames2.default)(className, _index2.default.tableWrapper, _defineProperty({}, _index2.default.tableMinimalism, !bordered), _defineProperty({}, _index2.default.tableBordered, bordered), _defineProperty({}, _index2.default.tableExtendColumnWidth, !averageColumnsWidth), _defineProperty({}, _index2.default.tableFixedHeader, useFixedHeader), _defineProperty({}, _index2.default.tableNoData, !data || data.length === 0), _defineProperty({}, _index2.default.tableHover, hoverable), _defineProperty({}, _index2.default.tableSortable, sortable)),
+                    className: (0, _classnames2.default)(className, _index2.default.tableWrapper, _defineProperty({}, _index2.default.tableMinimalism, !bordered), _defineProperty({}, _index2.default.tableBordered, bordered), _defineProperty({}, _index2.default.tableExtendColumnWidth, !justified), _defineProperty({}, _index2.default.tableFixedHeader, useFixedHeader), _defineProperty({}, _index2.default.tableNoData, !data || data.length === 0), _defineProperty({}, _index2.default.tableHover, hoverable), _defineProperty({}, _index2.default.tableSortable, sortable)),
                     ref: function ref(node) {
                         if (node) {
                             _this6.tableWrapper = node;
@@ -47581,8 +47584,10 @@ var Table = (_temp2 = _class = function (_PureComponent) {
 
     return Table;
 }(_react.PureComponent), _class.propTypes = {
-    averageColumnsWidth: _propTypes2.default.bool,
     bordered: _propTypes2.default.bool,
+    justified: _propTypes2.default.bool,
+    // averageColumnsWidth is deprecated and will be removed in a future release.
+    averageColumnsWidth: _propTypes2.default.bool,
     columns: _propTypes2.default.array,
     data: _propTypes2.default.array,
     emptyText: _propTypes2.default.func,
@@ -47601,10 +47606,10 @@ var Table = (_temp2 = _class = function (_PureComponent) {
     rowClassName: _propTypes2.default.func,
     rowKey: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.func])
 }, _class.defaultProps = {
-    averageColumnsWidth: true,
+    bordered: true,
+    justified: true,
     columns: [],
     data: [],
-    bordered: true,
     hoverable: true,
     loading: false,
     maxHeight: 0,
@@ -48317,9 +48322,10 @@ var TableTemplate = (_temp2 = _class = function (_PureComponent) {
             getTableCellWidth: function getTableCellWidth() {
                 var getSubElements = _this.actions.getSubElements;
                 var _this$props = _this.props,
-                    averageColumnsWidth = _this$props.averageColumnsWidth,
                     columns = _this$props.columns,
                     loading = _this$props.loading;
+
+                var justified = _this.props.averageColumnsWidth !== undefined ? _this.props.averageColumnsWidth : _this.props.justified;
 
                 var thsWidth = [];
                 if (_this.tableHeader) {
@@ -48366,7 +48372,7 @@ var TableTemplate = (_temp2 = _class = function (_PureComponent) {
                     });
                 }
 
-                if (averageColumnsWidth || loading) {
+                if (justified || loading) {
                     cellWidth = (totalWidth - customWidth.width) / (newColumns.length - customColumns.length);
                 }
 
@@ -48381,7 +48387,7 @@ var TableTemplate = (_temp2 = _class = function (_PureComponent) {
                             var td = bodyCell[_j];
                             if (customColumn && customColumn.width) {
                                 cellsWidth[_j] = customColumn.width;
-                            } else if (averageColumnsWidth) {
+                            } else if (justified) {
                                 cellsWidth[_j] = cellWidth;
                             } else {
                                 var _thWidth = thsWidth[_j] || 0;
@@ -48762,8 +48768,10 @@ var TableTemplate = (_temp2 = _class = function (_PureComponent) {
 
     return TableTemplate;
 }(_react.PureComponent), _class.propTypes = {
-    averageColumnsWidth: _propTypes2.default.bool,
     bordered: _propTypes2.default.bool,
+    justified: _propTypes2.default.bool,
+    // averageColumnsWidth is deprecated and will be removed in a future release.
+    averageColumnsWidth: _propTypes2.default.bool,
     columns: _propTypes2.default.array,
     currentHoverKey: _propTypes2.default.any,
     data: _propTypes2.default.array,
@@ -49523,7 +49531,7 @@ var _default = function (_Component) {
                     { style: { padding: '16px' } },
                     'Sub content',
                     _react2.default.createElement(_src2.default, {
-                        averageColumnsWidth: true,
+                        justified: true,
                         bordered: false,
                         hoverable: false,
                         maxHeight: 150,
@@ -49589,7 +49597,7 @@ var _default = function (_Component) {
                         ),
                         _react2.default.createElement(_src2.default, {
                             hoverable: true,
-                            averageColumnsWidth: false,
+                            justified: false,
                             maxHeight: 320,
                             rowKey: 'id',
                             columns: columns,
@@ -49697,7 +49705,7 @@ var _default = function (_Component) {
                             'A fixed header remains visible as the table body is scrolled. This is useful for larger amounts of data.'
                         ),
                         _react2.default.createElement(_src2.default, {
-                            averageColumnsWidth: true,
+                            justified: true,
                             hoverable: true,
                             maxHeight: 180,
                             useFixedHeader: true,
@@ -49709,7 +49717,7 @@ var _default = function (_Component) {
                         }),
                         _react2.default.createElement('br', null),
                         _react2.default.createElement(_src2.default, {
-                            averageColumnsWidth: false,
+                            justified: false,
                             hoverable: true,
                             maxHeight: 180,
                             useFixedHeader: true,
@@ -49729,7 +49737,7 @@ var _default = function (_Component) {
                             'Fix left columns'
                         ),
                         _react2.default.createElement(_src2.default, {
-                            averageColumnsWidth: false,
+                            justified: false,
                             hoverable: false,
                             maxHeight: 180,
                             useFixedHeader: true,
@@ -50338,4 +50346,4 @@ exports.default = _default;
 /***/ })
 
 /******/ });
-//# sourceMappingURL=bundle.js.map?a88f3a69a4fdc0adb888
+//# sourceMappingURL=bundle.js.map?dade0424650ec146e315
