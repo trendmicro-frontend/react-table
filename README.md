@@ -376,16 +376,22 @@ rowKey              | string or Function(record):string | 'key'   | If rowKey is
 
 #### Column Props
 
-Name      | Type                 | Default | Description
-:---      | :---                 | :------ | :----------
-className | String               |         | class name of the table cell.
-onClick   | Function(event)      |         | onClick event handler for header cell.
-key       | String               |         | Key of this column.
-title     | React Node or Function(): React Node|         | Title of this column.
-dataIndex | String               |         | Display field of the data record.
-width     | Number               |         | Width of the specific proportion calculation according to the width of the columns.
-fixed     | Boolean              | false   | This column will be fixed at left side when table scroll horizontally.
-render    | Function(value, row) |         | The render function of cell, has two params: the text of this cell, the record of this row, it's return a react node.
+Name            | Type    | Default | Description
+:---            | :-----  | :------ | :----------
+key             | String  |         | key of this column.
+className       | String  |         | className of this column.
+style           | String  |         | style of this column.
+headerClassName | String  |         | className to assign to the column header.
+headerStyle     | String  |         | style to assign to the column header.
+cellClassName   | String  |         | className to assign to each cell in the column.
+cellStyle       | String  |         | style to assign to each cell in the column.
+onClick         | Function(event) |         | onClick event handler for header cell.
+title           | React Node or Function(): React Node |         | Title of this column.
+dataIndex       | String  |         | Display field of the data record.
+dataKey         | String  |         | dataKey is an alias for dataIndex.
+width           | Number  |         | Width of the specific proportion calculation according to the width of the columns.
+fixed           | Boolean | false   | This column will be fixed at left side when table scroll horizontally.
+render          | Function(value, row) |         | The render function of cell, has two params: the text of this cell, the record of this row, it's return a react node.
 
 ## License
 

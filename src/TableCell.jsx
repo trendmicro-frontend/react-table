@@ -17,21 +17,25 @@ class TableCell extends PureComponent {
 
     render() {
         const { column, record } = this.props;
-        const cName = column.dataIndex;
         const render = column.render;
-        const className = column.className;
-        let text = get(record, cName);
+        // dataKey is an alias for dataIndex
+        const dataKey = (typeof column.dataKey !== 'undefined') ? column.dataKey : column.dataIndex;
+        const text = get(record, dataKey);
+
         return (
             <div
                 className={classNames(
-                    className,
-                    styles.td
+                    styles.td,
+                    column.className,
+                    column.cellClassName
                 )}
+                style={{
+                    ...column.style,
+                    ...column.cellStyle
+                }}
             >
                 <div className={styles.tdContent}>
-                    {
-                        render ? render(text, record) : text
-                    }
+                    {typeof render === 'function' ? render(text, record) : text}
                 </div>
             </div>
         );
