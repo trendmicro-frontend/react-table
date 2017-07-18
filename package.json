@@ -1,6 +1,6 @@
 {
   "name": "@trendmicro/react-table",
-  "version": "0.5.6",
+  "version": "0.6.0",
   "description": "Trend Micro Components: React Table",
   "main": "lib/index.js",
   "files": [
@@ -47,19 +47,19 @@
   },
   "dependencies": {
     "@trendmicro/react-anchor": "^0.5.5",
-    "trendmicro-ui": "^0.4.0",
     "classnames": "^2.2.5",
     "element-resize-detector": "^1.1.12",
     "lodash.get": "^4.4.2",
-    "prop-types": "^15.5.8"
+    "prop-types": "^15.5.8",
+    "trendmicro-ui": "^0.4.0"
   },
   "devDependencies": {
-    "@trendmicro/react-buttons": "~1.0.4",
-    "@trendmicro/react-paginations": "^0.5.10",
+    "@trendmicro/react-buttons": "~1.1.0",
+    "@trendmicro/react-paginations": "^0.6.0",
     "babel-cli": "~6.24.1",
-    "babel-core": "~6.24.1",
+    "babel-core": "~6.25.0",
     "babel-eslint": "~7.2.2",
-    "babel-loader": "~6.4.1",
+    "babel-loader": "~7.1.1",
     "babel-plugin-transform-decorators-legacy": "~1.3.4",
     "babel-preset-es2015": "~6.24.1",
     "babel-preset-react": "~6.24.1",
@@ -85,12 +85,12 @@
     "nib": "~1.1.2",
     "react": "^0.14.0 || ^15.0.0",
     "react-dom": "^0.14.0 || ^15.0.0",
-    "style-loader": "~0.16.1",
+    "style-loader": "~0.18.2",
     "stylint": "~1.5.9",
     "stylint-loader": "~1.0.0",
     "stylus-loader": "~3.0.1",
     "tap": "~10.3.2",
-    "trendmicro-ui": "~0.4.0",
+    "trendmicro-ui": "~0.4.4",
     "url-loader": "~0.5.8",
     "webpack": "~2.4.1",
     "webpack-dev-server": "~2.4.2",

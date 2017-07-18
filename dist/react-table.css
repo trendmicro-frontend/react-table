@@ -1,4 +1,4 @@
-/*! react-table v0.5.6 | (c) 2017 Trend Micro Inc. | MIT | https://github.com/trendmicro-frontend/react-table */
+/*! react-table v0.6.0 | (c) 2017 Trend Micro Inc. | MIT | https://github.com/trendmicro-frontend/react-table */
 .table---table-wrapper---1t2D3 {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -35,9 +35,17 @@
   display: inline-block;
   overflow: hidden;
 }
-.table---table---2aBqd > .table---thead---1v6TQ > .table---tr---3XEXR > .table---th---2-0kV > .table---td-content---3XCoJ,
-.table---table---2aBqd > .table---tbody---3q9RK > .table---tr---3XEXR > .table---th---2-0kV > .table---td-content---3XCoJ,
-.table---table---2aBqd > .table---tfoot---23ZpN > .table---tr---3XEXR > .table---th---2-0kV > .table---td-content---3XCoJ,
+.table---table---2aBqd > .table---thead---1v6TQ > .table---tr---3XEXR > .table---th---2-0kV > .table---th-content---1Yr_t,
+.table---table---2aBqd > .table---tbody---3q9RK > .table---tr---3XEXR > .table---th---2-0kV > .table---th-content---1Yr_t,
+.table---table---2aBqd > .table---tfoot---23ZpN > .table---tr---3XEXR > .table---th---2-0kV > .table---th-content---1Yr_t {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
 .table---table---2aBqd > .table---thead---1v6TQ > .table---tr---3XEXR > .table---td---EVNU5 > .table---td-content---3XCoJ,
 .table---table---2aBqd > .table---tbody---3q9RK > .table---tr---3XEXR > .table---td---EVNU5 > .table---td-content---3XCoJ,
 .table---table---2aBqd > .table---tfoot---23ZpN > .table---tr---3XEXR > .table---td---EVNU5 > .table---td-content---3XCoJ {
@@ -185,6 +193,7 @@
   white-space: nowrap;
   padding: 0;
 }
+.table---table-sortable---KlbyF > .table---table-area---KA_N2 > .table---table---2aBqd > .table---thead---1v6TQ > .table---tr---3XEXR > .table---th---2-0kV > .table---th-content---1Yr_t > *:first-child,
 .table---table-sortable---KlbyF > .table---table-area---KA_N2 > .table---table---2aBqd > .table---thead---1v6TQ > .table---tr---3XEXR > .table---th---2-0kV > .table---td-content---3XCoJ > *:first-child {
   padding: 8px 12px;
 }
