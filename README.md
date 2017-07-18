@@ -368,7 +368,7 @@ loading             | Boolean                           | false   | Whether tabl
 maxHeight           | Number                            |         | Table maximum height.
 onRowClick          | Function(record, key)             |         | Handle rowClick action.
 showHeader          | Boolean                           | true    | Whether table head is shown.
-sortable            | Boolean                           | false   | Whether use sortting event at table head.
+sortable            | Boolean                           | false   | Whether table head is sortable.
 title               | React Node or Function(): React Node|       | Table title render function.
 useFixedHeader      | Boolean                           | false   | Whether table head is fixed.
 rowClassName        | Function(record, key):string      |         | Get row's className.
