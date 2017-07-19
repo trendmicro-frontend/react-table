@@ -9,8 +9,6 @@ class TableTemplate extends PureComponent {
     static propTypes = {
         bordered: PropTypes.bool,
         justified: PropTypes.bool,
-        // averageColumnsWidth is deprecated and will be removed in a future release.
-        averageColumnsWidth: PropTypes.bool,
         columns: PropTypes.array,
         currentHoverKey: PropTypes.any,
         data: PropTypes.array,
@@ -51,10 +49,7 @@ class TableTemplate extends PureComponent {
         },
         getTableCellWidth: () => {
             const { getSubElements } = this.actions;
-            const { columns, loading } = this.props;
-            const justified = (this.props.averageColumnsWidth !== undefined)
-                ? this.props.averageColumnsWidth
-                : this.props.justified;
+            const { columns, justified, loading } = this.props;
 
             let thsWidth = [];
             if (this.tableHeader) {
