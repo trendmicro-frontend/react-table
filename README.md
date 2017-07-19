@@ -357,7 +357,7 @@ Name                | Type                              | Default | Description
 :---                | :---                              | :------ | :----------
 bordered            | Boolean                           | true    | Specify whether the table should be bordered.
 justified           | Boolean                           | true    | Specify whether to keep table columns equal width.
-columns             | Object[]                          | []      | The columns config of table, see table below.
+columns             | Object[]                          | []      | The columns config of table, see Column below for details.
 data                | Object[]                          | []      | Data record array to be rendered.
 emptyText           | Function                          | () => { return 'No Data'; } | Display text when data is empty.
 expandedRowKeys     | String[]                          |         | Current expanded rows keys.
@@ -374,7 +374,7 @@ useFixedHeader      | Boolean                           | false   | Whether tabl
 rowClassName        | Function(record, key):string      |         | Get row's className.
 rowKey              | string or Function(record):string | 'key'   | If rowKey is string, `record[rowKey]` will be used as key. If rowKey is function, the return value of `rowKey(record)` will be use as key.
 
-#### Column Props
+#### Column
 
 Name            | Type    | Default | Description
 :---            | :-----  | :------ | :----------
