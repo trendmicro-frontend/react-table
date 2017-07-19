@@ -181,8 +181,11 @@ class TableTemplate extends PureComponent {
                 for (let j = 0; j < headerCell.length; j++) {
                     let th = headerCell[j];
                     th.style.height = 'auto';
+                    // To Firefox get element's original height, we need to change display style to 'block' first.
+                    th.style.display = 'block';
                     const thHeight = th.getBoundingClientRect().height;
                     headerHeight = Math.max(headerHeight, thHeight);
+                    th.style.display = '';
                 }
             }
 
@@ -192,8 +195,11 @@ class TableTemplate extends PureComponent {
                 for (let j = 0; j < bodyCell.length; j++) {
                     let td = bodyCell[j];
                     td.style.height = 'auto';
+                    // To Firefox get element's original height, we need to change display style to 'block' first.
+                    td.style.display = 'block';
                     const tdHeight = td.getBoundingClientRect().height;
                     cellHeight = Math.max(cellHeight, tdHeight);
+                    td.style.display = '';
                 }
                 rowsHeight[i] = cellHeight;
             }
