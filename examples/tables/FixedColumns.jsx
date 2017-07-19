@@ -67,7 +67,7 @@ export default class extends Component {
                         <h5>Fix left columns</h5>
                         <Table
                             justified={false}
-                            hoverable={false}
+                            hoverable={true}
                             maxHeight={180}
                             useFixedHeader={true}
                             rowKey="id"

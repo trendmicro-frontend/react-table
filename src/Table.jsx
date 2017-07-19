@@ -61,7 +61,8 @@ class Table extends PureComponent {
         },
         handleRowHover: (isHover, key) => {
             const { hoverable } = this.props;
-            if (hoverable) {
+            // currentHoverKey is only for setting hover style to columns and fixed left columns at the same time.
+            if (this.isAnyColumnsLeftFixed() && hoverable) {
                 this.setState({
                     currentHoverKey: isHover ? key : null
                 });
