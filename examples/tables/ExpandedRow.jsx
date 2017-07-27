@@ -61,14 +61,14 @@ export default class extends Component {
     };
 
     columns = [
-        { title: '', key: 'detail', dataIndex: 'detail', render: this.actions.handleRenderActionColumn, width: 40 },
-        { title: 'Event Type', key: 'eventType', dataIndex: 'eventType' },
-        { title: 'Affected Devices', key: 'affectedDevices', dataIndex: 'affectedDevices' },
-        { title: 'Detections', key: 'detections', dataIndex: 'detections', width: 300 }
+        { title: '', dataIndex: 'detail', render: this.actions.handleRenderActionColumn, width: 40 },
+        { title: 'Event Type', dataIndex: 'eventType' },
+        { title: 'Affected Devices', dataIndex: 'affectedDevices' },
+        { title: 'Detections', dataIndex: 'detections', width: 300 }
     ];
     columns1 = [
-        { title: 'Application Name', key: 'app', dataIndex: 'app' },
-        { title: 'Vendor Name', key: 'vendor', dataIndex: 'vendor' }
+        { title: 'Application Name', dataIndex: 'app' },
+        { title: 'Vendor Name', dataIndex: 'vendor' }
     ];
     data = [
         { id: 1, eventType: 'Virus/Malware', affectedDevices: 20, detections: 634 },
@@ -105,8 +105,8 @@ export default class extends Component {
         return (
             <div className="col-md-12">
                 <Section className="row-md-6">
+                    <h3>Expanded Row</h3>
                     <div className={styles.sectionGroup}>
-                        <h5>Expanded Row</h5>
                         <Table
                             hoverable
                             justified={false}

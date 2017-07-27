@@ -147,10 +147,10 @@ const actions = {
     }
 };
 const columns = [
-    { title: '', key: 'detail', dataIndex: 'detail', render: actions.handleRenderActionColumn, width: 40 },
-    { title: 'Event Type', key: 'eventType', dataIndex: 'eventType' },
-    { title: 'Affected Devices', key: 'affectedDevices', dataIndex: 'affectedDevices' },
-    { title: 'Detections', key: 'detections', dataIndex: 'detections', width: 300 }
+    { title: '', dataIndex: 'detail', render: actions.handleRenderActionColumn, width: 40 },
+    { title: 'Event Type', dataIndex: 'eventType' },
+    { title: 'Affected Devices', dataIndex: 'affectedDevices' },
+    { title: 'Detections', dataIndex: 'detections', width: 300 }
 ];
 
 <Table
@@ -187,9 +187,9 @@ const columns = [
 
 ```js
 const columns = [
-    { title: 'Event Type', key: 'eventType', dataIndex: 'eventType' },
-    { title: 'Affected Devices', key: 'affectedDevices', dataIndex: 'affectedDevices', fixed: true },
-    { title: 'Detections', key: 'detections', dataIndex: 'detections', width: 800 }
+    { title: 'Event Type', dataIndex: 'eventType' },
+    { title: 'Affected Devices', dataIndex: 'affectedDevices', fixed: true },
+    { title: 'Detections', dataIndex: 'detections', width: 800 }
 ];
 <Table
     justified={false}
@@ -206,7 +206,6 @@ const columns = [
 ### Row selection
 
 ```js
-import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import Table from '@trendmicro/react-table';
 
@@ -304,41 +303,25 @@ class SelectableTable extends Component {
     };
 
     columns = [
-        { title: this.actions.renderHeaderCheckbox, key: 'checked', dataIndex: 'checked', render: this.actions.renderCheckbox, width: 38 },
-        { title: 'Event Type', key: 'eventType', dataIndex: 'eventType' },
-        { title: 'Affected Devices', key: 'affectedDevices', dataIndex: 'affectedDevices' },
-        { title: 'Detections', key: 'detections', dataIndex: 'detections' }
+        { title: this.actions.renderHeaderCheckbox, dataIndex: 'checked', render: this.actions.renderCheckbox, width: 38 },
+        { title: 'Event Type', dataIndex: 'eventType' },
+        { title: 'Affected Devices', dataIndex: 'affectedDevices' },
+        { title: 'Detections', dataIndex: 'detections' }
     ];
 
     render() {
-        const columns = this.columns.map(c => {
-            return c;
-        });
+        // Always get new columns to re-render table header
+        const columns = this.columns.map(c => c);
         const data = this.state.selectionData;
 
         return (
-            <div className="col-md-12">
-                <Section className="row-md-8">
-                    <h3>Row selection</h3>
-                    <p>Change the color of a table row when it is selected.</p>
-                    <ul>
-                        <li>
-                            Row selection should take effect when the user clicks anywhere in a row,
-                            except for table cells that contain hyperlinks. Note the following checkboxes are greyed out for demo purposes.
-                        </li>
-                    </ul>
-                    <div className={styles.sectionGroup}>
-                        <h5>Row Selection</h5>
-                        <Table
-                            rowKey="id"
-                            columns={columns}
-                            data={data}
-                            rowClassName={this.actions.handleRowClassName}
-                            onRowClick={this.actions.handleClickRow}
-                        />
-                    </div>
-                </Section>
-            </div>
+            <Table
+                rowKey="id"
+                columns={columns}
+                data={data}
+                rowClassName={this.actions.handleRowClassName}
+                onRowClick={this.actions.handleClickRow}
+            />
         );
     }
 
@@ -466,7 +449,7 @@ onClick         | Function(event) |         | onClick event handler for header c
 title           | React Node or Function(): React Node |         | Title of this column.
 dataIndex       | String  |         | Display field of the data record.
 dataKey         | String  |         | dataKey is an alias for dataIndex.
-width           | Number  |         | Width of the specific proportion calculation according to the width of the columns.
+width           | String or Number  |         | Width of the specific proportion calculation according to the width of the columns.
 fixed           | Boolean | false   | This column will be fixed at left side when table scroll horizontally.
 render          | Function(value, row) |         | The render function of cell, has two params: the text of this cell, the record of this row, it's return a react node.
 

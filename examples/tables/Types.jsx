@@ -9,21 +9,18 @@ export default class extends Component {
     columns = [
         {
             title: 'Event Type',
-            key: 'eventType',
             render: (value, row, index) => {
                 return row.eventType;
             }
         },
         {
             title: 'Affected Devices',
-            key: 'affectedDevices',
             render: (value, row, index) => {
                 return row.affectedDevices;
             }
         },
         {
             title: 'Detections',
-            key: 'detections',
             render: (value, row, index) => {
                 return row.detections;
             }

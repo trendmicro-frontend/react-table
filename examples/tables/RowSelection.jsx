@@ -99,16 +99,15 @@ export default class extends Component {
     };
 
     columns = [
-        { title: this.actions.renderHeaderCheckbox, key: 'checked', dataIndex: 'checked', render: this.actions.renderCheckbox, width: 38 },
-        { title: 'Event Type', key: 'eventType', dataIndex: 'eventType' },
-        { title: 'Affected Devices', key: 'affectedDevices', dataIndex: 'affectedDevices' },
-        { title: 'Detections', key: 'detections', dataIndex: 'detections' }
+        { title: this.actions.renderHeaderCheckbox, dataIndex: 'checked', render: this.actions.renderCheckbox, width: 38 },
+        { title: 'Event Type', dataIndex: 'eventType' },
+        { title: 'Affected Devices', dataIndex: 'affectedDevices' },
+        { title: 'Detections', dataIndex: 'detections' }
     ];
 
     render() {
-        const columns = this.columns.map(c => {
-            return c;
-        });
+        // Always get new columns to re-render table header
+        const columns = this.columns.map(c => c);
         const data = this.state.selectionData;
 
         return (
@@ -123,7 +122,6 @@ export default class extends Component {
                         </li>
                     </ul>
                     <div className={styles.sectionGroup}>
-                        <h5>Row Selection</h5>
                         <Table
                             rowKey="id"
                             columns={columns}

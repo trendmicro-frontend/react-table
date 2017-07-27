@@ -7,21 +7,21 @@ import styles from '../index.styl';
 export default class extends Component {
 
     columns1 = [
-        { title: 'Event Type', key: 'eventType', dataIndex: 'eventType' },
-        { title: 'Affected Devices', key: 'affectedDevices', dataIndex: 'affectedDevices' },
-        { title: 'Detections', key: 'detections', dataIndex: 'detections' }
+        { title: 'Event Type', dataIndex: 'eventType' },
+        { title: 'Affected Devices', dataIndex: 'affectedDevices' },
+        { title: 'Detections', dataIndex: 'detections' }
     ];
 
     columns2 = [
-        { title: 'Event Type', key: 'eventType', dataIndex: 'eventType' },
-        { title: 'Affected Devices', key: 'affectedDevices', dataIndex: 'affectedDevices' },
-        { title: 'Detections', key: 'detections', dataIndex: 'detections', width: 800 }
+        { title: 'Event Type', dataIndex: 'eventType' },
+        { title: 'Affected Devices', dataIndex: 'affectedDevices' },
+        { title: 'Detections', dataIndex: 'detections', width: 800 }
     ];
 
     columns3 = [
-        { title: 'Event Type', key: 'eventType', dataIndex: 'eventType' },
-        { title: 'Affected Devices', key: 'affectedDevices', dataIndex: 'affectedDevices', fixed: true },
-        { title: 'Detections', key: 'detections', dataIndex: 'detections', width: 800 }
+        { title: 'Event Type', dataIndex: 'eventType' },
+        { title: 'Affected Devices', dataIndex: 'affectedDevices', fixed: true },
+        { title: 'Detections', dataIndex: 'detections', width: 800 }
     ];
 
     data = [

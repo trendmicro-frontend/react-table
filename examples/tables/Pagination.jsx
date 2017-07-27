@@ -18,9 +18,9 @@ export default class extends Component {
     };
 
     columns = [
-        { title: 'Event Type', key: 'eventType', dataIndex: 'eventType' },
-        { title: 'Affected Devices', key: 'affectedDevices', dataIndex: 'affectedDevices' },
-        { title: 'Detections', key: 'detections', dataIndex: 'detections' }
+        { title: 'Event Type', dataIndex: 'eventType' },
+        { title: 'Affected Devices', dataIndex: 'affectedDevices' },
+        { title: 'Detections', dataIndex: 'detections' }
     ];
 
     data = [
