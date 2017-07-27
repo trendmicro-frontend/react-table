@@ -347,6 +347,83 @@ class SelectableTable extends Component {
 export default SelectableTable;
 ```
 
+
+### Dynamic Header
+
+```js
+import React, { Component } from 'react';
+import Table from '@trendmicro/react-table';
+
+class DynamicHeaderTable extends Component {
+
+    state = {
+        data: [
+            { id: 1, eventType: 'Virus/Malware', affectedDevices: 20, detections: 634 },
+            { id: 2, eventType: 'Spyware/Grayware', affectedDevices: 20, detections: 634 },
+            { id: 3, eventType: 'URL Filtering', affectedDevices: 15, detections: 598 },
+            { id: 4, eventType: 'Web Reputation', affectedDevices: 15, detections: 598 },
+            { id: 5, eventType: 'Network Virus', affectedDevices: 15, detections: 497 },
+            { id: 6, eventType: 'Application Control', affectedDevices: 0, detections: 0 }
+        ]
+    };
+
+    renders = {
+        renderEventTypeCell: () => {
+            const { data } = this.state;
+            return `Event Type (${data.length})`;
+        },
+        renderActionCell: (value, row) => {
+            return (
+                <i
+                    className="fa fa-trash"
+                    onClick={(e) => {
+                        this.handleClickDelete(row);
+                    }}
+                />
+            );
+        }
+    }
+
+    columns = [
+        { dataIndex: 'eventType', title: this.renders.renderEventTypeCell },
+        { dataIndex: 'affectedDevices', title: 'Affected Devices' },
+        { dataIndex: 'detections', title: 'Detections' },
+        { title: 'Delete', render: this.renders.renderActionCell }
+    ];
+
+    handleClickDelete(row) {
+        const { data } = this.state;
+        const index = data.findIndex((o) => {
+            return o.id === row.id;
+        });
+        data.splice(index, 1);
+        this.setState({
+            data: data
+        });
+    }
+
+    render() {
+        // Always get new columns to re-render table header
+        const columns = this.columns.map(o => o);
+        const data = this.state.data;
+
+        return (
+            <Table
+                bordered
+                hoverable
+                rowKey="id"
+                columns={columns}
+                data={data}
+            />
+        );
+    }
+
+}
+
+export default DynamicHeaderTable;
+```
+
+
 ## API
 
 ### Properties
@@ -378,7 +455,7 @@ rowKey              | string or Function(record):string | 'key'   | If rowKey is
 
 Name            | Type    | Default | Description
 :---            | :-----  | :------ | :----------
-key             | String  |         | key of this column.
+key             | String  |         | key of this column is for sortable attribute.
 className       | String  |         | className of this column.
 style           | String  |         | style of this column.
 headerClassName | String  |         | className to assign to the column header.

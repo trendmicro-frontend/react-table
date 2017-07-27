@@ -2,7 +2,6 @@ import Anchor from '@trendmicro/react-anchor';
 import classNames from 'classnames';
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import uniqueid from './uniqueid';
 import styles from './index.styl';
 
 class TableHeader extends PureComponent {
@@ -10,8 +9,6 @@ class TableHeader extends PureComponent {
         columns: PropTypes.array,
         scrollLeft: PropTypes.number
     };
-
-    uniqueid = uniqueid('table-header:');
 
     componentDidUpdate(prevProps, prevState) {
         const { scrollLeft } = this.props;
@@ -59,8 +56,7 @@ class TableHeader extends PureComponent {
         const { columns } = this.props;
         const customColumns = this.renderColumns(columns);
         return customColumns.map((column, index) => {
-            const key = column.key !== undefined ? column.key : this.uniqueid();
-
+            const key = `table_header_cell_${index}`;
             return (
                 <div
                     key={key}

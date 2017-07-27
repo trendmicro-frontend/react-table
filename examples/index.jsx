@@ -8,6 +8,7 @@ import FixedColumns from './tables/FixedColumns';
 import Pagination from './tables/Pagination';
 import RowSelection from './tables/RowSelection';
 import ExpandedRow from './tables/ExpandedRow';
+import DynamicHeader from './tables/DynamicHeader';
 
 const App = (props) => {
     const name = 'React Table';
@@ -24,6 +25,7 @@ const App = (props) => {
                     <Pagination />
                     <RowSelection />
                     <ExpandedRow />
+                    <DynamicHeader />
                 </div>
             </div>
         </div>

@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import elementResizeDetectorMaker from 'element-resize-detector';
+import uniqueid from './uniqueid';
 import styles from './index.styl';
 import TableTemplate from './TableTemplate';
 
@@ -38,6 +39,8 @@ class Table extends PureComponent {
         sortable: false,
         useFixedHeader: false
     };
+
+    uniqueid = uniqueid('table:');
 
     resizer = elementResizeDetectorMaker();
 
@@ -100,6 +103,7 @@ class Table extends PureComponent {
     }
 
     componentDidUpdate(prevProps, prevState) {
+        // Update thisColumns is for re-render table header
         if (prevProps.columns !== this.props.columns) {
             this.setState({
                 thisColumns: this.columnsParser()
@@ -124,9 +128,18 @@ class Table extends PureComponent {
     }
 
     columnsParser() {
-        return this.props.columns.filter((column) => {
-            return column;
+        // Checking columns
+        const filterColumns = [];
+        this.props.columns.forEach((obj) => {
+            // Filter out undefined and null column.
+            if (obj) {
+                let cloneColumn = { ...obj };
+                // Set default value to column's key attribute.
+                cloneColumn.key = cloneColumn.key !== undefined ? cloneColumn.key : this.uniqueid();
+                filterColumns.push(cloneColumn);
+            }
         });
+        return filterColumns;
     }
 
     leftColumns() {

@@ -231,7 +231,7 @@ class TableTemplate extends PureComponent {
                 headerHeight: headerRow.length > 0 ? headerRow[0].getBoundingClientRect().height : 0
             };
         },
-        getTableHeight: () => {
+        sizeTable: () => {
             if (this.table) {
                 const { maxHeight } = this.props;
                 const headerHeight = this.tableHeader ? this.tableHeader.header.getBoundingClientRect().height : 0;
@@ -370,16 +370,15 @@ class TableTemplate extends PureComponent {
     }
 
     componentDidMount() {
-        const { getTableHeight } = this.actions;
-        window.addEventListener('resize', getTableHeight);
+        const { sizeTable } = this.actions;
+        window.addEventListener('resize', sizeTable);
         setTimeout(() => {
-            getTableHeight();
+            sizeTable();
         }, 0);
     }
 
     componentWillUnmount() {
-        const { getTableHeight } = this.actions;
-        window.removeEventListener('resize', getTableHeight);
+        window.removeEventListener('resize', this.actions.sizeTable);
         this.tableHeader = null;
         this.tableBody = null;
         this.table = null;
@@ -389,9 +388,9 @@ class TableTemplate extends PureComponent {
         if (prevProps.data !== this.props.data ||
             prevProps.maxHeight !== this.props.maxHeight ||
             prevProps.maxWidth !== this.props.maxWidth ||
-            prevProps.expandedRowKeys !== this.props.expandedRowKeys) {
-            const { getTableHeight } = this.actions;
-            getTableHeight();
+            prevProps.expandedRowKeys !== this.props.expandedRowKeys ||
+            prevProps.columns !== this.props.columns) {
+            this.actions.sizeTable();
         }
     }
 
