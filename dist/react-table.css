@@ -1,4 +1,4 @@
-/*! react-table v0.6.1 | (c) 2017 Trend Micro Inc. | MIT | https://github.com/trendmicro-frontend/react-table */
+/*! react-table v0.7.0 | (c) 2017 Trend Micro Inc. | MIT | https://github.com/trendmicro-frontend/react-table */
 .table---table-wrapper---1t2D3 {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -32,6 +32,7 @@
 .table---table---2aBqd > .table---tfoot---23ZpN > .table---tr---3XEXR > .table---td---EVNU5 {
   padding: 8px 12px;
   vertical-align: middle;
+  display: -moz-inline-stack;
   display: inline-block;
   overflow: hidden;
 }
