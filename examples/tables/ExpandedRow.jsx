@@ -4,6 +4,15 @@ import Table from '../../src';
 import Section from '../Section';
 import styles from '../index.styl';
 
+const bigData = [];
+for (let i = 1; i < 601; i++) {
+    bigData.push({
+        id: i,
+        app: `chrome_${i}`,
+        vendor: `google_${i}`
+    });
+}
+
 export default class extends Component {
 
     state = {
@@ -23,7 +32,7 @@ export default class extends Component {
                         useFixedHeader={true}
                         rowKey="id"
                         columns={this.columns1}
-                        data={this.data1}
+                        data={bigData}
                     />
                 </div>
             );
@@ -93,10 +102,6 @@ export default class extends Component {
         { id: 20, eventType: 'Desktops', affectedDevices: 102, detections: 477 },
         { id: 21, eventType: 'Servers', affectedDevices: 33, detections: 235 }
     ];
-    data1 = [
-        { id: 1, app: 'chrome', vendor: 'google' },
-        { id: 2, app: 'ie', vendor: 'microsoft' }
-    ]
 
     render() {
         const columns = this.columns;

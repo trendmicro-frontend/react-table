@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import elementResizeDetectorMaker from 'element-resize-detector';
+import helper from './helper';
 import uniqueid from './uniqueid';
 import styles from './index.styl';
 import TableTemplate from './TableTemplate';
@@ -71,49 +72,47 @@ class Table extends PureComponent {
                 });
             }
         },
-        getTableSize: () => {
+        setTableSize: () => {
             if (this.tableWrapper) {
                 const { maxHeight } = this.props;
-                const tableTopBorder = this.tableWrapper.style['border-top-width'] || window.getComputedStyle(this.tableWrapper, null)['border-top-width'];
-                const tableBottomBorder = this.tableWrapper.style['border-bottom-width'] || window.getComputedStyle(this.tableWrapper, null)['border-bottom-width'];
+                const tableTopBorder = helper.getElementStyle(this.tableWrapper, 'border-top-width');
+                const tableBottomBorder = helper.getElementStyle(this.tableWrapper, 'border-bottom-width');
                 const headerHeight = this.title ? this.title.getBoundingClientRect().height : 0;
                 const footerHeight = this.foot ? this.foot.getBoundingClientRect().height : 0;
-                const tableHeight = maxHeight - headerHeight - footerHeight - parseInt(tableTopBorder, 10) - parseInt(tableBottomBorder, 10);
-                const tableWidth = this.tableWrapper.getBoundingClientRect().width;
-                this.setState({
-                    tableHeight,
-                    tableWidth
-                });
+                const newTableHeight = maxHeight - headerHeight - footerHeight - parseInt(tableTopBorder, 10) - parseInt(tableBottomBorder, 10);
+                const newTableWidth = this.tableWrapper.getBoundingClientRect().width;
+                if (this.state.tableHeight !== newTableHeight || this.state.tableWidth !== newTableWidth) {
+                    this.setState({
+                        tableHeight: newTableHeight,
+                        tableWidth: newTableWidth
+                    });
+                }
             }
         }
     };
 
     componentDidMount() {
-        const { getTableSize } = this.actions;
-        this.resizer.listenTo(this.tableWrapper, getTableSize);
-        window.addEventListener('resize', getTableSize);
-        getTableSize();
+        const { setTableSize } = this.actions;
+        this.resizer.listenTo(this.tableWrapper, setTableSize);
+        window.addEventListener('resize', setTableSize);
+        setTableSize();
     }
 
     componentWillUnmount() {
-        const { getTableSize } = this.actions;
-        this.resizer.removeListener(this.tableWrapper, getTableSize);
-        window.removeEventListener('resize', getTableSize);
+        const { setTableSize } = this.actions;
+        this.resizer.removeListener(this.tableWrapper, setTableSize);
+        window.removeEventListener('resize', setTableSize);
         this.tableWrapper = null;
     }
 
     componentDidUpdate(prevProps, prevState) {
-        // Update thisColumns is for re-render table header
         if (prevProps.columns !== this.props.columns) {
-            this.setState({
-                thisColumns: this.columnsParser()
-            });
+            this.setState({ thisColumns: this.columnsParser() });
         }
         if (prevProps.data !== this.props.data ||
             prevProps.maxHeight !== this.props.maxHeight ||
             prevProps.expandedRowKeys !== this.props.expandedRowKeys) {
-            const { getTableSize } = this.actions;
-            getTableSize();
+            this.actions.setTableSize();
         }
     }
 

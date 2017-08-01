@@ -5,23 +5,21 @@ import Table from '../../src';
 import Section from '../Section';
 import styles from '../index.styl';
 
+const bigData = [];
+for (let i = 1; i < 601; i++) {
+    bigData.push({
+        id: i,
+        checked: false,
+        eventType: `Virus/Malware_${i}`,
+        affectedDevices: 20 + i,
+        detections: 10 + i
+    });
+}
+
 export default class extends Component {
 
     state = {
-        selectionData: [
-            { id: 1, checked: true, eventType: 'Virus/Malware', affectedDevices: 20, detections: 634 },
-            { id: 2, checked: false, eventType: 'Spyware/Grayware', affectedDevices: 20, detections: 634 },
-            { id: 3, checked: false, eventType: 'URL Filtering', affectedDevices: 15, detections: 598 },
-            {
-                id: 4,
-                checked: false,
-                eventType: 'Test long long long long long long long long long long long long long long long long content',
-                affectedDevices: 15,
-                detections: 598
-            },
-            { id: 5, checked: false, eventType: 'Network Virus', affectedDevices: 15, detections: 497 },
-            { id: 6, checked: false, eventType: 'Application Control', affectedDevices: 0, detections: 0 }
-        ]
+        selectionData: bigData
     };
 
     actions = {
@@ -106,8 +104,7 @@ export default class extends Component {
     ];
 
     render() {
-        // Always get new columns to re-render table header
-        const columns = this.columns.map(c => c);
+        const columns = this.columns;
         const data = this.state.selectionData;
 
         return (
@@ -128,6 +125,8 @@ export default class extends Component {
                             data={data}
                             rowClassName={this.actions.handleRowClassName}
                             onRowClick={this.actions.handleClickRow}
+                            useFixedHeader={true}
+                            maxHeight={400}
                         />
                     </div>
                 </Section>

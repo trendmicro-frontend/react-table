@@ -48,13 +48,12 @@ export default class extends Component {
         });
         data.splice(index, 1);
         this.setState({
-            data: data
+            data: data.map(o => o)
         });
     }
 
     render() {
-        // Always get new columns to re-render table header
-        const columns = this.columns.map(o => o);
+        const columns = this.columns;
         const data = this.state.data;
 
         return (

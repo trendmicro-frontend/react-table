@@ -27,6 +27,8 @@
             > .td {
                 padding: $table-cell-padding;
                 vertical-align: middle;
+                // To Firefox get element's original height, we need to set 'display: -moz-inline-stack'.
+                display: -moz-inline-stack;
                 display: inline-block;
                 overflow: hidden;
             }
