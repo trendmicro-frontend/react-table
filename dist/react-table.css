@@ -1,4 +1,4 @@
-/*! react-table v0.7.0 | (c) 2017 Trend Micro Inc. | MIT | https://github.com/trendmicro-frontend/react-table */
+/*! react-table v0.7.1 | (c) 2017 Trend Micro Inc. | MIT | https://github.com/trendmicro-frontend/react-table */
 .table---table-wrapper---1t2D3 {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -20,6 +20,7 @@
 .table---table---2aBqd {
   width: 100%;
   max-width: 100%;
+  min-height: 0%;
   table-layout: fixed;
   background-color: #fff;
   overflow: auto;
@@ -54,6 +55,9 @@
 .table---table---2aBqd > .table---thead---1v6TQ > .table---tr---3XEXR:first-child > .table---th---2-0kV,
 .table---table---2aBqd > .table---thead---1v6TQ > .table---tr---3XEXR:first-child > .table---td---EVNU5 {
   border-top: 0;
+}
+.table---table---2aBqd > .table---tbody---3q9RK {
+  min-height: 0%;
 }
 .table---table---2aBqd > .table---tbody---3q9RK > .table---tr---3XEXR {
   overflow: hidden;
