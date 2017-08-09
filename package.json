@@ -49,6 +49,7 @@
     "@trendmicro/react-anchor": "^0.5.5",
     "classnames": "^2.2.5",
     "element-resize-detector": "^1.1.12",
+    "lodash.debounce": "^4.0.8",
     "lodash.get": "^4.4.2",
     "prop-types": "^15.5.8",
     "trendmicro-ui": "^0.4.0"

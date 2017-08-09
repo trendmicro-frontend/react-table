@@ -68,7 +68,6 @@ class TableRow extends PureComponent {
             columns,
             currentHoverKey,
             expandedRowRender,
-            expandedRowKeys,
             hoverKey,
             record,
             rowClassName
@@ -100,7 +99,6 @@ class TableRow extends PureComponent {
                                 key={`${hoverKey}_${index}`}
                                 column={column}
                                 record={record}
-                                expandedRowKeys={expandedRowKeys}
                             />
                         );
                     })

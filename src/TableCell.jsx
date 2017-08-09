@@ -15,6 +15,16 @@ class TableCell extends PureComponent {
         record: {}
     };
 
+    shouldComponentUpdate(nextProps, nextState) {
+        return (
+            (typeof nextProps.column.render === 'function')
+            ||
+            nextProps.column !== this.props.column
+            ||
+            nextProps.record !== this.props.record
+        );
+    }
+
     render() {
         const { column, record } = this.props;
         const render = column.render;

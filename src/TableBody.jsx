@@ -7,13 +7,16 @@ class TableBody extends PureComponent {
     static propTypes = {
         columns: PropTypes.array,
         currentHoverKey: PropTypes.any,
+        expandedRowKeys: PropTypes.array,
+        expandedRowRender: PropTypes.func,
         emptyText: PropTypes.func,
-        maxHeight: PropTypes.number,
         onMouseOver: PropTypes.func,
         onTouchStart: PropTypes.func,
         onScroll: PropTypes.func,
         onRowHover: PropTypes.func,
+        onRowClick: PropTypes.func,
         records: PropTypes.array,
+        rowClassName: PropTypes.func,
         rowKey: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
         scrollTop: PropTypes.number
     };
@@ -59,24 +62,17 @@ class TableBody extends PureComponent {
         const {
             columns,
             currentHoverKey,
+            expandedRowKeys,
+            expandedRowRender,
             emptyText,
-            maxHeight,
             onRowHover,
+            onRowClick,
             records,
-            ...props
+            rowClassName
         } = this.props;
         const noData = (!records || records.length === 0);
-        let customStyles = {
-            minHeight: '0%',
-            maxHeight: 'none'
-        };
-        if (maxHeight) {
-            customStyles.maxHeight = `${maxHeight}px`;
-        }
-
         return (
             <div
-                style={customStyles}
                 className={styles.tbody}
                 ref={node => {
                     this.body = node;
@@ -87,14 +83,17 @@ class TableBody extends PureComponent {
                         const key = this.getRowKey(row, index);
                         return (
                             <TableRow
-                                {...props}
                                 columns={columns}
                                 currentHoverKey={currentHoverKey}
+                                expandedRowKeys={expandedRowKeys}
+                                expandedRowRender={expandedRowRender}
                                 hoverKey={key}
                                 index={index}
                                 key={key}
                                 onHover={onRowHover}
+                                onRowClick={onRowClick}
                                 record={row}
+                                rowClassName={rowClassName}
                             />
                         );
                     })

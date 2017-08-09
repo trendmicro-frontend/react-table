@@ -6,7 +6,6 @@ import styles from './index.styl';
 
 class TableHeader extends PureComponent {
     static propTypes = {
-        data: PropTypes.array,  // Pass data property is for checking whether update table header or not
         columns: PropTypes.array,
         scrollLeft: PropTypes.number
     };
@@ -20,9 +19,7 @@ class TableHeader extends PureComponent {
 
     shouldComponentUpdate(nextProps, nextState) {
         return (
-            this.props.columns.some((obj, index, array) => {
-                return (typeof obj.title === 'function');
-            })
+            nextProps.columns.some((obj, index, array) => (typeof obj.title === 'function'))
             ||
             nextProps.scrollLeft !== this.props.scrollLeft
             ||
