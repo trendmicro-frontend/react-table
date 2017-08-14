@@ -62,9 +62,12 @@ class Table extends PureComponent {
             if (e.target !== this.scrollTarget) {
                 return;
             }
-            this.setState({
-                scrollTop: e.target.scrollTop
-            });
+            // scrollTop is for scrolling main table and fixed table at the same time.
+            if (this.isAnyColumnsLeftFixed()) {
+                this.setState({
+                    scrollTop: e.target.scrollTop
+                });
+            }
         },
         handleRowHover: (isHover, key) => {
             const { hoverable } = this.props;
@@ -535,6 +538,7 @@ class Table extends PureComponent {
             expandedRowRender,
             onRowClick,
             showHeader,
+            useFixedHeader,
             rowClassName,
             rowKey
         } = this.props;
@@ -553,6 +557,7 @@ class Table extends PureComponent {
                 onScroll={handleBodyScroll}
                 scrollTop={scrollTop}
                 showHeader={showHeader}
+                useFixedHeader={useFixedHeader}
                 rowClassName={rowClassName}
                 rowKey={rowKey}
                 ref={node => {
@@ -574,6 +579,7 @@ class Table extends PureComponent {
             expandedRowRender,
             onRowClick,
             showHeader,
+            useFixedHeader,
             rowClassName,
             rowKey
         } = this.props;
@@ -593,6 +599,7 @@ class Table extends PureComponent {
                 onScroll={handleBodyScroll}
                 scrollTop={scrollTop}
                 showHeader={showHeader}
+                useFixedHeader={useFixedHeader}
                 rowClassName={rowClassName}
                 rowKey={rowKey}
                 ref={node => {
