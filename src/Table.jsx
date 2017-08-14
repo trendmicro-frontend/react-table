@@ -219,7 +219,11 @@ class Table extends PureComponent {
                 th = headerCells[i];
                 cellContent = helper.getSubElements(th, `.${styles.thContent}`);
                 content = cellContent[0];
-                thHeight = (content ? content.getBoundingClientRect().height : 0) + parseInt(helper.getElementStyle(th, 'padding-top'), 10) + parseInt(helper.getElementStyle(th, 'padding-bottom'), 10);
+                thHeight = (content ? content.getBoundingClientRect().height : 0) +
+                            parseInt(helper.getElementStyle(th, 'padding-top'), 10) +
+                            parseInt(helper.getElementStyle(th, 'padding-bottom'), 10) +
+                            parseInt(helper.getElementStyle(th, 'border-top-width'), 10) +
+                            parseInt(helper.getElementStyle(th, 'border-bottom-width'), 10);
                 headerHeight = Math.max(headerHeight, thHeight);
             }
             return headerHeight;
@@ -366,7 +370,11 @@ class Table extends PureComponent {
                     td = bodyCell[j];
                     cellContent = helper.getSubElements(td, `.${styles.tdContent}`);
                     content = cellContent[0];
-                    tdHeight = (content ? content.getBoundingClientRect().height : 0) + parseInt(helper.getElementStyle(td, 'padding-top'), 10) + parseInt(helper.getElementStyle(td, 'padding-bottom'), 10);
+                    tdHeight = (content ? content.getBoundingClientRect().height : 0) +
+                                parseInt(helper.getElementStyle(td, 'padding-top'), 10) +
+                                parseInt(helper.getElementStyle(td, 'padding-bottom'), 10) +
+                                parseInt(helper.getElementStyle(td, 'border-top-width'), 10) +
+                                parseInt(helper.getElementStyle(td, 'border-bottom-width'), 10);
                     cellHeight = Math.max(cellHeight, tdHeight);
                 }
                 rowsHeight[i] = cellHeight;
