@@ -53,7 +53,7 @@ class TableRow extends PureComponent {
     componentWillUnmount() {
         const { handleRowMouseOver, handleRowMouseLeave } = this.actions;
         this.row.removeEventListener('mouseenter', handleRowMouseOver);
-        this.row.addEventListener('mouseleave', handleRowMouseLeave);
+        this.row.removeEventListener('mouseleave', handleRowMouseLeave);
     }
 
     isRowExpanded (record, key) {
