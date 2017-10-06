@@ -1,10 +1,10 @@
 import Anchor from '@trendmicro/react-anchor';
 import classNames from 'classnames';
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styles from './index.styl';
 
-class TableHeader extends PureComponent {
+class TableHeader extends Component {
     static propTypes = {
         columns: PropTypes.array,
         scrollLeft: PropTypes.number
