@@ -1,10 +1,10 @@
 import classNames from 'classnames';
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import get from 'lodash.get';
 import styles from './index.styl';
 
-class TableCell extends PureComponent {
+class TableCell extends Component {
     static propTypes = {
         column: PropTypes.object,
         record: PropTypes.object
