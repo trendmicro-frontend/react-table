@@ -46632,7 +46632,9 @@ var Table = (_temp2 = _class = function (_PureComponent) {
         key: 'componentWillReceiveProps',
         value: function componentWillReceiveProps(nextProps) {
             if (nextProps.columns !== this.props.columns) {
-                this.setState({ thisColumns: this.columnsParser() });
+                var columns = nextProps.columns;
+
+                this.setState({ thisColumns: this.columnsParser(columns) });
             }
         }
     }, {
@@ -46656,9 +46658,11 @@ var Table = (_temp2 = _class = function (_PureComponent) {
         value: function columnsParser() {
             var _this2 = this;
 
+            var columns = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.props.columns;
+
             // Checking columns
             var filterColumns = [];
-            this.props.columns.forEach(function (obj) {
+            columns.forEach(function (obj) {
                 // Filter out undefined and null column.
                 if (obj) {
                     var cloneColumn = _extends({}, obj);
@@ -46713,6 +46717,7 @@ var Table = (_temp2 = _class = function (_PureComponent) {
                 useFixedHeader = _props.useFixedHeader,
                 rowClassName = _props.rowClassName,
                 rowKey = _props.rowKey;
+
 
             return _react2.default.createElement(_TableTemplate2.default, {
                 columns: columns,
@@ -49446,4 +49451,4 @@ exports.default = _default;
 /***/ })
 
 /******/ });
-//# sourceMappingURL=bundle.js.map?0ea8d93d22ecb5a714c1
+//# sourceMappingURL=bundle.js.map?4c353341fabf69139bdd
