@@ -474,7 +474,8 @@ class Table extends PureComponent {
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.columns !== this.props.columns) {
-            this.setState({ thisColumns: this.columnsParser() });
+            const { columns } = nextProps;
+            this.setState({ thisColumns: this.columnsParser(columns) });
         }
     }
 
@@ -493,10 +494,10 @@ class Table extends PureComponent {
         };
     }
 
-    columnsParser() {
+    columnsParser(columns = this.props.columns) {
         // Checking columns
         const filterColumns = [];
-        this.props.columns.forEach((obj) => {
+        columns.forEach((obj) => {
             // Filter out undefined and null column.
             if (obj) {
                 let cloneColumn = { ...obj };
@@ -542,6 +543,7 @@ class Table extends PureComponent {
             rowClassName,
             rowKey
         } = this.props;
+
         return (
             <TableTemplate
                 columns={columns}
