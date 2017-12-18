@@ -77,7 +77,7 @@ export default class extends Component {
 
         return (
             <div className="col-md-12">
-                <Section className="row-md-21">
+                <Section className="row-md-27">
                     <h3>Display and Functionalities</h3>
                     <div className={styles.sectionGroup}>
                         <h5>Row Hover</h5>
@@ -119,6 +119,17 @@ export default class extends Component {
                         />
                     </div>
                     <div className={styles.sectionGroup}>
+                        <h5>No Data and Loader</h5>
+                        <Table
+                            loading={true}
+                            hoverable={false}
+                            rowKey={record => record.id}
+                            columns={columns}
+                            data={[]}
+                            emptyText={() => 'No data to display'}
+                        />
+                    </div>
+                    <div className={styles.sectionGroup}>
                         <h5>No Header</h5>
                         <Table
                             hoverable
@@ -128,6 +139,18 @@ export default class extends Component {
                             rowKey={record => record.id}
                             columns={columns}
                             data={data}
+                        />
+                    </div>
+                    <div className={styles.sectionGroup}>
+                        <h5>No Header and Loader</h5>
+                        <Table
+                            loading={true}
+                            hoverable
+                            showHeader={false}
+                            rowKey={record => record.id}
+                            columns={columns}
+                            data={[]}
+                            emptyText={() => 'No data to display'}
                         />
                     </div>
                 </Section>
