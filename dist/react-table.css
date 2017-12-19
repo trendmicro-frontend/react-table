@@ -1,4 +1,4 @@
-/*! react-table v0.7.3 | (c) 2017 Trend Micro Inc. | MIT | https://github.com/trendmicro-frontend/react-table */
+/*! react-table v0.8.0 | (c) 2017 Trend Micro Inc. | MIT | https://github.com/trendmicro-frontend/react-table */
 .table---table-wrapper---1t2D3 {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -178,10 +178,16 @@
 .table---table-minimalism---1Tk6v > .table---table-area---KA_N2 > .table---table---2aBqd .table---clickable-column---1zeo4:hover {
   background-color: inherit;
 }
+.table---table-no-data---2nuKv {
+  height: 148px;
+}
 .table---table-no-data---2nuKv > .table---table-area---KA_N2 > .table---table---2aBqd > .table---tbody---3q9RK > .table---table-placeholder---3xuV7 {
   text-align: center;
-  padding: 26px 12px;
+  padding: 44px 12px;
   color: #999;
+}
+.table---table-no-data---2nuKv > .table---table-area---KA_N2 > .table---loader-overlay---IQP-L > .table---loader---3Kv7h {
+  margin-top: -18px;
 }
 .table---table-sortable---KlbyF > .table---table-area---KA_N2 > .table---table---2aBqd > .table---thead---1v6TQ > .table---tr---3XEXR > .table---th---2-0kV {
   white-space: nowrap;
