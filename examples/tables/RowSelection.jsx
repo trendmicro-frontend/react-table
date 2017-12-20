@@ -68,7 +68,7 @@ export default class extends Component {
                 className += ' checkbox-partial';
             }
             return (
-                <div className="checkbox">
+                <div className="checkbox" style={{ display: 'inline-block' }}>
                     <input
                         type="checkbox"
                         id="headerCheckbox"
@@ -82,7 +82,7 @@ export default class extends Component {
         },
         renderCheckbox: (value, row) => {
             return (
-                <div className="checkbox">
+                <div className="checkbox" style={{ display: 'inline-block' }}>
                     <input
                         type="checkbox"
                         id={row.id}
