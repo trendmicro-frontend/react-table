@@ -644,10 +644,11 @@ class Table extends PureComponent {
     }
 
     renderLoader() {
-        const { loaderRender } = this.props;
+        const { loaderRender, showHeader = true } = this.props;
+        const loaderOverlayClassName = showHeader ? styles.loaderOverlay : classNames(styles.loaderOverlay, styles.noHeader);
         const defaultLoader = () => {
             return (
-                <div className={styles.loaderOverlay}>
+                <div className={loaderOverlayClassName}>
                     <span className={classNames(styles.loader, styles.loaderLarge)} />
                 </div>
             );
