@@ -77,7 +77,7 @@ export default class extends Component {
 
         return (
             <div className="col-md-12">
-                <Section className="row-md-27">
+                <Section className="row-md-26">
                     <h3>Display and Functionalities</h3>
                     <div className={styles.sectionGroup}>
                         <h5>Row Hover</h5>

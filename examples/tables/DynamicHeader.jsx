@@ -58,7 +58,7 @@ export default class extends Component {
 
         return (
             <div className="col-md-12">
-                <Section className="row-md-4">
+                <Section className="row-md-5">
                     <h3>Dynamic Header</h3>
                     <div className={styles.sectionGroup}>
                         <Table

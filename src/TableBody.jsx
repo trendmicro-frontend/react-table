@@ -65,6 +65,7 @@ class TableBody extends PureComponent {
             expandedRowKeys,
             expandedRowRender,
             emptyText,
+            loading,
             onRowHover,
             onRowClick,
             records,
@@ -99,10 +100,14 @@ class TableBody extends PureComponent {
                     })
                 }
                 {
-                    noData &&
+                    noData && !loading &&
                     <div className={styles.tablePlaceholder}>
                         { emptyText() }
                     </div>
+                }
+                {
+                    noData && loading &&
+                    <div className={styles.tableNoDataLoader} />
                 }
             </div>
         );

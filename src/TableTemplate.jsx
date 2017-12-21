@@ -74,6 +74,7 @@ class TableTemplate extends PureComponent {
             emptyText,
             expandedRowKeys,
             expandedRowRender,
+            loading,
             onMouseOver,
             onTouchStart,
             onRowHover,
@@ -90,6 +91,7 @@ class TableTemplate extends PureComponent {
                 expandedRowKeys={expandedRowKeys}
                 expandedRowRender={expandedRowRender}
                 emptyText={emptyText}
+                loading={loading}
                 onMouseOver={onMouseOver}
                 onTouchStart={onTouchStart}
                 onRowHover={onRowHover}

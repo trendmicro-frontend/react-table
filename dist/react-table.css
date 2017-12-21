@@ -57,7 +57,7 @@
   border-top: 0;
 }
 .table---table---2aBqd > .table---tbody---3q9RK {
-  min-height: 111px;
+  min-height: 0%;
 }
 .table---table---2aBqd > .table---tbody---3q9RK > .table---tr---3XEXR {
   overflow: hidden;
@@ -183,8 +183,14 @@
   padding: 44px 12px;
   color: #999;
 }
-.table---table-no-data---2nuKv > .table---table-area---KA_N2 > .table---loader-overlay---IQP-L > .table---loader---3Kv7h {
+.table---table-no-data---2nuKv > .table---table-area---KA_N2 > .table---loader-overlay---IQP-L > .table---loader---3Kv7h .table---loader-large---2W2Dw {
   margin-top: -28px;
+}
+.table---table-no-data---2nuKv > .table---table-area---KA_N2 > .table---loader-overlay---IQP-L > .table---loader---3Kv7h .table---loader-small---37wpB {
+  margin-top: -48px;
+}
+.table---table-no-data-loader---35BPN {
+  height: 109px;
 }
 .table---table-sortable---KlbyF > .table---table-area---KA_N2 > .table---table---2aBqd > .table---thead---1v6TQ > .table---tr---3XEXR > .table---th---2-0kV {
   white-space: nowrap;

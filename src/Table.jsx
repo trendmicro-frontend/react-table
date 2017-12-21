@@ -550,9 +550,10 @@ class Table extends PureComponent {
                 columns={columns}
                 currentHoverKey={currentHoverKey}
                 data={data}
-                emptyText={loading ? () => '' : emptyText}
+                emptyText={emptyText}
                 expandedRowKeys={expandedRowKeys}
                 expandedRowRender={expandedRowRender}
+                loading={loading}
                 onMouseOver={detectScrollTarget}
                 onRowClick={onRowClick}
                 onRowHover={handleRowHover}
@@ -595,7 +596,8 @@ class Table extends PureComponent {
                 data={data}
                 expandedRowKeys={expandedRowKeys}
                 expandedRowRender={expandedRowRender}
-                emptyText={loading ? () => '' : emptyText}
+                emptyText={emptyText}
+                loading={loading}
                 onMouseOver={detectScrollTarget}
                 onRowClick={onRowClick}
                 onRowHover={handleRowHover}
