@@ -1,4 +1,4 @@
-/*! react-table v0.8.0 | (c) 2017 Trend Micro Inc. | MIT | https://github.com/trendmicro-frontend/react-table */
+/*! react-table v0.8.1 | (c) 2017 Trend Micro Inc. | MIT | https://github.com/trendmicro-frontend/react-table */
 .table---table-wrapper---1t2D3 {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -183,14 +183,8 @@
   padding: 44px 12px;
   color: #999;
 }
-.table---table-no-data---2nuKv > .table---table-area---KA_N2 > .table---loader-overlay---IQP-L > .table---loader---3Kv7h.table---loader-large---2W2Dw {
-  margin-top: -28px;
-}
-.table---table-no-data---2nuKv > .table---table-area---KA_N2 > .table---loader-overlay---IQP-L > .table---loader---3Kv7h.table---loader-small---37wpB {
-  margin-top: -48px;
-}
 .table---table-no-data-loader---35BPN {
-  height: 109px;
+  height: 108px;
 }
 .table---table-sortable---KlbyF > .table---table-area---KA_N2 > .table---table---2aBqd > .table---thead---1v6TQ > .table---tr---3XEXR > .table---th---2-0kV {
   white-space: nowrap;
@@ -252,11 +246,11 @@
   top: 50%;
   left: 50%;
 }
-.table---loader-overlay---IQP-L .table---loader-large---2W2Dw {
+.table---loader-overlay---IQP-L .table---loader---3Kv7h.table---loader-large---2W2Dw {
   margin-top: -28px;
   margin-left: -28px;
 }
-.table---loader-overlay---IQP-L .table---loader-small---37wpB {
+.table---loader-overlay---IQP-L .table---loader---3Kv7h.table---loader-small---37wpB {
   margin-top: -8px;
   margin-left: -8px;
 }
