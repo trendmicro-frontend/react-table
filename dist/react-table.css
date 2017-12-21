@@ -183,10 +183,10 @@
   padding: 44px 12px;
   color: #999;
 }
-.table---table-no-data---2nuKv > .table---table-area---KA_N2 > .table---loader-overlay---IQP-L > .table---loader---3Kv7h .table---loader-large---2W2Dw {
+.table---table-no-data---2nuKv > .table---table-area---KA_N2 > .table---loader-overlay---IQP-L > .table---loader---3Kv7h.table---loader-large---2W2Dw {
   margin-top: -28px;
 }
-.table---table-no-data---2nuKv > .table---table-area---KA_N2 > .table---loader-overlay---IQP-L > .table---loader---3Kv7h .table---loader-small---37wpB {
+.table---table-no-data---2nuKv > .table---table-area---KA_N2 > .table---loader-overlay---IQP-L > .table---loader---3Kv7h.table---loader-small---37wpB {
   margin-top: -48px;
 }
 .table---table-no-data-loader---35BPN {
@@ -256,8 +256,16 @@
   margin-top: -28px;
   margin-left: -28px;
 }
+.table---loader-overlay---IQP-L .table---loader-small---37wpB {
+  margin-top: -8px;
+  margin-left: -8px;
+}
+.table---loader-overlay---IQP-L .table---loader---3Kv7h {
+  margin-top: -16px;
+  margin-left: -16px;
+}
 .table---table---2aBqd + .table---loader-overlay---IQP-L {
-  top: 39px;
+  top: 38px;
 }
 .table---loader-overlay---IQP-L.table---no-header---3oIYg {
   top: 0;
