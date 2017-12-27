@@ -10,6 +10,7 @@ class TableBody extends PureComponent {
         expandedRowKeys: PropTypes.array,
         expandedRowRender: PropTypes.func,
         emptyText: PropTypes.func,
+        loading: PropTypes.bool,
         onMouseOver: PropTypes.func,
         onTouchStart: PropTypes.func,
         onScroll: PropTypes.func,

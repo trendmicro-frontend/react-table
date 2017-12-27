@@ -5,7 +5,6 @@ import Section from '../Section';
 import styles from '../index.styl';
 
 export default class extends Component {
-
     columns1 = [
         { title: 'Event Type', dataIndex: 'eventType' },
         { title: 'Affected Devices', dataIndex: 'affectedDevices' },
@@ -79,5 +78,4 @@ export default class extends Component {
             </div>
         );
     }
-
 }

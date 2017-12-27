@@ -13,6 +13,7 @@ class TableTemplate extends PureComponent {
         emptyText: PropTypes.func,
         expandedRowKeys: PropTypes.array,
         expandedRowRender: PropTypes.func,
+        loading: PropTypes.bool,
         onMouseOver: PropTypes.func,
         onTouchStart: PropTypes.func,
         onScroll: PropTypes.func,

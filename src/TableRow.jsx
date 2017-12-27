@@ -89,6 +89,7 @@ class TableRow extends PureComponent {
                 ref={node => {
                     this.row = node;
                 }}
+                role="presentation"
                 onClick={handleRowClick}
             >
                 {

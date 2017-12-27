@@ -7,7 +7,6 @@ import Section from '../Section';
 import styles from '../index.styl';
 
 export default class extends Component {
-
     state = {
         sortColumnKey: 'eventType',
         sortOrder: 'asc'
@@ -44,12 +43,14 @@ export default class extends Component {
 
     actions = {
         toggleSortOrder: (column) => (event) => {
-            let sortColumnKey = column.key;
-            let sortOrder = (this.state.sortOrder === 'desc') ? 'asc' : 'desc';
-            if (this.state.sortColumnKey !== sortColumnKey) {
-                sortOrder = 'desc';
-            }
-            this.setState({ sortColumnKey, sortOrder });
+            this.setState(state => {
+                let sortColumnKey = column.key;
+                let sortOrder = (state.sortOrder === 'desc') ? 'asc' : 'desc';
+                if (state.sortColumnKey !== sortColumnKey) {
+                    sortOrder = 'desc';
+                }
+                this.setState({ sortColumnKey, sortOrder });
+            });
         }
     };
 
@@ -157,5 +158,4 @@ export default class extends Component {
             </div>
         );
     }
-
 }

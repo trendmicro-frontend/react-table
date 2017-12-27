@@ -1,11 +1,11 @@
 import 'trendmicro-ui/dist/css/trendmicro-ui.css';
+import Anchor from '@trendmicro/react-anchor';
 import React, { Component } from 'react';
 import Table from '../../src';
 import Section from '../Section';
 import styles from '../index.styl';
 
 export default class extends Component {
-
     state = {
         data: [
             { id: 1, eventType: 'Virus/Malware', affectedDevices: 20, detections: 634 },
@@ -24,12 +24,13 @@ export default class extends Component {
         },
         renderActionCell: (value, row) => {
             return (
-                <i
-                    className="fa fa-trash"
+                <Anchor
                     onClick={(e) => {
                         this.handleClickDelete(row);
                     }}
-                />
+                >
+                    <i className="fa fa-trash" />
+                </Anchor>
             );
         }
     }
@@ -73,5 +74,4 @@ export default class extends Component {
             </div>
         );
     }
-
 }

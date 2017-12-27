@@ -17,27 +17,31 @@ for (let i = 1; i < 601; i++) {
 }
 
 export default class extends Component {
-
     state = {
         selectionData: bigData
     };
 
     actions = {
         handleClickRow: (record, index, e) => {
-            const checked = record.checked;
-            const data = this.state.selectionData.map(item => {
-                if (record.id === item.id) {
-                    return {
-                        ...item,
-                        checked: !checked
-                    };
-                }
-                return item;
-            });
-
-            this.setState({ selectionData: data });
             e.stopPropagation();
             e.preventDefault();
+
+            this.setState(state => {
+                const checked = record.checked;
+                const data = state.selectionData.map(item => {
+                    if (record.id === item.id) {
+                        return {
+                            ...item,
+                            checked: !checked
+                        };
+                    }
+                    return item;
+                });
+
+                return {
+                    selectionData: data
+                };
+            });
         },
         handleRowClassName: (record, key) => {
             const checked = record.checked;
@@ -48,15 +52,21 @@ export default class extends Component {
             }
         },
         handleHeaderCheckbox: (e) => {
-            const checkbox = e.target;
-            const data = this.state.selectionData.map((item, i) => {
+            e.stopPropagation();
+
+            this.setState(state => {
+                const checkbox = e.target;
+                const data = state.selectionData.map((item, i) => {
+                    return {
+                        ...item,
+                        checked: checkbox.checked
+                    };
+                });
+
                 return {
-                    ...item,
-                    checked: checkbox.checked
+                    selectionData: data
                 };
             });
-            this.setState({ selectionData: data });
-            e.stopPropagation();
         },
         renderHeaderCheckbox: () => {
             let className = 'input-checkbox';
@@ -133,5 +143,4 @@ export default class extends Component {
             </div>
         );
     }
-
 }

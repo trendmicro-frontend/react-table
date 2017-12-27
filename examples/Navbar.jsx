@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Anchor from '@trendmicro/react-anchor';
 import { Button } from '@trendmicro/react-buttons';
 import styles from './Navbar.styl';
 
@@ -28,7 +29,7 @@ export default class extends Component {
                             type="button"
                             className={classNames(styles.navbarToggle, styles.collapsed)}
                             onClick={() => {
-                                this.setState({ collapseIn: !this.state.collapseIn });
+                                this.setState(state => ({ collapseIn: !state.collapseIn }));
                             }}
                         >
                             <span className={styles.srOnly}>Toggle navigation</span>
@@ -36,7 +37,7 @@ export default class extends Component {
                             <span className={styles.iconBar} />
                             <span className={styles.iconBar} />
                         </button>
-                        <a href="" className={styles.navbarBrand}>{name}</a>
+                        <Anchor className={styles.navbarBrand}>{name}</Anchor>
                     </div>
                     <div
                         className={classNames(

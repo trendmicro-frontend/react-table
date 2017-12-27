@@ -1,11 +1,11 @@
-var path = require('path');
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var stylusLoader = require('stylus-loader');
-var nib = require('nib');
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const stylusLoader = require('stylus-loader');
+const nib = require('nib');
 
 module.exports = {
-    devtool: 'source-map',
+    devtool: 'cheap-module-eval-source-map',
     entry: path.resolve(__dirname, 'index.jsx'),
     output: {
         path: path.join(__dirname, '../docs'),

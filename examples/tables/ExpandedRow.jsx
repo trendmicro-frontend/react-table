@@ -1,4 +1,5 @@
 import 'trendmicro-ui/dist/css/trendmicro-ui.css';
+import Anchor from '@trendmicro/react-anchor';
 import React, { Component } from 'react';
 import Table from '../../src';
 import Section from '../Section';
@@ -14,7 +15,6 @@ for (let i = 1; i < 601; i++) {
 }
 
 export default class extends Component {
-
     state = {
         expandedRowKeys: []
     };
@@ -40,16 +40,22 @@ export default class extends Component {
         handleToggleDetails: (record) => (e) => {
             e.preventDefault();
             e.stopPropagation();
-            const rowIndex = this.state.expandedRowKeys.indexOf(record.id);
-            const expanded = (rowIndex >= 0);
-            let data = [];
-            // Only display one detail view at one time
-            if (expanded) {
-                data = [];
-            } else {
-                data = [record.id];
-            }
-            this.setState({ expandedRowKeys: data });
+
+            this.setState(state => {
+                const rowIndex = state.expandedRowKeys.indexOf(record.id);
+                const expanded = (rowIndex >= 0);
+                let data = [];
+                // Only display one detail view at one time
+                if (expanded) {
+                    data = [];
+                } else {
+                    data = [record.id];
+                }
+
+                return {
+                    expandedRowKeys: data
+                };
+            });
         },
         handleRenderActionColumn: (text, record) => {
             const expandedRowKeys = this.state.expandedRowKeys;
@@ -61,10 +67,11 @@ export default class extends Component {
                 className += ' ' + styles.rowCollapsed;
             }
             return (
-                <i
-                    className={className}
+                <Anchor
                     onClick={this.actions.handleToggleDetails(record)}
-                />
+                >
+                    <i className={className} />
+                </Anchor>
             );
         }
     };
@@ -128,5 +135,4 @@ export default class extends Component {
             </div>
         );
     }
-
 }

@@ -9,7 +9,6 @@ import Section from '../Section';
 import styles from '../index.styl';
 
 export default class extends Component {
-
     state = {
         pagination: {
             page: 1,
@@ -138,5 +137,4 @@ export default class extends Component {
             </div>
         );
     }
-
 }
