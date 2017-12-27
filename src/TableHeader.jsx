@@ -11,9 +11,11 @@ class TableHeader extends Component {
     };
 
     componentDidUpdate(prevProps, prevState) {
-        const { scrollLeft } = this.props;
-        if (this.header.scrollLeft !== scrollLeft) {
-            this.header.scrollLeft = scrollLeft;
+        if (this.props.scrollLeft !== prevProps.scrollLeft) {
+            const { scrollLeft } = this.props;
+            if (this.header.scrollLeft !== scrollLeft) {
+                this.header.scrollLeft = scrollLeft;
+            }
         }
     }
 
