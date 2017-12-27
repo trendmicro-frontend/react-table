@@ -46,9 +46,11 @@ class TableBody extends PureComponent {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        const { scrollTop } = this.props;
-        if (this.body.scrollTop !== scrollTop) {
-            this.body.scrollTop = scrollTop;
+        if (this.props.scrollTop !== prevProps.scrollTop) {
+            const { scrollTop } = this.props;
+            if (this.body.scrollTop !== scrollTop) {
+                this.body.scrollTop = scrollTop;
+            }
         }
     }
 
