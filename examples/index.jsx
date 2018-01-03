@@ -3,7 +3,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Navbar from './Navbar';
 import Bordered from './tables/Bordered';
-import AutoFitOrJustified from './tables/AutoFitOrJustified';
+import AutoFit from './tables/AutoFit';
+import Justified from './tables/Justified';
 import Displays from './tables/Displays';
 import FixedColumns from './tables/FixedColumns';
 import Pagination from './tables/Pagination';
@@ -21,7 +22,8 @@ const App = (props) => {
             <div className="container-fluid" style={{ padding: '20px 20px 0' }}>
                 <div className="row">
                     <Bordered />
-                    <AutoFitOrJustified />
+                    <AutoFit />
+                    <Justified />
                     <Displays />
                     <FixedColumns />
                     <Pagination />

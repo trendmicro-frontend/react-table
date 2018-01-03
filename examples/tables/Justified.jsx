@@ -11,28 +11,24 @@ export default class extends Component {
     columns = [
         {
             title: 'Event Type',
-            width: '20%',
             render: (value, row, index) => {
                 return row.eventType;
             }
         },
         {
             title: 'Affected Devices',
-            width: '10%',
             render: (value, row, index) => {
                 return row.affectedDevices;
             }
         },
         {
             title: 'Detections',
-            width: '10%',
             render: (value, row, index) => {
                 return row.detections;
             }
         },
         {
             title: 'Description',
-            width: '60%',
             dataKey: 'description'
         }
     ];
@@ -52,21 +48,9 @@ export default class extends Component {
 
         return (
             <div className="col-md-12">
-                <Section className="row-sm-20">
-                    <h3>AutoFit and Justified</h3>
+                <Section className="row-sm-10">
+                    <h3>Justified</h3>
                     <div className={styles.sectionGroup}>
-                        <h5>AutoFit</h5>
-                        <Table
-                            bordered={true}
-                            hoverable={false}
-                            justified={false}
-                            rowKey={record => record.id}
-                            columns={columns}
-                            data={data}
-                        />
-                    </div>
-                    <div className={styles.sectionGroup}>
-                        <h5>Justified</h5>
                         <Table
                             bordered={false}
                             hoverable={false}
