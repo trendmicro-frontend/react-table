@@ -8,7 +8,7 @@ import TableBody from './TableBody';
 class TableTemplate extends PureComponent {
     static propTypes = {
         columns: PropTypes.array,
-        currentHoverKey: PropTypes.any,
+        hoveredRowKey: PropTypes.any,
         data: PropTypes.array,
         emptyText: PropTypes.func,
         expandedRowKeys: PropTypes.array,
@@ -30,26 +30,20 @@ class TableTemplate extends PureComponent {
         showHeader: true
     };
 
-    state = this.getInitState();
-
-    actions = {
-        handleBodyScroll: (e) => {
-            const { onScroll, showHeader, useFixedHeader } = this.props;
-            // scrollLeft is for scrolling table header and body at the same time.
-            if (showHeader && useFixedHeader) {
-                this.setState({
-                    scrollLeft: e.target.scrollLeft
-                });
-            }
-            onScroll(e);
-        }
+    state = {
+        scrollLeft: 0
     };
 
-    getInitState() {
-        return {
-            scrollLeft: 0
-        };
-    }
+    handleBodyScroll = (event) => {
+        const { onScroll, showHeader, useFixedHeader } = this.props;
+        // scrollLeft is for scrolling table header and body at the same time.
+        if (showHeader && useFixedHeader) {
+            this.setState({
+                scrollLeft: event.target.scrollLeft
+            });
+        }
+        onScroll(event);
+    };
 
     renderHeader() {
         const { columns } = this.props;
@@ -66,11 +60,10 @@ class TableTemplate extends PureComponent {
             />
         );
     }
-
     renderBody() {
         const {
             columns,
-            currentHoverKey,
+            hoveredRowKey,
             data,
             emptyText,
             expandedRowKeys,
@@ -84,11 +77,11 @@ class TableTemplate extends PureComponent {
             rowKey,
             scrollTop
         } = this.props;
-        const { handleBodyScroll } = this.actions;
+
         return (
             <TableBody
                 columns={columns}
-                currentHoverKey={currentHoverKey}
+                hoveredRowKey={hoveredRowKey}
                 expandedRowKeys={expandedRowKeys}
                 expandedRowRender={expandedRowRender}
                 emptyText={emptyText}
@@ -97,7 +90,7 @@ class TableTemplate extends PureComponent {
                 onTouchStart={onTouchStart}
                 onRowHover={onRowHover}
                 onRowClick={onRowClick}
-                onScroll={handleBodyScroll}
+                onScroll={this.handleBodyScroll}
                 scrollTop={scrollTop}
                 records={data}
                 ref={node => {
@@ -110,12 +103,12 @@ class TableTemplate extends PureComponent {
             />
         );
     }
-
     render() {
         const {
             className,
             showHeader
         } = this.props;
+
         return (
             <div
                 ref={node => {

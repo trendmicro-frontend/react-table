@@ -71,10 +71,10 @@ class Table extends PureComponent {
         },
         handleRowHover: (isHover, key) => {
             const { hoverable } = this.props;
-            // currentHoverKey is only for setting hover style to columns and fixed left columns at the same time.
+            // hoveredRowKey is only for setting hover style to columns and fixed left columns at the same time.
             if (this.isAnyColumnsLeftFixed() && hoverable) {
                 this.setState({
-                    currentHoverKey: isHover ? key : null
+                    hoveredRowKey: isHover ? key : null
                 });
             }
         },
@@ -488,7 +488,7 @@ class Table extends PureComponent {
 
     getInitState () {
         return {
-            currentHoverKey: null,
+            hoveredRowKey: null,
             scrollTop: 0,
             thisColumns: this.columnsParser()
         };
@@ -530,7 +530,7 @@ class Table extends PureComponent {
 
     renderTable() {
         const columns = this.state.thisColumns;
-        const { currentHoverKey, scrollTop } = this.state;
+        const { hoveredRowKey, scrollTop } = this.state;
         const { detectScrollTarget, handleBodyScroll, handleRowHover } = this.actions;
         const {
             data,
@@ -548,7 +548,7 @@ class Table extends PureComponent {
         return (
             <TableTemplate
                 columns={columns}
-                currentHoverKey={currentHoverKey}
+                hoveredRowKey={hoveredRowKey}
                 data={data}
                 emptyText={emptyText}
                 expandedRowKeys={expandedRowKeys}
@@ -574,7 +574,7 @@ class Table extends PureComponent {
 
     renderFixedLeftTable() {
         const fixedColumns = this.leftColumns();
-        const { currentHoverKey, scrollTop } = this.state;
+        const { hoveredRowKey, scrollTop } = this.state;
         const { detectScrollTarget, handleBodyScroll, handleRowHover } = this.actions;
         const {
             data,
@@ -591,7 +591,7 @@ class Table extends PureComponent {
         return (
             <TableTemplate
                 columns={fixedColumns}
-                currentHoverKey={currentHoverKey}
+                hoveredRowKey={hoveredRowKey}
                 className={styles.tableFixedLeftContainer}
                 data={data}
                 expandedRowKeys={expandedRowKeys}
@@ -663,7 +663,6 @@ class Table extends PureComponent {
         const {
             data,
             className,
-            justified,
             loading,
             bordered,
             title,
@@ -671,6 +670,9 @@ class Table extends PureComponent {
             hoverable,
             sortable,
             useFixedHeader,
+
+            justified, // eslint-disable-line
+
             ...props
         } = this.props;
 

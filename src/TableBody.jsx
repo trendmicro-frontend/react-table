@@ -6,7 +6,7 @@ import TableRow from './TableRow';
 class TableBody extends PureComponent {
     static propTypes = {
         columns: PropTypes.array,
-        currentHoverKey: PropTypes.any,
+        hoveredRowKey: PropTypes.any,
         expandedRowKeys: PropTypes.array,
         expandedRowRender: PropTypes.func,
         emptyText: PropTypes.func,
@@ -64,7 +64,7 @@ class TableBody extends PureComponent {
     render() {
         const {
             columns,
-            currentHoverKey,
+            hoveredRowKey,
             expandedRowKeys,
             expandedRowRender,
             emptyText,
@@ -88,10 +88,10 @@ class TableBody extends PureComponent {
                         return (
                             <TableRow
                                 columns={columns}
-                                currentHoverKey={currentHoverKey}
+                                hoveredRowKey={hoveredRowKey}
                                 expandedRowKeys={expandedRowKeys}
                                 expandedRowRender={expandedRowRender}
-                                hoverKey={key}
+                                rowKey={key}
                                 index={index}
                                 key={key}
                                 onHover={onRowHover}
