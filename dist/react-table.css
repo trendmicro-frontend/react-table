@@ -1,4 +1,4 @@
-/*! react-table v0.8.3 | (c) 2018 Trend Micro Inc. | MIT | https://github.com/trendmicro-frontend/react-table */
+/*! react-table v0.8.4 | (c) 2018 Trend Micro Inc. | MIT | https://github.com/trendmicro-frontend/react-table */
 .table---table-wrapper---1t2D3 {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -76,6 +76,11 @@
 .table---table---2aBqd .table---clickable-column---1zeo4:hover {
   background-color: #e6e6e6;
   cursor: pointer;
+}
+.table---table-auto-fit---2I_0P .table---table---2aBqd > .table---thead---1v6TQ > .table---tr---3XEXR,
+.table---table-auto-fit---2I_0P .table---table---2aBqd > .table---tbody---3q9RK > .table---tr---3XEXR,
+.table---table-auto-fit---2I_0P .table---table---2aBqd > .table---tfoot---23ZpN > .table---tr---3XEXR {
+  white-space: nowrap;
 }
 .table---tr-expand---sEKPQ {
   border-bottom: 1px solid #ddd;
