@@ -82,6 +82,18 @@
     }
 }
 
+.table-auto-fit {
+    .table {
+        > .thead,
+        > .tbody,
+        > .tfoot {
+            > .tr {
+                white-space: nowrap;
+            }
+        }
+    }
+}
+
 .tr-expand {
     border-bottom: 1px solid $table-border-color;
     white-space: normal;

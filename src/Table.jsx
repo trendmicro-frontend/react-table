@@ -665,14 +665,12 @@ class Table extends PureComponent {
             className,
             loading,
             bordered,
+            justified,
             title,
             footer,
             hoverable,
             sortable,
             useFixedHeader,
-
-            justified, // eslint-disable-line
-
             ...props
         } = this.props;
 
@@ -694,6 +692,7 @@ class Table extends PureComponent {
                     styles.tableWrapper,
                     { [styles.tableMinimalism]: !bordered },
                     { [styles.tableBordered]: bordered },
+                    { [styles.tableAutoFit]: !justified },
                     { [styles.tableFixedHeader]: useFixedHeader },
                     { [styles.tableNoData]: !data || data.length === 0 },
                     { [styles.tableHover]: hoverable },
