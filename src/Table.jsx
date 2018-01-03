@@ -692,7 +692,6 @@ class Table extends PureComponent {
                     styles.tableWrapper,
                     { [styles.tableMinimalism]: !bordered },
                     { [styles.tableBordered]: bordered },
-                    { [styles.tableExtendColumnWidth]: !justified },
                     { [styles.tableFixedHeader]: useFixedHeader },
                     { [styles.tableNoData]: !data || data.length === 0 },
                     { [styles.tableHover]: hoverable },
