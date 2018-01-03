@@ -11,24 +11,28 @@ export default class extends Component {
     columns = [
         {
             title: 'Event Type',
+            width: '20%',
             render: (value, row, index) => {
                 return row.eventType;
             }
         },
         {
             title: 'Affected Devices',
+            width: '10%',
             render: (value, row, index) => {
                 return row.affectedDevices;
             }
         },
         {
             title: 'Detections',
+            width: '10%',
             render: (value, row, index) => {
                 return row.detections;
             }
         },
         {
             title: 'Description',
+            width: '60%',
             dataKey: 'description'
         }
     ];
