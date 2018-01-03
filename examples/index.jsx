@@ -2,7 +2,8 @@ import 'trendmicro-ui/dist/css/trendmicro-ui.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Navbar from './Navbar';
-import Types from './tables/Types';
+import Bordered from './tables/Bordered';
+import AutoFitOrJustified from './tables/AutoFitOrJustified';
 import Displays from './tables/Displays';
 import FixedColumns from './tables/FixedColumns';
 import Pagination from './tables/Pagination';
@@ -19,7 +20,8 @@ const App = (props) => {
             <Navbar name={name} url={url} />
             <div className="container-fluid" style={{ padding: '20px 20px 0' }}>
                 <div className="row">
-                    <Types />
+                    <Bordered />
+                    <AutoFitOrJustified />
                     <Displays />
                     <FixedColumns />
                     <Pagination />

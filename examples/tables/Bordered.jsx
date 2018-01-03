@@ -41,25 +41,25 @@ export default class extends Component {
 
         return (
             <div className="col-md-12">
-                <Section className="row-md-11">
-                    <h3>Types</h3>
+                <Section className="row-sm-10">
+                    <h3>Bordered and Borderless</h3>
                     <div className={styles.sectionGroup}>
-                        <h5>Standard Table</h5>
-                        <p>A standard table includes column and row borders. Useful for presenting multiple table columns.</p>
+                        <h5>Bordered Table</h5>
                         <Table
                             bordered={true}
                             hoverable={false}
+                            justified={true}
                             rowKey={record => record.id}
                             columns={columns}
                             data={data}
                         />
                     </div>
                     <div className={styles.sectionGroup}>
-                        <h5>Plain Table</h5>
-                        <p>A plain table reduces visual clutter.</p>
+                        <h5>Borderless Table</h5>
                         <Table
                             bordered={false}
                             hoverable={false}
+                            justified={true}
                             rowKey={record => record.id}
                             columns={columns}
                             data={data}
