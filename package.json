@@ -1,6 +1,6 @@
 {
   "name": "@trendmicro/react-table",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "description": "Trend Micro Components: React Table",
   "main": "lib/index.js",
   "files": [
@@ -18,7 +18,7 @@
     "eslint": "eslint --ext .js --ext .jsx *.js examples src test",
     "test": "tap test/*.js --node-arg=--require --node-arg=babel-register --node-arg=--require --node-arg=babel-polyfill",
     "coveralls": "tap test/*.js --coverage --coverage-report=text-lcov --nyc-arg=--require --nyc-arg=babel-register --nyc-arg=--require --nyc-arg=babel-polyfill | coveralls",
-    "dev": "cd examples; webpack-dev-server --hot --inline --host 0.0.0.0 --port 8000 --content-base ../docs"
+    "dev": "cd examples; webpack-dev-server --hot --inline --host 0.0.0.0 --content-base ../docs"
   },
   "repository": {
     "type": "git",
@@ -48,6 +48,7 @@
     "@trendmicro/react-anchor": "^0.5.5",
     "classnames": "^2.2.5",
     "element-resize-detector": "^1.1.12",
+    "ensure-array": "^1.0.0",
     "lodash.debounce": "^4.0.8",
     "lodash.get": "^4.4.2",
     "prop-types": "^15.5.8",
