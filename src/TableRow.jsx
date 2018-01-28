@@ -1,5 +1,6 @@
-import classNames from 'classnames';
+import cx from 'classnames';
 import ensureArray from 'ensure-array';
+import get from 'lodash.get';
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import styles from './index.styl';
@@ -12,7 +13,7 @@ class TableRow extends PureComponent {
         expandedRowKeys: PropTypes.array,
         expandedRowRender: PropTypes.func,
         rowKey: PropTypes.any,
-        index: PropTypes.number,
+        rowIndex: PropTypes.number,
         onHover: PropTypes.func,
         onRowClick: PropTypes.func,
         record: PropTypes.object,
@@ -31,8 +32,8 @@ class TableRow extends PureComponent {
     };
 
     handleRowClick = (event) => {
-        const { onRowClick, record, index } = this.props;
-        onRowClick(record, index, event);
+        const { onRowClick, record, rowIndex } = this.props;
+        onRowClick(record, rowIndex, event);
     };
 
     handleRowMouseEnter = (event) => {
@@ -65,6 +66,7 @@ class TableRow extends PureComponent {
             hoveredRowKey,
             expandedRowRender,
             rowKey,
+            rowIndex,
             record,
             rowClassName
         } = this.props;
@@ -72,11 +74,12 @@ class TableRow extends PureComponent {
         const isRowExpanded = this.isRowExpanded(record, rowKey);
         let expandedRowContent;
         if (expandedRowRender && isRowExpanded) {
-            expandedRowContent = expandedRowRender(record, rowKey);
+            expandedRowContent = expandedRowRender(record, rowIndex);
         }
+
         return (
             <div
-                className={classNames(
+                className={cx(
                     styles.tr,
                     className,
                     { [styles['tr-hover']]: (hoveredRowKey === rowKey) }
@@ -87,18 +90,30 @@ class TableRow extends PureComponent {
                 role="presentation"
                 onClick={this.handleRowClick}
             >
-                {
-                    columns.map((column, i) => {
-                        const index = i++;
-                        return (
-                            <TableCell
-                                key={`${rowKey}_${index}`}
-                                column={column}
-                                record={record}
-                            />
-                        );
-                    })
-                }
+                {columns.map((column, index) => {
+                    const key = `${rowKey}_${index}`;
+                    // dataKey is an alias for dataIndex
+                    const dataKey = (typeof column.dataKey !== 'undefined')
+                        ? column.dataKey
+                        : column.dataIndex;
+                    let cellValue = get(record, dataKey);
+                    if (typeof column.render === 'function') {
+                        cellValue = column.render(cellValue, record, rowIndex);
+                    }
+
+                    return (
+                        <TableCell
+                            key={key}
+                            className={cx(column.className, column.cellClassName)}
+                            style={{
+                                ...column.style,
+                                ...column.cellStyle
+                            }}
+                        >
+                            {cellValue}
+                        </TableCell>
+                    );
+                })}
                 {isRowExpanded &&
                 <div className={styles['tr-expand']}>
                     { expandedRowContent }

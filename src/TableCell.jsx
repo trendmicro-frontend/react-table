@@ -1,55 +1,16 @@
-import classNames from 'classnames';
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import get from 'lodash.get';
+import cx from 'classnames';
+import React from 'react';
 import styles from './index.styl';
 
-class TableCell extends Component {
-    static propTypes = {
-        column: PropTypes.object,
-        record: PropTypes.object
-    };
-
-    static defaultProps = {
-        column: {},
-        record: {}
-    };
-
-    shouldComponentUpdate(nextProps, nextState) {
-        return (
-            (typeof nextProps.column.render === 'function')
-            ||
-            nextProps.column !== this.props.column
-            ||
-            nextProps.record !== this.props.record
-        );
-    }
-
-    render() {
-        const { column, record } = this.props;
-        const render = column.render;
-        // dataKey is an alias for dataIndex
-        const dataKey = (typeof column.dataKey !== 'undefined') ? column.dataKey : column.dataIndex;
-        const text = get(record, dataKey);
-
-        return (
-            <div
-                className={classNames(
-                    styles.td,
-                    column.className,
-                    column.cellClassName
-                )}
-                style={{
-                    ...column.style,
-                    ...column.cellStyle
-                }}
-            >
-                <div className={styles.tdContent}>
-                    {typeof render === 'function' ? render(text, record) : text}
-                </div>
-            </div>
-        );
-    }
-}
+const TableCell = ({ className, children, ...props }) => (
+    <div
+        {...props}
+        className={cx(className, styles.td)}
+    >
+        <div className={styles.tdContent}>
+            {children}
+        </div>
+    </div>
+);
 
 export default TableCell;

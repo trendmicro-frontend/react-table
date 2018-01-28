@@ -419,12 +419,12 @@ columns             | Object[]                          | []      | The columns 
 data                | Object[]                          | []      | Data record array to be rendered.
 emptyText           | Function                          | () => { return 'No Data'; } | Display text when data is empty.
 expandedRowKeys     | String[]                          |         | Current expanded rows keys.
-expandedRowRender   | Function(record, key)             |         | Expanded content render function.
+expandedRowRender   | Function(record, rowIndex)        |         | Expanded content render function.
 footer              | React Node or Function(): React Node|       | Table footer render function.
 hoverable           | Boolean                           | true    | Whether use row hover style.
 loading             | Boolean                           | false   | Whether table is loading.
 maxHeight           | Number                            |         | Table maximum height.
-onRowClick          | Function(record, key)             |         | Handle rowClick action.
+onRowClick          | Function(record, rowIndex, event) |         | Handle rowClick action.
 showHeader          | Boolean                           | true    | Whether table head is shown.
 sortable            | Boolean                           | false   | Whether table head is sortable.
 title               | React Node or Function(): React Node|       | Table title render function.
@@ -449,7 +449,7 @@ dataIndex       | String  |         | Display field of the data record.
 dataKey         | String  |         | dataKey is an alias for dataIndex.
 width           | String or Number  |         | Width of the specific proportion calculation according to the width of the columns.
 fixed           | Boolean | false   | This column will be fixed at left side when table scroll horizontally.
-render          | Function(value, row) |         | The render function of cell, has two params: the text of this cell, the record of this row, it's return a react node.
+render          | Function(value, record, rowIndex) |         | The render function of cell, has two params: the text of this cell, the record of this row, it's return a react node.
 
 ## License
 

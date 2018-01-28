@@ -92,7 +92,7 @@ class TableBody extends PureComponent {
                                 expandedRowKeys={expandedRowKeys}
                                 expandedRowRender={expandedRowRender}
                                 rowKey={key}
-                                index={index}
+                                rowIndex={index}
                                 key={key}
                                 onHover={onRowHover}
                                 onRowClick={onRowClick}
