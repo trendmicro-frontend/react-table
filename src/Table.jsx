@@ -10,36 +10,34 @@ import TableTemplate from './TableTemplate';
 
 class Table extends PureComponent {
     static propTypes = {
-        bordered: PropTypes.bool,
+        borderless: PropTypes.bool,
+        disableHeader: PropTypes.bool,
+        fixedHeader: PropTypes.bool,
+        hoverable: PropTypes.bool,
         justified: PropTypes.bool,
+        loading: PropTypes.bool,
         columns: PropTypes.array,
         data: PropTypes.array,
         emptyText: PropTypes.func,
         expandedRowKeys: PropTypes.array,
         expandedRowRender: PropTypes.func,
         footer: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
-        hoverable: PropTypes.bool,
-        loading: PropTypes.bool,
         loaderRender: PropTypes.func,
         maxHeight: PropTypes.number,
         onRowClick: PropTypes.func,
-        showHeader: PropTypes.bool,
-        sortable: PropTypes.bool,
         title: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
-        useFixedHeader: PropTypes.bool,
         rowClassName: PropTypes.func,
         rowKey: PropTypes.oneOfType([PropTypes.string, PropTypes.func])
     };
     static defaultProps = {
-        bordered: true,
-        justified: true,
+        borderless: false,
+        fixedHeader: false,
+        hoverable: false,
+        justified: false,
+        loading: false,
         columns: [],
         data: [],
-        hoverable: true,
-        loading: false,
-        maxHeight: 0,
-        sortable: false,
-        useFixedHeader: false
+        maxHeight: 0
     };
 
     uniqueid = uniqueid('table:');
@@ -89,12 +87,12 @@ class Table extends PureComponent {
                 this.actions.sizeTable(tableHeight);
             }
         },
-        sizeTable: (tablehHight) => {
+        sizeTable: (tableHeight) => {
             if (this.mainTable) {
                 this.actions.sizeMainTable();
-                if (tablehHight) {
+                if (tableHeight > 0) {
                     const headerHeight = this.mainTable.tableHeader ? this.mainTable.tableHeader.header.getBoundingClientRect().height : 0;
-                    const bodyHeight = tablehHight ? (tablehHight - headerHeight) : 0;
+                    const bodyHeight = tableHeight ? (tableHeight - headerHeight) : 0;
                     this.mainTable.tableBody.body.style['max-height'] = `${bodyHeight}px`;
                 }
                 if (this.tableFixedLeft) {
@@ -213,20 +211,15 @@ class Table extends PureComponent {
             const tHeader = this.mainTable.tableHeader.header;
             const headerCells = helper.getSubElements(helper.getSubElements(tHeader, `.${styles.tr}`)[0], `.${styles.th}`);
             let headerHeight = 0;
-            let th;
-            let thHeight;
-            let cellContent;
-            let content;
-            let i = 0;
-            for (i = 0; i < headerCells.length; i++) {
-                th = headerCells[i];
-                cellContent = helper.getSubElements(th, `.${styles.thContent}`);
-                content = cellContent[0];
-                thHeight = (content ? content.getBoundingClientRect().height : 0) +
-                            parseInt(helper.getElementStyle(th, 'padding-top'), 10) +
-                            parseInt(helper.getElementStyle(th, 'padding-bottom'), 10) +
-                            parseInt(helper.getElementStyle(th, 'border-top-width'), 10) +
-                            parseInt(helper.getElementStyle(th, 'border-bottom-width'), 10);
+            for (let i = 0; i < headerCells.length; i++) {
+                const th = headerCells[i];
+                const cellContent = helper.getSubElements(th, `.${styles.thContent}`);
+                const content = cellContent[0];
+                const thHeight = (content ? content.getBoundingClientRect().height : 0) +
+                    parseInt(helper.getElementStyle(th, 'padding-top'), 10) +
+                    parseInt(helper.getElementStyle(th, 'padding-bottom'), 10) +
+                    parseInt(helper.getElementStyle(th, 'border-top-width'), 10) +
+                    parseInt(helper.getElementStyle(th, 'border-bottom-width'), 10);
                 headerHeight = Math.max(headerHeight, thHeight);
             }
             return headerHeight;
@@ -539,8 +532,8 @@ class Table extends PureComponent {
             expandedRowRender,
             loading,
             onRowClick,
-            showHeader,
-            useFixedHeader,
+            disableHeader,
+            fixedHeader,
             rowClassName,
             rowKey
         } = this.props;
@@ -560,8 +553,8 @@ class Table extends PureComponent {
                 onTouchStart={detectScrollTarget}
                 onScroll={handleBodyScroll}
                 scrollTop={scrollTop}
-                showHeader={showHeader}
-                useFixedHeader={useFixedHeader}
+                disableHeader={disableHeader}
+                fixedHeader={fixedHeader}
                 rowClassName={rowClassName}
                 rowKey={rowKey}
                 ref={node => {
@@ -583,8 +576,8 @@ class Table extends PureComponent {
             expandedRowRender,
             loading,
             onRowClick,
-            showHeader,
-            useFixedHeader,
+            disableHeader,
+            fixedHeader,
             rowClassName,
             rowKey
         } = this.props;
@@ -604,8 +597,8 @@ class Table extends PureComponent {
                 onTouchStart={detectScrollTarget}
                 onScroll={handleBodyScroll}
                 scrollTop={scrollTop}
-                showHeader={showHeader}
-                useFixedHeader={useFixedHeader}
+                disableHeader={disableHeader}
+                fixedHeader={fixedHeader}
                 rowClassName={rowClassName}
                 rowKey={rowKey}
                 ref={node => {
@@ -646,8 +639,8 @@ class Table extends PureComponent {
     }
 
     renderLoader() {
-        const { loaderRender, showHeader = true } = this.props;
-        const loaderOverlayClassName = showHeader ? styles.loaderOverlay : classNames(styles.loaderOverlay, styles.noHeader);
+        const { loaderRender, disableHeader } = this.props;
+        const loaderOverlayClassName = disableHeader ? classNames(styles.loaderOverlay, styles.noHeader) : styles.loaderOverlay;
         const defaultLoader = () => {
             return (
                 <div className={loaderOverlayClassName}>
@@ -664,13 +657,12 @@ class Table extends PureComponent {
             data,
             className,
             loading,
-            bordered,
+            borderless,
             justified,
             title,
             footer,
             hoverable,
-            sortable,
-            useFixedHeader,
+            fixedHeader,
             ...props
         } = this.props;
 
@@ -682,7 +674,7 @@ class Table extends PureComponent {
         delete props.rowClassName;
         delete props.onRowClick;
         delete props.emptyText;
-        delete props.showHeader;
+        delete props.disableHeader;
 
         return (
             <div
@@ -690,13 +682,12 @@ class Table extends PureComponent {
                 className={classNames(
                     className,
                     styles.tableWrapper,
-                    { [styles.tableMinimalism]: !bordered },
-                    { [styles.tableBordered]: bordered },
+                    { [styles.tableBorderless]: borderless },
+                    { [styles.tableBordered]: !borderless },
                     { [styles.tableAutoFit]: !justified },
-                    { [styles.tableFixedHeader]: useFixedHeader },
+                    { [styles.tableFixedHeader]: fixedHeader },
                     { [styles.tableNoData]: !data || data.length === 0 },
-                    { [styles.tableHover]: hoverable },
-                    { [styles.tableSortable]: sortable }
+                    { [styles.tableHover]: hoverable }
                 )}
                 ref={(node) => {
                     if (node) {

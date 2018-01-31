@@ -1,4 +1,3 @@
-import 'trendmicro-ui/dist/css/trendmicro-ui.css';
 import React, { Component } from 'react';
 import Table from '../../src';
 import Section from '../Section';
@@ -46,7 +45,7 @@ export default class extends Component {
                     <div className={styles.sectionGroup}>
                         <h5>Bordered Table</h5>
                         <Table
-                            bordered={true}
+                            borderless={false}
                             hoverable={false}
                             justified={true}
                             rowKey={record => record.id}
@@ -57,7 +56,7 @@ export default class extends Component {
                     <div className={styles.sectionGroup}>
                         <h5>Borderless Table</h5>
                         <Table
-                            bordered={false}
+                            borderless={true}
                             hoverable={false}
                             justified={true}
                             rowKey={record => record.id}

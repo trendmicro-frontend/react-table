@@ -1,4 +1,3 @@
-import 'trendmicro-ui/dist/css/trendmicro-ui.css';
 import React, { Component } from 'react';
 import Table from '../../src';
 import Section from '../Section';
@@ -56,7 +55,7 @@ export default class extends Component {
                     <h3>AutoFit</h3>
                     <div className={styles.sectionGroup}>
                         <Table
-                            bordered={true}
+                            borderless={false}
                             hoverable={false}
                             justified={false}
                             rowKey={record => record.id}

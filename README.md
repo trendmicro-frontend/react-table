@@ -31,9 +31,8 @@ Demo: https://trendmicro-frontend.github.io/react-table
 
 ```js
 <Table
-    bordered
+    borderless
     hoverable
-    sortable
     rowKey={record => record.id}
     columns={columns}
     data={data}
@@ -162,7 +161,7 @@ const columns = [
     data={data}
     expandedRowRender={this.actions.handleExpandedRowRender}
     expandedRowKeys={this.state.expandedRowKeys}
-    useFixedHeader={true}
+    fixedHeader={true}
 />
 ```
 
@@ -176,7 +175,7 @@ const columns = [
     justified={false}
     hoverable
     maxHeight={180}
-    useFixedHeader={true}
+    fixedHeader={true}
     rowKey={record => record.id}
     columns={columns}
     data={data}
@@ -195,7 +194,7 @@ const columns = [
     justified={false}
     hoverable={false}
     maxHeight={180}
-    useFixedHeader={true}
+    fixedHeader={true}
     rowKey="id"
     columns={columns}
     data={data}
@@ -390,7 +389,6 @@ class DynamicHeaderTable extends Component {
 
         return (
             <Table
-                bordered
                 hoverable
                 rowKey="id"
                 columns={columns}
@@ -413,43 +411,48 @@ export default DynamicHeaderTable;
 
 Name                | Type                              | Default | Description
 :---                | :---                              | :------ | :----------
-bordered            | Boolean                           | true    | Specify whether the table should be bordered.
-justified           | Boolean                           | true    | Specify whether to keep table columns equal width.
+borderless          | Boolean                           | false   | Specify whether the table should be borderless.
+disableHeader       | Boolean                           | false   | Do not render the table header (only the rows).
+fixedHeader         | Boolean                           | false   | Whether table head is fixed.
+hoverable           | Boolean                           | false   | Whether use row hover style.
+justified           | Boolean                           | false   | Specify whether to keep table columns equal width.
+loading             | Boolean                           | false   | Whether table is loading.
 columns             | Object[]                          | []      | The columns config of table, see Column below for details.
 data                | Object[]                          | []      | Data record array to be rendered.
 emptyText           | Function                          | () => { return 'No Data'; } | Display text when data is empty.
 expandedRowKeys     | String[]                          |         | Current expanded rows keys.
 expandedRowRender   | Function(record, key)             |         | Expanded content render function.
 footer              | React Node or Function(): React Node|       | Table footer render function.
-hoverable           | Boolean                           | true    | Whether use row hover style.
-loading             | Boolean                           | false   | Whether table is loading.
 maxHeight           | Number                            |         | Table maximum height.
 onRowClick          | Function(record, key)             |         | Handle rowClick action.
-showHeader          | Boolean                           | true    | Whether table head is shown.
-sortable            | Boolean                           | false   | Whether table head is sortable.
 title               | React Node or Function(): React Node|       | Table title render function.
-useFixedHeader      | Boolean                           | false   | Whether table head is fixed.
 rowClassName        | Function(record, key):string      |         | Get row's className.
 rowKey              | string or Function(record):string | 'key'   | If rowKey is string, `record[rowKey]` will be used as key. If rowKey is function, the return value of `rowKey(record)` will be use as key.
 
 #### Column
 
-Name            | Type    | Default | Description
-:---            | :-----  | :------ | :----------
-key             | String  |         | key of this column is for sortable attribute.
-className       | String  |         | className of this column.
-style           | String  |         | style of this column.
-headerClassName | String  |         | className to assign to the column header.
-headerStyle     | String  |         | style to assign to the column header.
-cellClassName   | String  |         | className to assign to each cell in the column.
-cellStyle       | String  |         | style to assign to each cell in the column.
-onClick         | Function(event) |         | onClick event handler for header cell.
-title           | React Node or Function(): React Node |         | Title of this column.
-dataIndex       | String  |         | Display field of the data record.
-dataKey         | String  |         | dataKey is an alias for dataIndex.
-width           | String or Number  |         | Width of the specific proportion calculation according to the width of the columns.
-fixed           | Boolean | false   | This column will be fixed at left side when table scroll horizontally.
-render          | Function(value, row) |         | The render function of cell, has two params: the text of this cell, the record of this row, it's return a react node.
+Name | Type    | Default | Description
+:--- | :-----  | :------ | :----------
+key | String | | key of this column is for sortable attribute.
+className | String | | column class name.
+style | Object | | column style.
+headerClassName | String | | header class name.
+headerStyle | Object | | header style.
+headerContentClassName | String | | header content class name.
+headerContentStyle | Object | | header content style.
+cellClassName | String | | cell class name.
+cellStyle | Object | | cell style.
+cellContentClassName | String | | cell content class name.
+cellContentStyle | Object | | cell cntent style.
+onClick | Function(event) | | onClick event handler for header cell.
+title | React Node or Function(): React Node | | Title of this column.
+dataIndex | String | | Display field of the data record.
+dataKey | String | | dataKey is an alias for dataIndex.
+width | String or Number | | Width of the specific proportion calculation according to the width of the columns.
+fixed | Boolean | false | This column will be fixed at left side when table scroll horizontally.
+sortable | Boolean | false | Whether the column is sortable.
+sortOrder | String | | One of: 'asc', 'desc'
+render | Function(value, row) | | The render function of cell, has two params: the text of this cell, the record of this row, it's return a react node.
 
 ## License
 

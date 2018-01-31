@@ -1,4 +1,3 @@
-import 'trendmicro-ui/dist/css/trendmicro-ui.css';
 import Anchor from '@trendmicro/react-anchor';
 import React, { Component } from 'react';
 import orderBy from 'lodash.orderby';
@@ -16,19 +15,22 @@ export default class extends Component {
         {
             title: 'Event Type',
             key: 'eventType',
+            headerContentClassName: styles.textEllipsis,
             render: (value, row) => {
                 return (<Anchor>{row.eventType}</Anchor>);
             }
         },
         {
             dataIndex: 'affectedDevices',
-            title: 'Affected Devices',
-            key: 'affectedDevices'
+            title: 'Affected DevicesAffected DevicesAffected DevicesAffected DevicesAffected DevicesAffected DevicesAffected Devices',
+            key: 'affectedDevices',
+            headerContentClassName: styles.textEllipsis
         },
         {
             dataIndex: 'detections',
             title: 'Detections',
-            key: 'detections'
+            key: 'detections',
+            headerContentClassName: styles.textEllipsis
         }
     ];
 
@@ -49,7 +51,10 @@ export default class extends Component {
                 if (state.sortColumnKey !== sortColumnKey) {
                     sortOrder = 'desc';
                 }
-                this.setState({ sortColumnKey, sortOrder });
+                return {
+                    sortColumnKey,
+                    sortOrder
+                };
             });
         }
     };
@@ -63,6 +68,7 @@ export default class extends Component {
                     return {
                         ...column,
                         onClick: this.actions.toggleSortOrder(column),
+                        sortable: true,
                         sortOrder: column.key === this.state.sortColumnKey ? this.state.sortOrder : ''
                     };
                 }
@@ -83,7 +89,8 @@ export default class extends Component {
                     <div className={styles.sectionGroup}>
                         <h5>Row Hover</h5>
                         <Table
-                            hoverable={true}
+                            hoverable
+                            justified
                             rowKey={record => record.id}
                             columns={columns}
                             data={data}
@@ -93,7 +100,7 @@ export default class extends Component {
                         <h5>Sortable Header</h5>
                         <Table
                             hoverable
-                            sortable
+                            justified
                             rowKey={record => record.id}
                             columns={sortableColumns}
                             data={sortableData}
@@ -102,8 +109,9 @@ export default class extends Component {
                     <div className={styles.sectionGroup}>
                         <h5>Loader</h5>
                         <Table
-                            loading={true}
+                            justified
                             hoverable={false}
+                            loading
                             rowKey={record => record.id}
                             columns={columns}
                             data={data}
@@ -113,6 +121,7 @@ export default class extends Component {
                         <h5>No Data</h5>
                         <Table
                             hoverable={false}
+                            justified
                             rowKey={record => record.id}
                             columns={columns}
                             data={[]}
@@ -122,8 +131,9 @@ export default class extends Component {
                     <div className={styles.sectionGroup}>
                         <h5>No Data and Loader</h5>
                         <Table
-                            loading={true}
                             hoverable={false}
+                            justified
+                            loading
                             rowKey={record => record.id}
                             columns={columns}
                             data={[]}
@@ -133,9 +143,9 @@ export default class extends Component {
                     <div className={styles.sectionGroup}>
                         <h5>No Header</h5>
                         <Table
+                            disableHeader
                             hoverable
-                            sortable
-                            showHeader={false}
+                            justified
                             maxHeight={180}
                             rowKey={record => record.id}
                             columns={columns}
@@ -147,7 +157,7 @@ export default class extends Component {
                         <Table
                             loading={true}
                             hoverable
-                            showHeader={false}
+                            disableHeader={true}
                             rowKey={record => record.id}
                             columns={columns}
                             data={[]}

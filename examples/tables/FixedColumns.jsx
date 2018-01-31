@@ -1,4 +1,3 @@
-import 'trendmicro-ui/dist/css/trendmicro-ui.css';
 import React, { Component } from 'react';
 import Table from '../../src';
 import Section from '../Section';
@@ -43,10 +42,10 @@ export default class extends Component {
                         <h5>Fixed Header</h5>
                         <p>A fixed header remains visible as the table body is scrolled. This is useful for larger amounts of data.</p>
                         <Table
-                            justified
+                            justified={true}
                             hoverable
                             maxHeight={180}
-                            useFixedHeader={true}
+                            fixedHeader={true}
                             rowKey={record => record.id}
                             columns={this.columns1}
                             data={data}
@@ -56,7 +55,7 @@ export default class extends Component {
                             justified={false}
                             hoverable
                             maxHeight={180}
-                            useFixedHeader={true}
+                            fixedHeader={true}
                             rowKey={record => record.id}
                             columns={this.columns2}
                             data={data}
@@ -68,7 +67,7 @@ export default class extends Component {
                             justified={false}
                             hoverable={true}
                             maxHeight={180}
-                            useFixedHeader={true}
+                            fixedHeader={true}
                             rowKey="id"
                             columns={this.columns3}
                             data={data}

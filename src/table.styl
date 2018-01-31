@@ -16,9 +16,8 @@
     width: 100%;
     max-width: 100%;
     min-height: 0%;
-    table-layout: fixed;
     background-color: $body-bg;
-    overflow: auto;
+    overflow-y: auto;
 
     > .thead,
     > .tbody,
@@ -31,7 +30,6 @@
                 // To Firefox get element's original height, we need to set 'display: -moz-inline-stack'.
                 display: -moz-inline-stack;
                 display: inline-block;
-                overflow: hidden;
             }
             > .th > .th-content {
                 position: relative;
@@ -56,7 +54,6 @@
     > .tbody {
         min-height: 0%;
          > .tr {
-            overflow: hidden;
             > .td {
                 > .td-content {
                     white-space: normal;

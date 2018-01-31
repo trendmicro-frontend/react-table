@@ -1,4 +1,3 @@
-import 'trendmicro-ui/dist/css/trendmicro-ui.css';
 import Anchor from '@trendmicro/react-anchor';
 import React, { Component } from 'react';
 import Table from '../../src';
@@ -26,10 +25,10 @@ export default class extends Component {
                     Sub content
                     <Table
                         justified
-                        bordered={false}
+                        borderless={true}
                         hoverable={false}
                         maxHeight={150}
-                        useFixedHeader={true}
+                        fixedHeader={true}
                         rowKey="id"
                         columns={this.columns1}
                         data={bigData}
@@ -121,6 +120,7 @@ export default class extends Component {
                     <div className={styles.sectionGroup}>
                         <Table
                             hoverable
+                            fixedHeader={true}
                             justified={false}
                             maxHeight={320}
                             rowKey="id"
@@ -128,7 +128,6 @@ export default class extends Component {
                             data={data}
                             expandedRowRender={this.actions.handleExpandedRowRender}
                             expandedRowKeys={this.state.expandedRowKeys}
-                            useFixedHeader={true}
                         />
                     </div>
                 </Section>

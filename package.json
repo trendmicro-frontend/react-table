@@ -1,6 +1,6 @@
 {
   "name": "@trendmicro/react-table",
-  "version": "0.8.4",
+  "version": "1.0.0-alpha",
   "description": "Trend Micro Components: React Table",
   "main": "lib/index.js",
   "files": [
@@ -45,7 +45,6 @@
     "react": "^0.14.0 || >=15.0.0"
   },
   "dependencies": {
-    "@trendmicro/react-anchor": "^0.5.5",
     "classnames": "^2.2.5",
     "element-resize-detector": "^1.1.12",
     "ensure-array": "^1.0.0",
@@ -55,7 +54,9 @@
     "trendmicro-ui": "^0.4.0"
   },
   "devDependencies": {
+    "@trendmicro/react-anchor": "~0.5.5",
     "@trendmicro/react-buttons": "~1.2.1",
+    "@trendmicro/react-dropdown": "~1.1.0",
     "@trendmicro/react-paginations": "^0.6.0",
     "babel-cli": "~6.26.0",
     "babel-core": "~6.26.0",

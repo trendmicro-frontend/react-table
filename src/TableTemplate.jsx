@@ -22,12 +22,12 @@ class TableTemplate extends PureComponent {
         rowClassName: PropTypes.func,
         rowKey: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
         scrollTop: PropTypes.number,
-        showHeader: PropTypes.bool,
-        useFixedHeader: PropTypes.bool
+        disableHeader: PropTypes.bool,
+        fixedHeader: PropTypes.bool
     };
 
     static defaultProps = {
-        showHeader: true
+        disableHeader: false
     };
 
     state = {
@@ -35,9 +35,9 @@ class TableTemplate extends PureComponent {
     };
 
     handleBodyScroll = (event) => {
-        const { onScroll, showHeader, useFixedHeader } = this.props;
+        const { onScroll, disableHeader, fixedHeader } = this.props;
         // scrollLeft is for scrolling table header and body at the same time.
-        if (showHeader && useFixedHeader) {
+        if (!disableHeader && fixedHeader) {
             this.setState({
                 scrollLeft: event.target.scrollLeft
             });
@@ -106,7 +106,7 @@ class TableTemplate extends PureComponent {
     render() {
         const {
             className,
-            showHeader
+            disableHeader
         } = this.props;
 
         return (
@@ -121,7 +121,7 @@ class TableTemplate extends PureComponent {
                     styles.table
                 )}
             >
-                { showHeader && this.renderHeader() }
+                { !disableHeader && this.renderHeader() }
                 { this.renderBody() }
             </div>
         );

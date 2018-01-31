@@ -1,4 +1,3 @@
-import 'trendmicro-ui/dist/css/trendmicro-ui.css';
 import React, { Component } from 'react';
 import _ from 'lodash';
 import Table from '../../src';
@@ -135,7 +134,7 @@ export default class extends Component {
                             data={data}
                             rowClassName={this.actions.handleRowClassName}
                             onRowClick={this.actions.handleClickRow}
-                            useFixedHeader={true}
+                            fixedHeader={true}
                             maxHeight={400}
                         />
                     </div>

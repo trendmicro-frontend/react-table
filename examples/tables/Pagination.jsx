@@ -1,6 +1,3 @@
-import 'trendmicro-ui/dist/css/trendmicro-ui.css';
-import '@trendmicro/react-buttons/dist/react-buttons.css';
-import '@trendmicro/react-paginations/dist/react-paginations.css';
 import { Button } from '@trendmicro/react-buttons';
 import { TablePagination } from '@trendmicro/react-paginations';
 import React, { Component } from 'react';
@@ -84,7 +81,7 @@ export default class extends Component {
                             columns={columns}
                             data={data}
                             maxHeight={300}
-                            useFixedHeader={true}
+                            fixedHeader={true}
                             title={
                                 <div className={styles.tableToolbar}>
                                     <Button btnStyle="flat">

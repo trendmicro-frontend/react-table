@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import cx from 'classnames';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import get from 'lodash.get';
@@ -34,7 +34,7 @@ class TableCell extends Component {
 
         return (
             <div
-                className={classNames(
+                className={cx(
                     styles.td,
                     column.className,
                     column.cellClassName
@@ -44,7 +44,13 @@ class TableCell extends Component {
                     ...column.cellStyle
                 }}
             >
-                <div className={styles.tdContent}>
+                <div
+                    className={cx(
+                        styles.tdContent,
+                        column.cellContentClassName
+                    )}
+                    style={column.cellContentStyle}
+                >
                     {typeof render === 'function' ? render(text, record) : text}
                 </div>
             </div>

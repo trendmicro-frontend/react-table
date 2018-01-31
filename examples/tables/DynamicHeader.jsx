@@ -1,4 +1,3 @@
-import 'trendmicro-ui/dist/css/trendmicro-ui.css';
 import Anchor from '@trendmicro/react-anchor';
 import React, { Component } from 'react';
 import Table from '../../src';
@@ -63,7 +62,7 @@ export default class extends Component {
                     <h3>Dynamic Header</h3>
                     <div className={styles.sectionGroup}>
                         <Table
-                            bordered
+                            borderless={false}
                             hoverable
                             rowKey="id"
                             columns={columns}
