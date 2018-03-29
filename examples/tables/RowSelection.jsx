@@ -1,120 +1,130 @@
 import React, { Component } from 'react';
-import _ from 'lodash';
+import ReactDOM from 'react-dom';
+import Checkbox from '@trendmicro/react-checkbox';
 import Table from '../../src';
 import Section from '../Section';
 import styles from '../index.styl';
 
 const bigData = [];
-for (let i = 1; i < 601; i++) {
+for (let i = 1; i < 1000; i++) {
     bigData.push({
         id: i,
         checked: false,
         eventType: `Virus/Malware_${i}`,
-        affectedDevices: 20 + i,
-        detections: 10 + i
+        affectedDevices: 20,
+        detections: 10
     });
 }
 
 export default class extends Component {
     state = {
-        selectionData: bigData
+        data: bigData
+    };
+    node = {
+        checkbox: null
     };
 
-    actions = {
-        handleClickRow: (record, index, e) => {
-            e.stopPropagation();
-            e.preventDefault();
+    toggleAll = () => {
+        if (!this.node.checkbox) {
+            return;
+        }
 
-            this.setState(state => {
-                const checked = record.checked;
-                const data = state.selectionData.map(item => {
-                    if (record.id === item.id) {
-                        return {
+        const node = ReactDOM.findDOMNode(this.node.checkbox);
+        const checked = node.checked;
+        this.setState(state => ({
+            data: state.data.map(item => ({
+                ...item,
+                checked: !checked
+            }))
+        }));
+    };
+
+    renderHeaderCheckbox = () => {
+        const dataLength = this.state.data.length;
+        const selectedLength = this.state.data.filter(data => !!data.checked).length;
+        const checked = selectedLength > 0;
+        const indeterminate = selectedLength > 0 && selectedLength < dataLength;
+
+        return (
+            <Checkbox
+                ref={node => {
+                    this.node.checkbox = node;
+                }}
+                checked={checked}
+                indeterminate={indeterminate}
+                onChange={event => {
+                    const checkbox = event.target;
+                    const checked = indeterminate || !!checkbox.checked;
+
+                    this.setState(state => ({
+                        data: state.data.map(item => ({
                             ...item,
-                            checked: !checked
-                        };
-                    }
-                    return item;
-                });
+                            checked: checked
+                        }))
+                    }));
+                }}
+            />
+        );
+    };
 
-                return {
-                    selectionData: data
-                };
-            });
-        },
-        handleRowClassName: (record, key) => {
-            const checked = record.checked;
-            if (checked) {
-                return styles['tr-active'];
-            } else {
-                return null;
-            }
-        },
-        handleHeaderCheckbox: (e) => {
-            e.stopPropagation();
-
-            this.setState(state => {
-                const checkbox = e.target;
-                const data = state.selectionData.map((item, i) => {
-                    return {
-                        ...item,
-                        checked: checkbox.checked
-                    };
-                });
-
-                return {
-                    selectionData: data
-                };
-            });
-        },
-        renderHeaderCheckbox: () => {
-            let className = 'input-checkbox';
-            const selectedItems = _.filter(this.state.selectionData, { 'checked': true });
-            const dataLength = this.state.selectionData.length;
-            const selectedLength = selectedItems.length;
-            const isSelectedAll = selectedLength > 0 && selectedLength === dataLength;
-            if (selectedLength > 0 && selectedLength < dataLength) {
-                className += ' checkbox-partial';
-            }
-            return (
-                <div className="checkbox" style={{ display: 'inline-block' }}>
-                    <input
-                        type="checkbox"
-                        id="headerCheckbox"
-                        checked={isSelectedAll}
-                        className={className}
-                        onChange={this.actions.handleHeaderCheckbox}
-                    />
-                    <label htmlFor="headerCheckbox" />
-                </div>
-            );
-        },
-        renderCheckbox: (value, row) => {
-            return (
-                <div className="checkbox" style={{ display: 'inline-block' }}>
-                    <input
-                        type="checkbox"
-                        id={row.id}
-                        className="input-checkbox"
-                        checked={row.checked}
-                        onChange={(e) => {}}
-                    />
-                    <label />
-                </div>
-            );
+    getRowClassName = (record, key) => {
+        const checked = record.checked;
+        if (checked) {
+            return styles.active;
+        } else {
+            return null;
         }
     };
 
     columns = [
-        { title: this.actions.renderHeaderCheckbox, dataIndex: 'checked', render: this.actions.renderCheckbox, width: 38 },
-        { title: 'Event Type', dataIndex: 'eventType' },
-        { title: 'Affected Devices', dataIndex: 'affectedDevices' },
-        { title: 'Detections', dataIndex: 'detections' }
+        {
+            title: this.renderHeaderCheckbox,
+            dataKey: 'checked',
+            render: (value, row) => (
+                <Checkbox
+                    id={row.id}
+                    className="input-checkbox"
+                    checked={row.checked}
+                    onChange={event => {
+                        const checked = event.target.checked;
+
+                        this.setState(state => ({
+                            data: state.data.map(item => {
+                                if (row.id === item.id) {
+                                    return {
+                                        ...item,
+                                        checked: checked
+                                    };
+                                }
+
+                                return item;
+                            })
+                        }));
+                    }}
+                />
+            ),
+            width: 38
+        },
+        {
+            title: '#',
+            dataKey: 'id'
+        },
+        {
+            title: 'Event Type',
+            dataKey: 'eventType'
+        },
+        {
+            title: 'Affected Devices',
+            dataKey: 'affectedDevices'
+        },
+        {
+            title: 'Detections',
+            dataKey: 'detections'
+        }
     ];
 
     render() {
-        const columns = this.columns;
-        const data = this.state.selectionData;
+        //const data = this.state.selectionData;
 
         return (
             <div className="col-md-12">
@@ -129,12 +139,11 @@ export default class extends Component {
                     </ul>
                     <div className={styles.sectionGroup}>
                         <Table
+                            justified={false}
                             rowKey="id"
-                            columns={columns}
-                            data={data}
-                            rowClassName={this.actions.handleRowClassName}
-                            onRowClick={this.actions.handleClickRow}
-                            fixedHeader={true}
+                            columns={this.columns}
+                            data={this.state.data}
+                            rowClassName={this.getRowClassName}
                             maxHeight={400}
                         />
                     </div>

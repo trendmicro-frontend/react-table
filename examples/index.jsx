@@ -1,5 +1,6 @@
 import 'trendmicro-ui/dist/css/trendmicro-ui.css';
 import '@trendmicro/react-buttons/dist/react-buttons.css';
+import '@trendmicro/react-checkbox/dist/react-checkbox.css';
 import '@trendmicro/react-dropdown/dist/react-dropdown.css';
 import '@trendmicro/react-paginations/dist/react-paginations.css';
 import React from 'react';
