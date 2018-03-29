@@ -27,7 +27,8 @@ class Table extends PureComponent {
         onRowClick: PropTypes.func,
         title: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
         rowClassName: PropTypes.func,
-        rowKey: PropTypes.oneOfType([PropTypes.string, PropTypes.func])
+        rowKey: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+        onRowsRendered: PropTypes.func
     };
     static defaultProps = {
         borderless: false,
@@ -57,6 +58,8 @@ class Table extends PureComponent {
             }
         },
         handleBodyScroll: (e) => {
+            this.actions.setTableSize();
+
             if (e.target !== this.scrollTarget) {
                 return;
             }
@@ -350,6 +353,9 @@ class Table extends PureComponent {
         getMainTableRowHeight: () => {
             const tBody = this.mainTable.tableBody.body;
             const bodyRows = helper.getSubElements(tBody, `.${styles.tr}`);
+            const cellHeight = 37; // FIXME: rowHeight as a callback function
+            const rowsHeight = [];
+            /*
             let cellHeight = 0;
             let rowsHeight = [];
             let bodyCell = [];
@@ -373,6 +379,10 @@ class Table extends PureComponent {
                                 parseInt(helper.getElementStyle(td, 'border-bottom-width'), 10);
                     cellHeight = Math.max(cellHeight, tdHeight);
                 }
+                rowsHeight[i] = cellHeight;
+            }
+            */
+            for (let i = 0; i < bodyRows.length; ++i) {
                 rowsHeight[i] = cellHeight;
             }
             return rowsHeight;
@@ -535,7 +545,8 @@ class Table extends PureComponent {
             disableHeader,
             fixedHeader,
             rowClassName,
-            rowKey
+            rowKey,
+            onRowsRendered
         } = this.props;
 
         return (
@@ -557,6 +568,7 @@ class Table extends PureComponent {
                 fixedHeader={fixedHeader}
                 rowClassName={rowClassName}
                 rowKey={rowKey}
+                onRowsRendered={onRowsRendered}
                 ref={node => {
                     this.mainTable = node;
                 }}
@@ -579,7 +591,8 @@ class Table extends PureComponent {
             disableHeader,
             fixedHeader,
             rowClassName,
-            rowKey
+            rowKey,
+            onRowsRendered
         } = this.props;
         return (
             <TableTemplate
@@ -601,6 +614,7 @@ class Table extends PureComponent {
                 fixedHeader={fixedHeader}
                 rowClassName={rowClassName}
                 rowKey={rowKey}
+                onRowsRendered={onRowsRendered}
                 ref={node => {
                     this.tableFixedLeft = node;
                 }}
@@ -663,32 +677,33 @@ class Table extends PureComponent {
             footer,
             hoverable,
             fixedHeader,
+
+            // Not used
+            rowKey,            // eslint-disable-line
+            columns,           // eslint-disable-line
+            expandedRowRender, // eslint-disable-line
+            expandedRowKeys,   // eslint-disable-line
+            maxHeight,         // eslint-disable-line
+            rowClassName,      // eslint-disable-line
+            onRowClick,        // eslint-disable-line
+            emptyText,         // eslint-disable-line
+            disableHeader,     // eslint-disable-line
+            onRowsRendered,    // eslint-disable-line
+
             ...props
         } = this.props;
-
-        delete props.rowKey;
-        delete props.columns;
-        delete props.expandedRowRender;
-        delete props.expandedRowKeys;
-        delete props.maxHeight;
-        delete props.rowClassName;
-        delete props.onRowClick;
-        delete props.emptyText;
-        delete props.disableHeader;
 
         return (
             <div
                 {...props}
-                className={classNames(
-                    className,
-                    styles.tableWrapper,
-                    { [styles.tableBorderless]: borderless },
-                    { [styles.tableBordered]: !borderless },
-                    { [styles.tableAutoFit]: !justified },
-                    { [styles.tableFixedHeader]: fixedHeader },
-                    { [styles.tableNoData]: !data || data.length === 0 },
-                    { [styles.tableHover]: hoverable }
-                )}
+                className={classNames(className, styles.tableWrapper, {
+                    [styles.tableBorderless]: borderless,
+                    [styles.tableBordered]: !borderless,
+                    [styles.tableAutoFit]: !justified,
+                    [styles.tableFixedHeader]: fixedHeader,
+                    [styles.tableNoData]: !data || data.length === 0,
+                    [styles.tableHover]: hoverable
+                })}
                 ref={(node) => {
                     if (node) {
                         this.tableWrapper = node;

@@ -6,7 +6,7 @@ import Section from '../Section';
 import styles from '../index.styl';
 
 const bigData = [];
-for (let i = 1; i < 1000; i++) {
+for (let i = 1; i <= 10000; i++) {
     bigData.push({
         id: i,
         checked: false,
@@ -139,12 +139,16 @@ export default class extends Component {
                     </ul>
                     <div className={styles.sectionGroup}>
                         <Table
+                            fixedHeader={true}
                             justified={false}
                             rowKey="id"
                             columns={this.columns}
                             data={this.state.data}
                             rowClassName={this.getRowClassName}
                             maxHeight={400}
+                            onRowsRendered={({ startIndex, stopIndex }) => {
+                                console.log(`startIndex=${startIndex}, stopIndex=${stopIndex}`);
+                            }}
                         />
                     </div>
                 </Section>

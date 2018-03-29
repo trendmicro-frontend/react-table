@@ -23,7 +23,8 @@ class TableTemplate extends PureComponent {
         rowKey: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
         scrollTop: PropTypes.number,
         disableHeader: PropTypes.bool,
-        fixedHeader: PropTypes.bool
+        fixedHeader: PropTypes.bool,
+        onRowsRendered: PropTypes.func
     };
 
     static defaultProps = {
@@ -75,7 +76,9 @@ class TableTemplate extends PureComponent {
             onRowClick,
             rowClassName,
             rowKey,
-            scrollTop
+            scrollTop,
+            fixedHeader,
+            onRowsRendered
         } = this.props;
 
         return (
@@ -92,6 +95,7 @@ class TableTemplate extends PureComponent {
                 onRowClick={onRowClick}
                 onScroll={this.handleBodyScroll}
                 scrollTop={scrollTop}
+                fixedHeader={fixedHeader}
                 records={data}
                 ref={node => {
                     if (node) {
@@ -100,6 +104,7 @@ class TableTemplate extends PureComponent {
                 }}
                 rowClassName={rowClassName}
                 rowKey={rowKey}
+                onRowsRendered={onRowsRendered}
             />
         );
     }

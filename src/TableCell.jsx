@@ -16,13 +16,29 @@ class TableCell extends Component {
     };
 
     shouldComponentUpdate(nextProps, nextState) {
-        return (
-            (typeof nextProps.column.render === 'function')
-            ||
-            nextProps.column !== this.props.column
-            ||
-            nextProps.record !== this.props.record
-        );
+        const { column: currentColumn, record: currentRecord } = this.props;
+        const { column: nextColumn, record: nextRecord } = nextProps;
+        const nextRender = nextColumn.render;
+        const currentDataKey = (typeof currentColumn.dataKey !== 'undefined')
+            ? currentColumn.dataKey
+            : currentColumn.dataIndex;
+        const nextDataKey = (typeof nextColumn.dataKey !== 'undefined')
+            ? nextColumn.dataKey
+            : nextColumn.dataIndex;
+
+        if (typeof nextRender === 'function') {
+            return true;
+        }
+
+        if (nextColumn !== currentColumn) {
+            return true;
+        }
+
+        if ((nextRecord !== currentRecord) && (get(currentRecord, currentDataKey) !== get(nextRecord, nextDataKey))) {
+            return true;
+        }
+
+        return false;
     }
 
     render() {

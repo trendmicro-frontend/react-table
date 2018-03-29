@@ -42,7 +42,13 @@ export default class extends Component {
         { id: 3, eventType: 'URL Filtering', affectedDevices: 15, detections: 598, description: ipsum },
         { id: 4, eventType: 'Web Reputation', affectedDevices: 15, detections: 598, description: ipsum },
         { id: 5, eventType: 'Network Virus', affectedDevices: 15, detections: 497, description: ipsum },
-        { id: 6, eventType: 'Application Control', affectedDevices: 0, detections: 0, description: ipsum, width: '40%' }
+        { id: 6, eventType: 'Application Control', affectedDevices: 0, detections: 0, description: ipsum, width: '40%' },
+        { id: 7, eventType: 'Virus/Malware', affectedDevices: 20, detections: 634, description: ipsum },
+        { id: 8, eventType: 'Spyware/Grayware', affectedDevices: 20, detections: 634, description: ipsum },
+        { id: 9, eventType: 'URL Filtering', affectedDevices: 15, detections: 598, description: ipsum },
+        { id: 10, eventType: 'Web Reputation', affectedDevices: 15, detections: 598, description: ipsum },
+        { id: 11, eventType: 'Network Virus', affectedDevices: 15, detections: 497, description: ipsum },
+        { id: 12, eventType: 'Application Control', affectedDevices: 0, detections: 0, description: ipsum, width: '40%' }
     ];
 
     render() {
@@ -61,6 +67,7 @@ export default class extends Component {
                             rowKey={record => record.id}
                             columns={columns}
                             data={data}
+                            maxHeight={200}
                         />
                     </div>
                 </Section>
