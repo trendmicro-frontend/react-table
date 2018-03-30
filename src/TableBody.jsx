@@ -1,12 +1,14 @@
-import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react';
+import VirtualList from 'react-tiny-virtual-list';
 import styles from './index.styl';
 import TableRow from './TableRow';
 
-const ROW_HEIGHT = 37;
+//const ROW_HEIGHT = 37;
 
 class TableBody extends PureComponent {
     static propTypes = {
+        table: PropTypes.any,
         columns: PropTypes.array,
         hoveredRowKey: PropTypes.any,
         expandedRowKeys: PropTypes.array,
@@ -18,12 +20,16 @@ class TableBody extends PureComponent {
         onScroll: PropTypes.func,
         onRowHover: PropTypes.func,
         onRowClick: PropTypes.func,
-        records: PropTypes.array,
+        //records: PropTypes.array,
         rowClassName: PropTypes.func,
         rowKey: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
         scrollTop: PropTypes.number,
         fixedHeader: PropTypes.bool,
-        onRowsRendered: PropTypes.func
+
+        onRowsRendered: PropTypes.func,
+        rowCount: PropTypes.number,
+        rowHeight: PropTypes.number,
+        rowGetter: PropTypes.func
     };
 
     static defaultProps = {
@@ -33,10 +39,14 @@ class TableBody extends PureComponent {
         onMouseOver: () => {},
         onTouchStart: () => {},
         onScroll: () => {},
-        records: [],
         rowKey: 'key'
     };
 
+    assignRef = (node) => {
+        this.body = node;
+    };
+
+    /*
     state = {
         from: 0,
         to: this.props.records.length
@@ -62,16 +72,20 @@ class TableBody extends PureComponent {
             this.props.onScroll(event);
         }
     };
+    */
 
     componentDidMount() {
-        const { onMouseOver, onTouchStart, fixedHeader } = this.props;
-        const scrollElement = fixedHeader ? this.body : this.body.parentElement;
-        const tableBodyElement = this.body;
+        //const { onMouseOver, onTouchStart, fixedHeader } = this.props;
+        //const scrollElement = fixedHeader ? this.body : this.body.parentElement;
+        //const tableBodyElement = this.body;
+        //scrollElement.addEventListener('scroll', this.handleScroll);
 
-        scrollElement.addEventListener('scroll', this.handleScroll);
+        const { onMouseOver, onTouchStart } = this.props;
+        const tableBodyElement = this.body;
         tableBodyElement.addEventListener('mouseover', onMouseOver);
         tableBodyElement.addEventListener('touchstart', onTouchStart);
 
+        /*
         setTimeout(() => {
             const start = 0;
             const count = Math.ceil(this.body.offsetHeight / ROW_HEIGHT) + 4;
@@ -79,14 +93,16 @@ class TableBody extends PureComponent {
                 to: Math.min(start + count, this.props.records.length)
             });
         }, 0);
+        */
     }
 
     componentWillUnmount() {
-        const { onMouseOver, onTouchStart, fixedHeader } = this.props;
-        const scrollElement = fixedHeader ? this.body : this.body.parentElement;
-        const tableBodyElement = this.body;
+        //const { onMouseOver, onTouchStart, fixedHeader } = this.props;
+        //const scrollElement = fixedHeader ? this.body : this.body.parentElement;
+        //scrollElement.removeEventListener('scroll', this.handleScroll);
 
-        scrollElement.removeEventListener('scroll', this.handleScroll);
+        const { onMouseOver, onTouchStart } = this.props;
+        const tableBodyElement = this.body;
         tableBodyElement.removeEventListener('mouseover', onMouseOver);
         tableBodyElement.removeEventListener('touchstart', onTouchStart);
     }
@@ -108,6 +124,7 @@ class TableBody extends PureComponent {
 
     render() {
         const {
+            table,
             columns,
             hoveredRowKey,
             expandedRowKeys,
@@ -116,62 +133,70 @@ class TableBody extends PureComponent {
             loading,
             onRowHover,
             onRowClick,
-            records,
-            rowClassName
+            //records,
+            rowClassName,
+
+            onRowsRendered,
+            rowCount,
+            rowHeight,
+            rowGetter
         } = this.props;
 
-        const noData = (!records || records.length === 0);
-        const rows = [];
+        //const noData = (!records || records.length === 0);
+        //const rows = [];
 
-        const { from, to } = this.state;
-
-        rows.push(
-            <div key="placeholder-top" style={{ height: ROW_HEIGHT * from }} />
-        );
-
-        for (let index = from; index < to; ++index) {
-            const row = records[index];
-            const key = this.getRowKey(row, index);
-
-            rows.push(
-                <TableRow
-                    columns={columns}
-                    hoveredRowKey={hoveredRowKey}
-                    expandedRowKeys={expandedRowKeys}
-                    expandedRowRender={expandedRowRender}
-                    rowKey={key}
-                    index={index}
-                    key={key}
-                    onHover={onRowHover}
-                    onRowClick={onRowClick}
-                    record={row}
-                    rowClassName={rowClassName}
-                />
-            );
+        if (rowCount === 0 || !rowCount) {
+            if (loading) {
+                return (
+                    <div ref={this.assignRef} className={styles.tbody}>
+                        <div className={styles.tableNoDataLoader} />
+                    </div>
+                );
+            } else {
+                return (
+                    <div ref={this.assignRef} className={styles.tbody}>
+                        <div className={styles.tablePlaceholder}>{emptyText()}</div>
+                    </div>
+                );
+            }
         }
 
-        rows.push(
-            <div key="placeholder-bottom" style={{ height: ROW_HEIGHT * (records.length - to) }} />
-        );
-
         return (
-            <div
-                className={styles.tbody}
-                ref={node => {
-                    this.body = node;
-                }}
-            >
-                {rows}
-                {
-                    noData && !loading &&
-                    <div className={styles.tablePlaceholder}>
-                        { emptyText() }
-                    </div>
-                }
-                {
-                    noData && loading &&
-                    <div className={styles.tableNoDataLoader} />
-                }
+            <div ref={this.assignRef} className={styles.tbody}>
+                <VirtualList
+                    width="100%"
+                    height={300}
+                    itemCount={rowCount}
+                    itemSize={rowHeight}
+                    renderItem={({ index, style }) => {
+                        const row = rowGetter ? rowGetter({ index: index }) : {};
+                        const key = this.getRowKey(row, index);
+
+                        return (
+                            <TableRow
+                                key={key}
+                                style={style}
+                                columns={columns}
+                                hoveredRowKey={hoveredRowKey}
+                                expandedRowKeys={expandedRowKeys}
+                                expandedRowRender={expandedRowRender}
+                                rowKey={key}
+                                index={index}
+                                key={key}
+                                onHover={onRowHover}
+                                onRowClick={onRowClick}
+                                record={row}
+                                rowClassName={rowClassName}
+                                onScroll={(scrollTop, event) => {
+                                    this.props.onScroll(event);
+                                }}
+                                rowHeight={rowHeight}
+                                cellsWidth={table.cellsWidth}
+                            />
+                        );
+                    }}
+                    onItemsRendered={onRowsRendered}
+                />
             </div>
         );
     }

@@ -1,3 +1,4 @@
+import chainedFunction from 'chained-function';
 import classNames from 'classnames';
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
@@ -17,7 +18,6 @@ class Table extends PureComponent {
         justified: PropTypes.bool,
         loading: PropTypes.bool,
         columns: PropTypes.array,
-        data: PropTypes.array,
         emptyText: PropTypes.func,
         expandedRowKeys: PropTypes.array,
         expandedRowRender: PropTypes.func,
@@ -28,7 +28,11 @@ class Table extends PureComponent {
         title: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
         rowClassName: PropTypes.func,
         rowKey: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
-        onRowsRendered: PropTypes.func
+
+        onRowsRendered: PropTypes.func,
+        rowCount: PropTypes.number,
+        rowHeight: PropTypes.number,
+        rowGetter: PropTypes.func
     };
     static defaultProps = {
         borderless: false,
@@ -37,9 +41,10 @@ class Table extends PureComponent {
         justified: false,
         loading: false,
         columns: [],
-        data: [],
         maxHeight: 0
     };
+
+    cellsWidth = [];
 
     uniqueid = uniqueid('table:');
 
@@ -117,6 +122,7 @@ class Table extends PureComponent {
             // Set cells width first
             const cellsWidth = getMainTableCellWidth();
             setMainTableBodyCellWidth(cellsWidth);
+            this.cellsWidth = cellsWidth;
 
             // Then set cells height
             const rowsHeight = getMainTableRowHeight();
@@ -238,7 +244,8 @@ class Table extends PureComponent {
             const columns = this.state.thisColumns;
             const mainBody = this.mainTable.tableBody;
             const tBody = mainBody.body;
-            const bodyRows = helper.getSubElements(tBody, `.${styles.tr}`);
+            //const bodyRows = helper.getSubElements(tBody, `.${styles.tr}`); // FIXME
+            const bodyRows = tBody.querySelectorAll(`.${styles.tr}`);
             const tableMaxWidth = tBody.clientWidth;
             const thsWidth = getMainTableHeaderCellActualWidth();
             let sumCellWidth = 0;
@@ -262,6 +269,7 @@ class Table extends PureComponent {
                     width: columnWidth
                 };
             });
+
             const customColumns = newColumns.filter((column) => (column.width && column.width > 0));
             if (customColumns.length > 0) {
                 customWidth = customColumns.reduce((a, b) => {
@@ -291,6 +299,7 @@ class Table extends PureComponent {
                         }
                     }
                 }
+
                 for (i = 0; i < bodyRows.length; i++) {
                     bodyCell = helper.getSubElements(bodyRows[i], `.${styles.td}`);
                     sumCellWidth = 0;
@@ -389,7 +398,8 @@ class Table extends PureComponent {
         },
         setMainTableBodyCellWidth: (cellsWidth) => {
             const tBody = this.mainTable.tableBody.body;
-            const bodyRows = helper.getSubElements(tBody, `.${styles.tr}`);
+            //const bodyRows = helper.getSubElements(tBody, `.${styles.tr}`); // FIXME
+            const bodyRows = tBody.querySelectorAll(`.${styles.tr}`);
             let cellWidth;
             let totalWidth;
             let i;
@@ -483,8 +493,14 @@ class Table extends PureComponent {
     }
 
     componentDidUpdate(prevProps, prevState) {
+        /*
         if (prevProps.maxHeight !== this.props.maxHeight ||
             prevProps.data !== this.props.data) {
+            this.actions.setTableSize();
+        }
+        */
+
+        if (prevProps.maxHeight !== this.props.maxHeight) {
             this.actions.setTableSize();
         }
     }
@@ -536,7 +552,6 @@ class Table extends PureComponent {
         const { hoveredRowKey, scrollTop } = this.state;
         const { detectScrollTarget, handleBodyScroll, handleRowHover } = this.actions;
         const {
-            data,
             emptyText,
             expandedRowKeys,
             expandedRowRender,
@@ -546,14 +561,17 @@ class Table extends PureComponent {
             fixedHeader,
             rowClassName,
             rowKey,
-            onRowsRendered
+            onRowsRendered,
+            rowHeight,
+            rowCount,
+            rowGetter
         } = this.props;
 
         return (
             <TableTemplate
+                table={this}
                 columns={columns}
                 hoveredRowKey={hoveredRowKey}
-                data={data}
                 emptyText={emptyText}
                 expandedRowKeys={expandedRowKeys}
                 expandedRowRender={expandedRowRender}
@@ -568,7 +586,17 @@ class Table extends PureComponent {
                 fixedHeader={fixedHeader}
                 rowClassName={rowClassName}
                 rowKey={rowKey}
-                onRowsRendered={onRowsRendered}
+                onRowsRendered={chainedFunction(
+                    onRowsRendered,
+                    () => {
+                        setTimeout(() => {
+                            this.actions.setTableSize();
+                        }, 0);
+                    }
+                )}
+                rowHeight={rowHeight}
+                rowCount={rowCount}
+                rowGetter={rowGetter}
                 ref={node => {
                     this.mainTable = node;
                 }}
@@ -582,7 +610,6 @@ class Table extends PureComponent {
         const { hoveredRowKey, scrollTop } = this.state;
         const { detectScrollTarget, handleBodyScroll, handleRowHover } = this.actions;
         const {
-            data,
             emptyText,
             expandedRowKeys,
             expandedRowRender,
@@ -592,14 +619,16 @@ class Table extends PureComponent {
             fixedHeader,
             rowClassName,
             rowKey,
-            onRowsRendered
+            onRowsRendered,
+            rowHeight,
+            rowCount,
+            rowGetter
         } = this.props;
         return (
             <TableTemplate
                 columns={fixedColumns}
                 hoveredRowKey={hoveredRowKey}
                 className={styles.tableFixedLeftContainer}
-                data={data}
                 expandedRowKeys={expandedRowKeys}
                 expandedRowRender={expandedRowRender}
                 emptyText={emptyText}
@@ -615,6 +644,9 @@ class Table extends PureComponent {
                 rowClassName={rowClassName}
                 rowKey={rowKey}
                 onRowsRendered={onRowsRendered}
+                rowHeight={rowHeight}
+                rowCount={rowCount}
+                rowGetter={rowGetter}
                 ref={node => {
                     this.tableFixedLeft = node;
                 }}
@@ -668,7 +700,6 @@ class Table extends PureComponent {
 
     render() {
         const {
-            data,
             className,
             loading,
             borderless,
@@ -689,6 +720,9 @@ class Table extends PureComponent {
             emptyText,         // eslint-disable-line
             disableHeader,     // eslint-disable-line
             onRowsRendered,    // eslint-disable-line
+            rowHeight,         // eslint-disable-line
+            rowCount,          // eslint-disable-line
+            rowGetter,         // eslint-disable-line
 
             ...props
         } = this.props;
@@ -701,7 +735,7 @@ class Table extends PureComponent {
                     [styles.tableBordered]: !borderless,
                     [styles.tableAutoFit]: !justified,
                     [styles.tableFixedHeader]: fixedHeader,
-                    [styles.tableNoData]: !data || data.length === 0,
+                    [styles.tableNoData]: rowCount === 0 || !rowCount,
                     [styles.tableHover]: hoverable
                 })}
                 ref={(node) => {

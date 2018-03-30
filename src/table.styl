@@ -22,7 +22,7 @@
     > .thead,
     > .tbody,
     > .tfoot {
-        > .tr {
+        .tr {
             > .th,
             > .td {
                 padding: $table-cell-padding;
@@ -40,11 +40,11 @@
     }
 
     > .thead {
-        > .tr > .th {
+        .tr > .th {
             color: #777777;
             font-weight: bold;
         }
-        > .tr:first-child {
+        .tr:first-child {
             > .th,
             > .td {
                 border-top: 0;
@@ -53,7 +53,7 @@
     }
     > .tbody {
         min-height: 0%;
-         > .tr {
+        .tr {
             > .td {
                 > .td-content {
                     white-space: normal;
@@ -84,7 +84,7 @@
         > .thead,
         > .tbody,
         > .tfoot {
-            > .tr {
+            .tr {
                 white-space: nowrap;
             }
         }

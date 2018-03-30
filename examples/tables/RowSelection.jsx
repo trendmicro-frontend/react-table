@@ -1,28 +1,24 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Checkbox from '@trendmicro/react-checkbox';
+import InfiniteLoader from 'react-virtualized/dist/es/InfiniteLoader';
+import styled from 'styled-components';
 import Table from '../../src';
 import Section from '../Section';
 import styles from '../index.styl';
 
-const bigData = [];
-for (let i = 1; i <= 10000; i++) {
-    bigData.push({
-        id: i,
-        checked: false,
-        eventType: `Virus/Malware_${i}`,
-        affectedDevices: 20,
-        detections: 10
-    });
-}
+const Tile = styled.div`
+    width: 100%;
+    height: 16px;
+    background-color: #f0f0f0;
+`;
 
 export default class extends Component {
-    state = {
-        data: bigData
-    };
     node = {
         checkbox: null
     };
+
+    data = [];
 
     toggleAll = () => {
         if (!this.node.checkbox) {
@@ -32,7 +28,7 @@ export default class extends Component {
         const node = ReactDOM.findDOMNode(this.node.checkbox);
         const checked = node.checked;
         this.setState(state => ({
-            data: state.data.map(item => ({
+            data: this.data.map(item => ({
                 ...item,
                 checked: !checked
             }))
@@ -40,8 +36,8 @@ export default class extends Component {
     };
 
     renderHeaderCheckbox = () => {
-        const dataLength = this.state.data.length;
-        const selectedLength = this.state.data.filter(data => !!data.checked).length;
+        const dataLength = this.data.length;
+        const selectedLength = this.data.filter(data => !!data.checked).length;
         const checked = selectedLength > 0;
         const indeterminate = selectedLength > 0 && selectedLength < dataLength;
 
@@ -57,7 +53,7 @@ export default class extends Component {
                     const checked = indeterminate || !!checkbox.checked;
 
                     this.setState(state => ({
-                        data: state.data.map(item => ({
+                        data: this.data.map(item => ({
                             ...item,
                             checked: checked
                         }))
@@ -77,6 +73,7 @@ export default class extends Component {
     };
 
     columns = [
+        /*
         {
             title: this.renderHeaderCheckbox,
             dataKey: 'checked',
@@ -89,7 +86,7 @@ export default class extends Component {
                         const checked = event.target.checked;
 
                         this.setState(state => ({
-                            data: state.data.map(item => {
+                            data: this.data.map(item => {
                                 if (row.id === item.id) {
                                     return {
                                         ...item,
@@ -105,26 +102,79 @@ export default class extends Component {
             ),
             width: 38
         },
+        */
         {
             title: '#',
-            dataKey: 'id'
+            dataKey: 'id',
+            render: (value, record) => {
+                if (!record.loaded) {
+                    return <Tile />;
+                }
+
+                return value;
+            }
         },
         {
             title: 'Event Type',
-            dataKey: 'eventType'
+            dataKey: 'eventType',
+            render: (value, record) => {
+                if (!record.loaded) {
+                    return <Tile />;
+                }
+
+                return value;
+            }
         },
         {
             title: 'Affected Devices',
-            dataKey: 'affectedDevices'
+            dataKey: 'affectedDevices',
+            render: (value, record) => {
+                if (!record.loaded) {
+                    return <Tile />;
+                }
+
+                return value;
+            }
         },
         {
             title: 'Detections',
-            dataKey: 'detections'
+            dataKey: 'detections',
+            render: (value, record) => {
+                if (!record.loaded) {
+                    return <Tile />;
+                }
+
+                return value;
+            }
         }
     ];
 
+    isRowLoaded = ({ index }) => {
+        return !!this.data[index] && this.data[index].loaded;
+    };
+
+    loadMoreRows = ({ startIndex, stopIndex }) => new Promise((resolve, reject) => {
+        console.log('### loadMoreRows:', startIndex, stopIndex);
+
+        setTimeout(() => {
+            for (let i = startIndex; i <= stopIndex; ++i) {
+                this.data[i] = {
+                    loaded: true,
+                    id: i + 1,
+                    checked: false,
+                    eventType: `Virus/Malware_${i + 1}`,
+                    affectedDevices: 20,
+                    detections: 10
+                };
+            }
+
+            resolve();
+        }, 1000);
+    });
+
     render() {
         //const data = this.state.selectionData;
+        const rowCount = 906900;
 
         return (
             <div className="col-md-12">
@@ -138,18 +188,31 @@ export default class extends Component {
                         </li>
                     </ul>
                     <div className={styles.sectionGroup}>
-                        <Table
-                            fixedHeader={true}
-                            justified={false}
-                            rowKey="id"
-                            columns={this.columns}
-                            data={this.state.data}
-                            rowClassName={this.getRowClassName}
-                            maxHeight={400}
-                            onRowsRendered={({ startIndex, stopIndex }) => {
-                                console.log(`startIndex=${startIndex}, stopIndex=${stopIndex}`);
-                            }}
-                        />
+                        <InfiniteLoader
+                            isRowLoaded={this.isRowLoaded}
+                            loadMoreRows={this.loadMoreRows}
+                            rowCount={rowCount}
+                        >
+                            {({ onRowsRendered, registerChild }) => (
+                                <Table
+                                    ref={registerChild}
+                                    fixedHeader={true}
+                                    justified={false}
+                                    rowKey="id"
+                                    columns={this.columns}
+                                    data={this.data}
+                                    rowClassName={this.getRowClassName}
+                                    maxHeight={400}
+                                    onRowsRendered={({ startIndex, stopIndex }) => {
+                                        onRowsRendered({ startIndex, stopIndex });
+                                        console.log(`startIndex=${startIndex}, stopIndex=${stopIndex}`); // FIXME
+                                    }}
+                                    rowHeight={37}
+                                    rowCount={rowCount}
+                                    rowGetter={({ index }) => this.data[index] || {}}
+                                />
+                            )}
+                        </InfiniteLoader>
                     </div>
                 </Section>
             </div>

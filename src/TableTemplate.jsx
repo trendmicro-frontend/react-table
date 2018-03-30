@@ -7,9 +7,9 @@ import TableBody from './TableBody';
 
 class TableTemplate extends PureComponent {
     static propTypes = {
+        table: PropTypes.any,
         columns: PropTypes.array,
         hoveredRowKey: PropTypes.any,
-        data: PropTypes.array,
         emptyText: PropTypes.func,
         expandedRowKeys: PropTypes.array,
         expandedRowRender: PropTypes.func,
@@ -24,7 +24,11 @@ class TableTemplate extends PureComponent {
         scrollTop: PropTypes.number,
         disableHeader: PropTypes.bool,
         fixedHeader: PropTypes.bool,
-        onRowsRendered: PropTypes.func
+
+        onRowsRendered: PropTypes.func,
+        rowCount: PropTypes.number,
+        rowHeight: PropTypes.number,
+        rowGetter: PropTypes.func
     };
 
     static defaultProps = {
@@ -61,11 +65,12 @@ class TableTemplate extends PureComponent {
             />
         );
     }
+
     renderBody() {
         const {
+            table,
             columns,
             hoveredRowKey,
-            data,
             emptyText,
             expandedRowKeys,
             expandedRowRender,
@@ -78,11 +83,16 @@ class TableTemplate extends PureComponent {
             rowKey,
             scrollTop,
             fixedHeader,
-            onRowsRendered
+
+            onRowsRendered,
+            rowCount,
+            rowHeight,
+            rowGetter
         } = this.props;
 
         return (
             <TableBody
+                table={table}
                 columns={columns}
                 hoveredRowKey={hoveredRowKey}
                 expandedRowKeys={expandedRowKeys}
@@ -96,7 +106,6 @@ class TableTemplate extends PureComponent {
                 onScroll={this.handleBodyScroll}
                 scrollTop={scrollTop}
                 fixedHeader={fixedHeader}
-                records={data}
                 ref={node => {
                     if (node) {
                         this.tableBody = node;
@@ -104,10 +113,15 @@ class TableTemplate extends PureComponent {
                 }}
                 rowClassName={rowClassName}
                 rowKey={rowKey}
+
                 onRowsRendered={onRowsRendered}
+                rowCount={rowCount}
+                rowHeight={rowHeight}
+                rowGetter={rowGetter}
             />
         );
     }
+
     render() {
         const {
             className,

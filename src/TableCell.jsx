@@ -7,7 +7,9 @@ import styles from './index.styl';
 class TableCell extends Component {
     static propTypes = {
         column: PropTypes.object,
-        record: PropTypes.object
+        record: PropTypes.object,
+        width: PropTypes.number,
+        height: PropTypes.number
     };
 
     static defaultProps = {
@@ -42,7 +44,7 @@ class TableCell extends Component {
     }
 
     render() {
-        const { column, record } = this.props;
+        const { column, record, width, height } = this.props;
         const render = column.render;
         // dataKey is an alias for dataIndex
         const dataKey = (typeof column.dataKey !== 'undefined') ? column.dataKey : column.dataIndex;
@@ -56,6 +58,8 @@ class TableCell extends Component {
                     column.cellClassName
                 )}
                 style={{
+                    width,
+                    height,
                     ...column.style,
                     ...column.cellStyle
                 }}
