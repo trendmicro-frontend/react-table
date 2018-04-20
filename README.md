@@ -442,7 +442,7 @@ style           | String  |         | style of this column.
 headerClassName | String  |         | className to assign to the column header.
 headerStyle     | String  |         | style to assign to the column header.
 cellClassName   | String  |         | className to assign to each cell in the column.
-cellStyle       | String  |         | style to assign to each cell in the column.
+cellStyle       | Object  |         | style to assign to each cell in the column.
 onClick         | Function(event) |         | onClick event handler for header cell.
 title           | React Node or Function(): React Node |         | Title of this column.
 dataIndex       | String  |         | Display field of the data record.
