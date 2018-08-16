@@ -147,7 +147,6 @@ class Table extends PureComponent {
             const fixedBodyRows = helper.getSubElements(fixedTBody, `.${styles.tr}`);
             const mainBodyOffset = mainTBody.getBoundingClientRect();
             const scrollHeight = (mainBodyOffset.height - mainTBody.clientHeight);
-            const totalWidth = fixedBodyRows[0].getBoundingClientRect().width;
             let i;
             let j;
             let headerCell;
@@ -189,7 +188,7 @@ class Table extends PureComponent {
                 }
                 fixedBodyRows[i].style.width = sumCellsWidth ? `${sumCellsWidth}px` : fixedBodyRows[i].style.width;
             }
-            fixedTable.style.width = `${totalWidth}px`;
+            fixedTable.style.width = `${fixedBodyRows[0].getBoundingClientRect().width}px`;
             fixedTBody.style.width = `${mainBodyOffset.width}px`;
             fixedTBody.style.height = `${mainBodyOffset.height - scrollHeight}px`;
         },
