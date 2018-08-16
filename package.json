@@ -51,6 +51,7 @@
     "ensure-array": "^1.0.0",
     "lodash.debounce": "^4.0.8",
     "lodash.get": "^4.4.2",
+    "mini-store": "^1.1.0",
     "prop-types": "^15.5.8",
     "trendmicro-ui": "^0.4.0"
   },

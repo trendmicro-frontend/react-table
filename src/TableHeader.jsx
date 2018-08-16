@@ -1,32 +1,20 @@
 import Anchor from '@trendmicro/react-anchor';
 import classNames from 'classnames';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import styles from './index.styl';
 
-class TableHeader extends Component {
+class TableHeader extends PureComponent {
     static propTypes = {
         columns: PropTypes.array,
         scrollLeft: PropTypes.number
     };
 
     componentDidUpdate(prevProps, prevState) {
-        if (this.props.scrollLeft !== prevProps.scrollLeft) {
-            const { scrollLeft } = this.props;
-            if (this.header.scrollLeft !== scrollLeft) {
-                this.header.scrollLeft = scrollLeft;
-            }
+        const { scrollLeft } = this.props;
+        if (scrollLeft !== prevProps.scrollLeft) {
+            this.header.scrollLeft = scrollLeft;
         }
-    }
-
-    shouldComponentUpdate(nextProps, nextState) {
-        return (
-            nextProps.columns.some((obj, index, array) => (typeof obj.title === 'function'))
-            ||
-            nextProps.scrollLeft !== this.props.scrollLeft
-            ||
-            nextProps.columns !== this.props.columns
-        );
     }
 
     renderColumns(columns) {

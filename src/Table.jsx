@@ -1,5 +1,7 @@
 import classNames from 'classnames';
 import React, { PureComponent } from 'react';
+import { Provider, create } from 'mini-store';
+import isEqual from 'lodash/isEqual';
 import PropTypes from 'prop-types';
 import elementResizeDetectorMaker from 'element-resize-detector';
 import debounce from 'lodash.debounce';
@@ -42,15 +44,19 @@ class Table extends PureComponent {
         useFixedHeader: false
     };
 
-    uniqueid = uniqueid('table:');
-
-    resizer = elementResizeDetectorMaker();
-
-    tableWrapper = null;
-
-    mainTable = null;
-
-    state = this.getInitState();
+    constructor(props) {
+        super(props);
+        this.uniqueid = uniqueid('table:');
+        this.resizer = elementResizeDetectorMaker();
+        this.tableWrapper = null;
+        this.mainTable = null;
+        this.state = this.getInitState();
+        this.store = create({
+            currentHoverKey: null,
+            scrollTop: 0,
+            scrollLeft: 0
+        });
+    }
 
     actions = {
         detectScrollTarget: (e) => {
@@ -473,15 +479,28 @@ class Table extends PureComponent {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.columns !== this.props.columns) {
+        const equal = isEqual(
+            nextProps.columns.map(it => ({ key: it.key, sortOrder: it.sortOrder })),
+            this.props.columns.map(it => ({ key: it.key, sortOrder: it.sortOrder }))
+        );
+        if (!equal) {
             const { columns } = nextProps;
             this.setState({ thisColumns: this.columnsParser(columns) });
         }
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (prevProps.maxHeight !== this.props.maxHeight ||
-            prevProps.data !== this.props.data) {
+        const equal = prevProps.columns.length === this.props.columns.length
+        && isEqual(
+            prevProps.columns.map(it => ({ key: it.key, sortOrder: it.sortOrder })),
+            this.props.columns.map(it => ({ key: it.key, sortOrder: it.sortOrder }))
+        );
+        if (prevProps.maxHeight !== this.props.maxHeight
+            ||
+            !isEqual(prevProps.data, this.props.data)
+            ||
+            !equal
+        ) {
             this.actions.setTableSize();
         }
     }
@@ -567,6 +586,7 @@ class Table extends PureComponent {
                 ref={node => {
                     this.mainTable = node;
                 }}
+                tableRole="normalTable"
 
             />
         );
@@ -611,6 +631,7 @@ class Table extends PureComponent {
                 ref={node => {
                     this.tableFixedLeft = node;
                 }}
+                tableRole="leftTable"
             />
         );
     }
@@ -685,33 +706,35 @@ class Table extends PureComponent {
         delete props.showHeader;
 
         return (
-            <div
-                {...props}
-                className={classNames(
-                    className,
-                    styles.tableWrapper,
-                    { [styles.tableMinimalism]: !bordered },
-                    { [styles.tableBordered]: bordered },
-                    { [styles.tableAutoFit]: !justified },
-                    { [styles.tableFixedHeader]: useFixedHeader },
-                    { [styles.tableNoData]: !data || data.length === 0 },
-                    { [styles.tableHover]: hoverable },
-                    { [styles.tableSortable]: sortable }
-                )}
-                ref={(node) => {
-                    if (node) {
-                        this.tableWrapper = node;
-                    }
-                }}
-            >
-                { title && this.renderTitle() }
-                <div className={styles.tableArea}>
-                    { this.renderTable() }
-                    { this.isAnyColumnsLeftFixed() && this.renderFixedLeftTable() }
-                    { loading && this.renderLoader() }
+            <Provider store={this.store}>
+                <div
+                    {...props}
+                    className={classNames(
+                        className,
+                        styles.tableWrapper,
+                        { [styles.tableMinimalism]: !bordered },
+                        { [styles.tableBordered]: bordered },
+                        { [styles.tableAutoFit]: !justified },
+                        { [styles.tableFixedHeader]: useFixedHeader },
+                        { [styles.tableNoData]: !data || data.length === 0 },
+                        { [styles.tableHover]: hoverable },
+                        { [styles.tableSortable]: sortable }
+                    )}
+                    ref={(node) => {
+                        if (node) {
+                            this.tableWrapper = node;
+                        }
+                    }}
+                >
+                    { title && this.renderTitle() }
+                    <div className={styles.tableArea}>
+                        { this.renderTable() }
+                        { this.isAnyColumnsLeftFixed() && data.length > 0 && this.renderFixedLeftTable() }
+                        { loading && this.renderLoader() }
+                    </div>
+                    { footer && this.renderFooter() }
                 </div>
-                { footer && this.renderFooter() }
-            </div>
+            </Provider>
         );
     }
 }
