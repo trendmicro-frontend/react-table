@@ -52,10 +52,13 @@ export default class extends Component {
             }
         },
         handleHeaderCheckbox: (e) => {
+            if (e.target === null) {
+                return;
+            }
+            const checkbox = e.target;
             e.stopPropagation();
 
             this.setState(state => {
-                const checkbox = e.target;
                 const data = state.selectionData.map((item, i) => {
                     return {
                         ...item,
@@ -67,6 +70,8 @@ export default class extends Component {
                     selectionData: data
                 };
             });
+        },
+        handleCheckbox: (e, row) => {
         },
         renderHeaderCheckbox: () => {
             let className = 'input-checkbox';
@@ -98,7 +103,7 @@ export default class extends Component {
                         id={row.id}
                         className="input-checkbox"
                         checked={row.checked}
-                        onChange={(e) => {}}
+                        onChange={(e) => this.actions.handleCheckbox(e, row)}
                     />
                     <label />
                 </div>

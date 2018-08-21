@@ -30,18 +30,17 @@ class TableBody extends PureComponent {
         onTouchStart: () => {},
         onScroll: () => {},
         records: [],
-        rowKey: 'key'
+        rowKey: 'key',
+        rowClassName: () => {}
     };
 
     componentDidMount() {
-        const { onMouseOver, onTouchStart, onScroll } = this.props;
-        this.body.addEventListener('scroll', onScroll);
+        const { onMouseOver, onTouchStart } = this.props;
         this.body.addEventListener('mouseover', onMouseOver);
         this.body.addEventListener('touchstart', onTouchStart);
     }
     componentWillUnmount() {
-        const { onMouseOver, onTouchStart, onScroll } = this.props;
-        this.body.removeEventListener('scroll', onScroll);
+        const { onMouseOver, onTouchStart } = this.props;
         this.body.removeEventListener('mouseover', onMouseOver);
         this.body.removeEventListener('touchstart', onTouchStart);
     }
@@ -55,6 +54,14 @@ class TableBody extends PureComponent {
         }
     }
 
+    onScroll = (e) => {
+        const { store, tableRole, scrollLeft } = this.props;
+        store.setState({
+            scrollTop: e.target.scrollTop,
+            scrollLeft: tableRole === 'leftTable' ? scrollLeft : e.target.scrollLeft
+        });
+    };
+
     getRowKey (record, index) {
         const rowKey = this.props.rowKey;
         let key = (typeof rowKey === 'function' ? rowKey(record, index) : record[rowKey]);
@@ -64,7 +71,6 @@ class TableBody extends PureComponent {
     render() {
         const {
             columns,
-            hoveredRowKey,
             expandedRowKeys,
             expandedRowRender,
             emptyText,
@@ -81,14 +87,15 @@ class TableBody extends PureComponent {
                 ref={node => {
                     this.body = node;
                 }}
+                onScroll={this.onScroll}
             >
                 {
                     records.map((row, index) => {
                         const key = this.getRowKey(row, index);
+                        const className = rowClassName(row, key);
                         return (
                             <TableRow
                                 columns={columns}
-                                hoveredRowKey={hoveredRowKey}
                                 expandedRowKeys={expandedRowKeys}
                                 expandedRowRender={expandedRowRender}
                                 rowKey={key}
@@ -97,7 +104,7 @@ class TableBody extends PureComponent {
                                 onHover={onRowHover}
                                 onRowClick={onRowClick}
                                 record={row}
-                                rowClassName={rowClassName}
+                                className={className}
                             />
                         );
                     })

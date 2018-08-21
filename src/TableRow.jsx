@@ -1,12 +1,14 @@
 import cx from 'classnames';
 import ensureArray from 'ensure-array';
-import get from 'lodash.get';
-import React, { PureComponent } from 'react';
+import { connect } from 'mini-store';
+import get from 'lodash/get';
+import isEqual from 'lodash/isEqual';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styles from './index.styl';
 import TableCell from './TableCell';
 
-class TableRow extends PureComponent {
+class TableRow extends Component {
     static propTypes = {
         columns: PropTypes.array,
         hoveredRowKey: PropTypes.any,
@@ -37,13 +39,17 @@ class TableRow extends PureComponent {
     };
 
     handleRowMouseEnter = (event) => {
-        const { rowKey, onHover } = this.props;
-        onHover(true, rowKey);
-    }
+        const { rowKey, store, hovered } = this.props;
+        if (!hovered) {
+            store.setState({ currentHoverKey: rowKey });
+        }
+    };
 
     handleRowMouseLeave = (event) => {
-        const { rowKey, onHover } = this.props;
-        onHover(false, rowKey);
+        const { store, hovered } = this.props;
+        if (hovered) {
+            store.setState({ currentHoverKey: null });
+        }
     };
 
     isRowExpanded = (record, rowKey) => {
@@ -51,6 +57,23 @@ class TableRow extends PureComponent {
             .filter(expandedRowKey => (expandedRowKey === rowKey));
         return expandedRows.length > 0;
     };
+
+    shouldComponentUpdate(nextProps, nextState) {
+        const columnEqual = isEqual(
+            nextProps.columns.map(it => ({ key: it.key, sortOrder: it.sortOrder })),
+            this.props.columns.map(it => ({ key: it.key, sortOrder: it.sortOrder }))
+        );
+        const recordEqual = isEqual(nextProps.record, this.props.record);
+        return (
+            this.props.className !== nextProps.className
+            ||
+            this.props.hovered !== nextProps.hovered
+            ||
+            !columnEqual
+            ||
+            !recordEqual
+        );
+    }
 
     componentDidMount() {
         this.row.addEventListener('mouseenter', this.handleRowMouseEnter);
@@ -63,26 +86,24 @@ class TableRow extends PureComponent {
     render() {
         const {
             columns,
-            hoveredRowKey,
+            hovered,
             expandedRowRender,
             rowKey,
             rowIndex,
             record,
-            rowClassName
+            className
         } = this.props;
-        const className = rowClassName(record, rowKey);
         const isRowExpanded = this.isRowExpanded(record, rowKey);
         let expandedRowContent;
         if (expandedRowRender && isRowExpanded) {
             expandedRowContent = expandedRowRender(record, rowIndex);
         }
-
         return (
             <div
                 className={cx(
                     styles.tr,
                     className,
-                    { [styles['tr-hover']]: (hoveredRowKey === rowKey) }
+                    { [styles['tr-hover']]: hovered }
                 )}
                 ref={node => {
                     this.row = node;
@@ -124,4 +145,10 @@ class TableRow extends PureComponent {
     }
 }
 
-export default TableRow;
+export default connect((state, props) => {
+    const { currentHoverKey } = state;
+    const { rowKey } = props;
+    return {
+        hovered: currentHoverKey === rowKey
+    };
+})(TableRow);
