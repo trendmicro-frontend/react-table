@@ -499,6 +499,7 @@ class Table extends PureComponent {
             !isEqual(prevProps.data, this.props.data)
             ||
             !equal
+            || (this.props.loading !== prevProps.loading)
         ) {
             this.actions.setTableSize();
         }
