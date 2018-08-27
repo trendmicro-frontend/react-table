@@ -19,7 +19,10 @@ class TableRow extends Component {
         onHover: PropTypes.func,
         onRowClick: PropTypes.func,
         record: PropTypes.object,
-        rowClassName: PropTypes.func
+        rowClassName: PropTypes.func,
+        isExpanded: PropTypes.bool,
+        store: PropTypes.any,
+        hovered: PropTypes.bool
     };
 
     static defaultProps = {
@@ -72,6 +75,8 @@ class TableRow extends Component {
             !columnEqual
             ||
             !recordEqual
+            ||
+            this.props.isExpanded !== nextProps.isExpanded
         );
     }
 
@@ -91,13 +96,10 @@ class TableRow extends Component {
             rowKey,
             rowIndex,
             record,
-            className
+            className,
+            isExpanded
         } = this.props;
-        const isRowExpanded = this.isRowExpanded(record, rowKey);
-        let expandedRowContent;
-        if (expandedRowRender && isRowExpanded) {
-            expandedRowContent = expandedRowRender(record, rowIndex);
-        }
+
         return (
             <div
                 className={cx(
@@ -135,9 +137,9 @@ class TableRow extends Component {
                         </TableCell>
                     );
                 })}
-                {isRowExpanded &&
+                {isExpanded && expandedRowRender &&
                 <div className={styles['tr-expand']}>
-                    { expandedRowContent }
+                    {expandedRowRender(record, rowIndex)}
                 </div>
                 }
             </div>
@@ -147,8 +149,9 @@ class TableRow extends Component {
 
 export default connect((state, props) => {
     const { currentHoverKey } = state;
-    const { rowKey } = props;
+    const { rowKey, expandedRowKeys, expandedRowRender } = props;
     return {
-        hovered: currentHoverKey === rowKey
+        hovered: currentHoverKey === rowKey,
+        isExpanded: expandedRowRender && expandedRowKeys.indexOf(rowKey) >= 0
     };
 })(TableRow);
