@@ -19,7 +19,10 @@ class TableBody extends PureComponent {
         records: PropTypes.array,
         rowClassName: PropTypes.func,
         rowKey: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
-        scrollTop: PropTypes.number
+        scrollTop: PropTypes.number,
+        store: PropTypes.any, // mini-store
+        tableRole: PropTypes.string, // present fixed left table or normal table
+        scrollLeft: PropTypes.number // From table body HOC
     };
 
     static defaultProps = {
@@ -55,6 +58,7 @@ class TableBody extends PureComponent {
     }
 
     onScroll = (e) => {
+        e.stopPropagation();
         const { store, tableRole, scrollLeft } = this.props;
         store.setState({
             scrollTop: e.target.scrollTop,
