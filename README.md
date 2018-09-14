@@ -33,7 +33,6 @@ Demo: https://trendmicro-frontend.github.io/react-table
 <Table
     bordered
     hoverable
-    sortable
     rowKey={record => record.id}
     columns={columns}
     data={data}
@@ -93,9 +92,10 @@ class SortableTable extends Component {
                 {...props}
                 columns={columns.map(column => ({
                     ...column,
+                    sortable: true,
                     onClick: this.toggleSortOrder(column),
                     sortOrder: (column.key === sortColumnKey) ? sortOrder : ''
-                }))
+                }))}
             />
         );
     }
@@ -426,7 +426,6 @@ loading             | Boolean                           | false   | Whether tabl
 maxHeight           | Number                            |         | Table maximum height.
 onRowClick          | Function(record, rowIndex, event) |         | Handle rowClick action.
 showHeader          | Boolean                           | true    | Whether table head is shown.
-sortable            | Boolean                           | false   | Whether table head is sortable.
 title               | React Node or Function(): React Node|       | Table title render function.
 useFixedHeader      | Boolean                           | false   | Whether table head is fixed.
 rowClassName        | Function(record, key):string      |         | Get row's className.
@@ -450,6 +449,7 @@ dataKey         | String  |         | dataKey is an alias for dataIndex.
 width           | String or Number  |         | Width of the specific proportion calculation according to the width of the columns.
 fixed           | Boolean | false   | This column will be fixed at left side when table scroll horizontally.
 render          | Function(value, record, rowIndex) |         | The render function of cell, has two params: the text of this cell, the record of this row, it's return a react node.
+sortable            | Boolean                           | false   | Whether head column is sortable.
 
 ## License
 

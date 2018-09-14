@@ -14,6 +14,7 @@ export default class extends Component {
 
     columns = [
         {
+            sortable: true,
             title: 'Event Type',
             key: 'eventType',
             render: (value, row) => {
@@ -21,11 +22,13 @@ export default class extends Component {
             }
         },
         {
+            sortable: true,
             dataIndex: 'affectedDevices',
             title: 'Affected Devices',
             key: 'affectedDevices'
         },
         {
+            sortable: true,
             dataIndex: 'detections',
             title: 'Detections',
             key: 'detections'
@@ -93,7 +96,6 @@ export default class extends Component {
                         <h5>Sortable Header</h5>
                         <Table
                             hoverable
-                            sortable
                             rowKey={record => record.id}
                             columns={sortableColumns}
                             data={sortableData}
@@ -134,7 +136,6 @@ export default class extends Component {
                         <h5>No Header</h5>
                         <Table
                             hoverable
-                            sortable
                             showHeader={false}
                             maxHeight={180}
                             rowKey={record => record.id}
