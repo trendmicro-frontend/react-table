@@ -26,7 +26,6 @@ class Table extends PureComponent {
         maxHeight: PropTypes.number,
         onRowClick: PropTypes.func,
         showHeader: PropTypes.bool,
-        sortable: PropTypes.bool,
         title: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
         useFixedHeader: PropTypes.bool,
         rowClassName: PropTypes.func,
@@ -40,7 +39,6 @@ class Table extends PureComponent {
         hoverable: true,
         loading: false,
         maxHeight: 0,
-        sortable: false,
         useFixedHeader: false
     };
 
@@ -48,6 +46,7 @@ class Table extends PureComponent {
         super(props);
         this.uniqueid = uniqueid('table:');
         this.resizer = elementResizeDetectorMaker();
+        this.containerWidth = 0;
         this.tableWrapper = null;
         this.mainTable = null;
         this.state = this.getInitState();
@@ -128,8 +127,11 @@ class Table extends PureComponent {
             setMainTableBodyCellHeight(rowsHeight);
 
             if (this.mainTable.tableHeader) {
-                const headerHeight = getMainTableHeaderCellActualHeight();
+                // Set cells width first
                 setMainTableHeaderCellWidth(cellsWidth);
+
+                // Then set cells height
+                const headerHeight = getMainTableHeaderCellActualHeight();
                 setMainTableHeaderCellHeight(headerHeight);
             }
         },
@@ -466,7 +468,13 @@ class Table extends PureComponent {
 
     componentDidMount() {
         const { setTableSize } = this.actions;
-        this.onResizeDebounce = debounce(setTableSize, 100);
+        this.onResizeDebounce = debounce((element) => {
+            const newWidth = element.offsetWidth;
+            if (this.containerWidth !== newWidth) {
+                this.containerWidth = newWidth;
+                setTableSize();
+            }
+        }, 100);
         this.resizer.listenTo(this.tableWrapper, this.onResizeDebounce);
         setTableSize();
     }
@@ -587,7 +595,6 @@ class Table extends PureComponent {
                     this.mainTable = node;
                 }}
                 tableRole="normalTable"
-
             />
         );
     }
@@ -690,7 +697,6 @@ class Table extends PureComponent {
             title,
             footer,
             hoverable,
-            sortable,
             useFixedHeader,
             ...props
         } = this.props;
@@ -717,8 +723,7 @@ class Table extends PureComponent {
                         { [styles.tableAutoFit]: !justified },
                         { [styles.tableFixedHeader]: useFixedHeader },
                         { [styles.tableNoData]: !data || data.length === 0 },
-                        { [styles.tableHover]: hoverable },
-                        { [styles.tableSortable]: sortable }
+                        { [styles.tableHover]: hoverable }
                     )}
                     ref={(node) => {
                         if (node) {

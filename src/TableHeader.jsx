@@ -1,7 +1,7 @@
-import Anchor from '@trendmicro/react-anchor';
-import classNames from 'classnames';
+import cx from 'classnames';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import isEqual from 'lodash/isEqual';
 import styles from './index.styl';
 
 class TableHeader extends Component {
@@ -23,65 +23,44 @@ class TableHeader extends Component {
             ||
             nextProps.scrollLeft !== this.props.scrollLeft
             ||
-            nextProps.columns !== this.props.columns
+            isEqual(nextProps.columns, this.props.columns)
         );
-    }
-
-    renderColumns(columns) {
-        return columns.map(column => {
-            const { title = '', sortOrder, onClick } = { ...column };
-            const clickable = (typeof onClick === 'function');
-
-            if (!clickable) {
-                return column;
-            }
-
-            const columnSortStyle = {
-                'asc': styles.columnSortAsc,
-                'desc': styles.columnSortDesc
-            }[sortOrder];
-            const isSortColumn = !!columnSortStyle;
-
-            return {
-                ...column,
-                title: (
-                    <Anchor
-                        className={classNames(
-                            styles.clickableColumn,
-                            { [styles.columnSort]: isSortColumn }
-                        )}
-                        onClick={onClick}
-                    >
-                        <span className={styles.overflowEllipsis}>{title}</span>
-                        {columnSortStyle &&
-                        <i className={columnSortStyle} />
-                        }
-                    </Anchor>
-                )
-            };
-        });
     }
 
     renderCell() {
         const { columns } = this.props;
-        const customColumns = this.renderColumns(columns);
-        return customColumns.map((column, index) => {
+        return columns.map((column, index) => {
             const key = `table_header_cell_${index}`;
+            const { onClick, sortable, sortOrder, title = '' } = column;
+
             return (
                 <div
                     key={key}
-                    className={classNames(
-                        styles.th,
+                    className={cx(
                         column.className,
-                        column.headerClassName
+                        column.headerClassName,
+                        {
+                            [styles.th]: true,
+                            [styles.sortable]: sortable,
+                            [styles.sortableHighlight]: sortable && (sortOrder === 'asc' || sortOrder === 'desc')
+                        }
                     )}
                     style={{
                         ...column.style,
                         ...column.headerStyle
                     }}
+                    role="button"
+                    tabIndex="0"
+                    onClick={onClick}
                 >
                     <div className={styles.thContent}>
-                        {typeof column.title === 'function' ? column.title() : column.title}
+                        {typeof title === 'function' ? title() : title}
+                        {(sortable && sortOrder === 'asc') &&
+                            <i className={styles.orderAsc} />
+                        }
+                        {(sortable && sortOrder === 'desc') &&
+                            <i className={styles.orderDesc} />
+                        }
                     </div>
                 </div>
             );
