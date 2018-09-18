@@ -23,7 +23,7 @@ class TableHeader extends Component {
             ||
             nextProps.scrollLeft !== this.props.scrollLeft
             ||
-            isEqual(nextProps.columns, this.props.columns)
+            !isEqual(nextProps.columns, this.props.columns)
         );
     }
 
