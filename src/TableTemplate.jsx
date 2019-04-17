@@ -144,7 +144,7 @@ const TableBodyHoc = connect((state, props) => {
 })(
     props => React.cloneElement(props.children, {
         scrollTop: props.scrollTop,
-        scrollLeft: props.scrolling,
+        scrollLeft: props.scrolLeft,
         store: props.store
     })
 );
