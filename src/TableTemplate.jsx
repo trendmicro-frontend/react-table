@@ -138,13 +138,13 @@ class TableTemplate extends PureComponent {
 const TableBodyHoc = connect((state, props) => {
     return {
         scrollTop: state.scrollTop,
-        scrolling: state.scrollLeft,
-        store: state.score
+        scrollLeft: state.scrollLeft,
+        store: state.store
     };
 })(
     props => React.cloneElement(props.children, {
         scrollTop: props.scrollTop,
-        scrollLeft: props.scrolling,
+        scrollLeft: props.scrolLeft,
         store: props.store
     })
 );
