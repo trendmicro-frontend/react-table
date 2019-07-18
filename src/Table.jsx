@@ -225,6 +225,13 @@ class Table extends PureComponent {
             let cellContent;
             let content;
             let i = 0;
+            // Clearing element's height style before getting the actual height of table cell.
+            for (i = 0; i < headerCells.length; i++) {
+                th = headerCells[i];
+                if (th.style.height) {
+                    th.style.height = null;
+                }
+            }
             for (i = 0; i < headerCells.length; i++) {
                 th = headerCells[i];
                 cellContent = helper.getSubElements(th, `.${styles.thContent}`);
@@ -373,6 +380,17 @@ class Table extends PureComponent {
             let content;
             let i = 0;
             let j = 0;
+            // Fix the issue that table shrinks in when browser resolution changed to other than 100%.
+            // Clearing element's height style before getting the actual height of table cell.
+            for (i = 0; i < bodyRows.length; i++) {
+                bodyCell = helper.getSubElements(bodyRows[i], `.${styles.td}`);
+                for (j = 0; j < bodyCell.length; j++) {
+                    td = bodyCell[j];
+                    if (td.style.height) {
+                        td.style.height = null;
+                    }
+                }
+            }
             for (i = 0; i < bodyRows.length; i++) {
                 bodyCell = helper.getSubElements(bodyRows[i], `.${styles.td}`);
                 cellHeight = rowsHeight[i] || 0;
