@@ -1,7 +1,7 @@
 import 'trendmicro-ui/dist/css/trendmicro-ui.css';
 import Anchor from '@trendmicro/react-anchor';
 import React, { Component } from 'react';
-import orderBy from 'lodash.orderby';
+import _orderBy from 'lodash/orderBy';
 import Table from '../../src';
 import Section from '../Section';
 import styles from '../index.styl';
@@ -77,7 +77,7 @@ export default class extends Component {
         const columns = this.columns;
         const data = this.data;
         const sortableColumns = this.sortableColumns(columns);
-        const sortableData = orderBy(data, [this.state.sortColumnKey], [this.state.sortOrder]);
+        const sortableData = _orderBy(data, [this.state.sortColumnKey], [this.state.sortOrder]);
 
         return (
             <div className="col-md-12">

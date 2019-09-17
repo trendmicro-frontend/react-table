@@ -1,3 +1,3 @@
 import Table from './Table';
 
-module.exports = Table;
+export default Table;
