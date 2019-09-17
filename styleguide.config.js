@@ -1,34 +1,16 @@
 const path = require('path');
-const findImports = require('find-imports');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
 const pkg = require('./package.json');
-const babelConfig = require('./babel.config');
 
-const publicname = pkg.name.replace(/^@\w+\//, ''); // Strip out "@trendmicro/" from package name
-const banner = [
-    publicname + ' v' + pkg.version,
-    '(c) ' + new Date().getFullYear() + ' Trend Micro Inc.',
-    pkg.license,
-    pkg.homepage
-].join(' | ');
-const localClassPrefix = publicname.replace(/^react-/, ''); // Strip out "react-" from publicname
-
-module.exports = {
+const webpackConfig = {
     mode: 'development',
-    devtool: 'source-map',
-    entry: {
-        [publicname]: path.resolve(__dirname, 'src/index.js')
+    devtool: 'cheap-module-eval-source-map',
+    devServer: {
+        disableHostCheck: true,
+        contentBase: path.resolve(__dirname, 'docs'),
     },
-    output: {
-        path: path.join(__dirname, 'lib'),
-        filename: 'index.js',
-        libraryTarget: 'commonjs2'
-    },
-    externals: []
-        .concat(findImports(['src/**/*.{js,jsx}'], { flatten: true }))
-        .concat(Object.keys(pkg.peerDependencies))
-        .concat(Object.keys(pkg.dependencies)),
+    entry: path.resolve(__dirname, 'src/index.js'),
     module: {
         rules: [
             {
@@ -40,8 +22,7 @@ module.exports = {
             {
                 test: /\.jsx?$/,
                 loader: 'babel-loader',
-                exclude: /node_modules/,
-                options: babelConfig
+                exclude: /node_modules/
             },
             {
                 test: /\.styl$/,
@@ -51,7 +32,7 @@ module.exports = {
                         loader: 'css-loader',
                         options: {
                             modules: {
-                                localIdentName: `${localClassPrefix}---[local]---[hash:base64:5]`,
+                                localIdentName: '[local]---[hash:base64:5]',
                             },
                             importLoaders: 1,
                             localsConvention: 'camelCase',
@@ -93,11 +74,52 @@ module.exports = {
             }
         }),
         new MiniCssExtractPlugin({
-            filename: '../dist/[name].css',
-        }),
-        new webpack.BannerPlugin(banner)
+            filename: '[name].css'
+        })
     ],
     resolve: {
         extensions: ['.js', '.json', '.jsx']
     }
+};
+
+module.exports = {
+    title: `React Table v${pkg.version}`,
+    sections: [
+        {
+            name: 'Table',
+            content: path.resolve(__dirname, 'styleguide/examples/README.md'),
+            sections: [
+                {
+                    name: 'Table',
+                    content: path.resolve(__dirname, 'styleguide/examples/Table.md')
+                }
+            ]
+        },
+        {
+            name: 'Components',
+            components: [
+                'Table',
+            ].map(c => path.resolve(__dirname, `src/${c}.jsx`))
+        }
+    ],
+    require: [
+        'core-js/stable',
+        'regenerator-runtime/runtime',
+        path.resolve(__dirname, 'styleguide/setup.js'),
+        path.resolve(__dirname, 'styleguide/styles.css')
+    ],
+    ribbon: {
+        url: pkg.homepage,
+        text: 'Fork me on GitHub'
+    },
+    serverPort: 8080,
+    exampleMode: 'expand',
+    usageMode: 'expand',
+    showSidebar: true,
+    styleguideComponents: {
+        StyleGuideRenderer: path.join(__dirname, 'styleguide/components/StyleGuideRenderer.jsx'),
+        Wrapper: path.join(__dirname, 'styleguide/components/Wrapper.jsx'),
+    },
+    styleguideDir: 'docs/',
+    webpackConfig: webpackConfig
 };
