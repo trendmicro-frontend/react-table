@@ -13,13 +13,6 @@ import TableTemplate from './TableTemplate';
 const getUniqueId = uniqueid('table:');
 
 class Table extends PureComponent {
-    state = {
-        hoveredRowKey: null,
-        scrollTop: 0,
-        prevColumns: [],
-        thisColumns: []
-    };
-
     static propTypes = {
         bordered: PropTypes.bool,
         justified: PropTypes.bool,
@@ -79,6 +72,12 @@ class Table extends PureComponent {
         this.containerWidth = 0;
         this.tableWrapper = null;
         this.mainTable = null;
+        this.state = {
+            hoveredRowKey: null,
+            scrollTop: 0,
+            prevColumns: [],
+            thisColumns: []
+        };
         this.store = create({
             currentHoverKey: null,
             scrollTop: 0,
