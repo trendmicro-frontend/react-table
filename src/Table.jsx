@@ -10,7 +10,16 @@ import uniqueid from './uniqueid';
 import styles from './index.styl';
 import TableTemplate from './TableTemplate';
 
+const getUniqueId = uniqueid('table:');
+
 class Table extends PureComponent {
+    state = {
+        hoveredRowKey: null,
+        scrollTop: 0,
+        prevColumns: [],
+        thisColumns: []
+    };
+
     static propTypes = {
         bordered: PropTypes.bool,
         justified: PropTypes.bool,
@@ -31,6 +40,7 @@ class Table extends PureComponent {
         rowClassName: PropTypes.func,
         rowKey: PropTypes.oneOfType([PropTypes.string, PropTypes.func])
     };
+
     static defaultProps = {
         bordered: true,
         justified: true,
@@ -42,14 +52,33 @@ class Table extends PureComponent {
         useFixedHeader: false
     };
 
+    static getDerivedStateFromProps(props, state) {
+        const columnsAreChanged = !isEqual(
+            props.columns.map(it => ({ key: it.key, sortOrder: it.sortOrder })),
+            state.prevColumns.map(it => ({ key: it.key, sortOrder: it.sortOrder }))
+        );
+
+        if (columnsAreChanged) {
+            // Checking columns
+            const filterColumns = props.columns
+                // Filter out empty columns
+                .filter(Boolean)
+                // Set default value to column's key attribute.
+                .map(column => ({ ...column, key: column.key !== undefined ? column.key : getUniqueId() }));
+            return {
+                prevColumns: props.columns,
+                thisColumns: filterColumns
+            };
+        }
+        return null;
+    }
+
     constructor(props) {
         super(props);
-        this.uniqueid = uniqueid('table:');
         this.resizer = elementResizeDetectorMaker();
         this.containerWidth = 0;
         this.tableWrapper = null;
         this.mainTable = null;
-        this.state = this.getInitState();
         this.store = create({
             currentHoverKey: null,
             scrollTop: 0,
@@ -503,17 +532,6 @@ class Table extends PureComponent {
         this.mainTable = null;
     }
 
-    componentWillReceiveProps(nextProps) {
-        const equal = isEqual(
-            nextProps.columns.map(it => ({ key: it.key, sortOrder: it.sortOrder })),
-            this.props.columns.map(it => ({ key: it.key, sortOrder: it.sortOrder }))
-        );
-        if (!equal) {
-            const { columns } = nextProps;
-            this.setState({ thisColumns: this.columnsParser(columns) });
-        }
-    }
-
     componentDidUpdate(prevProps, prevState) {
         const equal = prevProps.columns.length === this.props.columns.length
         && isEqual(
@@ -529,29 +547,6 @@ class Table extends PureComponent {
         ) {
             this.actions.setTableSize();
         }
-    }
-
-    getInitState () {
-        return {
-            hoveredRowKey: null,
-            scrollTop: 0,
-            thisColumns: this.columnsParser()
-        };
-    }
-
-    columnsParser(columns = this.props.columns) {
-        // Checking columns
-        const filterColumns = [];
-        columns.forEach((obj) => {
-            // Filter out undefined and null column.
-            if (obj) {
-                let cloneColumn = { ...obj };
-                // Set default value to column's key attribute.
-                cloneColumn.key = cloneColumn.key !== undefined ? cloneColumn.key : this.uniqueid();
-                filterColumns.push(cloneColumn);
-            }
-        });
-        return filterColumns;
     }
 
     leftColumns() {
