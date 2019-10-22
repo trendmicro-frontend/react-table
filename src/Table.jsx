@@ -73,8 +73,6 @@ class Table extends PureComponent {
         this.tableWrapper = null;
         this.mainTable = null;
         this.state = {
-            hoveredRowKey: null,
-            scrollTop: 0,
             prevColumns: [],
             thisColumns: []
         };
@@ -86,31 +84,6 @@ class Table extends PureComponent {
     }
 
     actions = {
-        detectScrollTarget: (e) => {
-            if (this.scrollTarget !== e.currentTarget) {
-                this.scrollTarget = e.currentTarget;
-            }
-        },
-        handleBodyScroll: (e) => {
-            if (e.target !== this.scrollTarget) {
-                return;
-            }
-            // scrollTop is for scrolling main table and fixed table at the same time.
-            if (this.isAnyColumnsLeftFixed()) {
-                this.setState({
-                    scrollTop: e.target.scrollTop
-                });
-            }
-        },
-        handleRowHover: (isHover, key) => {
-            const { hoverable } = this.props;
-            // hoveredRowKey is only for setting hover style to columns and fixed left columns at the same time.
-            if (this.isAnyColumnsLeftFixed() && hoverable) {
-                this.setState({
-                    hoveredRowKey: isHover ? key : null
-                });
-            }
-        },
         setTableSize: () => {
             if (this.tableWrapper) {
                 const { maxHeight } = this.props;
@@ -569,8 +542,6 @@ class Table extends PureComponent {
 
     renderTable() {
         const columns = this.state.thisColumns;
-        const { hoveredRowKey, scrollTop } = this.state;
-        const { detectScrollTarget, handleBodyScroll, handleRowHover } = this.actions;
         const {
             data,
             emptyText,
@@ -587,18 +558,12 @@ class Table extends PureComponent {
         return (
             <TableTemplate
                 columns={columns}
-                hoveredRowKey={hoveredRowKey}
                 data={data}
                 emptyText={emptyText}
                 expandedRowKeys={expandedRowKeys}
                 expandedRowRender={expandedRowRender}
                 loading={loading}
-                onMouseOver={detectScrollTarget}
                 onRowClick={onRowClick}
-                onRowHover={handleRowHover}
-                onTouchStart={detectScrollTarget}
-                onScroll={handleBodyScroll}
-                scrollTop={scrollTop}
                 showHeader={showHeader}
                 useFixedHeader={useFixedHeader}
                 rowClassName={rowClassName}
@@ -613,8 +578,6 @@ class Table extends PureComponent {
 
     renderFixedLeftTable() {
         const fixedColumns = this.leftColumns();
-        const { hoveredRowKey, scrollTop } = this.state;
-        const { detectScrollTarget, handleBodyScroll, handleRowHover } = this.actions;
         const {
             data,
             emptyText,
@@ -630,19 +593,13 @@ class Table extends PureComponent {
         return (
             <TableTemplate
                 columns={fixedColumns}
-                hoveredRowKey={hoveredRowKey}
                 className={styles.tableFixedLeftContainer}
                 data={data}
                 expandedRowKeys={expandedRowKeys}
                 expandedRowRender={expandedRowRender}
                 emptyText={emptyText}
                 loading={loading}
-                onMouseOver={detectScrollTarget}
                 onRowClick={onRowClick}
-                onRowHover={handleRowHover}
-                onTouchStart={detectScrollTarget}
-                onScroll={handleBodyScroll}
-                scrollTop={scrollTop}
                 showHeader={showHeader}
                 useFixedHeader={useFixedHeader}
                 rowClassName={rowClassName}

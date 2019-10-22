@@ -11,29 +11,22 @@ import TableCell from './TableCell';
 class TableRow extends Component {
     static propTypes = {
         columns: PropTypes.array,
-        hoveredRowKey: PropTypes.any,
         expandedRowKeys: PropTypes.array,
         expandedRowRender: PropTypes.func,
         rowKey: PropTypes.any,
         rowIndex: PropTypes.number,
-        onHover: PropTypes.func,
         onRowClick: PropTypes.func,
         record: PropTypes.object,
-        rowClassName: PropTypes.func,
         isExpanded: PropTypes.bool,
-        store: PropTypes.any,
+        store: PropTypes.any, // mini-store
         hovered: PropTypes.bool
     };
 
     static defaultProps = {
         expandedRowKeys: [],
         expandedRowRender: () => {},
-        onHover: () => {},
         onRowClick: () => {},
         record: {},
-        rowClassName: () => {
-            return '';
-        }
     };
 
     handleRowClick = (event) => {
@@ -84,10 +77,12 @@ class TableRow extends Component {
         this.row.addEventListener('mouseenter', this.handleRowMouseEnter);
         this.row.addEventListener('mouseleave', this.handleRowMouseLeave);
     }
+
     componentWillUnmount() {
         this.row.removeEventListener('mouseenter', this.handleRowMouseEnter);
         this.row.removeEventListener('mouseleave', this.handleRowMouseLeave);
     }
+
     render() {
         const {
             columns,
