@@ -1,6 +1,5 @@
 import cx from 'classnames';
 import ensureArray from 'ensure-array';
-import { connect } from 'mini-store';
 import get from 'lodash/get';
 import isEqual from 'lodash/isEqual';
 import React, { Component } from 'react';
@@ -10,16 +9,17 @@ import TableCell from './TableCell';
 
 class TableRow extends Component {
     static propTypes = {
+        className: PropTypes.string,
         columns: PropTypes.array,
         expandedRowKeys: PropTypes.array,
         expandedRowRender: PropTypes.func,
-        rowKey: PropTypes.any,
-        rowIndex: PropTypes.number,
+        hovered: PropTypes.bool,
+        isExpanded: PropTypes.bool,
         onRowClick: PropTypes.func,
         record: PropTypes.object,
-        isExpanded: PropTypes.bool,
-        store: PropTypes.any, // mini-store
-        hovered: PropTypes.bool
+        rowKey: PropTypes.any,
+        rowIndex: PropTypes.number,
+        setCurrentHoverKey: PropTypes.func,
     };
 
     static defaultProps = {
@@ -27,6 +27,7 @@ class TableRow extends Component {
         expandedRowRender: () => {},
         onRowClick: () => {},
         record: {},
+        setCurrentHoverKey: () => {},
     };
 
     handleRowClick = (event) => {
@@ -35,16 +36,16 @@ class TableRow extends Component {
     };
 
     handleRowMouseEnter = (event) => {
-        const { rowKey, store, hovered } = this.props;
+        const { rowKey, setCurrentHoverKey, hovered } = this.props;
         if (!hovered) {
-            store.setState({ currentHoverKey: rowKey });
+            setCurrentHoverKey(rowKey);
         }
     };
 
     handleRowMouseLeave = (event) => {
-        const { store, hovered } = this.props;
+        const { setCurrentHoverKey, hovered } = this.props;
         if (hovered) {
-            store.setState({ currentHoverKey: null });
+            setCurrentHoverKey(null);
         }
     };
 
@@ -142,11 +143,4 @@ class TableRow extends Component {
     }
 }
 
-export default connect((state, props) => {
-    const { currentHoverKey } = state;
-    const { rowKey, expandedRowKeys, expandedRowRender } = props;
-    return {
-        hovered: currentHoverKey === rowKey,
-        isExpanded: expandedRowRender && expandedRowKeys.indexOf(rowKey) >= 0
-    };
-})(TableRow);
+export default TableRow;

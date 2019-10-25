@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import Context from './context';
 import styles from './index.styl';
 import TableRow from './TableRow';
 
@@ -14,9 +15,10 @@ class TableBody extends PureComponent {
         records: PropTypes.array,
         rowClassName: PropTypes.func,
         rowKey: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
-        scrollLeft: PropTypes.number, // From table body HOC
-        scrollTop: PropTypes.number, // From table body HOC
-        store: PropTypes.any, // mini-store
+        scrollLeft: PropTypes.number,
+        scrollTop: PropTypes.number,
+        setScrollLeft: PropTypes.func,
+        setScrollTop: PropTypes.func,
         tableRole: PropTypes.string, // present fixed left table or normal table
     };
 
@@ -40,11 +42,14 @@ class TableBody extends PureComponent {
 
     onScroll = (e) => {
         e.stopPropagation();
-        const { store, tableRole, scrollLeft } = this.props;
-        store.setState({
-            scrollTop: e.target.scrollTop,
-            scrollLeft: tableRole === 'leftTable' ? scrollLeft : e.target.scrollLeft
-        });
+        const {
+            scrollLeft,
+            setScrollLeft,
+            setScrollTop,
+            tableRole
+        } = this.props;
+        setScrollTop(e.target.scrollTop);
+        setScrollLeft(tableRole === 'leftTable' ? scrollLeft : e.target.scrollLeft);
     };
 
     getRowKey (record, index) {
@@ -66,43 +71,55 @@ class TableBody extends PureComponent {
         } = this.props;
         const noData = (!records || records.length === 0);
         return (
-            <div
-                className={styles.tbody}
-                ref={node => {
-                    this.body = node;
-                }}
-                onScroll={this.onScroll}
-            >
-                {
-                    records.map((row, index) => {
-                        const key = this.getRowKey(row, index);
-                        const className = rowClassName(row, key);
-                        return (
-                            <TableRow
-                                columns={columns}
-                                expandedRowKeys={expandedRowKeys}
-                                expandedRowRender={expandedRowRender}
-                                rowKey={key}
-                                rowIndex={index}
-                                key={key}
-                                onRowClick={onRowClick}
-                                record={row}
-                                className={className}
-                            />
-                        );
-                    })
-                }
-                {
-                    noData && !loading &&
-                    <div className={styles.tablePlaceholder}>
-                        { emptyText() }
+            <Context.Consumer>
+                {({
+                    currentHoverKey,
+                    setCurrentHoverKey,
+                }) => (
+                    <div
+                        className={styles.tbody}
+                        ref={node => {
+                            this.body = node;
+                        }}
+                        onScroll={this.onScroll}
+                    >
+                        {
+                            records.map((row, index) => {
+                                const key = this.getRowKey(row, index);
+                                const className = rowClassName(row, key);
+                                const hovered = currentHoverKey === key;
+                                const isExpanded = expandedRowRender && expandedRowKeys.indexOf(key) >= 0;
+                                return (
+                                    <TableRow
+                                        className={className}
+                                        columns={columns}
+                                        expandedRowKeys={expandedRowKeys}
+                                        expandedRowRender={expandedRowRender}
+                                        hovered={hovered}
+                                        isExpanded={isExpanded}
+                                        key={key}
+                                        onRowClick={onRowClick}
+                                        record={row}
+                                        rowKey={key}
+                                        rowIndex={index}
+                                        setCurrentHoverKey={setCurrentHoverKey}
+                                    />
+                                );
+                            })
+                        }
+                        {
+                            noData && !loading &&
+                            <div className={styles.tablePlaceholder}>
+                                { emptyText() }
+                            </div>
+                        }
+                        {
+                            noData && loading &&
+                            <div className={styles.tableNoDataLoader} />
+                        }
                     </div>
-                }
-                {
-                    noData && loading &&
-                    <div className={styles.tableNoDataLoader} />
-                }
-            </div>
+                )}
+            </Context.Consumer>
         );
     }
 }

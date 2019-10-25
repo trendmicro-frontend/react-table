@@ -1,10 +1,10 @@
 import classNames from 'classnames';
 import React, { PureComponent } from 'react';
-import { Provider, create } from 'mini-store';
 import isEqual from 'lodash/isEqual';
 import PropTypes from 'prop-types';
 import elementResizeDetectorMaker from 'element-resize-detector';
 import debounce from 'lodash.debounce';
+import Context from './context';
 import helper from './helper';
 import uniqueid from './uniqueid';
 import styles from './index.styl';
@@ -72,15 +72,34 @@ class Table extends PureComponent {
         this.containerWidth = 0;
         this.tableWrapper = null;
         this.mainTable = null;
-        this.state = {
-            prevColumns: [],
-            thisColumns: []
+        this.setCurrentHoverKey = (currentHoverKey) => {
+            this.setState({
+                currentHoverKey: currentHoverKey
+            });
         };
-        this.store = create({
+        this.setScrollTop = (scrollTop) => {
+            this.setState({
+                scrollTop: scrollTop
+            });
+        };
+        this.setScrollLeft = (scrollLeft) => {
+            this.setState({
+                scrollLeft: scrollLeft
+            });
+        };
+
+        // State also contains the updater function so it will
+        // be passed down into the context provider
+        this.state = {
             currentHoverKey: null,
             scrollTop: 0,
-            scrollLeft: 0
-        });
+            scrollLeft: 0,
+            prevColumns: [],
+            thisColumns: [],
+            setCurrentHoverKey: this.setCurrentHoverKey,
+            setScrollLeft: this.setScrollLeft,
+            setScrollTop: this.setScrollTop,
+        };
     }
 
     actions = {
@@ -681,7 +700,7 @@ class Table extends PureComponent {
         delete props.showHeader;
 
         return (
-            <Provider store={this.store}>
+            <Context.Provider value={this.state}>
                 <div
                     {...props}
                     className={classNames(
@@ -708,7 +727,7 @@ class Table extends PureComponent {
                     </div>
                     { footer && this.renderFooter() }
                 </div>
-            </Provider>
+            </Context.Provider>
         );
     }
 }

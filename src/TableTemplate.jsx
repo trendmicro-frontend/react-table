@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import React, { PureComponent } from 'react';
-import { connect } from 'mini-store';
 import PropTypes from 'prop-types';
+import Context from './context';
 import styles from './index.styl';
 import TableHeader from './TableHeader';
 import TableBody from './TableBody';
@@ -29,16 +29,19 @@ class TableTemplate extends PureComponent {
     renderHeader() {
         const { columns } = this.props;
         return (
-            <TableHeaderHoc>
-                <TableHeader
-                    columns={columns}
-                    ref={node => {
-                        if (node) {
-                            this.tableHeader = node;
-                        }
-                    }}
-                />
-            </TableHeaderHoc>
+            <Context.Consumer>
+                {({ scrollLeft }) => (
+                    <TableHeader
+                        columns={columns}
+                        scrollLeft={scrollLeft}
+                        ref={node => {
+                            if (node) {
+                                this.tableHeader = node;
+                            }
+                        }}
+                    />
+                )}
+            </Context.Consumer>
         );
     }
 
@@ -57,25 +60,36 @@ class TableTemplate extends PureComponent {
         } = this.props;
 
         return (
-            <TableBodyHoc>
-                <TableBody
-                    columns={columns}
-                    expandedRowKeys={expandedRowKeys}
-                    expandedRowRender={expandedRowRender}
-                    emptyText={emptyText}
-                    loading={loading}
-                    onRowClick={onRowClick}
-                    records={data}
-                    ref={node => {
-                        if (node) {
-                            this.tableBody = node;
-                        }
-                    }}
-                    rowClassName={rowClassName}
-                    rowKey={rowKey}
-                    tableRole={tableRole}
-                />
-            </TableBodyHoc>
+            <Context.Consumer>
+                {({
+                    scrollLeft,
+                    scrollTop,
+                    setScrollLeft,
+                    setScrollTop,
+                }) => (
+                    <TableBody
+                        columns={columns}
+                        expandedRowKeys={expandedRowKeys}
+                        expandedRowRender={expandedRowRender}
+                        emptyText={emptyText}
+                        loading={loading}
+                        onRowClick={onRowClick}
+                        records={data}
+                        ref={node => {
+                            if (node) {
+                                this.tableBody = node;
+                            }
+                        }}
+                        rowClassName={rowClassName}
+                        rowKey={rowKey}
+                        scrollLeft={scrollLeft}
+                        scrollTop={scrollTop}
+                        setScrollLeft={setScrollLeft}
+                        setScrollTop={setScrollTop}
+                        tableRole={tableRole}
+                    />
+                )}
+            </Context.Consumer>
         );
     }
 
@@ -103,29 +117,5 @@ class TableTemplate extends PureComponent {
         );
     }
 }
-
-const TableBodyHoc = connect((state, props) => {
-    return {
-        scrollTop: state.scrollTop,
-        scrollLeft: state.scrollLeft,
-        store: state.store
-    };
-})(
-    props => React.cloneElement(props.children, {
-        scrollTop: props.scrollTop,
-        scrollLeft: props.scrolLeft,
-        store: props.store
-    })
-);
-
-const TableHeaderHoc = connect((state, props) => {
-    return {
-        scrollLeft: state.scrollLeft
-    };
-})(
-    (props) => React.cloneElement(props.children, {
-        scrollLeft: props.scrollLeft
-    })
-);
 
 export default TableTemplate;
