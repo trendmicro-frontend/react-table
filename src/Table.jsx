@@ -2,8 +2,6 @@ import classNames from 'classnames';
 import React, { PureComponent } from 'react';
 import isEqual from 'lodash/isEqual';
 import PropTypes from 'prop-types';
-import elementResizeDetectorMaker from 'element-resize-detector';
-import debounce from 'lodash.debounce';
 import Context from './context';
 import helper from './helper';
 import uniqueid from './uniqueid';
@@ -15,7 +13,6 @@ const getUniqueId = uniqueid('table:');
 class Table extends PureComponent {
     static propTypes = {
         bordered: PropTypes.bool,
-        justified: PropTypes.bool,
         columns: PropTypes.array,
         data: PropTypes.array,
         emptyText: PropTypes.func,
@@ -23,26 +20,27 @@ class Table extends PureComponent {
         expandedRowRender: PropTypes.func,
         footer: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
         hoverable: PropTypes.bool,
+        justified: PropTypes.bool,
         loading: PropTypes.bool,
         loaderRender: PropTypes.func,
         maxHeight: PropTypes.number,
         onRowClick: PropTypes.func,
+        rowClassName: PropTypes.func,
+        rowKey: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
         showHeader: PropTypes.bool,
         title: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
         useFixedHeader: PropTypes.bool,
-        rowClassName: PropTypes.func,
-        rowKey: PropTypes.oneOfType([PropTypes.string, PropTypes.func])
     };
 
     static defaultProps = {
         bordered: true,
-        justified: true,
         columns: [],
         data: [],
         hoverable: true,
+        justified: true,
         loading: false,
         maxHeight: 0,
-        useFixedHeader: false
+        useFixedHeader: false,
     };
 
     static getDerivedStateFromProps(props, state) {
@@ -68,8 +66,6 @@ class Table extends PureComponent {
 
     constructor(props) {
         super(props);
-        this.resizer = elementResizeDetectorMaker();
-        this.containerWidth = 0;
         this.tableWrapper = null;
         this.mainTable = null;
         this.setCurrentHoverKey = (currentHoverKey) => {
@@ -506,19 +502,10 @@ class Table extends PureComponent {
 
     componentDidMount() {
         const { setTableSize } = this.actions;
-        this.onResizeDebounce = debounce((element) => {
-            const newWidth = element.offsetWidth;
-            if (this.containerWidth !== newWidth) {
-                this.containerWidth = newWidth;
-                setTableSize();
-            }
-        }, 100);
-        this.resizer.listenTo(this.tableWrapper, this.onResizeDebounce);
         setTableSize();
     }
 
     componentWillUnmount() {
-        this.resizer.removeListener(this.tableWrapper, this.onResizeDebounce);
         this.tableWrapper = null;
         this.mainTable = null;
     }
