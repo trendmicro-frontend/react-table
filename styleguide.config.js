@@ -2,6 +2,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
 const pkg = require('./package.json');
+const babelConfig = require('./babel.config');
 
 const webpackConfig = {
     mode: 'development',
@@ -22,7 +23,10 @@ const webpackConfig = {
             {
                 test: /\.jsx?$/,
                 loader: 'babel-loader',
-                exclude: /node_modules/
+                // XXX: due to untranspiled code in styleguide's node_modules, it needs to include them
+                // https://github.com/styleguidist/react-styleguidist/blob/f14e8e7f403aa32045b9f61e4e4f1a7776146d8b/examples/ie11/styleguide.config.js#L4
+                exclude: /node_modules\/(?!(ansi-styles|strip-ansi|ansi-regex|react-dev-utils|chalk|regexpu-core|unicode-match-property-ecmascript|unicode-match-property-value-ecmascript|acorn-jsx)\/).*/,
+                options: babelConfig
             },
             {
                 test: /\.styl$/,
@@ -86,25 +90,64 @@ module.exports = {
     title: `React Table v${pkg.version}`,
     sections: [
         {
-            name: 'Table',
-            content: path.resolve(__dirname, 'styleguide/examples/README.md'),
-            sections: [
-                {
-                    name: 'Table',
-                    content: path.resolve(__dirname, 'styleguide/examples/Table.md')
-                }
-            ]
+            name: 'Default',
+            content: path.resolve(__dirname, 'styleguide/examples/Default.md')
         },
         {
-            name: 'Components',
-            components: [
-                'Table',
-            ].map(c => path.resolve(__dirname, `src/${c}.jsx`))
-        }
+            name: 'Bordered',
+            content: path.resolve(__dirname, 'styleguide/examples/Bordered.md'),
+        },
+        {
+            name: 'Dynamic Header',
+            content: path.resolve(__dirname, 'styleguide/examples/DynamicHeader.md')
+        },
+        {
+            name: 'Expand',
+            content: path.resolve(__dirname, 'styleguide/examples/Expand.md'),
+        },
+        {
+            name: 'Fixed Header',
+            content: path.resolve(__dirname, 'styleguide/examples/FixedHeader.md'),
+        },
+        {
+            name: 'Hoverable',
+            content: path.resolve(__dirname, 'styleguide/examples/Hoverable.md'),
+        },
+        {
+            name: 'Loader - Default',
+            content: path.resolve(__dirname, 'styleguide/examples/LoaderDefault.md'),
+        },
+        {
+            name: 'Loader - Custom',
+            content: path.resolve(__dirname, 'styleguide/examples/LoaderCustom.md'),
+        },
+        {
+            name: 'No Header',
+            content: path.resolve(__dirname, 'styleguide/examples/NoHeader.md'),
+        },
+        {
+            name: 'No Data - Default',
+            content: path.resolve(__dirname, 'styleguide/examples/NoDataDefault.md'),
+        },
+        {
+            name: 'No Data - Custom',
+            content: path.resolve(__dirname, 'styleguide/examples/NoDataCustom.md'),
+        },
+        {
+            name: 'Pagination',
+            content: path.resolve(__dirname, 'styleguide/examples/Pagination.md'),
+        },
+        {
+            name: 'Selection',
+            content: path.resolve(__dirname, 'styleguide/examples/Selection.md'),
+        },
+        {
+            name: 'Sortable',
+            content: path.resolve(__dirname, 'styleguide/examples/Sortable.md'),
+        },
     ],
     require: [
-        'core-js/stable',
-        'regenerator-runtime/runtime',
+        '@babel/polyfill',
         path.resolve(__dirname, 'styleguide/setup.js'),
         path.resolve(__dirname, 'styleguide/styles.css')
     ],
@@ -113,7 +156,7 @@ module.exports = {
         text: 'Fork me on GitHub'
     },
     serverPort: 8080,
-    exampleMode: 'expand',
+    exampleMode: 'collapse',
     usageMode: 'expand',
     showSidebar: true,
     styleguideComponents: {

@@ -2,3 +2,30 @@ html {
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
     font-size: 13px;
 }
+
+/* Selection */
+.tr-active > [class*="td"] {
+    background-color: #fcf8da;
+}
+
+/* Expaned */
+.expand-icon {
+    cursor: pointer;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    text-align: center;
+    line-height: 16px;
+    border: 1px solid #e9e9e9;
+    -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+    background: #fff;
+}
+.row-expanded:after {
+    content: '-';
+}
+.row-collapsed:after {
+    content: '+';
+}

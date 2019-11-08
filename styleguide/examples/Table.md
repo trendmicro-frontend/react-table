@@ -1,5 +1,0 @@
-### Table
-
-```jsx
-<Table data={[]} />
-```
