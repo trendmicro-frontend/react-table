@@ -1,16 +1,23 @@
-import cx from 'classnames';
+import PropTypes from 'prop-types';
 import React from 'react';
 import styles from './index.styl';
 
-const TableCell = ({ className, children, ...props }) => (
-    <div
-        {...props}
-        className={cx(className, styles.td)}
-    >
-        <div className={styles.tdContent}>
-            {children}
+const TableCell = ({
+    children,
+    width,
+}) => {
+    return (
+        <div
+            className={styles.td}
+            style={{ width: width }}
+        >
+            { children }
         </div>
-    </div>
-);
+    );
+};
+
+TableCell.propTypes = {
+    width: PropTypes.number.isRequired,
+};
 
 export default TableCell;

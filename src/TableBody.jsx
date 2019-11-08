@@ -1,10 +1,10 @@
-import React, { PureComponent } from 'react';
+
 import PropTypes from 'prop-types';
-import Context from './context';
+import React, { Component } from 'react';
 import styles from './index.styl';
 import TableRow from './TableRow';
 
-class TableBody extends PureComponent {
+class TableBody extends Component {
     static propTypes = {
         columns: PropTypes.array,
         expandedRowKeys: PropTypes.array,
@@ -16,10 +16,9 @@ class TableBody extends PureComponent {
         rowClassName: PropTypes.func,
         rowKey: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
         scrollLeft: PropTypes.number,
-        scrollTop: PropTypes.number,
+        selectedRowKeys: PropTypes.array,
         setScrollLeft: PropTypes.func,
-        setScrollTop: PropTypes.func,
-        tableRole: PropTypes.string, // present fixed left table or normal table
+        width: PropTypes.number,
     };
 
     static defaultProps = {
@@ -27,34 +26,13 @@ class TableBody extends PureComponent {
             return 'No Data';
         },
         records: [],
+        rowClassName: () => {},
         rowKey: 'key',
-        rowClassName: () => {}
     };
 
-    componentDidUpdate(prevProps, prevState) {
-        if (this.props.scrollTop !== prevProps.scrollTop) {
-            const { scrollTop } = this.props;
-            if (this.body.scrollTop !== scrollTop) {
-                this.body.scrollTop = scrollTop;
-            }
-        }
-    }
-
-    onScroll = (e) => {
-        e.stopPropagation();
-        const {
-            scrollLeft,
-            setScrollLeft,
-            setScrollTop,
-            tableRole
-        } = this.props;
-        setScrollTop(e.target.scrollTop);
-        setScrollLeft(tableRole === 'leftTable' ? scrollLeft : e.target.scrollLeft);
-    };
-
-    getRowKey (record, index) {
+    getRowKey = (record, index) => {
         const rowKey = this.props.rowKey;
-        let key = (typeof rowKey === 'function' ? rowKey(record, index) : record[rowKey]);
+        const key = (typeof rowKey === 'function' ? rowKey(record, index) : record[rowKey]);
         return key === undefined ? `table_row_${index}` : key;
     }
 
@@ -66,60 +44,52 @@ class TableBody extends PureComponent {
             emptyText,
             loading,
             onRowClick,
+            selectedRowKeys,
             records,
-            rowClassName
+            rowClassName,
+            width,
         } = this.props;
         const noData = (!records || records.length === 0);
         return (
-            <Context.Consumer>
-                {({
-                    currentHoverKey,
-                    setCurrentHoverKey,
-                }) => (
-                    <div
-                        className={styles.tbody}
-                        ref={node => {
-                            this.body = node;
-                        }}
-                        onScroll={this.onScroll}
-                    >
-                        {
-                            records.map((row, index) => {
-                                const key = this.getRowKey(row, index);
-                                const className = rowClassName(row, key);
-                                const hovered = currentHoverKey === key;
-                                const isExpanded = expandedRowRender && expandedRowKeys.indexOf(key) >= 0;
-                                return (
-                                    <TableRow
-                                        className={className}
-                                        columns={columns}
-                                        expandedRowKeys={expandedRowKeys}
-                                        expandedRowRender={expandedRowRender}
-                                        hovered={hovered}
-                                        isExpanded={isExpanded}
-                                        key={key}
-                                        onRowClick={onRowClick}
-                                        record={row}
-                                        rowKey={key}
-                                        rowIndex={index}
-                                        setCurrentHoverKey={setCurrentHoverKey}
-                                    />
-                                );
-                            })
-                        }
-                        {
-                            noData && !loading &&
-                            <div className={styles.tablePlaceholder}>
-                                { emptyText() }
-                            </div>
-                        }
-                        {
-                            noData && loading &&
-                            <div className={styles.tableNoDataLoader} />
-                        }
-                    </div>
-                )}
-            </Context.Consumer>
+            <div
+                className={styles.tbody}
+                style={{ width: width }}
+            >
+                {
+                    records.map((row, index) => {
+                        const key = this.getRowKey(row, index);
+                        const className = rowClassName(row, key);
+                        const isExpanded = expandedRowRender && expandedRowKeys.indexOf(key) >= 0;
+                        const isSelected = selectedRowKeys.indexOf(key) >= 0;
+                        return (
+                            <TableRow
+                                key={key}
+                                className={className}
+                                columns={columns}
+                                expandedRowRender={expandedRowRender}
+                                isExpanded={isExpanded}
+                                isSelected={isSelected}
+                                onRowClick={onRowClick}
+                                record={row}
+                                rowKey={key}
+                                rowIndex={index}
+                            />
+                        );
+                    })
+                }
+                {
+                    noData && !loading && (
+                        <div className={styles.tablePlaceholder}>
+                            { emptyText() }
+                        </div>
+                    )
+                }
+                {
+                    noData && loading && (
+                        <div className={styles.tableNoDataLoader} />
+                    )
+                }
+            </div>
         );
     }
 }

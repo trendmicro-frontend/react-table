@@ -1,144 +1,89 @@
 import cx from 'classnames';
-import ensureArray from 'ensure-array';
 import get from 'lodash/get';
 import isEqual from 'lodash/isEqual';
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import React, { Component, Fragment } from 'react';
 import styles from './index.styl';
 import TableCell from './TableCell';
 
 class TableRow extends Component {
     static propTypes = {
-        className: PropTypes.string,
         columns: PropTypes.array,
-        expandedRowKeys: PropTypes.array,
         expandedRowRender: PropTypes.func,
-        hovered: PropTypes.bool,
+        hoverable: PropTypes.bool,
         isExpanded: PropTypes.bool,
+        isSelected: PropTypes.bool,
         onRowClick: PropTypes.func,
         record: PropTypes.object,
-        rowKey: PropTypes.any,
         rowIndex: PropTypes.number,
-        setCurrentHoverKey: PropTypes.func,
+        rowKey: PropTypes.any,
     };
 
     static defaultProps = {
-        expandedRowKeys: [],
         expandedRowRender: () => {},
         onRowClick: () => {},
         record: {},
-        setCurrentHoverKey: () => {},
     };
+
+    shouldComponentUpdate(nextProps, nextState) {
+        const recordEqual = isEqual(nextProps.record, this.props.record);
+        return (
+            this.props.isExpanded !== nextProps.isExpanded ||
+            this.props.isSelected !== nextProps.isSelected ||
+            this.props.className !== nextProps.className ||
+            !recordEqual
+        );
+    }
 
     handleRowClick = (event) => {
         const { onRowClick, record, rowIndex } = this.props;
         onRowClick(record, rowIndex, event);
     };
 
-    handleRowMouseEnter = (event) => {
-        const { rowKey, setCurrentHoverKey, hovered } = this.props;
-        if (!hovered) {
-            setCurrentHoverKey(rowKey);
-        }
-    };
-
-    handleRowMouseLeave = (event) => {
-        const { setCurrentHoverKey, hovered } = this.props;
-        if (hovered) {
-            setCurrentHoverKey(null);
-        }
-    };
-
-    isRowExpanded = (record, rowKey) => {
-        const expandedRows = ensureArray(this.props.expandedRowKeys)
-            .filter(expandedRowKey => (expandedRowKey === rowKey));
-        return expandedRows.length > 0;
-    };
-
-    shouldComponentUpdate(nextProps, nextState) {
-        const columnEqual = isEqual(
-            nextProps.columns.map(it => ({ key: it.key, sortOrder: it.sortOrder })),
-            this.props.columns.map(it => ({ key: it.key, sortOrder: it.sortOrder }))
-        );
-        const recordEqual = isEqual(nextProps.record, this.props.record);
-        return (
-            this.props.className !== nextProps.className
-            ||
-            this.props.hovered !== nextProps.hovered
-            ||
-            !columnEqual
-            ||
-            !recordEqual
-            ||
-            this.props.isExpanded !== nextProps.isExpanded
-        );
-    }
-
-    componentDidMount() {
-        this.row.addEventListener('mouseenter', this.handleRowMouseEnter);
-        this.row.addEventListener('mouseleave', this.handleRowMouseLeave);
-    }
-
-    componentWillUnmount() {
-        this.row.removeEventListener('mouseenter', this.handleRowMouseEnter);
-        this.row.removeEventListener('mouseleave', this.handleRowMouseLeave);
-    }
-
     render() {
         const {
             columns,
-            hovered,
             expandedRowRender,
             rowKey,
             rowIndex,
             record,
             className,
-            isExpanded
+            isExpanded,
         } = this.props;
 
         return (
-            <div
-                className={cx(
-                    styles.tr,
-                    className,
-                    { [styles['tr-hover']]: hovered }
-                )}
-                ref={node => {
-                    this.row = node;
-                }}
-                role="presentation"
-                onClick={this.handleRowClick}
-            >
-                {columns.map((column, index) => {
-                    const key = `${rowKey}_${index}`;
-                    // dataKey is an alias for dataIndex
-                    const dataKey = (typeof column.dataKey !== 'undefined')
-                        ? column.dataKey
-                        : column.dataIndex;
-                    let cellValue = get(record, dataKey);
-                    if (typeof column.render === 'function') {
-                        cellValue = column.render(cellValue, record, rowIndex);
-                    }
+            <Fragment>
+                <div
+                    className={cx(
+                        styles.tr,
+                        className,
+                    )}
+                    role="presentation"
+                    onClick={this.handleRowClick}
+                >
+                    {
+                        columns.map((column, index) => {
+                            const key = `${rowKey}_${index}`;
+                            const cellValue = get(record, column.dataKey);
+                            const cell = (typeof column.render === 'function' ? column.render(cellValue, record, rowIndex) : cellValue);
 
-                    return (
-                        <TableCell
-                            key={key}
-                            className={cx(column.className, column.cellClassName)}
-                            style={{
-                                ...column.style,
-                                ...column.cellStyle
-                            }}
-                        >
-                            {cellValue}
-                        </TableCell>
-                    );
-                })}
-                {isExpanded && expandedRowRender &&
-                <div className={styles['tr-expand']}>
-                    {expandedRowRender(record, rowIndex)}
+                            return (
+                                <TableCell
+                                    key={key}
+                                    width={column.width}
+                                >
+                                    { cell }
+                                </TableCell>
+                            );
+                        })
+                    }
                 </div>
-                }
-            </div>
+                { isExpanded && (
+                    <div className={styles['tr-expand']}>
+                        { expandedRowRender(record, rowIndex) }
+                    </div>
+                )}
+            </Fragment>
         );
     }
 }

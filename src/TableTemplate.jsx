@@ -1,51 +1,55 @@
-import classNames from 'classnames';
-import React, { PureComponent } from 'react';
+import 'react-perfect-scrollbar/dist/css/styles.css';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import PerfectScrollbar from 'react-perfect-scrollbar';
 import Context from './context';
 import styles from './index.styl';
 import TableHeader from './TableHeader';
 import TableBody from './TableBody';
 
-class TableTemplate extends PureComponent {
+class TableTemplate extends Component {
     static propTypes = {
         columns: PropTypes.array,
         data: PropTypes.array,
         emptyText: PropTypes.func,
         expandedRowKeys: PropTypes.array,
         expandedRowRender: PropTypes.func,
+        height: PropTypes.number,
+        hideHeader: PropTypes.bool,
         loading: PropTypes.bool,
         onRowClick: PropTypes.func,
         rowClassName: PropTypes.func,
         rowKey: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
-        showHeader: PropTypes.bool,
-        tableRole: PropTypes.string, // present fixed left table or normal table
+        selectedRowKeys: PropTypes.array,
         useFixedHeader: PropTypes.bool,
+        width: PropTypes.number,
     };
 
-    static defaultProps = {
-        showHeader: true
+    onScrollX = (setScrollLeft) => (container) => {
+        setScrollLeft(container.scrollLeft);
     };
 
-    renderHeader() {
-        const { columns } = this.props;
+    renderHeader = () => {
+        const {
+            columns,
+            width: tableWidth
+        } = this.props;
         return (
             <Context.Consumer>
-                {({ scrollLeft }) => (
+                {({
+                    scrollLeft,
+                }) => (
                     <TableHeader
                         columns={columns}
                         scrollLeft={scrollLeft}
-                        ref={node => {
-                            if (node) {
-                                this.tableHeader = node;
-                            }
-                        }}
+                        width={tableWidth}
                     />
                 )}
             </Context.Consumer>
         );
-    }
+    };
 
-    renderBody() {
+    renderBody = () => {
         const {
             columns,
             data,
@@ -56,64 +60,76 @@ class TableTemplate extends PureComponent {
             onRowClick,
             rowClassName,
             rowKey,
-            tableRole
+            selectedRowKeys,
+            width: tableWidth,
         } = this.props;
 
         return (
             <Context.Consumer>
                 {({
                     scrollLeft,
-                    scrollTop,
-                    setScrollLeft,
-                    setScrollTop,
                 }) => (
                     <TableBody
                         columns={columns}
+                        emptyText={emptyText}
                         expandedRowKeys={expandedRowKeys}
                         expandedRowRender={expandedRowRender}
-                        emptyText={emptyText}
                         loading={loading}
                         onRowClick={onRowClick}
                         records={data}
-                        ref={node => {
-                            if (node) {
-                                this.tableBody = node;
-                            }
-                        }}
                         rowClassName={rowClassName}
                         rowKey={rowKey}
                         scrollLeft={scrollLeft}
-                        scrollTop={scrollTop}
-                        setScrollLeft={setScrollLeft}
-                        setScrollTop={setScrollTop}
-                        tableRole={tableRole}
+                        selectedRowKeys={selectedRowKeys}
+                        width={tableWidth}
                     />
                 )}
             </Context.Consumer>
         );
-    }
+    };
 
     render() {
         const {
-            className,
-            showHeader
+            hideHeader,
+            height,
+            useFixedHeader,
         } = this.props;
+        const tableHeight = !!height ? height : 'auto';
+
+        if (!useFixedHeader) {
+            return (
+                <div
+                    className={styles.table}
+                    style={{
+                        height: tableHeight
+                    }}
+                >
+                    <PerfectScrollbar>
+                        { !hideHeader && this.renderHeader() }
+                        { this.renderBody() }
+                    </PerfectScrollbar>
+                </div>
+            );
+        }
 
         return (
-            <div
-                ref={node => {
-                    if (node) {
-                        this.table = node;
-                    }
-                }}
-                className={classNames(
-                    className,
-                    styles.table
+            <Context.Consumer>
+                {({
+                    setScrollLeft,
+                }) => (
+                    <div
+                        className={styles.table}
+                        style={{
+                            height: tableHeight
+                        }}
+                    >
+                        { !hideHeader && this.renderHeader() }
+                        <PerfectScrollbar onScrollX={this.onScrollX(setScrollLeft)}>
+                            { this.renderBody() }
+                        </PerfectScrollbar>
+                    </div>
                 )}
-            >
-                { showHeader && this.renderHeader() }
-                { this.renderBody() }
-            </div>
+            </Context.Consumer>
         );
     }
 }
