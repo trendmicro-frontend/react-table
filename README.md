@@ -55,7 +55,7 @@ expandedRowKeys     | String[]                          |         | Current expa
 expandedRowRender   | Function(record, rowIndex)        |         | Expanded content render function.
 height              | Number                            |         | The height of the table.
 hideHeader          | Boolean                           | false   | Whether table head is hiden.
-hoverable           | Boolean                           | true    | Whether use row hover style.
+hoverable           | Boolean                           | false    | Whether use row hover style.
 loading             | Boolean                           | false   | Whether table is loading.
 onRowClick          | Function(record, rowIndex, event) |         | Handle rowClick action.
 rowClassName        | Function(record, key):string      |         | Get row's className.
