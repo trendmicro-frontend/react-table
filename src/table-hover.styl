@@ -1,9 +1,11 @@
 // Placed here since it has to come after the potential zebra striping
 .table-hover {
-    .table {
+    &.table {
         .tbody {
             .tr:hover {
-                background-color: $table-bg-hover;
+                .td {
+                    background-color: $table-bg-hover;
+                }
             }
         }
     }

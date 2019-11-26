@@ -1,15 +1,24 @@
+import cx from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 import styles from './index.styl';
 
 const TableCell = ({
     children,
+    className,
+    style,
     width,
 }) => {
     return (
         <div
-            className={styles.td}
-            style={{ width: width }}
+            className={cx(
+                styles.td,
+                className,
+            )}
+            style={{
+                width: width,
+                ...style
+            }}
         >
             { children }
         </div>

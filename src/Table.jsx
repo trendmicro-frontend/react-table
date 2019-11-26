@@ -2,27 +2,21 @@ import cx from 'classnames';
 import React, { Component } from 'react';
 import isEqual from 'lodash/isEqual';
 import PropTypes from 'prop-types';
-import Context from './context';
 import styles from './index.styl';
 import TableTemplate from './TableTemplate';
+import TableWrapper from './TableWrapper';
 
 class Table extends Component {
     static propTypes = {
         bordered: PropTypes.bool,
         columns: PropTypes.array,
         data: PropTypes.array,
-        emptyText: PropTypes.func,
-        expandedRowKeys: PropTypes.array,
-        expandedRowRender: PropTypes.func,
+        emptyRender: PropTypes.func,
         height: PropTypes.number,
         hideHeader: PropTypes.bool,
         hoverable: PropTypes.bool,
         loading: PropTypes.bool,
         loaderRender: PropTypes.func,
-        onRowClick: PropTypes.func,
-        rowClassName: PropTypes.func,
-        rowKey: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
-        selectedRowKeys: PropTypes.array,
         useFixedHeader: PropTypes.bool,
         width: PropTypes.number.isRequired,
     };
@@ -30,26 +24,18 @@ class Table extends Component {
     static defaultProps = {
         columns: [],
         data: [],
-        expandedRowKeys: [],
         height: 0,
-        selectedRowKeys: [],
+        emptyRender: () => {
+            return 'No Data';
+        },
     };
 
     constructor(props) {
         super(props);
-        this.setScrollLeft = (scrollLeft) => {
-            this.setState({
-                scrollLeft: scrollLeft
-            });
-        };
 
-        // State also contains the updater function so it will
-        // be passed down into the context provider
         this.state = {
-            scrollLeft: 0,
             prevColumns: [],
             thisColumns: [],
-            setScrollLeft: this.setScrollLeft,
         };
     }
 
@@ -97,50 +83,11 @@ class Table extends Component {
         return null;
     }
 
-    renderTable = () => {
-        const columns = this.state.thisColumns;
-        const {
-            data,
-            emptyText,
-            expandedRowKeys,
-            expandedRowRender,
-            height,
-            hideHeader,
-            loading,
-            onRowClick,
-            rowClassName,
-            rowKey,
-            selectedRowKeys,
-            useFixedHeader,
-            width,
-        } = this.props;
-
-        return (
-            <TableTemplate
-                columns={columns}
-                data={data}
-                emptyText={emptyText}
-                expandedRowKeys={expandedRowKeys}
-                expandedRowRender={expandedRowRender}
-                height={height}
-                hideHeader={hideHeader}
-                loading={loading}
-                onRowClick={onRowClick}
-                rowClassName={rowClassName}
-                rowKey={rowKey}
-                selectedRowKeys={selectedRowKeys}
-                useFixedHeader={useFixedHeader}
-                width={width}
-            />
-        );
-    };
-
     renderLoader = () => {
-        const { loaderRender, hideHeader } = this.props;
-        const loaderOverlayClassName = hideHeader ? cx(styles.loaderOverlay, styles.noHeader) : styles.loaderOverlay;
+        const { loaderRender } = this.props;
         const defaultLoader = () => {
             return (
-                <div className={loaderOverlayClassName}>
+                <div className={styles.loaderOverlay}>
                     <span className={cx(styles.loader, styles.loaderLarge)} />
                 </div>
             );
@@ -149,45 +96,69 @@ class Table extends Component {
         return loader();
     };
 
+    renderEmptyBody = () => {
+        const { emptyRender } = this.props;
+        return (
+            <div className={styles.tablePlaceholder}>
+                { emptyRender() }
+            </div>
+        );
+    };
+
     render() {
         const {
+            thisColumns,
+        } = this.state;
+        const {
             bordered,
+            children,
             data,
+            height,
+            hideHeader,
             hoverable,
             loading,
-            ...props
+            style,
+            useFixedHeader,
+            width,
         } = this.props;
+        const loader = this.renderLoader();
+        const emptyBody = this.renderEmptyBody();
 
-        delete props.columns;
-        delete props.emptyText;
-        delete props.expandedRowRender;
-        delete props.expandedRowKeys;
-        delete props.height;
-        delete props.hideHeader;
-        delete props.loaderRender;
-        delete props.onRowClick;
-        delete props.rowClassName;
-        delete props.rowKey;
-        delete props.selectedRowKeys;
-        delete props.useFixedHeader;
-        delete props.width;
+        if (typeof children === 'function') {
+            return (
+                <TableWrapper
+                    bordered={bordered}
+                    height={height}
+                    hoverable={hoverable}
+                    isNoData={!data || data.length === 0}
+                    style={style}
+                    width={width}
+                >
+                    {
+                        children({
+                            cells: thisColumns,
+                            loader: loader,
+                            emptyBody: emptyBody
+                        })
+                    }
+                </TableWrapper>
+            );
+        }
 
         return (
-            <Context.Provider value={this.state}>
-                <div
-                    {...props}
-                    className={cx(
-                        styles.tableWrapper,
-                        { [styles.tableMinimalism]: !bordered },
-                        { [styles.tableBordered]: bordered },
-                        { [styles.tableNoData]: !data || data.length === 0 },
-                        { [styles.tableHover]: hoverable }
-                    )}
-                >
-                    { this.renderTable() }
-                    { loading && this.renderLoader() }
-                </div>
-            </Context.Provider>
+            <TableTemplate
+                bordered={bordered}
+                columns={thisColumns}
+                data={data}
+                emptyBody={emptyBody}
+                height={height}
+                hideHeader={hideHeader}
+                hoverable={hoverable}
+                loading={loading}
+                loader={loader}
+                useFixedHeader={useFixedHeader}
+                width={width}
+            />
         );
     }
 }

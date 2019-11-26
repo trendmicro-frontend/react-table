@@ -1,135 +1,177 @@
-import 'react-perfect-scrollbar/dist/css/styles.css';
+import _get from 'lodash/get';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import PerfectScrollbar from 'react-perfect-scrollbar';
-import Context from './context';
-import styles from './index.styl';
+import { Scrollbars } from 'react-custom-scrollbars';
+import TableWrapper from './TableWrapper';
 import TableHeader from './TableHeader';
 import TableBody from './TableBody';
+import TableRow from './TableRow';
+import TableCell from './TableCell';
 
 class TableTemplate extends Component {
     static propTypes = {
+        bordered: PropTypes.bool,
         columns: PropTypes.array,
         data: PropTypes.array,
-        emptyText: PropTypes.func,
-        expandedRowKeys: PropTypes.array,
-        expandedRowRender: PropTypes.func,
+        emptyBody: PropTypes.element,
         height: PropTypes.number,
         hideHeader: PropTypes.bool,
+        hoverable: PropTypes.bool,
         loading: PropTypes.bool,
-        onRowClick: PropTypes.func,
-        rowClassName: PropTypes.func,
-        rowKey: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
-        selectedRowKeys: PropTypes.array,
+        loader: PropTypes.element,
         useFixedHeader: PropTypes.bool,
-        width: PropTypes.number,
+        width: PropTypes.number.isRequired,
     };
 
-    onScrollX = (setScrollLeft) => (container) => {
-        setScrollLeft(container.scrollLeft);
+    static defaultProps = {
+        data: [],
     };
 
-    renderHeader = () => {
+    constructor(props) {
+        super(props);
+        this.setScrollLeft = (scrollLeft) => {
+            this.setState({
+                scrollLeft: scrollLeft
+            });
+        };
+
+        this.state = {
+            scrollLeft: 0,
+        };
+    }
+
+    onScroll = (e) => {
+        this.setScrollLeft(e.target.scrollLeft);
+    };
+
+    renderHeader = (cells) => {
+        const columns = cells;
         const {
-            columns,
-            width: tableWidth
-        } = this.props;
+            scrollLeft
+        } = this.state;
         return (
-            <Context.Consumer>
-                {({
-                    scrollLeft,
-                }) => (
-                    <TableHeader
-                        columns={columns}
-                        scrollLeft={scrollLeft}
-                        width={tableWidth}
-                    />
-                )}
-            </Context.Consumer>
+            <TableHeader scrollLeft={scrollLeft}>
+                <TableRow>
+                    {
+                        columns.map((column, index) => {
+                            const key = `table_header_cell_${index}`;
+                            const {
+                                title,
+                                width: cellWidth,
+                            } = column;
+                            return (
+                                <TableCell
+                                    key={key}
+                                    width={cellWidth}
+                                >
+                                    { typeof title === 'function' ? title(column) : title }
+                                </TableCell>
+                            );
+                        })
+                    }
+                </TableRow>
+            </TableHeader>
         );
     };
 
-    renderBody = () => {
+    renderBody = (cells) => {
+        const columns = cells;
         const {
-            columns,
             data,
-            emptyText,
-            expandedRowKeys,
-            expandedRowRender,
+            emptyBody,
             loading,
-            onRowClick,
-            rowClassName,
-            rowKey,
-            selectedRowKeys,
-            width: tableWidth,
         } = this.props;
+        const showEmpty = (data.length === 0) && !loading;
 
         return (
-            <Context.Consumer>
-                {({
-                    scrollLeft,
-                }) => (
-                    <TableBody
-                        columns={columns}
-                        emptyText={emptyText}
-                        expandedRowKeys={expandedRowKeys}
-                        expandedRowRender={expandedRowRender}
-                        loading={loading}
-                        onRowClick={onRowClick}
-                        records={data}
-                        rowClassName={rowClassName}
-                        rowKey={rowKey}
-                        scrollLeft={scrollLeft}
-                        selectedRowKeys={selectedRowKeys}
-                        width={tableWidth}
-                    />
-                )}
-            </Context.Consumer>
+            <TableBody>
+                { showEmpty && emptyBody }
+                {
+                    data.map((row, index) => {
+                        const rowKey = `table_row${index}`;
+                        return (
+                            <TableRow key={rowKey}>
+                                {
+                                    columns.map((column, index) => {
+                                        const key = `${rowKey}_cell${index}`;
+                                        const cellValue = _get(row, column.dataKey);
+                                        const cell = (typeof column.render === 'function' ? column.render(cellValue, row, index) : cellValue);
+                                        return (
+                                            <TableCell
+                                                key={key}
+                                                width={column.width}
+                                            >
+                                                { cell }
+                                            </TableCell>
+                                        );
+                                    })
+                                }
+                            </TableRow>
+                        );
+                    })
+                }
+            </TableBody>
         );
     };
 
     render() {
         const {
-            hideHeader,
+            data,
+            bordered,
             height,
+            hideHeader,
+            hoverable,
+            loading,
+            loader,
             useFixedHeader,
+            width,
+            columns,
         } = this.props;
-        const tableHeight = !!height ? height : 'auto';
+        const isNoData = (data.length === 0) && !loading;
 
         if (!useFixedHeader) {
             return (
-                <div
-                    className={styles.table}
-                    style={{
-                        height: tableHeight
-                    }}
+                <TableWrapper
+                    bordered={bordered}
+                    height={height}
+                    hoverable={hoverable}
+                    isNoData={isNoData}
+                    width={width}
                 >
-                    <PerfectScrollbar>
-                        { !hideHeader && this.renderHeader() }
-                        { this.renderBody() }
-                    </PerfectScrollbar>
-                </div>
+                    <Scrollbars
+                        autoHeight={!height}
+                        autoHeightMax="100%"
+                    >
+                        { !hideHeader && this.renderHeader(columns) }
+                        <div style={{ flex: '1 1 auto', position: 'relative' }}>
+                            { this.renderBody(columns) }
+                            { loading && loader }
+                        </div>
+                    </Scrollbars>
+                </TableWrapper>
             );
         }
 
         return (
-            <Context.Consumer>
-                {({
-                    setScrollLeft,
-                }) => (
-                    <div
-                        className={styles.table}
-                        style={{
-                            height: tableHeight
-                        }}
+            <TableWrapper
+                bordered={bordered}
+                height={height}
+                hoverable={hoverable}
+                isNoData={isNoData}
+                width={width}
+            >
+                <React.Fragment>
+                    { !hideHeader && this.renderHeader(columns) }
+                    <Scrollbars
+                        autoHeight={!height}
+                        autoHeightMax="100%"
+                        onScroll={this.onScroll}
                     >
-                        { !hideHeader && this.renderHeader() }
-                        <PerfectScrollbar onScrollX={this.onScrollX(setScrollLeft)}>
-                            { this.renderBody() }
-                        </PerfectScrollbar>
-                    </div>
-                )}
-            </Context.Consumer>
+                        { this.renderBody(columns) }
+                        { loading && loader }
+                    </Scrollbars>
+                </React.Fragment>
+            </TableWrapper>
         );
     }
 }

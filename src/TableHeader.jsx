@@ -1,62 +1,39 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import React, { Component, createRef } from 'react';
 import styles from './index.styl';
 
 class TableHeader extends Component {
     static propTypes = {
-        columns: PropTypes.array,
         scrollLeft: PropTypes.number,
         width: PropTypes.number,
     };
 
+    constructor(props) {
+        super(props);
+
+        this.headerRef = createRef();
+    }
+
     componentDidUpdate(prevProps, prevState) {
         const { scrollLeft } = this.props;
         if (scrollLeft !== prevProps.scrollLeft) {
-            this.header.scrollLeft = scrollLeft;
+            this.headerRef.current.scrollLeft = scrollLeft;
         }
     }
 
     render() {
         const {
-            columns,
-            width: tableWidth,
+            children,
+            style,
         } = this.props;
 
         return (
             <div
                 className={styles.thead}
-                ref={node => {
-                    this.header = node;
-                }}
-                style={{
-                    width: tableWidth,
-                }}
+                ref={this.headerRef}
+                style={style}
             >
-                <div className={styles.tr}>
-                    {
-                        columns.map((column, index) => {
-                            const key = `table_header_cell_${index}`;
-                            const {
-                                onClick,
-                                title,
-                                width: cellWidth,
-                            } = column;
-                            return (
-                                <div
-                                    key={key}
-                                    className={styles.th}
-                                    onClick={onClick}
-                                    role="presentation"
-                                    style={{
-                                        width: cellWidth,
-                                    }}
-                                >
-                                    { typeof title === 'function' ? title(column) : title }
-                                </div>
-                            );
-                        })
-                    }
-                </div>
+                { children }
             </div>
         );
     }
