@@ -37,6 +37,8 @@ const data = [
 ];
 
 const toggleSortOrder = (column) => (event) => {
+    event.stopPropagation();
+    event.preventDefault();
     const sortColumnKey = column.sortKey;
     const sortOrder = (state.sortOrder === 'desc') ? 'asc' : 'desc';
     setState({ sortColumnKey, sortOrder });
@@ -45,14 +47,18 @@ const toggleSortOrder = (column) => (event) => {
 const renderSortableTableHeader = (column) => {
     const { sortColumnKey, sortOrder } = state;
     const isSortingKey = (column.sortKey === sortColumnKey);
+    const nextSortOrder = sortOrder === 'desc' ? '↑' : '↓';
     return (
-        <div style={{ display: 'flex' }}>
+        <div
+            style={{ display: 'flex' }}
+            onClick={toggleSortOrder(column)}
+        >
             <div style={{ flex: 'auto' }}>
                 { column.titleText }
             </div>
             {
                 isSortingKey &&
-                <div>{ sortOrder === 'desc' ? '↑' : '↓' }</div>
+                <div>{ nextSortOrder }</div>
             }
         </div>
     );
@@ -62,18 +68,17 @@ const sortableColumns = columns.map((column, index) => {
     if (column.sortable) {
         return {
             ...column,
-            onClick: toggleSortOrder(column),
             title: renderSortableTableHeader
         };
     }
     return column;
 });
+
 const sortableData = _orderBy(data, [state.sortColumnKey], [state.sortOrder]);
-<FormGroup>
-    <Table
-        columns={sortableColumns}
-        data={sortableData}
-        width={800}
-    />
-</FormGroup>
+
+<Table
+    columns={sortableColumns}
+    data={sortableData}
+    width={800}
+/>
 ```

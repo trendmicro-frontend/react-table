@@ -23,12 +23,10 @@ const data = [
     { id: 6, eventType: 'Application Control', affectedDevices: 0, detections: 0 }
 ];
 
-<FormGroup>
-    <Table
-        loading
-        columns={columns}
-        data={data}
-        width={800}
-    />
-</FormGroup>
+<Table
+    loading
+    columns={columns}
+    data={data}
+    width={800}
+/>
 ```

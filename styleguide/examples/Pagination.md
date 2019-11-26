@@ -33,7 +33,7 @@ const fetchRecords = ({ page, pageLength }) => {
             border: '1px solid #ddd',
             borderBottom: 'none',
             padding: '8px 16px',
-            width: 602,
+            width: 600,
             boxSizing: 'border-box'
         }}
     >
@@ -55,6 +55,7 @@ const fetchRecords = ({ page, pageLength }) => {
     <Table
         bordered
         hoverable
+        useFixedHeader
         rowKey="id"
         columns={columns}
         data={data}

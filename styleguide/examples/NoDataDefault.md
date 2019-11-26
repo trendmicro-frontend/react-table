@@ -14,11 +14,9 @@ const columns = [
     }
 ];
 
-<FormGroup>
-    <Table
-        columns={columns}
-        data={[]}
-        width={800}
-    />
-</FormGroup>
+<Table
+    columns={columns}
+    data={[]}
+    width={800}
+/>
 ```

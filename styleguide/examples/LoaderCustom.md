@@ -33,21 +33,20 @@ const renderLoader = () => (
             bottom: 0,
             left: 0,
             right: 0,
-            textAlign: 'center',
-            paddingTop: 52
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
         }}
     >
         <Text size={16} color="darkcyan">Loading....</Text>
     </div>
 );
 
-<FormGroup>
-    <Table
-        loading
-        loaderRender={renderLoader}
-        columns={columns}
-        data={data}
-        width={800}
-    />
-</FormGroup>
+<Table
+    loading
+    loaderRender={renderLoader}
+    columns={columns}
+    data={data}
+    width={800}
+/>
 ```

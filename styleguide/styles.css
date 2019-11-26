@@ -23,9 +23,18 @@ html {
           user-select: none;
     background: #fff;
 }
-.row-expanded:after {
+.expand-icon.row-expanded:after {
     content: '-';
 }
-.row-collapsed:after {
+.expand-icon.row-collapsed:after {
     content: '+';
 }
+.tr-expand {
+    border: 1px solid #ddd;
+    border-top-width: 0;
+    padding: 16px 16px 16px 52px;
+}
+.tr-expand:last-child {
+    border-bottom-width: 0;
+}
+

@@ -50,17 +50,12 @@ Name                | Type                              | Default | Description
 bordered            | Boolean                           | false   | Specify whether the table should be bordered.
 columns             | Object[]                          | []      | The columns config of table, see Column below for details.
 data                | Object[]                          | []      | Data record array to be rendered.
-emptyText           | Function                          | () => { return 'No Data'; } | Display text when data is empty.
-expandedRowKeys     | String[]                          |         | Current expanded rows keys.
-expandedRowRender   | Function(record, rowIndex)        |         | Expanded content render function.
+emptyRender         | Function                          | () => { return 'No Data'; } | Empty content render function.
 height              | Number                            |         | The height of the table.
 hideHeader          | Boolean                           | false   | Whether table head is hiden.
-hoverable           | Boolean                           | false    | Whether use row hover style.
+hoverable           | Boolean                           | false   | Whether use row hover style.
 loading             | Boolean                           | false   | Whether table is loading.
-onRowClick          | Function(record, rowIndex, event) |         | Handle rowClick action.
-rowClassName        | Function(record, key):string      |         | Get row's className.
-rowKey              | string or Function(record):string | 'key'   | If rowKey is string, `record[rowKey]` will be used as key. If rowKey is function, the return value of `rowKey(record)` will be use as key.
-selectedRowKeys     | String[]                          | []      | Selected rows keys.
+loaderRender        | Function                          |         | Loading content render function.
 useFixedHeader      | Boolean                           | false   | Whether table head is fixed.
 width               | Number(required)                  |         | The width of the table.
 
@@ -68,7 +63,6 @@ width               | Number(required)                  |         | The width of
 
 Name            | Type    | Default | Description
 :---            | :-----  | :------ | :----------
-onClick         | Function(event) |         | onClick event handler for header cell.
 title           | React Node or Function(): React Node |         | Title of this column.
 dataKey         | String  |         | Display field of the data record.
 width           | String or Number  | 150        | Width of the specific proportion calculation according to the width of the columns.

@@ -14,12 +14,10 @@ const columns = [
     }
 ];
 
-<FormGroup>
-    <Table
-        columns={columns}
-        data={[]}
-        emptyText={() => 'No data to display'}
-        width={800}
-    />
-</FormGroup>
+<Table
+    columns={columns}
+    data={[]}
+    emptyRender={() => 'No data to display'}
+    width={800}
+/>
 ```

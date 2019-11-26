@@ -37,14 +37,12 @@ const columns = [
     { title: 'Delete', render: renderActionCell, width: 64 }
 ];
 
-<FormGroup>
-    <Table
-        bordered
-        hoverable
-        rowKey="id"
-        columns={columns}
-        data={state.data}
-        width={500}
-    />
-</FormGroup>
+<Table
+    bordered
+    hoverable
+    rowKey="id"
+    columns={columns}
+    data={state.data}
+    width={500}
+/>
 ```

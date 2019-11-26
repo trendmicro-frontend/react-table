@@ -14,15 +14,13 @@ const data = [
     { id: 6, eventType: 'Application Control', affectedDevices: 0, detections: 0 }
 ];
 
-<FormGroup>
-    <Table
-        hoverable
-        useFixedHeader
-        rowKey="id"
-        columns={columns}
-        data={data}
-        height={180}
-        width={500}
-    />
-</FormGroup>
+<Table
+    hoverable
+    useFixedHeader
+    rowKey="id"
+    columns={columns}
+    data={data}
+    height={180}
+    width={500}
+/>
 ```

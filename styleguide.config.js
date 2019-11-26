@@ -145,6 +145,10 @@ module.exports = {
             name: 'Sortable',
             content: path.resolve(__dirname, 'styleguide/examples/Sortable.md'),
         },
+        {
+            name: '10000 rows',
+            content: path.resolve(__dirname, 'styleguide/examples/10000Rows.md'),
+        },
     ],
     require: [
         '@babel/polyfill',
