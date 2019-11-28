@@ -17,7 +17,6 @@ const data = [
 <Table
     hoverable
     useFixedHeader
-    rowKey="id"
     columns={columns}
     data={data}
     height={180}

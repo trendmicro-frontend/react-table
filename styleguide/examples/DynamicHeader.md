@@ -40,7 +40,6 @@ const columns = [
 <Table
     bordered
     hoverable
-    rowKey="id"
     columns={columns}
     data={state.data}
     width={500}

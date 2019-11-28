@@ -56,7 +56,6 @@ const fetchRecords = ({ page, pageLength }) => {
         bordered
         hoverable
         useFixedHeader
-        rowKey="id"
         columns={columns}
         data={data}
         width={600}
