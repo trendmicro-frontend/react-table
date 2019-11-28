@@ -16,8 +16,17 @@ const columns = [
 
 <Table
     columns={columns}
-    data={[]}
-    emptyRender={() => 'No data to display'}
+    emptyRender={() => (
+        <div
+            style={{
+                textAlign: 'center',
+                fontSize: 24,
+                margin: 50
+            }}
+        >
+            ~ No data to display ~
+        </div>
+    )}
     width={800}
 />
 ```
