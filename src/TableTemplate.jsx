@@ -29,28 +29,20 @@ class TableTemplate extends Component {
 
     constructor(props) {
         super(props);
-        this.setScrollLeft = (scrollLeft) => {
-            this.setState({
-                scrollLeft: scrollLeft
-            });
-        };
-
-        this.state = {
-            scrollLeft: 0,
-        };
+        this.tableHeaderRef = React.createRef();
     }
 
     onScroll = (e) => {
-        this.setScrollLeft(e.target.scrollLeft);
+        const scrollLeft = e.target.scrollLeft;
+        if (!!this.tableHeaderRef && this.tableHeaderRef.current.scrollLeft !== scrollLeft) {
+            this.tableHeaderRef.current.scrollLeft = scrollLeft;
+        }
     };
 
     renderHeader = (cells) => {
         const columns = cells;
-        const {
-            scrollLeft
-        } = this.state;
         return (
-            <TableHeader scrollLeft={scrollLeft}>
+            <TableHeader ref={this.tableHeaderRef}>
                 <TableRow>
                     {
                         columns.map((column, index) => {

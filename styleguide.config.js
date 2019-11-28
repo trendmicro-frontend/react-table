@@ -106,6 +106,10 @@ module.exports = {
             content: path.resolve(__dirname, 'styleguide/examples/Expand.md'),
         },
         {
+            name: 'Fixed Columns',
+            content: path.resolve(__dirname, 'styleguide/examples/FixedColumns.md'),
+        },
+        {
             name: 'Fixed Header',
             content: path.resolve(__dirname, 'styleguide/examples/FixedHeader.md'),
         },

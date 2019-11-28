@@ -19,6 +19,7 @@ import Table, { TableHeader, TableBody, TableRow, TableCell } from '../src';
 
 import Selection from './examples/Selection';
 import Expand from './examples/Expand';
+import FixedColumns from './examples/FixedColumns';
 
 global._concat = _concat;
 global._filter = _filter;
@@ -43,3 +44,4 @@ global.Text = Text;
 
 global.SelectionTable = Selection;
 global.ExpandTable = Expand;
+global.FixedColumns = FixedColumns;

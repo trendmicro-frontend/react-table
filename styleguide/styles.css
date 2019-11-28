@@ -3,6 +3,11 @@ html {
     font-size: 13px;
 }
 
+/* Hover */
+.tr.tr-hover > .td {
+    background-color: #e6f4fc;
+}
+
 /* Selection */
 .tr-active > [class*="td"] {
     background-color: #fcf8da;
