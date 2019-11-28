@@ -16,24 +16,12 @@
     left: 0;
     right: 0;
 
-    .loader,
-    .loader-small,
-    .loader-large {
+    .loader {
         position: absolute;
         top: 50%;
         left: 50%;
-    }
-    .loader.loader-large {
         margin-top: -(56px / 2);
         margin-left: -(56px / 2);
-    }
-    .loader.loader-small {
-        margin-top: -(16px / 2);
-        margin-left: -(16px / 2);
-    }
-    .loader {
-        margin-top: -(32px / 2);
-        margin-left: -(32px / 2);
     }
 }
 .loader {
@@ -47,14 +35,6 @@
     transform: translateZ(0);
     animation: spinner 1s infinite linear;
     border-radius: 50%;
-    width: 32px;
-    height: 32px;
-}
-.loader-large {
     width: 56px;
     height: 56px;
-}
-.loader-small {
-    width: 16px;
-    height: 16px;
 }

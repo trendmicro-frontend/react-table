@@ -1,4 +1,3 @@
-import cx from 'classnames';
 import React, { Component } from 'react';
 import isEqual from 'lodash/isEqual';
 import PropTypes from 'prop-types';
@@ -11,6 +10,7 @@ class Table extends Component {
         bordered: PropTypes.bool,
         columns: PropTypes.array,
         data: PropTypes.array,
+        emptyText: PropTypes.string,
         emptyRender: PropTypes.func,
         height: PropTypes.number,
         hideHeader: PropTypes.bool,
@@ -25,8 +25,13 @@ class Table extends Component {
         columns: [],
         data: [],
         height: 0,
-        emptyRender: () => {
-            return 'No Data';
+        emptyText: 'No Data',
+        loaderRender: () => {
+            return (
+                <div className={styles.loaderOverlay}>
+                    <span className={styles.loader} />
+                </div>
+            );
         },
     };
 
@@ -85,24 +90,20 @@ class Table extends Component {
 
     renderLoader = () => {
         const { loaderRender } = this.props;
-        const defaultLoader = () => {
-            return (
-                <div className={styles.loaderOverlay}>
-                    <span className={cx(styles.loader, styles.loaderLarge)} />
-                </div>
-            );
-        };
-        const loader = loaderRender || defaultLoader;
-        return loader();
+        return loaderRender();
     };
 
     renderEmptyBody = () => {
-        const { emptyRender } = this.props;
-        return (
-            <div className={styles.tablePlaceholder}>
-                { emptyRender() }
-            </div>
-        );
+        const { emptyRender, emptyText } = this.props;
+        const defaultEmptyBody = (text) => {
+            return (
+                <div className={styles.tablePlaceholder}>
+                    { text }
+                </div>
+            );
+        };
+        const emptyBody = emptyRender ? emptyRender() : defaultEmptyBody(emptyText);
+        return emptyBody;
     };
 
     render() {
@@ -137,8 +138,10 @@ class Table extends Component {
                     {
                         children({
                             cells: thisColumns,
+                            data: data,
                             loader: loader,
-                            emptyBody: emptyBody
+                            emptyBody: emptyBody,
+                            tableWidth: width,
                         })
                     }
                 </TableWrapper>
