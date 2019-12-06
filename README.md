@@ -17,40 +17,130 @@ Demo: https://trendmicro-frontend.github.io/react-table
 2. At this point you can import `@trendmicro/react-table` and its styles in your application as follows:
 
   ```js
-  import Table from '@trendmicro/react-table';
-  import { TablePagination } from '@trendmicro/react-paginations';
-
-  // Be sure to include styles at some point, probably during your bootstraping
-  import '@trendmicro/react-table/dist/react-table.css';
-  import '@trendmicro/react-paginations/dist/react-paginations.css';
+  import TableTemplate, { TableWrapper, TableHeader, TableBody, TableRow, TableCell, TableHeaderCell } from '@trendmicro/react-table';
   ```
 
 ## Usage
 
-### Pagination
+### Table Template
 
 ```js
-<Table
-    bordered
+<TableTemplate
     hoverable
+    useFixedHeader
     columns={columns}
     data={data}
     width={500}
 />
 ```
 
+### Custom renderers
+
+```js
+<TableWrapper
+    columns={columns}
+    data={data}
+    width={800}
+    height={320}
+>
+    {({ cells, data, loader, emptyBody, tableWidth }) => {
+        return (
+            <Fragment>
+                <TableHeader>
+                    <TableRow>
+                        {
+                            cells.map((cell, index) => {
+                                const key = `table_header_cell_${index}`;
+                                const {
+                                    title,
+                                    width: cellWidth,
+                                } = cell;
+                                return (
+                                    <TableHeaderCell
+                                        key={key}
+                                        width={cellWidth}
+                                    >
+                                        { title }
+                                    </TableHeaderCell>
+                                );
+                            })
+                        }
+                    </TableRow>
+                </TableHeader>
+                <TableBody>
+                    <Scrollbars
+                        style={{
+                            width: tableWidth
+                        }}
+                    >
+                        {
+                            data.map((row, index) => {
+                                const rowKey = `table_row${index}`;
+                                return (
+                                    <TableRow key={rowKey}>
+                                        {
+                                            cells.map((cell, index) => {
+                                                const key = `${rowKey}_cell${index}`;
+                                                const cellValue = _get(row, cell.dataKey);
+                                                return (
+                                                    <TableCell
+                                                        key={key}
+                                                        width={cell.width}
+                                                    >
+                                                        { typeof cell.render === 'function' ? cell.render(cellValue, row, index) : cellValue }
+                                                    </TableCell>
+                                                );
+                                            })
+                                        }
+                                    </TableRow>
+                                );
+                            })
+                        }
+                    </Scrollbars>
+                </TableBody>
+            </Fragment>
+        );
+    }}
+</TableWrapper>
+```
+
 ## API
 
 ### Properties
 
-#### Table
-
+#### TableWrapper
 Name                | Type                              | Default | Description
 :---                | :---                              | :------ | :----------
-bordered            | Boolean                           | false   | Specify whether the table should be bordered.
+minimalist          | Boolean                           | false   | Specify whether the table should not be bordered.
 columns             | Object[]                          | []      | The columns config of table, see Column below for details.
 data                | Object[]                          | []      | Data record array to be rendered.
 emptyRender         | Function                          | () => { return 'No Data'; } | Empty content render function.
+emptyText           | String                            | 'No Data' | The text when data is null.
+height              | Number                            |         | The height of the table.
+loading             | Boolean                           | false   | Whether table is loading.
+loaderRender        | Function                          |         | Loading content render function.
+width               | Number(required)                  |         | The width of the table.
+
+#### TableHeaderCell
+Name                | Type                              | Default | Description
+:---                | :---                              | :------ | :----------
+width               | Number(required)                  |         | The width of the table.
+
+#### TableCell
+Name                | Type                              | Default | Description
+:---                | :---                              | :------ | :----------
+width               | Number(required)                  |         | The width of the table.
+
+
+#### TableTemplate
+
+Name                | Type                              | Default | Description
+:---                | :---                              | :------ | :----------
+minimalist          | Boolean                           | false   | Specify whether the table should not be bordered.
+columns             | Object[]                          | []      | The columns config of table, see Column below for details.
+data                | Object[]                          | []      | Data record array to be rendered.
+emptyRender         | Function                          | () => { return 'No Data'; } | Empty content render function.
+emptyText           | String                            | 'No Data' | The text when data is null.
 height              | Number                            |         | The height of the table.
 hideHeader          | Boolean                           | false   | Whether table head is hiden.
 hoverable           | Boolean                           | false   | Whether use row hover style.
