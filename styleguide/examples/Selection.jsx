@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import styled, { css } from 'styled-components';
 import Checkbox from '@trendmicro/react-checkbox';
 import ensureArray from 'ensure-array';
 import _concat from 'lodash/concat';
@@ -7,7 +8,7 @@ import _get from 'lodash/get';
 import _includes from 'lodash/includes';
 import { Scrollbars } from 'react-custom-scrollbars';
 import { FixedSizeList as ListTable } from 'react-window';
-import Table, { TableHeader, TableBody, TableRow, TableCell } from '../../src';
+import { TableWrapper, TableHeader, TableBody, TableRow, TableCell, TableHeaderCell } from '../../src';
 
 const data = [];
 for (let i = 1; i <= 1000; i++) {
@@ -117,7 +118,7 @@ class Selection extends Component {
         ];
 
         return (
-            <Table
+            <TableWrapper
                 columns={columns}
                 data={data}
                 width={800}
@@ -135,12 +136,12 @@ class Selection extends Component {
                                                 width: cellWidth,
                                             } = cell;
                                             return (
-                                                <TableCell
+                                                <TableHeaderCell
                                                     key={key}
                                                     width={cellWidth}
                                                 >
                                                     { typeof title === 'function' ? title(cell) : title }
-                                                </TableCell>
+                                                </TableHeaderCell>
                                             );
                                         })
                                     }
@@ -159,13 +160,9 @@ class Selection extends Component {
                                     {({ data, index: rowIndex, style }) => {
                                         const rowData = data[rowIndex];
                                         const checked = _includes(this.state.selectedIdList, rowData.id);
-                                        let rowClassName = null;
-                                        if (checked) {
-                                            rowClassName = 'tr-active';
-                                        }
                                         return (
-                                            <TableRow
-                                                className={rowClassName}
+                                            <StyledTableRow
+                                                active={checked}
                                                 style={style}
                                                 onClick={this.handleClickRow(rowData)}
                                             >
@@ -184,7 +181,7 @@ class Selection extends Component {
                                                         );
                                                     })
                                                 }
-                                            </TableRow>
+                                            </StyledTableRow>
                                         );
                                     }}
                                 </ListTable>
@@ -192,9 +189,19 @@ class Selection extends Component {
                         </Fragment>
                     );
                 }}
-            </Table>
+            </TableWrapper>
         );
     }
 }
+
+const StyledTableRow = styled(TableRow)`
+    &:hover {
+        background-color: #e6f4fc;
+    }
+
+    ${props => props.active && css`
+        background-color: #fcf8da;
+    `}
+`;
 
 export default Selection;

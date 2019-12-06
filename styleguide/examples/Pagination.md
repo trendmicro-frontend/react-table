@@ -52,8 +52,7 @@ const fetchRecords = ({ page, pageLength }) => {
             onPageChange={fetchRecords}
         />
     </div>
-    <Table
-        bordered
+    <TableTemplate
         hoverable
         useFixedHeader
         columns={columns}

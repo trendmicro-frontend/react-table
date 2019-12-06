@@ -1,11 +1,12 @@
 import React, { Component, Fragment } from 'react';
+import styled, { css } from 'styled-components';
 import _concat from 'lodash/concat';
 import _filter from 'lodash/filter';
 import _get from 'lodash/get';
 import _includes from 'lodash/includes';
 import { Scrollbars } from 'react-custom-scrollbars';
 import Anchor from '@trendmicro/react-anchor';
-import Table, { TableHeader, TableBody, TableRow, TableCell } from '../../src';
+import TableTemplate, { TableWrapper, TableHeader, TableBody, TableRow, TableCell, TableHeaderCell } from '../../src';
 
 const data = [
     { id: 1, eventType: 'Virus/Malware', affectedDevices: 20, detections: 634 },
@@ -59,7 +60,8 @@ class Expand extends Component {
         return (
             <Fragment>
                 <div>Sub content</div>
-                <Table
+                <TableTemplate
+                    minimalist
                     columns={subColumns}
                     data={subData}
                     height={150}
@@ -85,16 +87,9 @@ class Expand extends Component {
     handleRenderActionColumn = (text, record) => {
         const { expandedRowKeys } = this.state;
         const expanded = (expandedRowKeys.indexOf(record.id) >= 0);
-        let className = 'expand-icon ';
-        if (expanded) {
-            className += 'row-expanded';
-        } else {
-            className += 'row-collapsed';
-        }
-
         return (
             <Anchor onClick={this.handleToggleDetails(record)}>
-                <i className={className} />
+                <ExpandIcon expanded={expanded} />
             </Anchor>
         );
     };
@@ -108,7 +103,7 @@ class Expand extends Component {
         ];
 
         return (
-            <Table
+            <TableWrapper
                 bordered
                 columns={columns}
                 data={data}
@@ -128,12 +123,12 @@ class Expand extends Component {
                                                 width: cellWidth,
                                             } = cell;
                                             return (
-                                                <TableCell
+                                                <TableHeaderCell
                                                     key={key}
                                                     width={cellWidth}
                                                 >
                                                     { title }
-                                                </TableCell>
+                                                </TableHeaderCell>
                                             );
                                         })
                                     }
@@ -151,7 +146,7 @@ class Expand extends Component {
                                             const isExpanded = _includes(this.state.expandedRowKeys, row.id);
                                             return (
                                                 <Fragment key={rowKey}>
-                                                    <TableRow>
+                                                    <StyledTableRow>
                                                         {
                                                             cells.map((cell, index) => {
                                                                 const key = `${rowKey}_cell${index}`;
@@ -166,11 +161,11 @@ class Expand extends Component {
                                                                 );
                                                             })
                                                         }
-                                                    </TableRow>
+                                                    </StyledTableRow>
                                                     { isExpanded && (
-                                                        <div className="tr-expand">
+                                                        <ExpandedRowStyle>
                                                             { this.handleExpandedRowRender(row, index) }
-                                                        </div>
+                                                        </ExpandedRowStyle>
                                                     )}
                                                 </Fragment>
                                             );
@@ -181,9 +176,50 @@ class Expand extends Component {
                         </Fragment>
                     );
                 }}
-            </Table>
+            </TableWrapper>
         );
     }
 }
+
+const StyledTableRow = styled(TableRow)`
+    &:hover {
+        background-color: #e6f4fc;
+    }
+`;
+
+const ExpandedRowStyle = styled.div`
+    border: 1px solid #ddd;
+    border-top-width: 0;
+    padding: 16px 16px 16px 52px;
+    &:last-child {
+        border-bottom-width: 0;
+    }
+`;
+
+const ExpandIcon = styled.div`
+    cursor: pointer;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    text-align: center;
+    line-height: 16px;
+    border: 1px solid #e9e9e9;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+        user-select: none;
+    background: #fff;
+
+    ${props => props.expanded && css`
+        :after {
+            content: '-';
+        }
+    `}
+    ${props => !props.expanded && css`
+        :after {
+            content: '+';
+        }
+    `}
+`;
 
 export default Expand;

@@ -14,14 +14,16 @@ const columns = [
     }
 ];
 
-<Table
+<TableTemplate
     columns={columns}
     emptyRender={() => (
         <div
             style={{
                 textAlign: 'center',
                 fontSize: 24,
-                margin: 50
+                padding: 50,
+                borderLeft: '1px solid #ddd',
+                borderRight: '1px solid #ddd',
             }}
         >
             ~ No data to display ~

@@ -42,7 +42,7 @@ const renderLoader = () => (
     </div>
 );
 
-<Table
+<TableTemplate
     loading
     loaderRender={renderLoader}
     columns={columns}

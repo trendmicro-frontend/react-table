@@ -37,8 +37,7 @@ const columns = [
     { title: 'Delete', render: renderActionCell, width: 64 }
 ];
 
-<Table
-    bordered
+<TableTemplate
     hoverable
     columns={columns}
     data={state.data}

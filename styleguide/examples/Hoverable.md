@@ -25,7 +25,7 @@ const data = [
     { id: 6, eventType: 'Application Control', affectedDevices: 0, detections: 0 }
 ];
 
-<Table
+<TableTemplate
     hoverable
     columns={columns}
     data={data}

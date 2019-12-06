@@ -90,12 +90,8 @@ module.exports = {
     title: `React Table v${pkg.version}`,
     sections: [
         {
-            name: 'Default',
-            content: path.resolve(__dirname, 'styleguide/examples/Default.md')
-        },
-        {
-            name: 'Bordered',
-            content: path.resolve(__dirname, 'styleguide/examples/Bordered.md'),
+            name: 'Base Table',
+            content: path.resolve(__dirname, 'styleguide/examples/BaseTable.md')
         },
         {
             name: 'Dynamic Header',
@@ -126,6 +122,10 @@ module.exports = {
             content: path.resolve(__dirname, 'styleguide/examples/LoaderCustom.md'),
         },
         {
+            name: 'Minimalism',
+            content: path.resolve(__dirname, 'styleguide/examples/Minimalism.md'),
+        },
+        {
             name: 'No Header',
             content: path.resolve(__dirname, 'styleguide/examples/NoHeader.md'),
         },
@@ -136,6 +136,10 @@ module.exports = {
         {
             name: 'No Data - Custom',
             content: path.resolve(__dirname, 'styleguide/examples/NoDataCustom.md'),
+        },
+        {
+            name: 'No Data - Custom Text',
+            content: path.resolve(__dirname, 'styleguide/examples/NoDataCustomText.md'),
         },
         {
             name: 'Pagination',

@@ -2,7 +2,13 @@
 const columns = [
     {
         title: 'Event Type',
-        dataKey: 'eventType'
+        render: (value, row, index) => {
+            return (
+                <div style={{ wordBreak: 'break-word' }}>
+                    { row.eventType }
+                </div>
+            );
+        }
     },
     {
         title: 'Affected Devices',
@@ -10,6 +16,7 @@ const columns = [
     },
     {
         title: 'Detections',
+        width: 300,
         dataKey: 'detections'
     }
 ];
@@ -23,7 +30,8 @@ const data = [
     { id: 6, eventType: 'Application Control', affectedDevices: 0, detections: 0 }
 ];
 
-<Table
+<TableTemplate
+    minimalist
     columns={columns}
     data={data}
     width={800}

@@ -16,7 +16,7 @@ const columns = [
 
 <TableTemplate
     columns={columns}
-    data={[]}
+    emptyText="No data to display"
     width={800}
 />
 ```

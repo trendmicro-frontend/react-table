@@ -76,7 +76,7 @@ const sortableColumns = columns.map((column, index) => {
 
 const sortableData = _orderBy(data, [state.sortColumnKey], [state.sortOrder]);
 
-<Table
+<TableTemplate
     columns={sortableColumns}
     data={sortableData}
     width={800}

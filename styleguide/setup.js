@@ -15,7 +15,7 @@ import { Scrollbars } from 'react-custom-scrollbars';
 import { FixedSizeList as ListTable } from 'react-window';
 import FormGroup from './components/FormGroup';
 import Text from './components/Text';
-import Table, { TableHeader, TableBody, TableRow, TableCell } from '../src';
+import TableTemplate, { TableWrapper, TableHeader, TableBody, TableRow, TableCell, TableHeaderCell } from '../src';
 
 import Selection from './examples/Selection';
 import Expand from './examples/Expand';
@@ -34,11 +34,13 @@ global.Fragment = Fragment;
 global.FormGroup = FormGroup;
 global.Scrollbars = Scrollbars;
 global.ListTable = ListTable;
-global.Table = Table;
-global.TableCell = TableCell;
+global.TableTemplate = TableTemplate;
+global.TableWrapper = TableWrapper;
 global.TableHeader = TableHeader;
 global.TableBody = TableBody;
 global.TableRow = TableRow;
+global.TableCell = TableCell;
+global.TableHeaderCell = TableHeaderCell;
 global.TablePagination = TablePagination;
 global.Text = Text;
 

@@ -1,5 +1,5 @@
-import cx from 'classnames';
 import React, { Component, Fragment } from 'react';
+import styled, { css } from 'styled-components';
 import Checkbox from '@trendmicro/react-checkbox';
 import ensureArray from 'ensure-array';
 import _concat from 'lodash/concat';
@@ -8,7 +8,7 @@ import _get from 'lodash/get';
 import _includes from 'lodash/includes';
 import { Scrollbars } from 'react-custom-scrollbars';
 import { FixedSizeList as ListTable } from 'react-window';
-import Table, { TableHeader, TableBody, TableRow, TableCell } from '../../src';
+import { TableWrapper, TableHeader, TableBody, TableRow, TableCell, TableHeaderCell } from '../../src';
 
 const data = [];
 for (let i = 1; i <= 1000; i++) {
@@ -189,7 +189,7 @@ class Selection extends Component {
                     backgroundColor: '#fff',
                 }}
             >
-                <Table
+                <TableWrapper
                     columns={columns}
                     data={data}
                     width={240}
@@ -207,12 +207,12 @@ class Selection extends Component {
                                                     width: cellWidth,
                                                 } = cell;
                                                 return (
-                                                    <TableCell
+                                                    <TableHeaderCell
                                                         key={key}
                                                         width={cellWidth}
                                                     >
                                                         { typeof title === 'function' ? title(cell) : title }
-                                                    </TableCell>
+                                                    </TableHeaderCell>
                                                 );
                                             })
                                         }
@@ -235,14 +235,13 @@ class Selection extends Component {
                                             const checked = _includes(this.state.selectedIdList, rowKey);
                                             const hovered = this.state.currentHoverKey === rowKey;
                                             return (
-                                                <TableRow
-                                                    className={cx(
-                                                        'tr',
-                                                        { 'tr-active': checked },
-                                                        { 'tr-hover': hovered },
-                                                    )}
+                                                <StyledTableRow
+                                                    active={checked}
+                                                    hover={hovered}
                                                     style={style}
                                                     onClick={this.handleClickRow(rowData)}
+                                                    onMouseEnter={this.handleRowMouseEnter({ hovered, rowKey })}
+                                                    onMouseLeave={this.handleRowMouseLeave({ hovered, rowKey })}
                                                 >
                                                     {
                                                         cells.map((cell, cellIndex) => {
@@ -260,7 +259,7 @@ class Selection extends Component {
                                                             );
                                                         })
                                                     }
-                                                </TableRow>
+                                                </StyledTableRow>
                                             );
                                         }}
                                     </ListTable>
@@ -268,7 +267,7 @@ class Selection extends Component {
                             </Fragment>
                         );
                     }}
-                </Table>
+                </TableWrapper>
             </div>
         );
     };
@@ -282,7 +281,7 @@ class Selection extends Component {
         ];
 
         return (
-            <Table
+            <TableWrapper
                 columns={columns}
                 data={data}
                 width={600}
@@ -300,12 +299,12 @@ class Selection extends Component {
                                                 width: cellWidth,
                                             } = cell;
                                             return (
-                                                <TableCell
+                                                <TableHeaderCell
                                                     key={key}
                                                     width={cellWidth}
                                                 >
                                                     { title }
-                                                </TableCell>
+                                                </TableHeaderCell>
                                             );
                                         })
                                     }
@@ -327,12 +326,9 @@ class Selection extends Component {
                                         const checked = _includes(this.state.selectedIdList, rowKey);
                                         const hovered = this.state.currentHoverKey === rowKey;
                                         return (
-                                            <TableRow
-                                                className={cx(
-                                                    'tr',
-                                                    { 'tr-active': checked },
-                                                    { 'tr-hover': hovered },
-                                                )}
+                                            <StyledTableRow
+                                                active={checked}
+                                                hover={hovered}
                                                 style={style}
                                                 onClick={this.handleClickRow(rowData)}
                                                 onMouseEnter={this.handleRowMouseEnter({ hovered, rowKey })}
@@ -354,7 +350,7 @@ class Selection extends Component {
                                                         );
                                                     })
                                                 }
-                                            </TableRow>
+                                            </StyledTableRow>
                                         );
                                     }}
                                 </ListTable>
@@ -362,22 +358,11 @@ class Selection extends Component {
                         </Fragment>
                     );
                 }}
-            </Table>
+            </TableWrapper>
         );
     };
 
     render() {
-        const shadowStyle = {
-            position: 'absolute',
-            bottom: 0,
-            left: 240,
-            right: 0,
-            width: 12,
-            height: '100%',
-            background: 'linear-gradient(to right, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 100%)',
-            display: 'none',
-        };
-
         return (
             <div
                 style={{
@@ -385,14 +370,31 @@ class Selection extends Component {
                 }}
             >
                 { this.renderMainTable() }
-                <div
-                    ref={this.leftTableShadowRef}
-                    style={shadowStyle}
-                />
+                <ShadowStyle ref={this.leftTableShadowRef} />
                 { this.renderLeftTable() }
             </div>
         );
     }
 }
+
+const ShadowStyle = styled.div`
+    position: absolute;
+    bottom: 0;
+    left: 240px;
+    right: 0px;
+    width: 12px;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 100%);
+    display: none;
+`;
+
+const StyledTableRow = styled(TableRow)`
+    ${props => props.active && css`
+        background-color: #fcf8da;
+    `}
+    ${props => props.hover && css`
+        background-color: #e6f4fc;
+    `}
+`;
 
 export default Selection;
