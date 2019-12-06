@@ -6,6 +6,9 @@ React Table
 
 Demo: https://trendmicro-frontend.github.io/react-table
 
+## 1.x DEPRECATED - no longer actively maintained by 2019/12/06
+[Friendly reminder] Please migrate to 2+ asap.
+
 ## Installation
 
 1. Install the latest version of [react](https://github.com/facebook/react) and [react-table](https://github.com/trendmicro-frontend/react-table):
@@ -34,7 +37,7 @@ Demo: https://trendmicro-frontend.github.io/react-table
 />
 ```
 
-### Custom renderers
+### Custom render
 
 ```js
 <TableWrapper
