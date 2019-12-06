@@ -1,162 +1,172 @@
-import classNames from 'classnames';
-import React, { PureComponent } from 'react';
-import { connect } from 'mini-store';
+import _get from 'lodash/get';
 import PropTypes from 'prop-types';
-import styles from './index.styl';
+import React, { Component } from 'react';
+import { Scrollbars } from 'react-custom-scrollbars';
+import styled, { css } from 'styled-components';
+import TableWrapper from './Table';
 import TableHeader from './TableHeader';
 import TableBody from './TableBody';
+import TableRow from './TableRow';
+import TableCell from './TableCell';
+import TableHeaderCell from './TableHeaderCell';
 
-class TableTemplate extends PureComponent {
+class TableTemplate extends Component {
     static propTypes = {
+        minimalist: PropTypes.bool,
         columns: PropTypes.array,
-        hoveredRowKey: PropTypes.any,
         data: PropTypes.array,
-        emptyText: PropTypes.func,
-        expandedRowKeys: PropTypes.array,
-        expandedRowRender: PropTypes.func,
+        emptyText: PropTypes.string,
+        emptyRender: PropTypes.func,
+        height: PropTypes.number,
+        hideHeader: PropTypes.bool,
+        hoverable: PropTypes.bool,
         loading: PropTypes.bool,
-        onMouseOver: PropTypes.func,
-        onTouchStart: PropTypes.func,
-        onScroll: PropTypes.func,
-        onRowHover: PropTypes.func,
-        onRowClick: PropTypes.func,
-        rowClassName: PropTypes.func,
-        rowKey: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
-        scrollTop: PropTypes.number,
-        showHeader: PropTypes.bool,
-        useFixedHeader: PropTypes.bool
+        loaderRender: PropTypes.func,
+        useFixedHeader: PropTypes.bool,
+        width: PropTypes.number.isRequired,
     };
 
     static defaultProps = {
-        showHeader: true
+        data: [],
     };
 
-    state = {
-        scrollLeft: 0
-    };
+    constructor(props) {
+        super(props);
+        this.tableHeaderRef = React.createRef();
+    }
 
-    handleBodyScroll = (event) => {
-        const { onScroll, showHeader, useFixedHeader } = this.props;
-        // scrollLeft is for scrolling table header and body at the same time.
-        if (showHeader && useFixedHeader) {
-            this.setState({
-                scrollLeft: event.target.scrollLeft
-            });
+    onScroll = (e) => {
+        const scrollLeft = e.target.scrollLeft;
+        if (!!this.tableHeaderRef && this.tableHeaderRef.current.scrollLeft !== scrollLeft) {
+            this.tableHeaderRef.current.scrollLeft = scrollLeft;
         }
-        onScroll(event);
     };
 
-    renderHeader() {
-        const { columns } = this.props;
-        const { scrollLeft } = this.state;
+    renderHeader = ({ cells: columns }) => {
         return (
-            <TableHeaderHoc>
-                <TableHeader
-                    scrollLeft={scrollLeft}
-                    columns={columns}
-                    ref={node => {
-                        if (node) {
-                            this.tableHeader = node;
-                        }
-                    }}
-                />
-            </TableHeaderHoc>
+            <TableHeader ref={this.tableHeaderRef}>
+                <TableRow>
+                    {
+                        columns.map((column, index) => {
+                            const key = `table_header_cell_${index}`;
+                            const {
+                                title,
+                                width: cellWidth,
+                            } = column;
+                            return (
+                                <TableHeaderCell
+                                    key={key}
+                                    width={cellWidth}
+                                >
+                                    { typeof title === 'function' ? title(column) : title }
+                                </TableHeaderCell>
+                            );
+                        })
+                    }
+                </TableRow>
+            </TableHeader>
         );
-    }
-    renderBody() {
+    };
+
+    renderBody = ({ cells: columns, data, emptyBody }) => {
         const {
-            columns,
-            hoveredRowKey,
-            data,
-            emptyText,
-            expandedRowKeys,
-            expandedRowRender,
-            loading,
-            onMouseOver,
-            onTouchStart,
-            onRowHover,
-            onRowClick,
-            rowClassName,
-            rowKey,
-            scrollTop,
-            tableRole
+            hoverable,
         } = this.props;
+        const showEmpty = (data.length === 0);
 
         return (
-            <TableBodyHoc>
-                <TableBody
-                    columns={columns}
-                    hoveredRowKey={hoveredRowKey}
-                    expandedRowKeys={expandedRowKeys}
-                    expandedRowRender={expandedRowRender}
-                    emptyText={emptyText}
-                    loading={loading}
-                    onMouseOver={onMouseOver}
-                    onTouchStart={onTouchStart}
-                    onRowHover={onRowHover}
-                    onRowClick={onRowClick}
-                    onScroll={this.handleBodyScroll}
-                    scrollTop={scrollTop}
-                    records={data}
-                    ref={node => {
-                        if (node) {
-                            this.tableBody = node;
-                        }
-                    }}
-                    rowClassName={rowClassName}
-                    rowKey={rowKey}
-                    tableRole={tableRole}
-                />
-            </TableBodyHoc>
+            <TableBody>
+                { showEmpty && emptyBody }
+                {
+                    data.map((row, index) => {
+                        const rowKey = `table_row${index}`;
+                        return (
+                            <StyledTableRow
+                                key={rowKey}
+                                hoverable={hoverable}
+                            >
+                                {
+                                    columns.map((column, index) => {
+                                        const key = `${rowKey}_cell${index}`;
+                                        const cellValue = _get(row, column.dataKey);
+                                        const cell = (typeof column.render === 'function' ? column.render(cellValue, row, index) : cellValue);
+                                        return (
+                                            <StyledTableCell
+                                                key={key}
+                                                width={column.width}
+                                            >
+                                                { cell }
+                                            </StyledTableCell>
+                                        );
+                                    })
+                                }
+                            </StyledTableRow>
+                        );
+                    })
+                }
+            </TableBody>
         );
-    }
+    };
+
     render() {
         const {
-            className,
-            showHeader
+            data,
+            minimalist,
+            height,
+            hideHeader,
+            loading,
+            useFixedHeader,
+            width,
+            columns,
+            ...props
         } = this.props;
+        const isNoData = (data.length === 0) && !loading;
 
         return (
-            <div
-                ref={node => {
-                    if (node) {
-                        this.table = node;
-                    }
-                }}
-                className={classNames(
-                    className,
-                    styles.table
-                )}
+            <TableWrapper
+                columns={columns}
+                data={data}
+                minimalist={minimalist}
+                height={height}
+                isNoData={isNoData}
+                width={width}
+                {...props}
             >
-                { showHeader && this.renderHeader() }
-                { this.renderBody() }
-            </div>
+                {
+                    ({ cells, data, emptyBody, loader }) => {
+                        return (
+                            <React.Fragment>
+                                { !hideHeader && useFixedHeader && this.renderHeader({ cells, data }) }
+                                <Scrollbars
+                                    autoHeight={!height}
+                                    autoHeightMax="100%"
+                                    onScroll={this.onScroll}
+                                >
+                                    { !hideHeader && !useFixedHeader && this.renderHeader({ cells, data }) }
+                                    <div style={{ flex: '1 1 auto', position: 'relative' }}>
+                                        { this.renderBody({ cells, data, emptyBody }) }
+                                        { loading && loader }
+                                    </div>
+                                </Scrollbars>
+                            </React.Fragment>
+                        );
+                    }
+                }
+            </TableWrapper>
         );
     }
 }
 
-const TableBodyHoc = connect((state, props) => {
-    return {
-        scrollTop: state.scrollTop,
-        scrollLeft: state.scrollLeft,
-        store: state.store
-    };
-})(
-    props => React.cloneElement(props.children, {
-        scrollTop: props.scrollTop,
-        scrollLeft: props.scrolLeft,
-        store: props.store
-    })
-);
+const StyledTableCell = styled(TableCell)``;
 
-const TableHeaderHoc = connect((state, props) => {
-    return {
-        scrollLeft: state.scrollLeft
-    };
-})(
-    (props) => React.cloneElement(props.children, {
-        scrollLeft: props.scrollLeft
-    })
-);
+const StyledTableRow = styled(TableRow)`
+    ${props => props.hoverable && css`
+        &:hover {
+            ${StyledTableCell} {
+                background-color: #e6f4fc;
+            }
+        }
+    `}
+`;
 
 export default TableTemplate;

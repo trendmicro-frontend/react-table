@@ -1,6 +1,6 @@
 {
   "name": "@trendmicro/react-table",
-  "version": "1.0.1-alpha.2",
+  "version": "2.0.0-alpha.1",
   "description": "Trend Micro Components: React Table",
   "main": "lib/index.js",
   "files": [
@@ -8,20 +8,16 @@
     "lib"
   ],
   "scripts": {
-    "prepublish": "npm run lint && npm test && npm run clean && npm run build && npm run build-examples",
-    "_prepare": "npm run lint && npm test && npm run clean && npm run build && npm run styleguide:build",
-    "build": "webpack-cli && npm run cleancss",
-    "build-examples": "cd examples; webpack-cli",
+    "prepare": "npm run lint && npm test && npm run clean && npm run build && npm run styleguide:build",
+    "build": "webpack-cli",
     "clean": "rm -f {lib,dist}/*",
-    "cleancss": "cleancss -o dist/react-table.min.css dist/react-table.css",
     "demo": "http-server -p 8000 docs/",
     "lint": "npm run eslint && npm run stylint",
     "eslint": "eslint --ext .js --ext .jsx *.js src test",
     "stylint": "stylint src",
-    "test": "tap test/*.js --node-arg=--require --node-arg=@babel/register --node-arg=--require --node-arg=core-js/stable --node-arg=--require --node-arg=regenerator-runtime/runtime",
-    "coveralls": "tap test/*.js --coverage --coverage-report=text-lcov --nyc-arg=--require --nyc-arg=@babel/register --nyc-arg=--require --nyc-arg=core-js/stable --nyc-arg=--require --nyc-arg=regenerator-runtime/runtime | coveralls",
-    "dev": "cd examples; webpack-dev-server --hot --inline --host 0.0.0.0 --content-base ../docs",
-    "_dev": "styleguide",
+    "test": "tap test/*.js --node-arg=--require --node-arg=@babel/register --node-arg=--require --node-arg=@babel/polyfill",
+    "coveralls": "tap test/*.js --coverage --coverage-report=text-lcov --nyc-arg=--require --nyc-arg=@babel/register --nyc-arg=--require --nyc-arg=@babel/polyfill | coveralls",
+    "dev": "npm run styleguide",
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build"
   },
@@ -47,26 +43,24 @@
     "react-table"
   ],
   "peerDependencies": {
-    "react": ">=15.0.0"
+    "react": ">=16.11.0"
   },
   "dependencies": {
-    "@trendmicro/react-anchor": "^0.5.6",
-    "classnames": "^2.2.5",
-    "element-resize-detector": "^1.1.12",
-    "ensure-array": "^1.0.0",
-    "lodash.debounce": "^4.0.8",
     "lodash.get": "^4.4.2",
-    "mini-store": "^1.1.0",
     "prop-types": "^15.5.8",
-    "trendmicro-ui": "^0.4.0"
+    "react-custom-scrollbars": "^4.2.1",
+    "styled-components": "^4.4.1"
   },
   "devDependencies": {
     "@babel/cli": "~7.6.0",
     "@babel/core": "~7.6.0",
+    "@babel/polyfill": "~7.4.4",
     "@babel/preset-env": "~7.6.0",
     "@babel/preset-react": "~7.0.0",
     "@babel/register": "~7.6.0",
     "@trendmicro/babel-config": "~1.0.0-alpha",
+    "@trendmicro/react-anchor": "~0.5.6",
+    "@trendmicro/react-checkbox": "~3.4.1",
     "@trendmicro/react-buttons": "~1.3.1",
     "@trendmicro/react-paginations": "^0.6.1",
     "babel-eslint": "~10.0.3",
@@ -93,10 +87,12 @@
     "jsdom": "~15.1.1",
     "lodash": "~4.17.15",
     "mini-css-extract-plugin": "~0.8.0",
-    "react": "~16.8.0",
-    "react-dom": "~16.8.0",
+    "react": "~16.11.0",
+    "react-custom-scrollbars": "~4.2.1",
+    "react-dom": "~16.11.0",
     "react-github-corner": "~2.3.0",
     "react-styleguidist": "9.0.4",
+    "react-window": "1.8.5",
     "regenerator-runtime": "~0.13.3",
     "style-loader": "~1.0.0",
     "styled-components": "~4.3.2",

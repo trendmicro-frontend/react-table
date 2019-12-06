@@ -3,7 +3,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { useTableContext } from './context';
 
-const TableCell = React.forwardRef(({
+const TableHeaderCell = React.forwardRef(({
     children,
     width,
     ...props
@@ -13,37 +13,40 @@ const TableCell = React.forwardRef(({
     } = useTableContext();
 
     return (
-        <CellStyle
+        <HeaderCellStyle
             ref={ref}
             minimalist={minimalist}
             width={width}
             {...props}
         >
             { children }
-        </CellStyle>
+        </HeaderCellStyle>
     );
 });
 
-TableCell.propTypes = {
+TableHeaderCell.propTypes = {
     width: PropTypes.number.isRequired,
 };
 
-const CellStyle = styled.div`
+const HeaderCellStyle = styled.div`
     padding: 8px 12px;
     flex: 1 0 auto;
+    color: #777;
+    font-weight: bold;
     width: ${props => props.width}px;
 
     ${props => !props.minimalist && css`
+        background-color: #EEEEEE;
         border-right: 1px solid #ddd;
-        border-bottom: 1px solid #ddd;
+        border-bottom: 2px solid #ccc;
         &:first-child {
             border-left: 1px solid #ddd;
         }
     `}
 
     ${props => props.minimalist && css`
-        border-bottom: 1px solid #ddd;
+        border-bottom: 2px solid #ccc;
     `}
 `;
 
-export default TableCell;
+export default TableHeaderCell;
