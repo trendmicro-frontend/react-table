@@ -6,7 +6,7 @@ React Table
 
 Demo: https://trendmicro-frontend.github.io/react-table
 
-## 1.x DEPRECATED - no longer actively maintained by 2019/12/06
+## Version 1.x is no longer maintained by 2019/12/06
 [Friendly reminder] Please migrate to 2+ asap.
 
 ## Installation
