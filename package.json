@@ -47,10 +47,10 @@
     "react": ">=16.11.0"
   },
   "dependencies": {
-    "classnames": "^2.2.5",
     "lodash.get": "^4.4.2",
     "prop-types": "^15.5.8",
-    "react-custom-scrollbars": "^4.2.1"
+    "react-custom-scrollbars": "^4.2.1",
+    "styled-components": "^4.4.1"
   },
   "devDependencies": {
     "@babel/cli": "~7.6.0",

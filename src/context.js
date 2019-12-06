@@ -1,10 +1,8 @@
 import React from 'react';
 
-const context = React.createContext({
-    scrollLeft: 0,
-    prevColumns: [],
-    thisColumns: [],
-    setScrollLeft: () => {},
+const TableContext = React.createContext({
+    minimalist: false,
 });
+export const useTableContext = () => React.useContext(TableContext);
 
-export default context;
+export default TableContext;

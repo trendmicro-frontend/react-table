@@ -1,23 +1,23 @@
-import cx from 'classnames';
 import React from 'react';
-import styles from './index.styl';
+import styled from 'styled-components';
 
-const TableRow = ({
+const TableRow = React.forwardRef(({
     children,
-    className,
     ...props
-}) => {
+}, ref) => {
     return (
-        <div
+        <RowStyle
+            ref={ref}
             {...props}
-            className={cx(
-                styles.tr,
-                className,
-            )}
         >
             { children }
-        </div>
+        </RowStyle>
     );
-};
+});
+
+const RowStyle = styled.div`
+    display: flex;
+`;
+
 
 export default TableRow;

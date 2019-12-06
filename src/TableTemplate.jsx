@@ -2,23 +2,26 @@ import _get from 'lodash/get';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Scrollbars } from 'react-custom-scrollbars';
-import TableWrapper from './TableWrapper';
+import styled, { css } from 'styled-components';
+import TableWrapper from './Table';
 import TableHeader from './TableHeader';
 import TableBody from './TableBody';
 import TableRow from './TableRow';
 import TableCell from './TableCell';
+import TableHeaderCell from './TableHeaderCell';
 
 class TableTemplate extends Component {
     static propTypes = {
-        bordered: PropTypes.bool,
+        minimalist: PropTypes.bool,
         columns: PropTypes.array,
         data: PropTypes.array,
-        emptyBody: PropTypes.element,
+        emptyText: PropTypes.string,
+        emptyRender: PropTypes.func,
         height: PropTypes.number,
         hideHeader: PropTypes.bool,
         hoverable: PropTypes.bool,
         loading: PropTypes.bool,
-        loader: PropTypes.element,
+        loaderRender: PropTypes.func,
         useFixedHeader: PropTypes.bool,
         width: PropTypes.number.isRequired,
     };
@@ -39,8 +42,7 @@ class TableTemplate extends Component {
         }
     };
 
-    renderHeader = (cells) => {
-        const columns = cells;
+    renderHeader = ({ cells: columns }) => {
         return (
             <TableHeader ref={this.tableHeaderRef}>
                 <TableRow>
@@ -52,12 +54,12 @@ class TableTemplate extends Component {
                                 width: cellWidth,
                             } = column;
                             return (
-                                <TableCell
+                                <TableHeaderCell
                                     key={key}
                                     width={cellWidth}
                                 >
                                     { typeof title === 'function' ? title(column) : title }
-                                </TableCell>
+                                </TableHeaderCell>
                             );
                         })
                     }
@@ -66,14 +68,11 @@ class TableTemplate extends Component {
         );
     };
 
-    renderBody = (cells) => {
-        const columns = cells;
+    renderBody = ({ cells: columns, data, emptyBody }) => {
         const {
-            data,
-            emptyBody,
-            loading,
+            hoverable,
         } = this.props;
-        const showEmpty = (data.length === 0) && !loading;
+        const showEmpty = (data.length === 0);
 
         return (
             <TableBody>
@@ -82,23 +81,26 @@ class TableTemplate extends Component {
                     data.map((row, index) => {
                         const rowKey = `table_row${index}`;
                         return (
-                            <TableRow key={rowKey}>
+                            <StyledTableRow
+                                key={rowKey}
+                                hoverable={hoverable}
+                            >
                                 {
                                     columns.map((column, index) => {
                                         const key = `${rowKey}_cell${index}`;
                                         const cellValue = _get(row, column.dataKey);
                                         const cell = (typeof column.render === 'function' ? column.render(cellValue, row, index) : cellValue);
                                         return (
-                                            <TableCell
+                                            <StyledTableCell
                                                 key={key}
                                                 width={column.width}
                                             >
                                                 { cell }
-                                            </TableCell>
+                                            </StyledTableCell>
                                         );
                                     })
                                 }
-                            </TableRow>
+                            </StyledTableRow>
                         );
                     })
                 }
@@ -109,63 +111,62 @@ class TableTemplate extends Component {
     render() {
         const {
             data,
-            bordered,
+            minimalist,
             height,
             hideHeader,
-            hoverable,
             loading,
-            loader,
             useFixedHeader,
             width,
             columns,
+            ...props
         } = this.props;
         const isNoData = (data.length === 0) && !loading;
 
-        if (!useFixedHeader) {
-            return (
-                <TableWrapper
-                    bordered={bordered}
-                    height={height}
-                    hoverable={hoverable}
-                    isNoData={isNoData}
-                    width={width}
-                >
-                    <Scrollbars
-                        autoHeight={!height}
-                        autoHeightMax="100%"
-                    >
-                        { !hideHeader && this.renderHeader(columns) }
-                        <div style={{ flex: '1 1 auto', position: 'relative' }}>
-                            { this.renderBody(columns) }
-                            { loading && loader }
-                        </div>
-                    </Scrollbars>
-                </TableWrapper>
-            );
-        }
-
         return (
             <TableWrapper
-                bordered={bordered}
+                columns={columns}
+                data={data}
+                minimalist={minimalist}
                 height={height}
-                hoverable={hoverable}
                 isNoData={isNoData}
                 width={width}
+                {...props}
             >
-                <React.Fragment>
-                    { !hideHeader && this.renderHeader(columns) }
-                    <Scrollbars
-                        autoHeight={!height}
-                        autoHeightMax="100%"
-                        onScroll={this.onScroll}
-                    >
-                        { this.renderBody(columns) }
-                        { loading && loader }
-                    </Scrollbars>
-                </React.Fragment>
+                {
+                    ({ cells, data, emptyBody, loader }) => {
+                        return (
+                            <React.Fragment>
+                                { !hideHeader && useFixedHeader && this.renderHeader({ cells, data }) }
+                                <Scrollbars
+                                    autoHeight={!height}
+                                    autoHeightMax="100%"
+                                    onScroll={this.onScroll}
+                                >
+                                    { !hideHeader && !useFixedHeader && this.renderHeader({ cells, data }) }
+                                    <div style={{ flex: '1 1 auto', position: 'relative' }}>
+                                        { this.renderBody({ cells, data, emptyBody }) }
+                                        { loading && loader }
+                                    </div>
+                                </Scrollbars>
+                            </React.Fragment>
+                        );
+                    }
+                }
             </TableWrapper>
         );
     }
 }
+
+const StyledTableCell = styled(TableCell)``;
+
+const StyledTableRow = styled(TableRow)`
+    ${props => props.hoverable && css`
+        &:hover {
+            ${StyledTableCell} {
+                background-color: #e6f4fc;
+            }
+        }
+    `}
+`;
 
 export default TableTemplate;

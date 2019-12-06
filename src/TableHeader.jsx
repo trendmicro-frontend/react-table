@@ -1,29 +1,28 @@
-import cx from 'classnames';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import React from 'react';
-import styles from './index.styl';
 
 const TableHeader = React.forwardRef(({
     children,
-    className,
     ...props
 }, ref) => {
     return (
-        <div
-            {...props}
+        <HeaderStyle
             ref={ref}
-            className={cx(
-                styles.thead,
-                className,
-            )}
+            {...props}
         >
             { children }
-        </div>
+        </HeaderStyle>
     );
 });
 
 TableHeader.propTypes = {
     width: PropTypes.number,
 };
+
+const HeaderStyle = styled.div`
+    flex: 0 0 auto;
+    overflow: hidden;
+`;
 
 export default TableHeader;

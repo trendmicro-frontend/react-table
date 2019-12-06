@@ -1,23 +1,20 @@
-import React, { Component } from 'react';
-import isEqual from 'lodash/isEqual';
 import PropTypes from 'prop-types';
-import styles from './index.styl';
-import TableTemplate from './TableTemplate';
-import TableWrapper from './TableWrapper';
+import React, { Component } from 'react';
+import styled, { css } from 'styled-components';
+import isEqual from 'lodash/isEqual';
+import TableContext from './context';
+import Loader from './Loader';
 
 class Table extends Component {
     static propTypes = {
-        bordered: PropTypes.bool,
+        minimalist: PropTypes.bool,
         columns: PropTypes.array,
         data: PropTypes.array,
         emptyText: PropTypes.string,
         emptyRender: PropTypes.func,
         height: PropTypes.number,
-        hideHeader: PropTypes.bool,
-        hoverable: PropTypes.bool,
         loading: PropTypes.bool,
         loaderRender: PropTypes.func,
-        useFixedHeader: PropTypes.bool,
         width: PropTypes.number.isRequired,
     };
 
@@ -28,9 +25,7 @@ class Table extends Component {
         emptyText: 'No Data',
         loaderRender: () => {
             return (
-                <div className={styles.loaderOverlay}>
-                    <span className={styles.loader} />
-                </div>
+                <Loader />
             );
         },
     };
@@ -94,12 +89,16 @@ class Table extends Component {
     };
 
     renderEmptyBody = () => {
-        const { emptyRender, emptyText } = this.props;
+        const {
+            emptyRender,
+            emptyText,
+            minimalist,
+        } = this.props;
         const defaultEmptyBody = (text) => {
             return (
-                <div className={styles.tablePlaceholder}>
+                <EmptyBodyStyle minimalist={minimalist}>
                     { text }
-                </div>
+                </EmptyBodyStyle>
             );
         };
         const emptyBody = emptyRender ? emptyRender() : defaultEmptyBody(emptyText);
@@ -111,59 +110,76 @@ class Table extends Component {
             thisColumns,
         } = this.state;
         const {
-            bordered,
+            minimalist,
             children,
             data,
             height,
-            hideHeader,
-            hoverable,
-            loading,
-            style,
-            useFixedHeader,
             width,
+            ...props
         } = this.props;
         const loader = this.renderLoader();
         const emptyBody = this.renderEmptyBody();
+        const tableHeight = !!height ? `${height}px` : 'auto';
+        const tableWidth = !!width ? `${width}px` : 'auto';
 
-        if (typeof children === 'function') {
-            return (
-                <TableWrapper
-                    bordered={bordered}
-                    height={height}
-                    hoverable={hoverable}
-                    isNoData={!data || data.length === 0}
-                    style={style}
-                    width={width}
+        const context = {
+            minimalist,
+        };
+
+        return (
+            <TableContext.Provider value={context}>
+                <WrapperStyle
+                    minimalist={minimalist}
+                    width={tableWidth}
+                    height={tableHeight}
+                    {...props}
                 >
-                    {
-                        children({
+                    { typeof children === 'function'
+                        ? children({
                             cells: thisColumns,
                             data: data,
                             loader: loader,
                             emptyBody: emptyBody,
                             tableWidth: width,
                         })
+                        : children
                     }
-                </TableWrapper>
-            );
-        }
-
-        return (
-            <TableTemplate
-                bordered={bordered}
-                columns={thisColumns}
-                data={data}
-                emptyBody={emptyBody}
-                height={height}
-                hideHeader={hideHeader}
-                hoverable={hoverable}
-                loading={loading}
-                loader={loader}
-                useFixedHeader={useFixedHeader}
-                width={width}
-            />
+                </WrapperStyle>
+            </TableContext.Provider>
         );
     }
 }
+
+const WrapperStyle = styled.div`
+    display: flex;
+    flex-direction: column;
+    line-height: 20px;
+    height: ${props => props.height};
+    width: ${props => props.width};
+    box-sizing: border-box;
+    *, *:before, *:after {
+        box-sizing: inherit;
+    }
+
+    ${props => !props.minimalist && css`
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+    `}
+
+    ${props => props.minimalist && css`
+        border: 0;
+    `}
+`;
+
+const EmptyBodyStyle = styled.div`
+    text-align: center;
+    padding: 44px 12px;
+    color: #999;
+
+    ${props => !props.minimalist && css`
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+    `}
+`;
 
 export default Table;

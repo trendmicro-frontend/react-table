@@ -1,19 +1,22 @@
-
 import React from 'react';
-import styles from './index.styl';
+import styled from 'styled-components';
 
-const TableBody = ({
+const TableBody = React.forwardRef(({
     children,
-    style,
-}) => {
+    ...props
+}, ref) => {
     return (
-        <div
-            className={styles.tbody}
-            style={style}
+        <BodyStyle
+            ref={ref}
+            {...props}
         >
             { children }
-        </div>
+        </BodyStyle>
     );
-};
+});
+
+const BodyStyle = styled.div`
+    flex: 1 1 auto;
+`;
 
 export default TableBody;
