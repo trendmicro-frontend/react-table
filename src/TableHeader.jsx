@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import React from 'react';
 
@@ -15,10 +14,6 @@ const TableHeader = React.forwardRef(({
         </HeaderStyle>
     );
 });
-
-TableHeader.propTypes = {
-    width: PropTypes.number,
-};
 
 const HeaderStyle = styled.div`
     flex: 0 0 auto;

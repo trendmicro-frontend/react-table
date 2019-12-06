@@ -123,7 +123,7 @@ class Selection extends Component {
                 data={data}
                 width={800}
             >
-                {({ cells }) => {
+                {({ cells, data, tableWidth }) => {
                     return (
                         <Fragment>
                             <TableHeader>
@@ -153,7 +153,7 @@ class Selection extends Component {
                                     itemCount={data.length}
                                     itemData={data}
                                     itemSize={37}
-                                    width={800}
+                                    width={tableWidth}
                                     outerRef={this.scrollbarRef}
                                     outerElementType={CustomScrollbarsVirtualList}
                                 >

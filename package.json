@@ -9,9 +9,8 @@
   ],
   "scripts": {
     "prepare": "npm run lint && npm test && npm run clean && npm run build && npm run styleguide:build",
-    "build": "webpack-cli && npm run cleancss",
+    "build": "webpack-cli",
     "clean": "rm -f {lib,dist}/*",
-    "cleancss": "cleancss -o dist/react-table.min.css dist/react-table.css",
     "demo": "http-server -p 8000 docs/",
     "lint": "npm run eslint && npm run stylint",
     "eslint": "eslint --ext .js --ext .jsx *.js src test",

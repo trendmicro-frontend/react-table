@@ -104,13 +104,12 @@ class Expand extends Component {
 
         return (
             <TableWrapper
-                bordered
                 columns={columns}
                 data={data}
                 width={800}
                 height={320}
             >
-                {({ cells }) => {
+                {({ cells, data, tableWidth }) => {
                     return (
                         <Fragment>
                             <TableHeader>
@@ -137,7 +136,7 @@ class Expand extends Component {
                             <TableBody>
                                 <Scrollbars
                                     style={{
-                                        width: 800
+                                        width: tableWidth
                                     }}
                                 >
                                     {
