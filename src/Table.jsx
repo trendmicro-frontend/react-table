@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import isEqual from 'lodash/isEqual';
 import TableContext from './context';
 import Loader from './Loader';
@@ -129,7 +129,6 @@ class Table extends Component {
         return (
             <TableContext.Provider value={context}>
                 <WrapperStyle
-                    minimalist={minimalist}
                     width={tableWidth}
                     height={tableHeight}
                     {...props}
@@ -144,6 +143,14 @@ class Table extends Component {
                         })
                         : children
                     }
+                    { !minimalist && (
+                        <React.Fragment>
+                            <BorderTop />
+                            <BorderRight />
+                            <BorderBottom />
+                            <BorderLeft />
+                        </React.Fragment>
+                    )}
                 </WrapperStyle>
             </TableContext.Provider>
         );
@@ -151,6 +158,7 @@ class Table extends Component {
 }
 
 const WrapperStyle = styled.div`
+    position: relative;
     display: flex;
     flex-direction: column;
     line-height: 20px;
@@ -160,26 +168,45 @@ const WrapperStyle = styled.div`
     *, *:before, *:after {
         box-sizing: inherit;
     }
-
-    ${props => !props.minimalist && css`
-        border-top: 1px solid #ddd;
-        border-bottom: 1px solid #ddd;
-    `}
-
-    ${props => props.minimalist && css`
-        border: 0;
-    `}
 `;
 
 const EmptyBodyStyle = styled.div`
     text-align: center;
     padding: 44px 12px;
     color: #999;
+`;
 
-    ${props => !props.minimalist && css`
-        border-left: 1px solid #ddd;
-        border-right: 1px solid #ddd;
-    `}
+const VerticalLine = styled.div`
+    border: none;
+    border-left: 1px solid #ddd;
+    height: 100%;
+    width: 1px;
+`;
+
+const HorizontalLine = styled.div`
+    border: none;
+    border-top: 1px solid #ddd;
+    height: 1px;
+    width: 100%;
+`;
+
+const BorderTop = styled(HorizontalLine)`
+    position: absolute;
+    top: 0;
+`;
+const BorderRight = styled(VerticalLine)`
+    position: absolute;
+    top: 0;
+    right: 0;
+`;
+const BorderBottom = styled(HorizontalLine)`
+    position: absolute;
+    bottom: 0;
+`;
+const BorderLeft = styled(VerticalLine)`
+    position: absolute;
+    top: 0;
+    left: 0;
 `;
 
 export default Table;

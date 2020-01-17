@@ -120,7 +120,6 @@ class TableTemplate extends Component {
             columns,
             ...props
         } = this.props;
-        const isNoData = (data.length === 0) && !loading;
 
         return (
             <TableWrapper
@@ -128,7 +127,6 @@ class TableTemplate extends Component {
                 data={data}
                 minimalist={minimalist}
                 height={height}
-                isNoData={isNoData}
                 width={width}
                 {...props}
             >
