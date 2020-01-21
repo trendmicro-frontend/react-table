@@ -1,6 +1,6 @@
 {
   "name": "@trendmicro/react-table",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Trend Micro Components: React Table",
   "main": "lib/index.js",
   "files": [
