@@ -36,9 +36,6 @@ const CellStyle = styled.div`
     ${props => !props.minimalist && css`
         border-right: 1px solid #ddd;
         border-bottom: 1px solid #ddd;
-        &:first-child {
-            border-left: 1px solid #ddd;
-        }
     `}
 
     ${props => props.minimalist && css`

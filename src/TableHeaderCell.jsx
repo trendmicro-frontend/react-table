@@ -39,9 +39,6 @@ const HeaderCellStyle = styled.div`
         background-color: #EEEEEE;
         border-right: 1px solid #ddd;
         border-bottom: 2px solid #ccc;
-        &:first-child {
-            border-left: 1px solid #ddd;
-        }
     `}
 
     ${props => props.minimalist && css`

@@ -161,6 +161,9 @@ class Selection extends Component {
                 checked={isChecked}
                 indeterminate={isIndeterminate}
                 onClick={this.handleHeaderCheckbox}
+                inputStyle={{
+                    margin: 0
+                }}
             />
         );
     };
@@ -171,6 +174,9 @@ class Selection extends Component {
             <Checkbox
                 checked={checked}
                 onClick={this.handleRowCheckbox}
+                inputStyle={{
+                    margin: 0
+                }}
             />
         );
     };
@@ -249,13 +255,13 @@ class Selection extends Component {
                                                             const { width: cellWidth, render } = cell;
                                                             const cellValue = _get(rowData, cell.dataKey);
                                                             return (
-                                                                <TableCell
+                                                                <StyledTableCell
                                                                     key={key}
                                                                     className="td"
                                                                     width={cellWidth}
                                                                 >
                                                                     { typeof render === 'function' ? render(cellValue, rowData) : cellValue }
-                                                                </TableCell>
+                                                                </StyledTableCell>
                                                             );
                                                         })
                                                     }
@@ -340,13 +346,13 @@ class Selection extends Component {
                                                         const { width: cellWidth } = cell;
                                                         const cellValue = _get(rowData, cell.dataKey);
                                                         return (
-                                                            <TableCell
+                                                            <StyledTableCell
                                                                 key={key}
                                                                 className="td"
                                                                 width={cellWidth}
                                                             >
                                                                 { cellValue }
-                                                            </TableCell>
+                                                            </StyledTableCell>
                                                         );
                                                     })
                                                 }
@@ -388,12 +394,19 @@ const ShadowStyle = styled.div`
     display: none;
 `;
 
+const StyledTableCell = styled(TableCell)``;
+
 const StyledTableRow = styled(TableRow)`
-    ${props => props.active && css`
-        background-color: #fcf8da;
-    `}
     ${props => props.hover && css`
-        background-color: #e6f4fc;
+        ${StyledTableCell} {
+            background-color: #e6f4fc;
+        }
+    `}
+
+    ${props => props.active && css`
+        ${StyledTableCell} {
+            background-color: #fcf8da;
+        }
     `}
 `;
 

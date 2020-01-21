@@ -95,6 +95,9 @@ class Selection extends Component {
                 checked={isChecked}
                 indeterminate={isIndeterminate}
                 onClick={this.handleHeaderCheckbox}
+                inputStyle={{
+                    margin: 0
+                }}
             />
         );
     };
@@ -105,6 +108,9 @@ class Selection extends Component {
             <Checkbox
                 checked={checked}
                 onClick={this.handleRowCheckbox}
+                inputStyle={{
+                    margin: 0
+                }}
             />
         );
     };

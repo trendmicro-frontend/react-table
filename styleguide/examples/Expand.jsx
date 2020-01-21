@@ -187,9 +187,8 @@ const StyledTableRow = styled(TableRow)`
 `;
 
 const ExpandedRowStyle = styled.div`
-    border: 1px solid #ddd;
-    border-top-width: 0;
     padding: 16px 16px 16px 52px;
+    border-bottom: 1px solid #ddd;
     &:last-child {
         border-bottom-width: 0;
     }
