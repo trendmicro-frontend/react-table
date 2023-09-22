@@ -25,14 +25,7 @@
     "type": "git",
     "url": "git+https://github.com/trendmicro-frontend/react-table.git"
   },
-  "author": "Tina C Lin <tina_c_lin@trend.com.tw>",
-  "contributors": [
-    {
-      "name": "Tina C Lin",
-      "email": "tina_c_lin@trend.com.tw",
-      "url": "https://github.com/tinaClin"
-    }
-  ],
+  "author": "Tina C Lin",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/trendmicro-frontend/react-table/issues"
